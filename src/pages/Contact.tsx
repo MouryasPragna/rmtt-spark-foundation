@@ -96,14 +96,6 @@ export default function Contact() {
       </div>
       <aside className={styles.sidebar}>
         <section className={styles.sideCard}>
-          <h2 className={styles.sideTitle}>Contact information</h2>
-          <ul className={styles.contactList}>
-            <li className={styles.contactItem}><div><div className={styles.contactLabel}>Address</div><div className={styles.contactValue}>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</div></div></li>
-            <li className={styles.contactItem}><div><div className={styles.contactLabel}>Phone / WhatsApp</div><a href={siteConfig.phoneHref} className={styles.contactValue}>{siteConfig.phone}</a></div></li>
-            <li className={styles.contactItem}><div><div className={styles.contactLabel}>Email</div><a href={`mailto:${siteConfig.email}`} className={styles.contactValue}>{siteConfig.email}</a></div></li>
-          </ul>
-        </section>
-        <section className={styles.sideCard}>
           <h2 className={styles.sideTitle}>What happens next?</h2>
           <ul className={styles.nextSteps}>
             <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></div></li>
