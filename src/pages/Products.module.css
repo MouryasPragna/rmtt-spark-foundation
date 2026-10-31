@@ -426,8 +426,6 @@
 .clearFilters, .detailLink { display: inline-flex; align-items: center; gap: 6px; color: var(--navy); font-size: 14px; font-weight: 600; }
 .clearFilters { border: 0; background: transparent; }
 .cardActions { margin-top: auto; padding: 0 20px 20px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; }
-.quoteButton { display: inline-flex; align-items: center; gap: 6px; background: var(--white); color: var(--navy); border: 1px solid var(--navy); border-radius: var(--radius-sm); padding: 9px 12px; font-size: 14px; font-weight: 600; }
-.quoteButton:disabled { color: var(--steel); border-color: var(--border); cursor: default; }
 .emptyState { padding: 60px 0; text-align: center; }
 .emptyState h2 { margin-bottom: 24px; }
 .detailGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -444,7 +442,7 @@
 @media (max-width: 900px) { .detailGrid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .filterBar { top: 64px; } .filterChip { padding: 8px 10px; } }
 
-.filterChip, .quoteButton, .clearFilters, .detailLink, .jumpLink { min-height: 44px; min-width: 44px; }
+.filterChip, .clearFilters, .detailLink, .jumpLink { min-height: 44px; min-width: 44px; }
 .productName a { display: block; min-height: 44px; }
 .searchBox input { min-height: 44px; min-width: 0; }
 .productBody { min-width: 0; }

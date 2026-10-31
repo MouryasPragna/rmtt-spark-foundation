@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Send, Upload, X } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Upload } from 'lucide-react';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
 import { industryNames } from '../data/industries';
