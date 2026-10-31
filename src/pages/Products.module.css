@@ -455,3 +455,47 @@
 .catGallery { min-width: 0; }
 .protectedImg { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
 .productCard .productDesc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0; margin-bottom: 18px; }
+
+/* MAPAL overview pattern: solution-area cards */
+.solutionsSection { padding: 64px 0 56px; background: var(--white); }
+.sectionHeadRow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin-bottom: 28px; }
+.sectionHeadRow .catTitle { margin-bottom: 0; }
+.sectionHeadSub { font-size: 15px; color: var(--text-secondary); margin: 0; }
+.solutionsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.solutionCard { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border-light); transition: border-color 0.2s, box-shadow 0.2s; min-width: 0; }
+.solutionCard:hover { border-color: var(--navy); box-shadow: var(--shadow-md); }
+.solutionCardImg { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; background: var(--white); border-bottom: 1px solid var(--border-light); overflow: hidden; }
+.solutionCardImg img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
+.solutionLabel { position: absolute; top: 12px; left: 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.solutionCardBody { display: flex; flex-direction: column; flex: 1; gap: 10px; padding: 18px 20px 20px; }
+.solutionTitle { font-size: 19px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3; }
+.solutionBlurb { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 0; flex: 1; }
+.solutionLink { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; }
+.solutionCard:hover .solutionLink { text-decoration: underline; }
+
+/* Competence page: second intro paragraph */
+.pageSubtitleSecond { font-size: 17px; color: var(--text-secondary); line-height: 1.65; max-width: 640px; margin: -12px 0 28px; }
+
+/* Competence page: featured example highlight */
+.featuredSection { padding: 64px 0; background: var(--white); border-bottom: 1px solid var(--border-light); }
+.featuredGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.featuredImg { min-width: 0; }
+.featuredBody { min-width: 0; }
+.featuredTitle { font-size: 28px; font-weight: 700; color: var(--navy); margin: 10px 0 14px; letter-spacing: -0.01em; line-height: 1.25; }
+.featuredBlurb { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin: 0 0 20px; }
+.featuredLink { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; min-height: 44px; }
+.featuredLink:hover { text-decoration: underline; }
+
+/* Competence page: key capability blocks */
+.capSection { padding: 64px 0; background: var(--surface); }
+.capGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.capBlock { background: var(--white); border: 1px solid var(--border-light); border-top: 2px solid var(--navy); padding: 22px 22px 24px; min-width: 0; }
+.capTitle { font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 10px; line-height: 1.35; }
+.capBody { font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+
+@media (max-width: 900px) {
+  .featuredGrid { grid-template-columns: 1fr; gap: 32px; }
+  .solutionsGrid { grid-template-columns: 1fr; }
+  .capGrid { grid-template-columns: 1fr; }
+  .pageSubtitleSecond { margin-top: -8px; }
+}
