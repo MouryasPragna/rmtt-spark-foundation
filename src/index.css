@@ -17,8 +17,8 @@
   --type-title-leading: 60px;
   --type-title-spacing: 1.2px;
   --type-content-spacing: 0;
-  /* MAPAL typography: Rotis Sans Serif headings (licensed; Arial fallback), Arial body. */
-  --font-heading: 'Rotis Sans Serif W04', 'Rotis Sans Std', Arial, 'Helvetica Neue', sans-serif;
+  /* Poppins headings (self-hosted via Fontsource), Arial body. */
+  --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-body: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   /* Brand colors — Fraisa-inspired deep navy + steel blue */
   --navy: #002855;
