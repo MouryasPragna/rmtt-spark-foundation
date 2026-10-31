@@ -130,6 +130,7 @@
 
 /* ── CARD ── */
 .card {
+  flex-shrink: 0;
   background: #fff;
   border: 1px solid #E2EAF5;
   border-radius: var(--radius-lg);

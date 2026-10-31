@@ -150,6 +150,7 @@
 
 /* Border-led process panels replace decorative numbered tracks. */
 .processSteps::before { display: none; }
+.processSection .processSteps { gap: 20px; }
 .processSteps .processStep { display: flex; padding-bottom: 0; min-width: 0; }
 .processSteps .processStep::before { display: none; }
 .processSteps .processStepContent { margin-top: 0; border-top: 3px solid var(--on-dark); }
