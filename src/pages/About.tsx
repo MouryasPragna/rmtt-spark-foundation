@@ -133,7 +133,7 @@ export default function About() {
       {/* Mission & Vision */}
       <section className={styles.missionVisionSection}>
         <div className="container">
-          <div className={styles.missionVisionHead}>
+          <div className={`section-heading ${styles.missionVisionHead}`}>
             <div className="section-eyebrow">Our goals</div>
             <h2 className={styles.missionVisionTitle}>Mission & vision</h2>
             <p className={styles.missionVisionSub}>
@@ -165,7 +165,7 @@ export default function About() {
       {/* Purpose & Philosophy */}
       <section className={styles.purposeSection}>
         <div className="container">
-          <div className={styles.purposeHead}>
+          <div className={`section-heading ${styles.purposeHead}`}>
             <div className="section-eyebrow">Our purpose</div>
             <h2 className={styles.purposeTitle}>Purpose & philosophy</h2>
             <p className={styles.purposeSub}>
@@ -199,7 +199,7 @@ export default function About() {
       {/* Values */}
       <section className={styles.valuesSection}>
         <div className="container">
-          <div className={styles.valuesHead}>
+          <div className={`section-heading ${styles.valuesHead}`}>
             <div className="section-eyebrow">What we stand for</div>
             <h2 className={styles.valuesTitle}>Our values</h2>
           </div>
@@ -219,11 +219,11 @@ export default function About() {
         <div className="container">
           <div className={styles.locationGrid}>
             <div className={styles.locationBody}>
-              <div className="section-eyebrow">Find us</div>
+              <header className="section-heading"><div className="section-eyebrow">Find us</div>
               <h2 className={styles.locationTitle}>Bengaluru facility</h2>
               <p className={styles.locationText}>
                 Our manufacturing facility is located in GNC Industrial Estate, Bengaluru — India's manufacturing hub for automotive, two-wheeler, aerospace and precision engineering.
-              </p>
+              </p></header>
               <ul className={styles.locationDetails}>
                 <li>
                   <MapPin size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />

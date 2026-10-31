@@ -70,7 +70,7 @@ export default function TrustSignals() {
       {/* ── 2. QUALITY CERTIFICATES ── */}
       <section className={styles.certSection}>
         <div className="container">
-          <div className={styles.sectionHead}>
+          <div className={`section-heading ${styles.sectionHead}`}>
             <div className="section-eyebrow">Our equipment</div>
             <h2 className={styles.sectionTitle}>Manufacturing equipment</h2>
             <p className={styles.sectionSub}>
@@ -113,11 +113,11 @@ export default function TrustSignals() {
 
             {/* Left — heading */}
             <div className={styles.downloadLeft}>
-              <div className="section-eyebrow">Downloads</div>
+              <header className="section-heading"><div className="section-eyebrow">Downloads</div>
               <h2 className={styles.downloadTitle}>Product Catalogue</h2>
               <p className={styles.downloadSub}>
                 Download our complete product catalogue for tool specifications and applications.
-              </p>
+              </p></header>
               {/* Featured download — big CTA */}
               <a
                 href={downloads[0].href}

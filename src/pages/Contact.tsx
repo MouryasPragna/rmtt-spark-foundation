@@ -55,7 +55,7 @@ export default function Contact() {
   return <div className={styles.main}>
     <section className={`${styles.pageHero} ${styles.contactHero}`}><img src={factoryPhoto.url} alt="Riddhi precision tool manufacturing facility" className={styles.heroPhoto} /><div className={`container ${styles.heroContent}`}><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Contact us</h1><p className={styles.pageSubtitle}>Share your application details and tooling requirements with our team.</p></div></section>
     <section className={styles.contactOverview}><div className="container">
-      <h2 className={styles.overviewTitle}>Get in touch</h2>
+      <h2 className={`section-heading-title ${styles.overviewTitle}`}>Get in touch</h2>
       <div className={styles.contactCards}>
         <article className={styles.contactCard}><h3>Phone / WhatsApp</h3><a href={siteConfig.phoneHref}><Phone size={18} aria-hidden="true" />{siteConfig.phone}</a></article>
         <article className={styles.contactCard}><h3>Email</h3><a href={`mailto:${siteConfig.email}`}><Mail size={18} aria-hidden="true" />{siteConfig.email}</a></article>
@@ -66,7 +66,7 @@ export default function Contact() {
       <div className={styles.formWrap}>
         <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.honeypot} aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" maxLength={fieldLimits.website} value={form.website} onChange={event => change('website', event.target.value)} /></div>
-          <h2 className={styles.formTitle}>Send an enquiry</h2>
+          <h2 className={`section-heading-title ${styles.formTitle}`}>Send an enquiry</h2>
           <div className={styles.formRow}>
             {fields.map(field => <div className={styles.formField} key={field.name}>
               <label className={styles.label} htmlFor={field.name}>{field.label}{field.required ? ' *' : ''}</label>
@@ -96,7 +96,7 @@ export default function Contact() {
       </div>
       <aside className={styles.sidebar}>
         <section className={styles.sideCard}>
-          <h2 className={styles.sideTitle}>What happens next?</h2>
+          <h2 className={`section-heading-title ${styles.sideTitle}`}>What happens next?</h2>
           <ul className={styles.nextSteps}>
             <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></div></li>
             <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical proposal</h3><p className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</p></div></li>

@@ -61,9 +61,9 @@ export default function CategoryPage() {
               <Gallery images={[{ src: cat.featured.image, alt: cat.featured.imageAlt }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
             </div>
             <div className={styles.featuredBody}>
-              <div className="section-eyebrow" style={{ color: cat.color }}>Featured from this programme</div>
+              <header className="section-heading"><div className="section-eyebrow" style={{ color: cat.color }}>Featured from this programme</div>
               <h2 id="featured-heading" className={styles.featuredTitle}>{cat.featured.title}</h2>
-              <p className={styles.featuredBlurb}>{cat.featured.blurb}</p>
+              <p className={styles.featuredBlurb}>{cat.featured.blurb}</p></header>
               <Link to={cat.featured.href} className={styles.featuredLink} style={{ color: cat.color }}>
                 View the family <ArrowRight size={15} aria-hidden="true" />
               </Link>
@@ -75,7 +75,7 @@ export default function CategoryPage() {
       {/* Key capability blocks — MAPAL key-info pattern */}
       <section className={styles.capSection} aria-labelledby="capabilities-heading">
         <div className="container">
-          <div className={styles.sectionHeadRow}>
+          <div className={`section-heading ${styles.sectionHeadRow}`}>
             <h2 id="capabilities-heading" className={styles.catTitle}>Key capabilities</h2>
             <p className={styles.sectionHeadSub}>What defines the tools in this programme.</p>
           </div>
@@ -94,7 +94,7 @@ export default function CategoryPage() {
       {/* Product families — each on its own page */}
       <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
         <div className="container">
-          <div className={styles.sectionHeadRow}>
+          <div className={`section-heading ${styles.sectionHeadRow}`}>
             <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
             <p className={styles.sectionHeadSub}>Each tool category has its own page with the tools in that programme.</p>
           </div>
