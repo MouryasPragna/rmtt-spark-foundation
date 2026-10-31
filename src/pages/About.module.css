@@ -12,7 +12,7 @@
 .pageHeroGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 520px;
+  min-height: 0;
   align-items: center;           /* ← vertically centre both sides */
 }
 
@@ -24,7 +24,7 @@
 
 /* LEFT — light panel */
 .pageHeroLeft {
-  padding: 64px 52px 64px 48px;
+  padding: 28px 52px 28px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +49,7 @@
   color: #3D4F6B;                /* ← readable dark slate */
   line-height: 1.72;
   margin-bottom: 12px;
-  max-width: 440px;
+  max-width: 100%;
 }
 
 .pageSubtitleSecond {
@@ -57,7 +57,7 @@
   color: var(--text-muted);
   line-height: 1.72;
   margin-bottom: 36px;
-  max-width: 440px;
+  max-width: 100%;
 }
 
 .pageSubtitleSecond strong {
@@ -166,7 +166,7 @@
     padding: 24px;
   }
   .pageHeroLeft {
-    padding: 40px 24px;
+    padding: 28px 24px;
   }
 }
 

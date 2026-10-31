@@ -5,7 +5,7 @@
 /* Page hero — Fraisa-style light blue gradient */
 .pageHero {
   background: linear-gradient(180deg, #D9E4EE 0%, #F2F5F8 100%);
-  padding: 56px 0 48px;
+  padding: 28px 0;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -21,8 +21,8 @@
   font-size: 17px;
   color: var(--text-secondary);
   line-height: 1.65;
-  max-width: 640px;
-  margin-bottom: 28px;
+  max-width: 100%;
+  margin-bottom: 16px;
 }
 
 .jumpLinks {
@@ -472,7 +472,7 @@
 .solutionCard:hover .solutionLink { text-decoration: underline; }
 
 /* Competence page: second intro paragraph */
-.pageSubtitleSecond { font-size: 17px; color: var(--text-secondary); line-height: 1.65; max-width: 640px; margin: -12px 0 28px; }
+.pageSubtitleSecond { font-size: 17px; color: var(--text-secondary); line-height: 1.65; max-width: 100%; margin: 0 0 16px; }
 
 /* Competence page: featured example highlight */
 .featuredSection { padding: 64px 0; background: var(--white); border-bottom: 1px solid var(--border-light); }
