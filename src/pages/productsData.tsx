@@ -3,13 +3,35 @@ import { Settings, Gem, Layers } from 'lucide-react';
 import solidCarbideOverview from '../assets/home-solid-endmill.webp.asset.json';
 import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
 import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
-
+import solidCarbideReamers from '../assets/solid-carbide-reamers.jpg.asset.json';
 
 export type SubCategory = {
   id: string;
   title: string;
   blurb: string;
   products: Product[];
+};
+
+/**
+ * One "key capabilities" block in the MAPAL information pattern: a titled block of
+ * approved copy. `pendingNote` renders a shared ContentPending flag beneath the body
+ * when supporting evidence is missing; `pending` alone renders the block as a
+ * placeholder without fabricated copy.
+ */
+export type CapabilityBlock = {
+  id: string;
+  title: string;
+  body: string;
+  pendingNote?: string;
+  pending?: boolean;
+};
+
+export type FeaturedExample = {
+  title: string;
+  blurb: string;
+  image: string;
+  imageAlt: string;
+  href: string;
 };
 
 export type Category = {
@@ -20,9 +42,12 @@ export type Category = {
   label: string;
   headline: string;
   intro: string;
+  intro2: string;
   image: string;
   imageAlt: string;
   features: string[];
+  featured: FeaturedExample;
+  capabilities: CapabilityBlock[];
   subcategories: SubCategory[];
 };
 
@@ -35,7 +60,9 @@ export const categories: Category[] = [
     label: 'Solid Carbide',
     headline: 'Solid Carbide End Mills, Reamers & Drills',
     intro:
-      'High-performance solid carbide tools for demanding machining across grey and nodular cast iron, alloyed and stainless steels, titanium, Inconel and aluminium. The range includes precision end mills, reamers and drills, with application-specific geometries, polished flutes, internal coolant options and wear-resistant PVD coatings.',
+      'High-performance solid carbide tools for demanding machining across grey and nodular cast iron, alloyed and stainless steels, titanium, Inconel and aluminium.',
+    intro2:
+      'The range includes precision end mills, reamers and drills with application-specific geometries, polished flutes, internal coolant options and wear-resistant PVD coatings — all ground on German CNC equipment in Bengaluru.',
     image: solidCarbideOverview.url,
     imageAlt: 'Solid carbide end mill — example from the Solid Carbide range',
     features: [
@@ -47,6 +74,53 @@ export const categories: Category[] = [
       'Drills from 2 to 25 mm, including special step drills',
       'Internal coolant from 4 mm diameter on drills',
       'Application-specific PVD wear-resistant coatings',
+    ],
+    featured: {
+      title: 'Solid Carbide Reamers',
+      blurb:
+        'High-performance multi-blade monoblock reamers with unequal spacing and application-specific cutting geometry. Straight flutes suit through and blind holes, with left-hand spiral flutes for through holes — produced to customer-specific bore tolerances, including H6 and H7, in diameters from 2 to 32 mm.',
+      image: solidCarbideReamers.url,
+      imageAlt: 'Solid carbide reamers — example from the Solid Carbide range',
+      href: '/products/solid-carbide#sc-reamers',
+    },
+    capabilities: [
+      {
+        id: 'materials',
+        title: 'For every workpiece material',
+        body:
+          'Along with tools for machining steel, stainless steel, cast iron and aluminium, the programme includes geometries for titanium, Inconel and aerospace aluminium alloys.',
+      },
+      {
+        id: 'coatings',
+        title: 'Wear-resistant PVD coatings',
+        body:
+          'Cutting edges receive application-specific PVD wear-resistant coatings matched to the machining case.',
+        pendingNote: 'The detailed coating programme (coating types and substrates) will be added once approved manufacturer documentation is supplied.',
+      },
+      {
+        id: 'coolant',
+        title: 'Internal coolant options',
+        body:
+          'Drills from 4 mm diameter are available with internal coolant supply for reliable chip evacuation in deep and multi-diameter holes.',
+      },
+      {
+        id: 'geometry',
+        title: 'Customer-specific geometries',
+        body:
+          'Multi-helix geometry, polished flutes and edge honing are matched to the application; special step drills and special multi-step reamers are engineered to customer requirements.',
+      },
+      {
+        id: 'equipment',
+        title: 'Latest production equipment',
+        body:
+          'Tools are ground on 5-axis CNC grinding equipment in Bengaluru, with cutting edges measured optically on Walter Helicheck equipment.',
+      },
+      {
+        id: 'reconditioning',
+        title: 'Reconditioning service',
+        body: '',
+        pending: true,
+      },
     ],
     subcategories: [
       {
@@ -80,7 +154,9 @@ export const categories: Category[] = [
     label: 'PCD Tools',
     headline: 'PCD Tools for High-Performance Machining',
     intro:
-      'Polycrystalline diamond tooling for highly productive machining of aluminium parts in automotive and aerospace applications. Riddhi starts with the customer’s component and application requirements, then develops a proposal, tool design and manufacturing solution to meet production and performance requirements for drilling, milling and precision boring.',
+      'Polycrystalline diamond tooling for highly productive machining of aluminium parts in automotive and aerospace applications.',
+    intro2:
+      'RMTT starts with the customer’s component and application requirements, then develops a proposal, tool design and manufacturing solution to meet production and performance requirements for drilling, milling and precision boring.',
     image: pcdOverview.url,
     imageAlt: 'PCD boring tool — example from the PCD range',
     features: [
@@ -94,6 +170,46 @@ export const categories: Category[] = [
       'Tight tolerances maintained over longer machining cycles',
       'Combined operations reduce tool changes and production costs',
       'High cutting speeds and feeds can reduce machining time',
+    ],
+    featured: {
+      title: 'PCD Multi-Step Reamers',
+      blurb:
+        'Precision PCD tooling designed around component and bore requirements, including multi-step tools that consolidate operations into one tool — such as the five-step shock-absorber bore reamer machined at a cutting speed of 210 m/min.',
+      image: pcdOverview.url,
+      imageAlt: 'PCD boring tool — example from the PCD range',
+      href: '/products/pcd#pcd-reamers',
+    },
+    capabilities: [
+      {
+        id: 'materials',
+        title: 'Sharp edges against built-up edge',
+        body:
+          'PCD combines very high hardness, an ultra-fine microstructure and sharp cutting edges. Aluminium can adhere at a hot cutting edge and form built-up edge; PCD reduces this effect compared with solid carbide and supports high cutting speeds, feeds and long tool life.',
+      },
+      {
+        id: 'manufacturing',
+        title: 'Manufacturing technology',
+        body:
+          'Wire EDM, lapping and grinding of cutting edges on solid carbide or steel tool bodies, with seamless brazing, high-quality pocket seats and smooth flutes.',
+      },
+      {
+        id: 'finish',
+        title: 'Surface finish',
+        body: 'Surface finishes below Ra 0.2 are possible.',
+        pendingNote: 'The unit for the stated Ra 0.2 figure, and supporting trial evidence, will be added once confirmed by the client.',
+      },
+      {
+        id: 'combined',
+        title: 'Combined operations',
+        body:
+          'Operations can be consolidated into one tool, reducing tool changes and production costs while tight tolerances are maintained over longer machining cycles.',
+      },
+      {
+        id: 'custom',
+        title: 'Custom solutions',
+        body:
+          'Special machining tasks are engineered individually from the customer’s component, material and production requirements.',
+      },
     ],
     subcategories: [
       {
@@ -127,7 +243,9 @@ export const categories: Category[] = [
     label: 'Brazed Carbide',
     headline: 'Brazed Carbide Tools & Special Solutions',
     intro:
-      'Brazed carbide-tipped tools offer a cost-conscious alternative amid high carbide raw-material costs, with the FINAL deck describing performance comparable to solid carbide for the intended application. A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets. Cutting edges are ground on a 5-axis CNC tool-grinding machine to achieve the required geometries in one setup.',
+      'Brazed carbide-tipped tools offer a cost-conscious alternative amid high carbide raw-material costs, with performance comparable to solid carbide for the intended application.',
+    intro2:
+      'A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets. Cutting edges are ground on a 5-axis CNC tool-grinding machine to achieve the required geometries in one setup.',
     image: brazedCarbideOverview.url,
     imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
     features: [
@@ -139,6 +257,46 @@ export const categories: Category[] = [
       'T-slot milling cutters',
       'Reamers with internal coolant and PVD coating',
       'Lugged carbide drills and reamers with internal coolant',
+    ],
+    featured: {
+      title: 'Special Brazed Tools & T-Slot Cutters',
+      blurb:
+        'Carbide-tipped T-slot milling cutters, multi-grooving tools and customer-specific form and stepped tools, manufactured around the component and its production requirements.',
+      image: brazedCarbideOverview.url,
+      imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
+      href: '/products/brazed#bc-milling',
+    },
+    capabilities: [
+      {
+        id: 'construction',
+        title: 'Tool construction',
+        body:
+          'A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets.',
+      },
+      {
+        id: 'grinding',
+        title: 'Ground in one setup',
+        body:
+          'Cutting edges are ground on 5-axis CNC tool-grinding machines to achieve the required geometries in a single setup.',
+      },
+      {
+        id: 'special',
+        title: 'Stepped and form tools',
+        body:
+          'Stepped special tools, form tools and multi-grooving solutions are manufactured to customer-specific component requirements.',
+      },
+      {
+        id: 'coolant',
+        title: 'Coolant and coating options',
+        body:
+          'Reamers with internal coolant and PVD coating, and lugged carbide drills and reamers with internal coolant, are part of the programme.',
+      },
+      {
+        id: 'custom',
+        title: 'Custom solutions',
+        body:
+          'Special machining tasks require special tools — brazed carbide solutions are tailored to the customer’s application.',
+      },
     ],
     subcategories: [
       {
