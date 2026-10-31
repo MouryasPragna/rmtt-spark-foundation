@@ -1,16 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Plus, Check, FileText, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FileText, Settings } from 'lucide-react';
 import { products, getProductImages, type Product } from '../data/products';
 import { categories } from './productsData';
-import { useQuote } from '../context/QuoteContext';
 import ProductCard from '../components/ProductCard';
 import Gallery from '../components/Gallery';
 import styles from './Products.module.css';
 
 export default function ProductDetail({ product }: { product: Product }) {
-  const { selected, add } = useQuote();
-  const navigate = useNavigate();
-  const added = selected.some(tool => tool.slug === product.slug);
   const category = categories.find(cat => cat.id === product.category);
   const related = products.filter(tool => tool.category === product.category && tool.slug !== product.slug).sort((a, b) => Number(b.subcategory === product.subcategory) - Number(a.subcategory === product.subcategory)).slice(0, 3);
   return <div className={styles.main}>
@@ -27,8 +23,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           {!!product.markings?.length && <table className={styles.specTable}><caption>Pictured tool — markings on the photo</caption><tbody>{product.markings.map(m => <tr key={m.label}><th scope="row">{m.label}</th><td>{m.value}</td></tr>)}</tbody></table>}
           {!!product.specs?.length && <table className={styles.specTable}><caption>Specifications</caption><tbody>{product.specs.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>}
           <div className={styles.detailActions}>
-            <button type="button" className={styles.quoteButton} disabled={added} onClick={() => add(product.slug)}>{added ? <Check size={16} /> : <Plus size={16} />}{added ? 'Added to quote' : 'Add to quote'}</button>
-            <button type="button" className={styles.catCta} onClick={() => { add(product.slug); navigate('/contact'); }}>Request quote for this tool</button>
+            <Link to="/contact" className={styles.catCta}>Request quote for this tool</Link>
             {product.datasheetUrl && <a href={product.datasheetUrl} download className={styles.detailLink}><FileText size={16} />Download datasheet</a>}
           </div>
         </div>

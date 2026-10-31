@@ -13,14 +13,6 @@ export function filterProducts(params: URLSearchParams): Product[] {
   );
 }
 
-export function readQuoteSlugs(storage: Pick<Storage, 'getItem'>): string[] {
-  try {
-    const saved: unknown = JSON.parse(storage.getItem('rmtt-quote') || '[]');
-    return Array.isArray(saved) ? [...new Set(saved.filter((slug): slug is string =>
-      typeof slug === 'string' && products.some(product => product.slug === slug)
-    ))] : [];
-  } catch { return []; }
-}
 
 export function saveQuoteSlugs(storage: Pick<Storage, 'setItem'>, slugs: string[]) {
   try { storage.setItem('rmtt-quote', JSON.stringify(slugs)); } catch { /* Storage may be disabled. */ }

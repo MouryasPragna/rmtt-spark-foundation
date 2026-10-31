@@ -4,7 +4,7 @@ import { industryNames } from '../data/industries';
 import { equipment } from '../data/equipment';
 import { siteConfig } from './siteConfig';
 import catalogue from '../assets/rmtt-final-catalogue.pdf.asset.json';
-import { filterProducts, readQuoteSlugs, saveQuoteSlugs } from './catalogue';
+import { filterProducts } from './catalogue';
 import { MAX_DRAWING_BYTES, buildRfqMailto, rfqSchema, submitRfq, validateDrawing } from './rfq';
 
 describe('static catalogue rules', () => {
@@ -28,15 +28,6 @@ describe('static catalogue rules', () => {
     const specs = products.find(tool => tool.slug === 'solid-carbide-reamers')?.specs;
     expect(specs).toContainEqual({ label: 'Coolant', value: 'Internal coolant supply' });
     expect(specs).toContainEqual({ label: 'Options', value: 'Special multi-step reamers' });
-  });
-  test('restores persisted selections without duplicates or unknown tools', () => {
-    let saved = '';
-    saveQuoteSlugs({ setItem: (_key, value) => { saved = value; } }, ['pcd-reamer', 'pcd-reamer', 'unknown']);
-    expect(readQuoteSlugs({ getItem: () => saved })).toEqual(['pcd-reamer']);
-  });
-  test('disabled storage cannot break a quote draft', () => {
-    expect(readQuoteSlugs({ getItem: () => { throw new Error('disabled'); } })).toEqual([]);
-    expect(() => saveQuoteSlugs({ setItem: () => { throw new Error('disabled'); } }, [])).not.toThrow();
   });
 });
 

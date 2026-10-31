@@ -4,7 +4,6 @@ import { MapPin, Phone, Mail, Send, Upload, X } from 'lucide-react';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
 import { industryNames } from '../data/industries';
-import { useQuote } from '../context/QuoteContext';
 import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm, type RfqResult } from '../lib/rfq';
 
 const fields: { name: keyof typeof fieldLimits; label: string; required?: boolean; type?: string; placeholder?: string }[] = [
@@ -22,7 +21,6 @@ const industryOptions = industryNames;
 const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', toolType: '', industry: '', material: '', machine: '', qty: '', description: '', website: '', consent: false };
 
 export default function Contact() {
-  const { selected, remove } = useQuote();
   const [form, setForm] = useState<RfqForm>(initialForm);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [drawing, setDrawing] = useState<File>();
@@ -31,9 +29,6 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<RfqResult>();
   const formRef = useRef<HTMLFormElement>(null);
-  const selectedNames = selected.map(tool => tool.name).join('; ');
-  const selectedSlugs = selected.map(tool => tool.slug);
-  useEffect(() => { setForm(current => ({ ...current, toolType: selectedNames })); }, [selectedNames]);
   const change = (name: keyof typeof fieldLimits, value: string) => {
     setForm(current => ({ ...current, [name]: value.slice(0, fieldLimits[name]) }));
     setErrors(current => ({ ...current, [name]: '' }));
@@ -52,11 +47,10 @@ export default function Contact() {
       requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
       return;
     }
-    const toolType = [...new Set([...parsed.data.toolType.split(';').map(value => value.trim()).filter(Boolean), ...selected.map(tool => tool.name)])].join('; ').slice(0, fieldLimits.toolType);
     setForm({ ...parsed.data, toolType });
     setSending(true);
     try {
-      const outcome = await submitRfq({ ...parsed.data, toolType, tools: selectedSlugs, drawing }, siteConfig.email);
+      const outcome = await submitRfq({ ...parsed.data, toolType, drawing }, siteConfig.email);
       setResult(outcome);
       if (outcome === 'sent') { setForm(initialForm); setDrawing(undefined); setErrors({}); }
       requestAnimationFrame(() => document.getElementById('rfq-result')?.focus());
@@ -68,7 +62,6 @@ export default function Contact() {
     <section className={styles.pageHero}><div className="container"><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Request a quote</h1><p className={styles.pageSubtitle}>Share your application details to request a technical proposal and pricing.</p></div></section>
     <section className={styles.contactSection}><div className="container"><div className={styles.contactGrid}>
       <div className={styles.formWrap}>
-        {selected.length > 0 && <div className={styles.selectedTools}><h2 className={styles.formTitle}>Selected tools</h2><ul>{selected.map(tool => <li key={tool.slug}><Link to={`/products/${tool.slug}`}>{tool.name}</Link><button type="button" onClick={() => remove(tool.slug)} aria-label={`Remove ${tool.name}`}><X size={16} /></button></li>)}</ul></div>}
         <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.honeypot} aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" maxLength={fieldLimits.website} value={form.website} onChange={event => change('website', event.target.value)} /></div>
           <h2 className={styles.formTitle}>Your details</h2>
