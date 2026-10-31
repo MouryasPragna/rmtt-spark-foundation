@@ -61,3 +61,4 @@
 - [x] Remove Contact location panel, move map link into Visit us and restore previous right-side information; verified at 1280/1138/390px, 41 tests pass and build OK.
 - [x] Widen About section introductions and tighten section spacing; verified single-line Mission introduction at 1280/1138px, natural wrapping at 390px and build OK.
 - [x] Apply compact spacing across all pages; checked all 53 routes at 1280/1138/390px with no text overflow, overlap checks passed, 41 tests pass and build OK.
+- [x] Redesign the About journey section with the supplied centered heading style and compact milestone rows; verified all five milestones at 1648/1138/390px, no horizontal overflow and build OK.

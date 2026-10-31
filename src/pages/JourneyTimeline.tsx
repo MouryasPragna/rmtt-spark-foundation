@@ -15,68 +15,24 @@ const milestones: Milestone[] = [
 
 export default function JourneyTimeline() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} aria-labelledby="journey-heading">
       <div className="container">
-
-        {/* Header */}
-        <div className={styles.head}>
-          <div className="section-eyebrow">Our journey</div>
-          <h2 className={styles.title}>Milestones of innovation</h2>
-          <p className={styles.sub}>
-            From a 2013 trading startup to a precision tool manufacturer.
-          </p>
-          <p className={styles.intro}>
-            We began our journey in 2013 as a startup trading company, laying the foundation
-            for our presence in the precision tooling industry.
-          </p>
-        </div>
-
-        {/* Timeline */}
-        <div className={styles.timelineWrap}>
-
-          {/* Horizontal connector line */}
-          <div className={styles.line} />
-
-          {/* Items */}
-          <div className={styles.items}>
-            {milestones.map((m, i) => {
-              const isAbove = i % 2 === 0; // odd index (1,3,5) → above line
-              return (
-                <div key={m.year} className={styles.item}>
-
-                  {/* ABOVE slot */}
-                  <div className={styles.slotAbove}>
-                    {isAbove && (
-                      <div className={styles.card}>
-                        <div className={styles.year}>{m.year}</div>
-                        <p className={styles.text}>{m.text}</p>
-                      </div>
-                    )}
-                    {isAbove && <div className={styles.stem} />}
-                  </div>
-
-                  {/* DOT on the line */}
-                  <div className={styles.dotWrap}>
-                    <div className={styles.dot} />
-                  </div>
-
-                  {/* BELOW slot */}
-                  <div className={styles.slotBelow}>
-                    {!isAbove && <div className={styles.stem} />}
-                    {!isAbove && (
-                      <div className={styles.card}>
-                        <div className={styles.year}>{m.year}</div>
-                        <p className={styles.text}>{m.text}</p>
-                      </div>
-                    )}
-                  </div>
-
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
+        <header className={styles.head}>
+          <h2 id="journey-heading" className={styles.title}>Milestones of innovation</h2>
+          <p className={styles.sub}>From a 2013 trading startup to a precision tool manufacturer.</p>
+        </header>
+        <p className={styles.intro}>
+          We began our journey in 2013 as a startup trading company, laying the foundation
+          for our presence in the precision tooling industry.
+        </p>
+        <ol className={styles.milestones}>
+          {milestones.map(milestone => (
+            <li key={milestone.year} className={styles.milestone}>
+              <span className={styles.year}>{milestone.year}</span>
+              <p className={styles.text}>{milestone.text}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
