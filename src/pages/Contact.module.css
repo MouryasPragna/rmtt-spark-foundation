@@ -238,9 +238,10 @@
 }
 
 .contactValue {
-  font-size: 14px;
+  font-size: var(--type-body-size);
   color: var(--text);
-  line-height: 1.5;
+  line-height: var(--type-body-leading);
+  overflow-wrap: anywhere;
   transition: color 0.2s;
 }
 
@@ -276,16 +277,17 @@ a.contactValue:hover {
 }
 
 .nextTitle {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-leading);
   color: var(--navy);
   margin-bottom: 3px;
 }
 
 .nextDesc {
-  font-size: 12px;
+  font-size: var(--type-body-size);
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: var(--type-body-leading);
 }
 
 .toolsPreview {

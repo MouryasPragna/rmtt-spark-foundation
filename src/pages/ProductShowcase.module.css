@@ -164,12 +164,19 @@
 }
 
 .title {
-  font-size: 38px;
+  font-size: var(--type-title-size);
   font-weight: 700;
   color: #1A2535;                 /* dark navy on white */
-  line-height: 1.2;
+  line-height: var(--type-title-leading);
   margin-bottom: 12px;
-  letter-spacing: 0;
+  letter-spacing: var(--type-title-spacing);
+}
+
+/* The carousel title is visually the page title, despite its semantic h2. */
+:global(#main-content) .title {
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-leading);
+  letter-spacing: var(--type-title-spacing);
 }
 
 .subtitle {
@@ -334,7 +341,7 @@
 .dotActive, .dot:hover { background: transparent; }
 .dotActive::after { background: var(--steel); height: 36px; }
 @media (max-width: 768px) {
-  .title { font-size: 26px; }
+  .title { font-size: var(--type-title-size); }
   .contentWrap { padding-bottom: 20px; }
   .controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
   .dots { flex-direction: row; gap: 0; }

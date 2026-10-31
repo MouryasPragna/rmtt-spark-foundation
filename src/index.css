@@ -6,6 +6,17 @@
 
 :root {
   color-scheme: light only;
+  /* MAPAL reference measurements; keep the locally served brand font. */
+  --type-body-size: 18px;
+  --type-body-leading: 28.8px;
+  --type-body-weight: 400;
+  --type-heading-size: 33px;
+  --type-heading-leading: 41.25px;
+  --type-heading-weight: 700;
+  --type-title-size: 50px;
+  --type-title-leading: 60px;
+  --type-title-spacing: 1.2px;
+  --type-content-spacing: 0;
   /* Brand colors — Fraisa-inspired deep navy + steel blue */
   --navy: #002855;
   --navy-mid: #003B73;
@@ -73,8 +84,10 @@ html, body {
 
 body {
   font-family: 'Source Sans 3 Variable', 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--type-body-weight);
+  letter-spacing: var(--type-content-spacing);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -98,10 +111,45 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-leading);
   color: var(--navy);
-  letter-spacing: 0;
+  letter-spacing: var(--type-content-spacing);
+}
+
+/* Page content owns its hierarchy; module styles retain colours and layout. */
+#main-content h1 {
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-leading);
+  font-weight: var(--type-heading-weight);
+  letter-spacing: var(--type-title-spacing);
+  overflow-wrap: anywhere;
+}
+
+#main-content :is(h2, h3, h4, h5, h6) {
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-leading);
+  font-weight: var(--type-heading-weight);
+  letter-spacing: var(--type-content-spacing);
+  overflow-wrap: anywhere;
+}
+
+#main-content p {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
+  font-weight: var(--type-body-weight);
+  letter-spacing: var(--type-content-spacing);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --type-title-size: 32px;
+    --type-title-leading: 38.4px;
+    --type-title-spacing: 0;
+    --type-heading-size: 26px;
+    --type-heading-leading: 32.5px;
+  }
 }
 
 a {
@@ -154,7 +202,7 @@ img {
   color: var(--navy);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--type-content-spacing);
   text-transform: uppercase;
   padding: 0 0 0 10px;
   border-radius: 0;

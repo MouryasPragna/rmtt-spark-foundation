@@ -231,17 +231,20 @@
 }
 
 .processStepTitle {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
   color: var(--white);
   margin-bottom: 10px;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--type-content-spacing);
+  line-height: var(--type-heading-leading);
 }
 
 .processStepDesc {
-  font-size: 15px;
+  font-size: var(--type-body-size);
   color: var(--on-dark);
-  line-height: 1.7;
+  line-height: var(--type-body-leading);
+  font-weight: var(--type-body-weight);
+  letter-spacing: var(--type-content-spacing);
 }
 
 @media (max-width: 768px) {

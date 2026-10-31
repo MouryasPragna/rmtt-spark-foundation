@@ -2,8 +2,8 @@
 .media { aspect-ratio: 4 / 3; background: var(--white); animation: fade 0.4s ease; }
 .media > button { padding: 24px; }
 .caption { padding: 16px 20px; border-top: 1px solid var(--border-light); min-height: 84px; }
-.name { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-.summary { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+.name { font-size: var(--type-heading-size); font-weight: var(--type-heading-weight); line-height: var(--type-heading-leading); letter-spacing: var(--type-content-spacing); color: var(--navy); margin-bottom: 4px; overflow-wrap: anywhere; }
+.summary { font-size: var(--type-body-size); font-weight: var(--type-body-weight); color: var(--text-secondary); line-height: var(--type-body-leading); }
 .controls { display: flex; align-items: center; gap: 8px; padding: 0 20px 12px; }
 .controls > button { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); border-radius: var(--radius-sm); background: var(--white); color: var(--navy); cursor: pointer; }
 .controls > button:hover { border-color: var(--navy); }
