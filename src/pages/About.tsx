@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
-import { facilityEquipment } from '../data/equipment';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { siteConfig } from '../lib/siteConfig';
@@ -211,70 +210,6 @@ export default function About() {
                 <p className={styles.valueDesc}>{v.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Manufacturing */}
-      <section className={styles.manufacturingSection}>
-        <div className="container">
-          <div className={styles.manufacturingContent}>
-            <div className="section-eyebrow">Our capability</div>
-            <h2 className={styles.manufacturingTitle}>Manufacturing excellence</h2>
-            <p className={styles.manufacturingSub}>
-              Aligned with the Make in India vision, Riddhi Machine Tool Technology has invested in a state-of-the-art manufacturing facility equipped with advanced global technologies.
-            </p>
-            <ul className={styles.manufacturingList}>
-              {facilityEquipment.map(item => (
-                <li key={item.id}><CheckCircle2 size={16} /> {item.facilityName}</li>
-              ))}
-            </ul>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Products & Capabilities */}
-      <section className={styles.productsSection}>
-        <div className="container">
-          <div className={styles.productsContent}>
-            <div className="section-eyebrow">What we deliver</div>
-            <h2 className={styles.productsTitle}>Products & capabilities</h2>
-            <p className={styles.productsSub}>
-              RMTT offers a comprehensive range of precision cutting tools and special tooling solutions.
-            </p>
-            <div className={styles.productsGrid}>
-              <div className={styles.productCategory}>
-                <h3 className={styles.productCategoryTitle}>Special Solid Carbide Tools</h3>
-                <ul className={styles.productList}>
-                  <li>Drills and step tools</li>
-                  <li>Solid carbide reamers</li>
-                  <li>Whole mill and end mills</li>
-                  <li>High-polish end mills for aluminium</li>
-                </ul>
-              </div>
-              <div className={styles.productCategory}>
-                <h3 className={styles.productCategoryTitle}>PCD Tools</h3>
-                <ul className={styles.productList}>
-                  <li>Multi-step PCD reamers</li>
-                  <li>Brazed carbide reamers</li>
-                  <li>PCD milling cutters</li>
-                  <li>Precision profiling tools</li>
-                </ul>
-              </div>
-              <div className={styles.productCategory}>
-                <h3 className={styles.productCategoryTitle}>Brazed Carbide</h3>
-                <ul className={styles.productList}>
-                  <li>Special brazed carbide tools</li>
-                  <li>Multi-grooving tools</li>
-                  <li>T-slot cutters</li>
-                  <li>Shell mills & reamers</li>
-                </ul>
-              </div>
-            </div>
-            <p className={styles.productsNote}>
-              All tools are engineered with internal coolant options, advanced coatings, and optimized edge preparation, designed to meet exact customer and application requirements.
-            </p>
           </div>
         </div>
       </section>

@@ -344,3 +344,46 @@ a.contactValue:hover {
 
 .notice { border: 1px solid var(--accent); border-left-width: 4px; background: #f3f7fb; color: var(--navy); padding: 12px 16px; border-radius: 2px; font-size: 0.95rem; line-height: 1.5; }
 .notice a { color: var(--navy); text-decoration: underline; }
+
+/* Airox-style contact layout, using the site's own photographs and details. */
+.contactHero { position: relative; isolation: isolate; background: var(--navy); }
+.heroPhoto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.contactHero::before { content: ''; position: absolute; inset: 0; background: var(--navy); opacity: .84; z-index: -1; }
+.heroContent { position: relative; }
+.contactHero .pageTitle { color: var(--white); }
+.contactHero .pageSubtitle { color: var(--on-dark); }
+.contactOverview { padding: 48px 0 0; background: var(--white); }
+.overviewTitle { text-align: center; text-transform: uppercase; margin-bottom: 28px; }
+.contactCards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.contactCard { min-width: 0; padding: 28px 24px; background: var(--surface); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); border-radius: var(--radius-lg); text-align: center; }
+.contactCard h3 { margin-bottom: 14px; }
+.contactCard a { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; max-width: 100%; overflow-wrap: anywhere; }
+.contactCard a:hover { color: var(--accent); }
+.enquirySection { background: var(--white); padding: 48px 0 72px; }
+.enquirySection .contactGrid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; }
+.enquirySection .formWrap { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.formTitle, .locationPanel > h2 { margin-bottom: 24px; }
+.enquirySection .formRow { gap: 20px; margin-bottom: 20px; }
+.enquirySection .label { font-size: 14px; letter-spacing: 0; }
+.enquirySection :is(.input, .select, .textarea) { background: var(--surface); font-size: var(--type-body-size); border-radius: var(--radius-lg); }
+.enquirySection .input, .enquirySection .select { min-height: 48px; }
+.enquirySection .select { appearance: auto; background-image: none; }
+.enquirySection .textarea { min-height: 144px; }
+.enquirySection .formNote { text-align: left; }
+.enquirySection .submitBtn { background: var(--navy); min-height: 48px; }
+.enquirySection .submitBtn:hover { background: var(--steel-dark); transform: none; }
+.locationPanel { min-width: 0; }
+.locationPhoto { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
+.locationDetails { padding: 24px 0; }
+.locationDetails h3 { margin-bottom: 12px; }
+.locationDetails p { margin-bottom: 20px; }
+.directionsLink { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--navy); text-decoration: underline; min-height: 44px; }
+@media (max-width: 900px) {
+  .enquirySection .contactGrid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .contactCards { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .contactCard { padding: 24px 20px; }
+}
+@media (max-width: 600px) {
+  .contactOverview { padding-top: 32px; }
+  .enquirySection { padding: 32px 0 48px; }
+}

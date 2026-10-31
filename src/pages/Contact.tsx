@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, ArrowUpRight } from 'lucide-react';
+import factoryPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
 import { industryNames } from '../data/industries';
@@ -52,12 +53,20 @@ export default function Contact() {
     finally { setSending(false); }
   };
   return <div className={styles.main}>
-    <section className={styles.pageHero}><div className="container"><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Contact us</h1><p className={styles.pageSubtitle}>Share your application details and tooling requirements with our team.</p></div></section>
-    <section className={styles.contactSection}><div className="container"><div className={styles.contactGrid}>
+    <section className={`${styles.pageHero} ${styles.contactHero}`}><img src={factoryPhoto.url} alt="Riddhi precision tool manufacturing facility" className={styles.heroPhoto} /><div className={`container ${styles.heroContent}`}><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Contact us</h1><p className={styles.pageSubtitle}>Share your application details and tooling requirements with our team.</p></div></section>
+    <section className={styles.contactOverview}><div className="container">
+      <h2 className={styles.overviewTitle}>Get in touch</h2>
+      <div className={styles.contactCards}>
+        <article className={styles.contactCard}><h3>Phone / WhatsApp</h3><a href={siteConfig.phoneHref}><Phone size={18} aria-hidden="true" />{siteConfig.phone}</a></article>
+        <article className={styles.contactCard}><h3>Email</h3><a href={`mailto:${siteConfig.email}`}><Mail size={18} aria-hidden="true" />{siteConfig.email}</a></article>
+        <article className={styles.contactCard}><h3>Visit us</h3><p>{siteConfig.address.street}, {siteConfig.address.cityLine}</p></article>
+      </div>
+    </div></section>
+    <section className={`${styles.contactSection} ${styles.enquirySection}`}><div className="container"><div className={styles.contactGrid}>
       <div className={styles.formWrap}>
         <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.honeypot} aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" maxLength={fieldLimits.website} value={form.website} onChange={event => change('website', event.target.value)} /></div>
-          <h2 className={styles.formTitle}>Your details</h2>
+          <h2 className={styles.formTitle}>Send an enquiry</h2>
           <div className={styles.formRow}>
             {fields.map(field => <div className={styles.formField} key={field.name}>
               <label className={styles.label} htmlFor={field.name}>{field.label}{field.required ? ' *' : ''}</label>
@@ -85,68 +94,15 @@ export default function Contact() {
           <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Enquire now'}</button>
         </form>
       </div>
-            {/* Info sidebar */}
-            <div className={styles.sidebar}>
-              <div className={styles.sideCard}>
-                <h2 className={styles.sideTitle}>Contact information</h2>
-                <ul className={styles.contactList}>
-                  <li className={styles.contactItem}>
-                    <MapPin size={16} className={styles.contactIcon} />
-                    <div>
-                      <div className={styles.contactLabel}>Address</div>
-                      <div className={styles.contactValue}>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</div>
-                    </div>
-                  </li>
-                  <li className={styles.contactItem}>
-                    <Phone size={16} className={styles.contactIcon} />
-                    <div>
-                      <div className={styles.contactLabel}>Phone / WhatsApp</div>
-                      <a href={siteConfig.phoneHref} className={styles.contactValue}>{siteConfig.phone}</a>
-                    </div>
-                  </li>
-                  <li className={styles.contactItem}>
-                    <Mail size={16} className={styles.contactIcon} />
-                    <div>
-                      <div className={styles.contactLabel}>Email</div>
-                      <a href={`mailto:${siteConfig.email}`} className={styles.contactValue}>{siteConfig.email}</a>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-
-              <div className={styles.sideCard}>
-                <h2 className={styles.sideTitle}>What happens next?</h2>
-                <ol className={styles.nextSteps}>
-                  <li className={styles.nextStep}>
-                    <div>
-                      <div className={styles.nextTitle}>Technical review</div>
-                      <div className={styles.nextDesc}>Our engineers analyse your application requirements.</div>
-                    </div>
-                  </li>
-                  <li className={styles.nextStep}>
-                    <div>
-                      <div className={styles.nextTitle}>Technical proposal</div>
-                      <div className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</div>
-                    </div>
-                  </li>
-                  <li className={styles.nextStep}>
-                    <div>
-                      <div className={styles.nextTitle}>Sample & trial</div>
-                      <div className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</div>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-
-              <div className={styles.toolsPreview}>
-                <img
-                  src={`${import.meta.env.BASE_URL}image002.png`}
-                  alt="Riddhi cutting tool range"
-                  width={377} height={86} loading="lazy" className={styles.toolsImg}
-                />
-              </div>
-            </div>
+      <div className={styles.locationPanel}>
+        <h2>Our location</h2>
+        <img src={factoryPhoto.url} alt="Riddhi Machine Tool Technology production facility" className={styles.locationPhoto} loading="lazy" />
+        <div className={styles.locationDetails}>
+          <h3>Riddhi Machine Tool Technology</h3>
+          <p>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</p>
+          <a className={styles.directionsLink} href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${siteConfig.address.street}, ${siteConfig.address.cityLine}`)}`} target="_blank" rel="noopener noreferrer"><MapPin size={18} aria-hidden="true" />View on Google Maps<ArrowUpRight size={16} aria-hidden="true" /></a>
+        </div>
+      </div>
     </div></div></section>
   </div>;
 }
