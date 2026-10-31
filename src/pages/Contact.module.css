@@ -260,6 +260,8 @@ a.contactValue:hover {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  border-left: 3px solid var(--accent);
+  padding-left: 14px;
 }
 
 .nextNum {

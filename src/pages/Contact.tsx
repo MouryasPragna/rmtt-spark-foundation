@@ -128,21 +128,18 @@ export default function Contact() {
                 <h2 className={styles.sideTitle}>What happens next?</h2>
                 <ol className={styles.nextSteps}>
                   <li className={styles.nextStep}>
-                    <div className={styles.nextNum}>1</div>
                     <div>
                       <div className={styles.nextTitle}>Technical review</div>
                       <div className={styles.nextDesc}>Our engineers analyse your application requirements.</div>
                     </div>
                   </li>
                   <li className={styles.nextStep}>
-                    <div className={styles.nextNum}>2</div>
                     <div>
                       <div className={styles.nextTitle}>Technical proposal</div>
                       <div className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</div>
                     </div>
                   </li>
                   <li className={styles.nextStep}>
-                    <div className={styles.nextNum}>3</div>
                     <div>
                       <div className={styles.nextTitle}>Sample & trial</div>
                       <div className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</div>

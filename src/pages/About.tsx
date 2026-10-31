@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, Factory } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import { facilityEquipment } from '../data/equipment';
@@ -11,7 +11,6 @@ import { siteConfig } from '../lib/siteConfig';
 const missionVision = [
   {
     type: 'mission',
-    icon: Target,
     title: 'Advancing Make in India through world-class precision tools',
     desc: 'To advance the Make in India vision by manufacturing world-class precision cutting tools that meet global standards of quality and performance.',
     points: [
@@ -22,7 +21,6 @@ const missionVision = [
   },
   {
     type: 'vision',
-    icon: Eye,
     title: 'One-stop partner for advanced precision cutting tools',
     desc: 'To be a trusted and reliable one-stop solution for advanced precision cutting tools across automotive, aerospace, and engineering industries.',
     points: [
@@ -35,20 +33,14 @@ const missionVision = [
 
 const principles = [
   {
-    num: '01',
-    icon: Users,
     title: 'Customer-oriented thinking',
     desc: 'We begin every engagement by deeply understanding the real application need — the material, the machine, the tolerance, and the production challenge. Solutions follow from genuine listening, not a catalogue.',
   },
   {
-    num: '02',
-    icon: Zap,
     title: 'Technology-driven solutions',
     desc: 'We invest continuously in advanced global machinery — SAACKE 5-axis grinding, VOLLMER Wire EDM, Walter Helicheck measurement — to push the boundary of what Indian manufacturing can deliver.',
   },
   {
-    num: '03',
-    icon: Cpu,
     title: 'Service excellence',
     desc: 'Precision tools must perform consistently on the shop floor. We provide long-term support, rapid responsiveness, and technical partnership — before, during, and after every order.',
   },
@@ -56,22 +48,18 @@ const principles = [
 
 const values = [
   {
-    icon: Target,
     title: 'Precision',
     desc: 'Every tool meets the tightest tolerance. No compromise on accuracy.',
   },
   {
-    icon: CheckCircle2,
     title: 'Reliability',
     desc: 'Consistent performance batch after batch, application after application.',
   },
   {
-    icon: Lightbulb,
     title: 'Innovation',
     desc: 'Adopting the latest processes and materials to solve harder problems.',
   },
   {
-    icon: Award,
     title: 'Partnership',
     desc: 'Long-term relationships grounded in technical support and trust.',
   },
@@ -157,9 +145,6 @@ export default function About() {
             {missionVision.map(item => (
               <div key={item.type} className={`${styles.mvCard} ${styles[item.type]}`}>
                 <div className={styles.mvCardHeader}>
-                  <div className={styles.mvIcon}>
-                    <item.icon size={24} />
-                  </div>
                   <div className={styles.mvLabel}>{item.type === 'mission' ? 'Mission' : 'Vision'}</div>
                   <h3 className={styles.mvTitle}>{item.title}</h3>
                 </div>
@@ -197,11 +182,7 @@ export default function About() {
 
           <div className={styles.principlesGrid}>
             {principles.map(p => (
-              <div key={p.num} className={styles.principleCard}>
-                <div className={styles.principleNum}>{p.num}</div>
-                <div className={styles.principleIconWrap}>
-                  <p.icon size={24} />
-                </div>
+              <div key={p.title} className={styles.principleCard}>
                 <h3 className={styles.principleTitle}>{p.title}</h3>
                 <p className={styles.principleDesc}>{p.desc}</p>
               </div>
@@ -226,9 +207,6 @@ export default function About() {
           <div className={styles.valuesGrid}>
             {values.map(v => (
               <div key={v.title} className={styles.valueCard}>
-                <div className={styles.valueIconWrap}>
-                  <v.icon size={24} />
-                </div>
                 <h3 className={styles.valueTitle}>{v.title}</h3>
                 <p className={styles.valueDesc}>{v.desc}</p>
               </div>

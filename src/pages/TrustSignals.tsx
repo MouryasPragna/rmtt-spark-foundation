@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Download, FileText, Award } from 'lucide-react';
+import { Download } from 'lucide-react';
 import styles from './TrustSignals.module.css';
 import pageStyles from './Contact.module.css';
 import { customers } from '../data/customers';
@@ -8,7 +8,6 @@ import { siteConfig } from '../lib/siteConfig';
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Certificate {
   id: string;
-  icon: typeof Award;
   title: string;
   subtitle: string;
   description: string;
@@ -29,7 +28,6 @@ interface Download {
 const certificates: Certificate[] = [
   {
     id: 'manufacturing-equipment',
-    icon: Award,
     title: 'Manufacturing equipment',
     subtitle: 'Our facility',
     description: 'Manufactured on SAACKE 5-axis grinding and VOLLMER Wire EDM machines.',
@@ -82,9 +80,6 @@ export default function TrustSignals() {
           <div className={styles.certGrid}>
             {certificates.map((cert) => (
               <div key={cert.id} className={styles.certCard}>
-                <div className={styles.certIconWrap} style={{ background: cert.bg }}>
-                  <cert.icon size={22} style={{ color: cert.color }} />
-                </div>
                 <div className={styles.certSubtitle} style={{ color: cert.color }}>
                   {cert.subtitle}
                 </div>
@@ -132,9 +127,6 @@ export default function TrustSignals() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className={styles.featuredDownloadIcon}>
-                  <FileText size={28} />
-                </div>
                 <div className={styles.featuredDownloadBody}>
                   <div className={styles.featuredDownloadTitle}>{downloads[0].title}</div>
                   <div className={styles.featuredDownloadMeta}>

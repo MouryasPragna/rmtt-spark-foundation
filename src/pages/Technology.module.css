@@ -148,6 +148,13 @@
   position: relative;
 }
 
+/* Border-led process panels replace decorative numbered tracks. */
+.processSteps::before { display: none; }
+.processSteps .processStep { display: flex; padding-bottom: 0; min-width: 0; }
+.processSteps .processStep::before { display: none; }
+.processSteps .processStepContent { margin-top: 0; border-top: 3px solid var(--on-dark); }
+.processSteps .processStep:hover .processStepContent { border-color: var(--white); }
+
 /* one continuous rail running behind the number circles */
 .processSteps::before {
   content: '';

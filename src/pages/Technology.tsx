@@ -118,9 +118,6 @@ export default function Technology() {
           <div className={styles.processSteps}>
             {processSteps.map((p) => (
               <div key={p.step} className={styles.processStep}>
-                <div className={styles.processStepTrack}>
-                  <div className={styles.processStepNum}>{p.step}</div>
-                </div>
                 <div className={styles.processStepContent}>
                   <div className={styles.processStepTitle}>{p.title}</div>
                   <div className={styles.processStepDesc}>{p.desc}</div>

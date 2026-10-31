@@ -92,6 +92,7 @@
 
 .certCard {
   border: 1px solid var(--border-light);
+  border-top: 3px solid var(--accent);
   border-radius: var(--radius-lg);
   padding: 24px;
   background: #fff;
@@ -99,6 +100,7 @@
 }
 
 .certCard:hover {
+  border-color: var(--navy);
   box-shadow: 0 6px 24px rgba(43,58,82,0.1);
   transform: translateY(-3px);
 }
