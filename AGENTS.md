@@ -16,7 +16,8 @@
 - Define responsive content typography tokens in index.css and apply the main-landmark hierarchy above module typography; use the same tokens for non-semantic text and the Home carousel title so every page stays consistent without resizing compact navigation controls.
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
-- No add-to-quote selection exists: product cards, detail pages and the navbar link to /contact for a quote instead; the contact form collects requirements through its own fields.
+- Mount one shared EnquiryFab outside route content linking to /contact so every page has the same right-side enquiry action; no quote buttons or add-to-quote selection exist.
+- Render file download links only on the Downloads page; navigation links to /downloads remain available sitewide to keep downloads centralized.
 - Preserve the quote context identity through Vite hot-update data so mounted providers and refreshed consumers cannot diverge during preview updates.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Download, FileText, Pause, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Pause, Play } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
@@ -17,7 +17,6 @@ import { getLatestNews } from '../data/news';
 const latestNews = getLatestNews(3);
 import NewsCard from '../components/NewsCard';
 import newsStyles from './News.module.css';
-import { siteConfig } from '../lib/siteConfig';
 
 
 const products = [
@@ -340,22 +339,6 @@ export default function Home() {
               <p className={styles.ctaSub}>
                 Share your application details and we'll engineer the right tool for your requirements.
               </p>
-            </div>
-            <div className={styles.ctaBtns}>
-              <Link to="/contact" className={styles.ctaBtnPrimary}>
-                <FileText size={16} />
-                Request a Quote
-              </Link>
-              <a
-                href={siteConfig.catalogueUrl}
-                download="rmtt-catalogue.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.ctaBtnSecondary}
-              >
-                <Download size={16} />
-                Download Catalogue
-              </a>
             </div>
           </div>
         </div>

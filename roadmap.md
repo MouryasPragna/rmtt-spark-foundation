@@ -53,3 +53,5 @@
 - [x] Investigate 404s: Lovable-hosted assets were pointer-only; images are now materialized into public/images/assets like the deploy step (the 47 MB catalogue PDF stays on the asset host and is fetched at build time). Contact form verified — it simply requires the company field.
 - [x] Apply MAPAL typography measurements across page content and verify desktop/mobile text and layouts.
 - [x] Remove the referenced decorative icons and numbering sitewide; use highlighted borders instead.
+- [x] Replace quote buttons with a shared right-side floating Enquire now link on every page.
+- [x] Restrict file downloads to the Downloads page and verify enquiry navigation and desktop/mobile layouts; 41 tests pass.

@@ -132,9 +132,6 @@ export default function Navbar() {
           </nav>
 
           <div className={styles.actions}>
-            <Link to="/contact" className={styles.cta}>
-              Request Quote
-            </Link>
             <button
               ref={menuButton}
               type="button"
@@ -170,9 +167,6 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <Link to="/contact" className={styles.mobileCta}>
-              Request a Quote
-            </Link>
           </nav>
         )}
       </header>

@@ -1,12 +1,11 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Pause, Play, FileText, Download } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
 import factoryFloor from '../assets/factory-hero-floor.jpg.asset.json';
-import { siteConfig } from '../lib/siteConfig';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Slide {
@@ -157,10 +156,6 @@ export default function ProductShowcase(): JSX.Element {
           <div className={styles.tag}>
             <span>{slide.tag}</span>
             <Link to={slide.href} className={styles.rangeLink}>View range →</Link>
-          </div>
-          <div className={styles.ctaRow}>
-            <Link to="/contact" className={styles.primaryCta}><FileText size={16} />Request a Quote</Link>
-            <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryCta}><Download size={16} />Download Catalogue</a>
           </div>
         </div>
 

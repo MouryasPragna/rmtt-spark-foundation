@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
-import { ChevronRight, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import Gallery from '../components/Gallery';
@@ -110,12 +110,6 @@ export default function CategoryPage() {
             ))}
           </div>
 
-          <div className={styles.catFooter}>
-            <Link to="/contact" className={styles.catCta}>
-              Request quote for {cat.label}
-              <ChevronRight size={15} />
-            </Link>
-          </div>
         </div>
       </section>
 
