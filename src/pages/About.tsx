@@ -79,11 +79,6 @@ const values = [
 
 export default function About() {
   const [facilityPhotoUnavailable, setFacilityPhotoUnavailable] = useState(false);
-  return () => clearInterval(t);
-  }, [playback.playing]);
-  const leader = leaders[leaderIdx];
-  const prev = () => { if (leaders.length) setLeaderIdx(i => (i - 1 + leaders.length) % leaders.length); };
-  const next = () => { if (leaders.length) setLeaderIdx(i => (i + 1) % leaders.length); };
   return (
     <div className={styles.main}>
       {/* ── ABOUT HERO — MAPAL split style ── */}
