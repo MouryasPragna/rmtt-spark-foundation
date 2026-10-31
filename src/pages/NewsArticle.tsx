@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, FileText, Newspaper } from 'lucide-react';
+import { ArrowLeft, Newspaper } from 'lucide-react';
 import { getNewsById, publishedNews } from '../data/news';
 import { formatNewsDate, newsImageUrl } from '../lib/news';
 import Gallery from '../components/Gallery';
@@ -62,9 +62,6 @@ export default function NewsArticle() {
             <div className={homeStyles.ctaText}>
               <h2 className={homeStyles.ctaTitle}>Ready to optimise your machining process?</h2>
               <p className={homeStyles.ctaSub}>Share your application details and we'll engineer the right tool for your requirements.</p>
-            </div>
-            <div className={homeStyles.ctaBtns}>
-              <Link to="/contact" className={homeStyles.ctaBtnPrimary}><FileText size={16} /> Request a Quote</Link>
             </div>
           </div>
         </div>

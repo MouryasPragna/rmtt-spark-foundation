@@ -1,0 +1,38 @@
+.link {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  min-width: 44px;
+  min-height: 148px;
+  padding: 16px 10px;
+  border: 1px solid var(--cta-dark);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  background: var(--cta);
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+  transition: background-color 0.2s ease;
+}
+
+.link:hover {
+  background: var(--cta-dark);
+}
+
+@media (max-width: 768px) {
+  .link {
+    top: auto;
+    bottom: 92px;
+    transform: none;
+    min-height: 132px;
+    font-size: 14px;
+  }
+}

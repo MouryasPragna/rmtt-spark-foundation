@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FileText, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { products, getProductImages, type Product } from '../data/products';
 import { categories } from './productsData';
 import ProductCard from '../components/ProductCard';
@@ -22,10 +22,6 @@ export default function ProductDetail({ product }: { product: Product }) {
           {product.benefits?.length ? <><h2 className={styles.subCatTitle}>Benefits</h2><ul className={styles.applicationList}>{product.benefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul></> : null}
           {!!product.markings?.length && <table className={styles.specTable}><caption>Pictured tool — markings on the photo</caption><tbody>{product.markings.map(m => <tr key={m.label}><th scope="row">{m.label}</th><td>{m.value}</td></tr>)}</tbody></table>}
           {!!product.specs?.length && <table className={styles.specTable}><caption>Specifications</caption><tbody>{product.specs.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>}
-          <div className={styles.detailActions}>
-            <Link to="/contact" className={styles.catCta}>Request quote for this tool</Link>
-            {product.datasheetUrl && <a href={product.datasheetUrl} download className={styles.detailLink}><FileText size={16} />Download datasheet</a>}
-          </div>
         </div>
       </div>
       {product.examples?.length ? <section className={styles.relatedSection}>

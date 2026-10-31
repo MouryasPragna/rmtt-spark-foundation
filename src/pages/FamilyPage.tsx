@@ -1,5 +1,4 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories } from './productsData';
 import ProductCard from '../components/ProductCard';
@@ -37,12 +36,6 @@ export default function FamilyPage() {
           <h2 id="family-tools-heading" className="visually-hidden">Tools in this family</h2>
           <div className={styles.productCards}>
             {family.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={3} />)}
-          </div>
-          <div className={styles.catFooter}>
-            <Link to="/contact" className={styles.catCta}>
-              Request quote for {family.title}
-              <ChevronRight size={15} />
-            </Link>
           </div>
         </div>
       </section>
