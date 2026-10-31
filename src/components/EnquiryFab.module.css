@@ -29,8 +29,8 @@
 
 @media (max-width: 768px) {
   .link {
-    top: auto;
-    bottom: 92px;
+    top: 160px;
+    bottom: auto;
     transform: none;
     min-height: 132px;
     font-size: 14px;
