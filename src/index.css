@@ -20,6 +20,8 @@
   --type-small-heading-leading: 32px;
   --type-small-heading-weight: 600;
   --type-content-spacing: 0;
+  --section-spacing: 48px;
+  --section-heading-gap: 24px;
   /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
@@ -171,6 +173,7 @@ h1, h2, h3, h4, h5, h6 {
     --type-heading-leading: 32px;
     --type-small-heading-size: 20px;
     --type-small-heading-leading: 28px;
+    --section-spacing: 32px;
   }
   #main-content h1 { padding-bottom: 7px; }
 }
