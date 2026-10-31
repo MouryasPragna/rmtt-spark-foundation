@@ -1,0 +1,42 @@
+- [x] Refresh Solid Carbide, PCD, and Brazed Carbide copy and imagery from PDF pages 6–14.
+- [x] Verify category pages render with their matching PDF product photos.
+- [x] Use the PDF factory photos in the home page hero.
+- [x] Correct navigation labels, active states, footer destinations, and home case-study link.
+- [x] Centralize contact details and add placeholder privacy and terms pages.
+- [x] Verify corrected navigation and contact links.
+- [x] Rename and optimize the static catalogue PDF and update Home and Downloads links.
+- [x] Remove duplicate datasheets and invented file sizes; verify both downloads.
+- [x] Correct end-mill copy and company placeholder without adding unverified specifications.
+- [x] Add main-navigation Downloads link and Downloads h1 hero.
+- [x] Verify every navigation, footer and CTA destination and TypeScript build status.
+- [x] Hide fabricated leadership and customer sections behind empty client-supplied data.
+- [x] Remove unsupported stats and certification claims; comment unconfirmed technology specs.
+- [x] Replace external stock photos with real project media or neutral icon panels.
+- [x] Document client content needs and verify all affected pages.
+- [x] Remove unused styling, UI code, assets, dependencies and stale documentation; rewrite run instructions.
+- [x] Consolidate flat styling and category tokens; remove dead showcase blocks and hero zoom.
+- [x] Share equipment data across Home, About and Technology, listing it only once on About.
+- [x] Verify page rendering, mobile navigation, category consistency and automatic build; stylesheet source reduced 18.3% (production bundle comparison unavailable).
+
+- [x] Create static product catalogue with shared filters and product details.
+- [x] Add persisted quote selections and accessible contact validation with disconnected submission.
+- [x] Add per-route document metadata and verify catalogue-to-contact flow.
+
+- [x] Improve carousel playback, keyboard navigation, focus visibility, headings, contrast and image accessibility without redesign.
+- [x] Self-host Source Sans 3, lazy-load secondary routes, update metadata and add static crawler files (domain replacement documented as deployment TODO).
+- [x] Verify keyboard flows, layouts at 375/768/1024px and Home/Products/Contact accessibility scores (100 each).
+- [x] Populate the About leadership carousel with approved names, initials and no unconfirmed roles or biographies.
+- [x] Align industry choices, founders' note, hero taglines and catalogue specifications; remove unsupported equipment/benchmark claims. Verified desktop/mobile page flows and 20 tests; automatic build passes. Keep Helicheck because FINAL deck spelling is unconfirmed (source discrepancy documented).
+- [x] Correct showcase copy and headings; add range links and quote/catalogue buttons.
+- [x] Apply primary CTA accent; verify 4.58:1 contrast, both buttons at 1280px/375px, working category/contact links, 14 tests and automatic build.
+- [x] Align Home tags and footer links with the catalogue; share WhatsApp contact and remove duplicated category introductions; browser checks, 13 tests and automatic build pass.
+- [x] Add data-driven legal placeholders, required consent, shared 404 page, surface-aware focus rings and 1100px navigation collapse; browser flows, 16 tests and automatic build pass.
+- [x] Add shared News cards, a lazy-loaded News page, navigation, metadata and conditional Home latest news.
+- [x] Verify empty and single-item news states, sorting, local images and preview rendering; 23 tests pass and automatic build passes.
+- [x] Extend verified Drive photos to matching end-mill, PCD boring and T-slot product entries/category examples and T-slot news; add visible View larger controls across Home, catalogue and news. Verified loaded photos, zoom, Escape, detail navigation and mobile layout; 28 tests pass and automatic build OK. Other news subjects retain their credited photos because the three verified tool photos do not establish a match.
+- [x] Update FINAL PDF coverage: exact equipment models, full address, three portraits, product details/material filtering, eight searchable brazed model examples, zoomable shell drawing and shared 17-page catalogue download. Verified desktop/mobile page flows and delivered PDF; 35 tests pass and automatic build OK. Corrected two OCR model errors against original engravings; example dimensions remain separate from range specs.
+- [ ] Obtain the VOLLMER post's confirmed publication date from the client; matching direct LinkedIn URL located, but exact date remains unverified and is not displayed.
+- [x] Add product gallery, zoom lens, accessible lightbox, image deterrents and footer image notice.
+- [x] Add article share controls and a static published-news RSS feed; verified copied public links, new-tab destinations, eight feed entries, omitted unconfirmed RSS date, nine tests and automatic build.
+- [x] Review the supplied Google Drive tool images against category descriptions and improve Home product-card prominence using matching photos; used labelled Solid Carbide/PCD/Brazed folders with visually matching end mill, boring tool and T-slot cutter, cropped empty margins without altering geometry, verified image zoom, PCD range link, mobile overflow, 18 tests and automatic build.
+- [x] Improve manufacturing-process readability and layout: continuous rail with direction markers, equal-height step panels, centred section label, vertical rail on phones. Verified at 1280/900/375px; 42 tests pass and automatic build OK.

@@ -1,0 +1,328 @@
+.main {
+  padding-top: 100px;
+}
+
+.pageHero {
+  --focus-outline: var(--white);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--steel-dark) 100%);
+  padding: 64px 0 56px;
+}
+
+.pageTitle {
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+.machinesSection {
+  padding: 72px 0;
+  background: #fff;
+}
+
+.machinesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.machineCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm, 2px);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.machineCardText { background: var(--surface); }
+
+@media (max-width: 900px) {
+  .machinesGrid { grid-template-columns: 1fr; }
+}
+
+.machineImg {
+  border-bottom: 1px solid var(--border-light);
+  background: #fff;
+  overflow: hidden;
+}
+
+.machineImg > button { width: 100%; aspect-ratio: 4 / 3; height: auto; padding: 24px; }
+
+.machineImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.machineBody {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.machineNum {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+.machineName {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.machineDetail {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.machineSpecs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.machineSpec {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.specIcon {
+  color: var(--blue);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Process */
+.processSection {
+  background: var(--navy);
+  padding: 88px 0;
+}
+
+.processHead {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.processTitle {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.processSub {
+  font-size: 17px;
+  color: var(--white);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.processSteps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+
+/* one continuous rail running behind the number circles */
+.processSteps::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.10) 0%,
+    rgba(255,255,255,0.30) 14%,
+    rgba(255,255,255,0.30) 86%,
+    rgba(255,255,255,0.10) 100%);
+}
+
+.processStep {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.processStepTrack {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: none;
+}
+
+/* direction marker on the rail, between neighbouring circles */
+.processStep:not(:last-child) .processStepTrack::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: calc(100% + 10px);
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid rgba(255,255,255,0.62);
+  border-right: 2px solid rgba(255,255,255,0.62);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.processStepNum {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.08);
+  transition: box-shadow 0.25s ease;
+}
+
+.processStepContent {
+  flex: 1;
+  margin-top: 22px;
+  padding: 20px 22px 22px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-md);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.processStep:hover .processStepContent,
+.processStep:focus-within .processStepContent {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.processStep:hover .processStepNum,
+.processStep:focus-within .processStepNum {
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.16);
+}
+
+.processStepTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.processStepDesc {
+  font-size: 15px;
+  color: var(--on-dark);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .processSection { padding: 64px 0; }
+  .processHead { margin-bottom: 40px; }
+  .processSteps {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .processSteps::before { display: none; }
+  .processStep {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    column-gap: 16px;
+    padding-bottom: 26px;
+  }
+  .processStep:last-child { padding-bottom: 0; }
+  /* vertical rail joining the circles top to bottom */
+  .processStep:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 52px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.14));
+  }
+  .processStep:not(:last-child) .processStepTrack::after { display: none; }
+  .processStepContent { margin-top: 0; }
+}
+
+/* CTA */
+.ctaSection {
+  background: var(--surface);
+  padding: 72px 0;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.ctaSub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: var(--radius-lg);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.ctaBtn:hover {
+  background: var(--steel-dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .machineBody {
+    padding: 24px 20px 28px;
+  }
+  .machinesSection {
+    padding: 48px 0;
+  }
+}
+
+.pageHero :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
+@media (max-width: 600px) { .main { padding-top: 64px; } }
+
+.processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); margin-left: auto; margin-right: auto; }

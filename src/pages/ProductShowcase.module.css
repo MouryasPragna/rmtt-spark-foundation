@@ -1,0 +1,370 @@
+/* ═══════════════════════════════════════════════════════
+   ProductShowcase — clean white background carousel
+═══════════════════════════════════════════════════════ */
+
+/* ── SHELL ── */
+.showcase {
+  position: relative;
+  width: 100%;
+  height: calc(88vh - 100px);
+  min-height: 520px;
+  max-height: 780px;
+  margin-top: 100px;
+  overflow: hidden;
+  background:  #D9E4EE;           /* 1. WHITE background */
+}
+
+/* ── BACKGROUND LAYER ── */
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.40s ease-in-out;
+  will-change: opacity;
+}
+
+.bgSlideActive {
+  opacity: 1;
+}
+
+.bgEnterNext {
+  animation: slideInFromRight 0.40s ease-out forwards;
+}
+
+.bgEnterPrev {
+  animation: slideInFromLeft 0.40s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(4%); opacity: 0; }
+  to   { transform: translateX(0);  opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-4%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+/* 2. IMAGE — centred vertically and horizontally, fills the white panel */
+.bgImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  padding: 0;
+}
+
+/* Light vignette on white — just a soft right edge fade */
+.vignette {
+  position: absolute;
+  inset: 0;
+  /* Near-opaque white behind the text column (fixed px so it holds on any desktop width),
+     then a soft fade into the photo. Keeps body text above WCAG AA on any photo. */
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.97) 0,
+    rgba(255,255,255,0.95) 560px,
+    rgba(255,255,255,0.0)  780px
+  );
+}
+
+/* ── CONTENT OVERLAY ── */
+.contentWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;          /* vertically centred */
+  justify-content: space-between;
+  padding: 0 56px 0 96px;      /* left padding clears the previous-slide arrow */
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .showcase {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    margin-top: 96px;
+  }
+  .bgLayer {
+    position: relative;
+    height: var(--hero-img-h, 240px);
+  }
+  .bgSlide { position: absolute; }
+  .bgImg {
+    object-position: center;
+    padding: 0;
+    height: var(--hero-img-h, 240px);
+  }
+  .contentWrap {
+    position: relative;
+    inset: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px 28px;
+    gap: 16px;
+  }
+  .vignette { display: none; }
+  .textBlock { max-width: 100%; }
+  .controls {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .dots { flex-direction: row; }
+  .dot { width: 20px; height: 4px; }
+  .dotActive { height: 4px; width: 36px; }
+}
+
+/* ── TEXT BLOCK ── */
+.textBlock {
+  max-width: 440px;
+  pointer-events: all;
+}
+
+.textShow {
+  animation: fadeUp 0.55s ease-out forwards;
+}
+
+.textHide {
+  animation: fadeDown 0.25s ease-in forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+.category {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--blue-xlight);
+  border: 1px solid rgba(74, 123, 167, 0.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1A2535;                 /* dark navy on white */
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.68;
+  margin-bottom: 14px;
+  max-width: 400px;
+}
+
+.tag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.rangeLink { color: var(--navy); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+.ctaRow { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.primaryCta, .secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: background 0.2s ease;
+}
+.primaryCta { background: var(--cta); border-color: var(--cta); color: var(--white); }
+.primaryCta:hover { background: var(--cta-dark); border-color: var(--cta-dark); }
+.secondaryCta { background: var(--white); color: var(--navy); }
+.secondaryCta:hover { background: var(--blue-xlight); }
+@media (max-width: 768px) {
+  .textBlock { width: 100%; }
+  .ctaRow { flex-direction: column; }
+}
+
+/* ── COUNTER + DOTS ── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  pointer-events: all;
+  background: rgba(255,255,255,0.92);
+  padding: 12px 14px;
+  border-radius: 2px;
+}
+
+.counter {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.counterCurrent {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1A2535;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.counterSep {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 2px;
+}
+
+.counterTotal {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.dots {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dot {
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  border: none;
+  background: #D0DCF0;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, height 0.2s;
+}
+
+.dot:hover {
+  background: #8AAAC8;
+}
+
+.dotActive {
+  background: #4A7BA7;
+  height: 36px;
+}
+
+/* 3. PROGRESS BAR — hidden */
+
+/* ── ARROW BUTTONS ── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  cursor: pointer;
+  color: #2B3A52;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow:
+    var(--shadow-sm);
+
+  transition: background 0.25s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.arrow:hover {
+  background: var(--white);
+  border-color: var(--border-light);
+  color: #4A7BA7;
+  box-shadow:
+    var(--shadow-md);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.arrowLeft  { left: 20px; }
+.arrowRight { right: 20px; }
+
+@media (max-width: 768px) {
+  .arrow { display: none; }
+}
+
+/* 3. THUMBNAIL STRIP — hidden */
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .bgImg { animation: none; }
+  .textShow, .textHide { animation: none; opacity: 1; transform: none; }
+  .bgEnterNext, .bgEnterPrev { animation: none; }
+}
+/* Preserve the narrow dot graphic inside a generously sized hit area. */
+.dot { width: 24px; height: 36px; min-width: 24px; padding: 0; background: transparent; position: relative; }
+.dot::after { content: ''; display: block; width: 4px; height: 20px; margin: auto; border-radius: var(--radius-sm); background: var(--border); }
+.dotActive, .dot:hover { background: transparent; }
+.dotActive::after { background: var(--steel); height: 36px; }
+@media (max-width: 768px) {
+  .title { font-size: 26px; }
+  .contentWrap { padding-bottom: 20px; }
+  .controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
+  .dots { flex-direction: row; gap: 0; }
+  .dot, .dotActive { width: 36px; height: 24px; }
+  .dot::after { width: 20px; height: 4px; }
+  .dotActive::after { width: 36px; height: 4px; }
+}
+@media (max-width: 600px) { .showcase { margin-top: 64px; } }
+
+.tagline { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--navy); margin-bottom: 18px; }
+
+/* Compact playback button inside the hero (still a 36px+ touch target) */
+.controls :global(.carousel-playback) { min-height: 36px; min-width: 36px; padding: 4px 10px; font-size: 13px; gap: 5px; }
+@media (max-width: 768px) {
+  .counterCurrent { font-size: 20px; }
+  .counterSep, .counterTotal { font-size: 12px; }
+  .controls { gap: 12px; }
+}
+
+/* Minimal, text-free controls */
+.controls { background: transparent; padding: 0; gap: 10px; align-items: center; }
+.playBtn { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,0.55); color: var(--navy); cursor: pointer; opacity: 0.7; transition: opacity 0.3s ease, background 0.3s ease; }
+.playBtn:hover, .playBtn:focus-visible { opacity: 1; background: var(--white); }
+.dots { gap: 2px; }
+.dot::after { width: 3px; background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: height 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), background 0.4s ease; }
+.dot:hover::after { background: rgba(255,255,255,0.9); }
+.dotActive::after { background: var(--white); height: 32px; }
+@media (max-width: 768px) {
+  .controls { justify-content: flex-start; width: auto; }
+  .dot::after { height: 3px; }
+  .dotActive::after { width: 28px; height: 3px; }
+}
+@media (prefers-reduced-motion: reduce) { .dot::after { transition: none; } }

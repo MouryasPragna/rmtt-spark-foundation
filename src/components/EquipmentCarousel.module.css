@@ -1,0 +1,15 @@
+.carousel { border: 1px solid var(--border-light); border-radius: var(--radius-sm); background: var(--white); box-shadow: var(--shadow-sm); overflow: hidden; }
+.media { aspect-ratio: 4 / 3; background: var(--white); animation: fade 0.4s ease; }
+.media > button { padding: 24px; }
+.caption { padding: 16px 20px; border-top: 1px solid var(--border-light); min-height: 84px; }
+.name { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.summary { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+.controls { display: flex; align-items: center; gap: 8px; padding: 0 20px 12px; }
+.controls > button { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-light); border-radius: var(--radius-sm); background: var(--white); color: var(--navy); cursor: pointer; }
+.controls > button:hover { border-color: var(--navy); }
+.dots { display: flex; gap: 2px; margin-right: auto; order: -1; }
+.dot, .dotActive { width: 28px; height: 44px; border: 0; background: transparent; cursor: pointer; position: relative; }
+.dot::after, .dotActive::after { content: ''; position: absolute; left: 4px; right: 4px; top: 20px; height: 4px; border-radius: 2px; background: var(--border-light); }
+.dotActive::after { background: var(--navy); }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .media { animation: none; } }
