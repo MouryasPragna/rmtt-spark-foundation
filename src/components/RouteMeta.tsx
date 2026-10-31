@@ -9,7 +9,7 @@ const pages: Record<string, [string, string]> = {
   '/products': ['Product range', 'Explore solid carbide, PCD and brazed carbide tools. Search applications and select tools for a quote.'],
   '/about': ['About Riddhi', 'Discover Riddhi Machine Tool Technology, our journey and manufacturing equipment.'],
   '/applications': ['Applications', 'Explore cutting tool applications for automotive, aerospace and precision machining.'],
-  '/services': ['Technology and services', 'Explore our tool manufacturing, inspection and coating equipment.'],
+  '/services': ['Technology & services', 'Application engineering, custom solutions and the SAACKE, VOLLMER and Walter Helicheck equipment behind our tools.'],
   '/downloads': ['Downloads', 'Download the Riddhi Machine Tool Technology product catalogue.'],
   '/news': ['News & Articles', 'Company news and technical articles on cutting tools from Riddhi Machine Tool Technology.'],
   '/contact': ['Request a quote', 'Share your selected tools and machining requirements with Riddhi Machine Tool Technology.'],

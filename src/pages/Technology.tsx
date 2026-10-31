@@ -47,9 +47,9 @@ export default function Technology() {
       <section className={styles.pageHero}>
         <div className="container">
           <div className="section-eyebrow">Our capabilities</div>
-          <h1 className={styles.pageTitle}>Manufacturing technology</h1>
+          <h1 className={styles.pageTitle}>Technology & services</h1>
           <p className={styles.pageSubtitle}>
-            The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment.
+            The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment — supporting customers from application analysis to dispatch.
           </p>
         </div>
       </section>
