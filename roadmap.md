@@ -51,5 +51,5 @@
 
 - [x] Give each tool category (family) its own page under /products/:category/:family in the MAPAL family-page pattern; competence pages link to them.
 - [x] Investigate 404s: Lovable-hosted assets were pointer-only; images are now materialized into public/images/assets like the deploy step (the 47 MB catalogue PDF stays on the asset host and is fetched at build time). Contact form verified — it simply requires the company field.
-- [ ] Apply MAPAL typography measurements across page content and verify desktop/mobile text and layouts.
-- [ ] Remove the referenced decorative icons and numbering sitewide; use highlighted borders instead.
+- [x] Apply MAPAL typography measurements across page content and verify desktop/mobile text and layouts.
+- [x] Remove the referenced decorative icons and numbering sitewide; use highlighted borders instead.
