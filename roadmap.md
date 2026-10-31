@@ -45,6 +45,6 @@
 - [x] Remove the founders' note and leadership section from About; delete the leadership data and its test.
 - [ ] Client: approve or supply the pending capability/service items now flagged by ContentPending (solid-carbide reconditioning, PCD Ra 0.2 unit, coating programme, regrinding service, quote & delivery commitments).
 
-- [ ] Remove "Add to quote" selection controls (cards, detail pages, navbar counter); plain "Request a quote" links to /contact remain.
-- [ ] Remove image zoom (ZoomImage/Gallery lightbox) across all pages; images render plainly.
-- [ ] Fix ContentPending required-prop type error (make `what` optional).
+- [x] Remove "Add to quote" selection controls (cards, detail pages, navbar counter); plain "Request a quote" links to /contact remain.
+- [x] Remove image zoom (ZoomImage/Gallery lightbox) across all pages; images render plainly.
+- [x] Fix ContentPending required-prop type error (make `what` optional).

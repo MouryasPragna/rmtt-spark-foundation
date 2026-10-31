@@ -15,7 +15,7 @@
 - Use index.css and CSS Modules only; unused shadcn scaffolding is removed to keep the static site dependency surface minimal.
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
-- Keep quote selections in QuoteContext with guarded localStorage persistence because RFQ drafts must survive reloads without a backend.
+- No add-to-quote selection exists: product cards, detail pages and the navbar link to /contact for a quote instead; the contact form collects requirements through its own fields.
 - Preserve the quote context identity through Vite hot-update data so mounted providers and refreshed consumers cannot diverge during preview updates.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
@@ -26,4 +26,4 @@
 - Keep news content in `src/data/news.ts` (supplied file, only `published` items render) with presentation helpers in `src/lib/news.ts`; regenerate `public/sitemap.xml` with `bun scripts/sitemap.ts` from `siteConfig.siteUrl` so held articles never leak into routes or the sitemap.
 - Generate `public/rss.xml` during both build modes from published news; share links use the configured public HashRouter article URL, and RSS omits unconfirmed publication dates so subscriptions never expose held posts or fabricated dates.
 
-- Category photographs and verified matching product/news entries use optimized client-source asset pointers; preserve complete tool geometry and distinguish pictured examples from the broader range. Cards share ZoomImage and the Lightbox, with image inspection separate from detail navigation so zoom is available consistently without nested controls.
+- Category photographs and verified matching product/news entries use optimized client-source asset pointers; preserve complete tool geometry and distinguish pictured examples from the broader range. Images render plainly with no zoom, lens or lightbox anywhere (removed at client request); Gallery offers thumbnail switching only.
