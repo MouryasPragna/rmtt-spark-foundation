@@ -15,7 +15,7 @@ export default function LegalPage({ title }: { title: string }) {
         <div className="container">
           {sections.length ? sections.map(section => (
             <section key={section.heading} className={styles.legalSection}>
-              <h2>{section.heading}</h2>
+              <h2 className="section-heading-title">{section.heading}</h2>
               {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
             </section>
           )) : <p>This page will be published shortly. For questions contact <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.</p>}

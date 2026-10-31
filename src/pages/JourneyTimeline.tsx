@@ -17,7 +17,7 @@ export default function JourneyTimeline() {
   return (
     <section className={styles.section} aria-labelledby="journey-heading">
       <div className="container">
-        <header className={styles.head}>
+        <header className={`section-heading ${styles.head}`}>
           <h2 id="journey-heading" className={styles.title}>Milestones of innovation</h2>
           <p className={styles.sub}>From a 2013 trading startup to a precision tool manufacturer.</p>
         </header>

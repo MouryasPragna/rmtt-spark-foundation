@@ -44,7 +44,7 @@ export default function NewsArticle() {
           {item.linkedinUrl && <p><a className={styles.back} href={item.linkedinUrl} target="_blank" rel="noopener noreferrer">View the original post on LinkedIn (opens in a new tab)</a></p>}
           {gallery.length > 0 && (
             <div className={styles.gallery}>
-              <h2 className={styles.galleryTitle}>Gallery</h2>
+              <h2 className={`section-heading-title ${styles.galleryTitle}`}>Gallery</h2>
               <Gallery images={gallery} icon={Newspaper} width={1600} height={900} aspect="16 / 9" />
               {item.gallery?.[0]?.credit && <p className={styles.caption}>{item.gallery[0].credit}</p>}
             </div>

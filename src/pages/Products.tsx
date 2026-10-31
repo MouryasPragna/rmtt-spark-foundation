@@ -74,7 +74,7 @@ export default function Products() {
       </p>
     </div></section>
     <section className={styles.solutionsSection} aria-labelledby="solutions-heading"><div className="container">
-      <div className={styles.sectionHeadRow}>
+      <div className={`section-heading ${styles.sectionHeadRow}`}>
         <h2 id="solutions-heading" className={styles.catTitle}>Solution areas</h2>
         <p className={styles.sectionHeadSub}>Three tool technologies, one manufacturing standard — choose a competence to explore its programme.</p>
       </div>
@@ -104,7 +104,7 @@ export default function Products() {
       </div>
     </div></div>
     <section id="catalogue" className={styles.catalogueSection} aria-labelledby="catalogue-heading"><div className="container">
-      <div className={styles.sectionHeadRow}>
+      <div className={`section-heading ${styles.sectionHeadRow}`}>
         <h2 id="catalogue-heading" className={styles.catTitle}>Browse the full catalogue</h2>
         <p className={styles.sectionHeadSub}>Search tools or applications and select items for a quote request.</p>
       </div>

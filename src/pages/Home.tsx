@@ -147,7 +147,7 @@ export default function Home() {
         <div className="container">
           <div
             ref={productsHeadReveal.ref}
-            className={`${styles.sectionHead} ${styles.reveal} ${productsHeadReveal.shown ? styles.revealShown : ''}`}
+            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${productsHeadReveal.shown ? styles.revealShown : ''}`}
           >
             <div>
               <div className="section-eyebrow">What we make</div>
@@ -196,10 +196,10 @@ export default function Home() {
               ref={techReveal.ref}
               className={`${styles.techLeft} ${styles.reveal} ${techReveal.shown ? styles.revealShown : ''}`}
             >
-              <div className="section-eyebrow" style={{ background: 'var(--blue-xlight)', color: 'var(--steel)' }}>
+              <header className="section-heading"><div className="section-eyebrow" style={{ background: 'var(--blue-xlight)', color: 'var(--steel)' }}>
                 Key capabilities
               </div>
-              <h2 className={styles.techTitle}>What defines our tools</h2>
+              <h2 className={styles.techTitle}>What defines our tools</h2></header>
               <div className={styles.capBlocks}>
                 <div className={styles.capBlock}>
                   <h3 className={styles.capBlockTitle}>Latest production equipment</h3>
@@ -233,7 +233,7 @@ export default function Home() {
         <div className="container">
           <div
             ref={appsHeadReveal.ref}
-            className={`${styles.sectionHead} ${styles.reveal} ${appsHeadReveal.shown ? styles.revealShown : ''}`}
+            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${appsHeadReveal.shown ? styles.revealShown : ''}`}
           >
             <div>
               <div className="section-eyebrow">Proven results</div>
@@ -319,7 +319,7 @@ export default function Home() {
       {latestNews.length > 0 && (
         <section className={newsStyles.section} aria-labelledby="latest-news-heading">
           <div className="container">
-            <div className={newsStyles.heading}>
+            <div className={`section-heading ${newsStyles.heading}`}>
               <h2 id="latest-news-heading" className={newsStyles.sectionTitle}>Latest news</h2>
               <Link to="/news" className={newsStyles.allLink}>View all news <ArrowRight size={16} aria-hidden="true" /></Link>
             </div>

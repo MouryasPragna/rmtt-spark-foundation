@@ -89,7 +89,7 @@ export default function Technology() {
       {/* Services — MAPAL information pattern with pending-evidence placeholders */}
       <section className={styles.servicesSection} aria-labelledby="services-heading">
         <div className="container">
-          <div className={styles.servicesHead}>
+          <div className={`section-heading ${styles.servicesHead}`}>
             <div className="section-eyebrow">Beyond manufacturing</div>
             <h2 id="services-heading" className={styles.servicesTitle}>Services</h2>
             <p className={styles.servicesSub}>Support around the tools themselves, from the first enquiry to long-term supply.</p>
@@ -110,7 +110,7 @@ export default function Technology() {
       {/* Process */}
       <section className={styles.processSection}>
         <div className="container">
-          <div className={styles.processHead}>
+          <div className={`section-heading ${styles.processHead}`}>
             <div className="section-eyebrow">From enquiry to delivery</div>
             <h2 className={styles.processTitle}>Our manufacturing process</h2>
             <p className={styles.processSub}>Transparent, fast and technical — from your requirement to a precision tool at your machine.</p>
