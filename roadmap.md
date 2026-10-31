@@ -49,5 +49,5 @@
 - [x] Remove image zoom (ZoomImage/Gallery lightbox) across all pages; images render plainly.
 - [x] Fix ContentPending required-prop type error (make `what` optional).
 
-- [ ] Give each tool category (family) its own page under /products/:category/:family in the MAPAL family-page pattern; competence pages link to them.
-- [ ] Investigate 5 console 404s and the contact form submit result in the browser check.
+- [x] Give each tool category (family) its own page under /products/:category/:family in the MAPAL family-page pattern; competence pages link to them.
+- [x] Investigate 404s: Lovable-hosted assets were pointer-only; images are now materialized into public/images/assets like the deploy step (the 47 MB catalogue PDF stays on the asset host and is fetched at build time). Contact form verified — it simply requires the company field.
