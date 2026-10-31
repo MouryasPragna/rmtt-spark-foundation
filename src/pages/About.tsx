@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, ChevronLeft, ChevronRight, Factory, Pause, Play } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Users, Zap, Cpu, Lightbulb, Award, Eye, Target, Factory } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
-import { leaders } from '../data/leadership';
 import { facilityEquipment } from '../data/equipment';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
@@ -81,12 +79,7 @@ const values = [
 
 export default function About() {
   const [facilityPhotoUnavailable, setFacilityPhotoUnavailable] = useState(false);
-  const [leaderIdx, setLeaderIdx] = useState(0);
-  const playback = useCarouselPlayback(leaders.length);
-  useEffect(() => {
-    if (!playback.playing) return;
-    const t = setInterval(() => setLeaderIdx(i => (i + 1) % leaders.length), 5000);
-    return () => clearInterval(t);
+  return () => clearInterval(t);
   }, [playback.playing]);
   const leader = leaders[leaderIdx];
   const prev = () => { if (leaders.length) setLeaderIdx(i => (i - 1 + leaders.length) % leaders.length); };
@@ -154,12 +147,6 @@ export default function About() {
   </div>
 </section>
 
-      <section className={styles.storySection} aria-labelledby="founders-note-title">
-        <div className="container">
-          <h2 id="founders-note-title" className={styles.storyTitle}>Founders' note</h2>
-          <p className={styles.foundersNote}>Riddhi Machine Tool Technology stands for more than just a reliable supplier/manufacturer of high-quality PCD tools &amp; solid carbide tools; it stands for technical expertise, collaboration, partnerships and solutions that make customers more successful in the long term.</p>
-        </div>
-      </section>
       <JourneyTimeline />
       {/* Mission & Vision */}
       <section className={styles.missionVisionSection}>
@@ -353,53 +340,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      {/* Leadership is shown only when real client profiles exist. */}
-      {leader && <section className={styles.leadershipSection} role="region" aria-roledescription="carousel" aria-label="Leadership" {...playback.interactionProps}>
-        <div className="container">
-          <div className={styles.leadershipHead}>
-            <div className="section-eyebrow">Leadership</div>
-            <h2 className={styles.leadershipTitle}>Leadership</h2>
-            <p className={styles.leadershipSub}>
-              Meet the people who shape RMTT's vision, engineering and customer commitment.
-            </p>
-          </div>
-
-          <div className={styles.leaderCarousel}>
-            <button className={styles.carouselArrow} onClick={prev} aria-label="Previous">
-              <ChevronLeft size={22} />
-            </button>
-
-            <div className={styles.leaderCard} key={leader.name} aria-live={playback.playing ? 'off' : 'polite'}>
-              <div className={styles.leaderImgWrap}>
-                {leader.img ? <img src={leader.img} alt={leader.name} width={600} height={600} loading="lazy" className={styles.leaderImg} /> : <div className={styles.leaderInitials} aria-hidden="true">{leader.name.split(/\s+/).map(part => part[0]).join('')}</div>}
-              </div>
-              <div className={styles.leaderBody}>
-                {leader.role && <div className={styles.leaderRole}>{leader.role}</div>}
-                <h3 className={styles.leaderName}>{leader.name}</h3>
-              </div>
-            </div>
-
-            <button className={styles.carouselArrow} onClick={next} aria-label="Next">
-              <ChevronRight size={22} />
-            </button>
-          </div>
-
-          <div className={styles.carouselDots}>
-            <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion || leaders.length < 2}>
-              {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
-            </button>
-            {leaders.map((_, i) => (
-              <button
-                key={i}
-                className={`${styles.dot} ${i === leaderIdx ? styles.dotActive : ''}`}
-                onClick={() => setLeaderIdx(i)}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </section>}
 
       {/* CTA */}
       <section className={styles.ctaSection}>
