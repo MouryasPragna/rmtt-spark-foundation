@@ -59,7 +59,7 @@ export default function Contact() {
       <div className={styles.contactCards}>
         <article className={styles.contactCard}><h3>Phone / WhatsApp</h3><a href={siteConfig.phoneHref}><Phone size={18} aria-hidden="true" />{siteConfig.phone}</a></article>
         <article className={styles.contactCard}><h3>Email</h3><a href={`mailto:${siteConfig.email}`}><Mail size={18} aria-hidden="true" />{siteConfig.email}</a></article>
-        <article className={styles.contactCard}><h3>Visit us</h3><p>{siteConfig.address.street}, {siteConfig.address.cityLine}</p></article>
+        <article className={styles.contactCard}><h3>Visit us</h3><p>{siteConfig.address.street}, {siteConfig.address.cityLine}</p><a className={styles.directionsLink} href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${siteConfig.address.street}, ${siteConfig.address.cityLine}`)}`} target="_blank" rel="noopener noreferrer"><MapPin size={18} aria-hidden="true" />View on Google Maps<ArrowUpRight size={16} aria-hidden="true" /></a></article>
       </div>
     </div></section>
     <section className={`${styles.contactSection} ${styles.enquirySection}`}><div className="container"><div className={styles.contactGrid}>
@@ -94,15 +94,25 @@ export default function Contact() {
           <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Enquire now'}</button>
         </form>
       </div>
-      <div className={styles.locationPanel}>
-        <h2>Our location</h2>
-        <img src={factoryPhoto.url} alt="Riddhi Machine Tool Technology production facility" className={styles.locationPhoto} loading="lazy" />
-        <div className={styles.locationDetails}>
-          <h3>Riddhi Machine Tool Technology</h3>
-          <p>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</p>
-          <a className={styles.directionsLink} href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${siteConfig.address.street}, ${siteConfig.address.cityLine}`)}`} target="_blank" rel="noopener noreferrer"><MapPin size={18} aria-hidden="true" />View on Google Maps<ArrowUpRight size={16} aria-hidden="true" /></a>
-        </div>
-      </div>
+      <aside className={styles.sidebar}>
+        <section className={styles.sideCard}>
+          <h2 className={styles.sideTitle}>Contact information</h2>
+          <ul className={styles.contactList}>
+            <li className={styles.contactItem}><div><div className={styles.contactLabel}>Address</div><div className={styles.contactValue}>{siteConfig.address.street},<br />{siteConfig.address.cityLine}</div></div></li>
+            <li className={styles.contactItem}><div><div className={styles.contactLabel}>Phone / WhatsApp</div><a href={siteConfig.phoneHref} className={styles.contactValue}>{siteConfig.phone}</a></div></li>
+            <li className={styles.contactItem}><div><div className={styles.contactLabel}>Email</div><a href={`mailto:${siteConfig.email}`} className={styles.contactValue}>{siteConfig.email}</a></div></li>
+          </ul>
+        </section>
+        <section className={styles.sideCard}>
+          <h2 className={styles.sideTitle}>What happens next?</h2>
+          <ul className={styles.nextSteps}>
+            <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></div></li>
+            <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical proposal</h3><p className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</p></div></li>
+            <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Sample &amp; trial</h3><p className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</p></div></li>
+          </ul>
+        </section>
+        <div className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}image002.png`} alt="Riddhi cutting tool range" width={377} height={86} loading="lazy" className={styles.toolsImg} /></div>
+      </aside>
     </div></div></section>
   </div>;
 }
