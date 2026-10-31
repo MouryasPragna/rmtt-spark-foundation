@@ -59,4 +59,4 @@
 - [x] Remove Our capability and What we deliver sections from About.
 - [x] Redesign Contact using the Airox contact reference; verify desktop/mobile layouts, validation and enquiry email draft; 41 tests pass.
 - [x] Remove Contact location panel, move map link into Visit us and restore previous right-side information; verified at 1280/1138/390px, 41 tests pass and build OK.
-- [ ] Widen About section introductions and tighten section spacing; verify text wraps safely on smaller screens.
+- [x] Widen About section introductions and tighten section spacing; verified single-line Mission introduction at 1280/1138px, natural wrapping at 390px and build OK.
