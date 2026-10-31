@@ -27,6 +27,9 @@ for (const f of readdirSync(dir).filter((n) => n.endsWith('.asset.json'))) {
     j.url = `images/assets/${name}`;
     writeFileSync(p, JSON.stringify(j, null, 2) + '\n');
     console.log('ok', name);
+  } else if (j.url.startsWith('/__l5e/') === false && name.endsWith('.pdf')) {
+    // Large PDFs stay on the Lovable asset host; only images are materialized.
+    console.log('skip large asset', name);
   } else if (!existsSync(target)) {
     console.error('missing file for', f); failed++;
   }
