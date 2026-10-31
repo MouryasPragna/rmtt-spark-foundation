@@ -22,7 +22,7 @@
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
 - Keep one focusable main landmark around route content and lazy-load all non-Home pages so navigation stays accessible and the initial bundle stays lean.
 - Use the shared carousel playback hook so every timer respects reduced motion, focus, touch and explicit pause.
-- Serve Poppins (headings, via Fontsource weights 400/600/700) with system Arial body text; heading font token `--font-heading` lives in index.css.
+- Use Poppins for headings and body text (Fontsource weights 400/600/700); font tokens `--font-heading` and `--font-body` live in index.css.
 - Allow the resolved dependency directory in Vite's development file serving so symlinked Fontsource assets load in the preview.
 - Keep news content in `src/data/news.ts` (supplied file, only `published` items render) with presentation helpers in `src/lib/news.ts`; regenerate `public/sitemap.xml` with `bun scripts/sitemap.ts` from `siteConfig.siteUrl` so held articles never leak into routes or the sitemap.
 - Generate `public/rss.xml` during both build modes from published news; share links use the configured public HashRouter article URL, and RSS omits unconfirmed publication dates so subscriptions never expose held posts or fabricated dates.

@@ -17,9 +17,9 @@
   --type-title-leading: 60px;
   --type-title-spacing: 1.2px;
   --type-content-spacing: 0;
-  /* Poppins headings (self-hosted via Fontsource), Arial body. */
+  /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   /* Brand colors — Fraisa-inspired deep navy + steel blue */
   --navy: #002855;
   --navy-mid: #003B73;
