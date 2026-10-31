@@ -3,7 +3,6 @@ import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
-import ProductCard from '../components/ProductCard';
 import Gallery from '../components/Gallery';
 import ContentPending from '../components/ContentPending';
 
@@ -92,20 +91,24 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      {/* Product families */}
-      <section id={cat.id} className={styles.catSection}>
+      {/* Product families — each on its own page */}
+      <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
         <div className="container">
-          {cat.subcategories.map(sub => (
-            <div key={sub.id} id={sub.id} className={styles.subCat}>
-              <div className={styles.subCatHead}>
-                <h2 className={styles.subCatTitle}>{sub.title}</h2>
-                <p className={styles.subCatBlurb}>{sub.blurb}</p>
-              </div>
-              <div className={styles.productCards}>
-                {sub.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={3} />)}
-              </div>
-            </div>
-          ))}
+          <div className={styles.sectionHeadRow}>
+            <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
+            <p className={styles.sectionHeadSub}>Each tool category has its own page with the tools in that programme.</p>
+          </div>
+          <div className={styles.familiesGrid}>
+            {cat.subcategories.map(sub => (
+              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={styles.familyCard}>
+                <h3 className={styles.familyTitle}>{sub.title}</h3>
+                <p className={styles.familyBlurb}>{sub.blurb}</p>
+                <span className={styles.solutionLink} style={{ color: cat.color }}>
+                  View the family <ArrowRight size={15} aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
 
           <div className={styles.catFooter}>
             <Link to="/contact" className={styles.catCta}>

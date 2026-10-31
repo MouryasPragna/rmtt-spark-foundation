@@ -22,7 +22,10 @@ describe('MAPAL-pattern competence data', () => {
     // At least one capability site-wide still waits on client approval.
     expect(categories.some(cat => cat.capabilities.some(block => block.pending))).toBe(true);
   });
-  test('featured examples link to a family section of the same category', () => {
-    for (const cat of categories) expect(cat.featured.href.startsWith(`/products/${cat.id}#`)).toBe(true);
+  test('featured examples link to a family page of the same category', () => {
+    for (const cat of categories) {
+      expect(cat.featured.href.startsWith(`/products/${cat.id}/`)).toBe(true);
+      expect(cat.subcategories.some(sub => cat.featured.href.endsWith(`/${sub.id}`))).toBe(true);
+    }
   });
 });

@@ -18,11 +18,14 @@ const pages: Record<string, [string, string]> = {
 };
 export default function RouteMeta() {
   const { pathname } = useLocation();
-  const id = /^\/products\/[^/]+\/?$/.test(pathname) ? pathname.split('/')[2] : undefined;
+  const segments = pathname.split('/').filter(Boolean);
+  const isFamily = /^\/products\/[^/]+\/[^/]+$/.test(pathname);
+  const id = /^\/products\/[^/]+\/?$/.test(pathname) ? segments[1] : undefined;
   const product = products.find(tool => tool.slug === id);
   const category = categories.find(cat => cat.id === id);
   const article = /^\/news\/[^/]+\/?$/.test(pathname) ? getNewsById(pathname.split('/')[2]) : undefined;
-  const [title, description] = article ? [article.title, article.summary] : product ? [product.name, product.description] : category ? [category.label, category.intro] : pages[pathname] || ['Page not found', 'Explore Riddhi Machine Tool Technology cutting tools.'];
+  const family = isFamily ? categories.find(cat => cat.id === segments[1])?.subcategories.find(sub => sub.id === segments[2]) : undefined;
+  const [title, description] = article ? [article.title, article.summary] : product ? [product.name, product.description] : family ? [family.title, family.blurb] : category ? [category.label, category.intro] : pages[pathname] || ['Page not found', 'Explore Riddhi Machine Tool Technology cutting tools.'];
   useDocumentMeta(title, description);
   return null;
 }

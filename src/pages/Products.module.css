@@ -497,3 +497,11 @@
   .capGrid { grid-template-columns: 1fr; }
   .pageSubtitleSecond { margin-top: -8px; }
 }
+
+/* Competence page: product families, each on its own page */
+.familiesGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.familyCard { display: flex; flex-direction: column; gap: 10px; background: var(--white); border: 1px solid var(--border-light); border-left: 3px solid var(--navy); padding: 22px 22px 24px; min-width: 0; transition: border-color 0.2s, box-shadow 0.2s; }
+.familyCard:hover { border-color: var(--navy); box-shadow: var(--shadow-md); }
+.familyTitle { font-size: 18px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3; }
+.familyBlurb { font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin: 0; flex: 1; }
+@media (max-width: 900px) { .familiesGrid { grid-template-columns: 1fr; } }

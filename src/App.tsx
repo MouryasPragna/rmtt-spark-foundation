@@ -8,6 +8,7 @@ import RouteMeta from './components/RouteMeta';
 import ScrollToTop from './components/ScrollToTop';
 const Products = lazy(() => import('./pages/Products'));
 const ProductRoute = lazy(() => import('./pages/ProductRoute'));
+const FamilyPage = lazy(() => import('./pages/FamilyPage'));
 const Industries = lazy(() => import('./pages/Industries'));
 const Technology = lazy(() => import('./pages/Technology'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:categoryId" element={<ProductRoute />} />
+        <Route path="/products/:categoryId/:familyId" element={<FamilyPage />} />
         <Route path="/applications" element={<Industries />} />
         <Route path="/services" element={<Technology />} />
         <Route path="/contact" element={<Contact />} />

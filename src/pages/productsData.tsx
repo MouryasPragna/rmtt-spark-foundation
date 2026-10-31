@@ -81,7 +81,7 @@ export const categories: Category[] = [
         'High-performance multi-blade monoblock reamers with unequal spacing and application-specific cutting geometry. Straight flutes suit through and blind holes, with left-hand spiral flutes for through holes — produced to customer-specific bore tolerances, including H6 and H7, in diameters from 2 to 32 mm.',
       image: solidCarbideReamers.url,
       imageAlt: 'Solid carbide reamers — example from the Solid Carbide range',
-      href: '/products/solid-carbide#sc-reamers',
+      href: '/products/solid-carbide/sc-reamers',
     },
     capabilities: [
       {
@@ -177,7 +177,7 @@ export const categories: Category[] = [
         'Precision PCD tooling designed around component and bore requirements, including multi-step tools that consolidate operations into one tool — such as the five-step shock-absorber bore reamer machined at a cutting speed of 210 m/min.',
       image: pcdOverview.url,
       imageAlt: 'PCD boring tool — example from the PCD range',
-      href: '/products/pcd#pcd-reamers',
+      href: '/products/pcd/pcd-reamers',
     },
     capabilities: [
       {
@@ -264,7 +264,7 @@ export const categories: Category[] = [
         'Carbide-tipped T-slot milling cutters, multi-grooving tools and customer-specific form and stepped tools, manufactured around the component and its production requirements.',
       image: brazedCarbideOverview.url,
       imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
-      href: '/products/brazed#bc-milling',
+      href: '/products/brazed/bc-milling',
     },
     capabilities: [
       {
