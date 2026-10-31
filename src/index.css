@@ -6,16 +6,19 @@
 
 :root {
   color-scheme: light only;
-  /* MAPAL reference measurements; keep the locally served brand font. */
-  --type-body-size: 18px;
-  --type-body-leading: 28.8px;
+  /* Airox reference measurements; keep the locally served brand font. */
+  --type-body-size: 16px;
+  --type-body-leading: 24px;
   --type-body-weight: 400;
-  --type-heading-size: 33px;
-  --type-heading-leading: 41.25px;
+  --type-heading-size: 30px;
+  --type-heading-leading: 36px;
   --type-heading-weight: 700;
-  --type-title-size: 50px;
-  --type-title-leading: 60px;
-  --type-title-spacing: 1.2px;
+  --type-title-size: 72px;
+  --type-title-leading: 72px;
+  --type-title-spacing: 0;
+  --type-small-heading-size: 24px;
+  --type-small-heading-leading: 32px;
+  --type-small-heading-weight: 600;
   --type-content-spacing: 0;
   /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
@@ -130,13 +133,26 @@ h1, h2, h3, h4, h5, h6 {
   overflow-wrap: anywhere;
 }
 
-#main-content :is(h2, h3, h4, h5, h6) {
+/* Poppins ascenders and descenders need room beyond the tight reference leading. */
+#main-content h1 { padding-bottom: 14px; }
+
+#main-content h2 {
   font-size: var(--type-heading-size);
   line-height: var(--type-heading-leading);
   font-weight: var(--type-heading-weight);
   letter-spacing: var(--type-content-spacing);
   overflow-wrap: anywhere;
 }
+
+#main-content :is(h3, h4, h5, h6) {
+  font-size: var(--type-small-heading-size);
+  line-height: var(--type-small-heading-leading);
+  font-weight: var(--type-small-heading-weight);
+  letter-spacing: var(--type-content-spacing);
+  overflow-wrap: anywhere;
+}
+
+#main-content :is(h4, h5, h6) { font-size: 20px; line-height: 28px; }
 
 #main-content p {
   font-size: var(--type-body-size);
@@ -148,12 +164,15 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   :root {
-    --type-title-size: 32px;
-    --type-title-leading: 38.4px;
+    --type-title-size: 36px;
+    --type-title-leading: 39.6px;
     --type-title-spacing: 0;
-    --type-heading-size: 26px;
-    --type-heading-leading: 32.5px;
+    --type-heading-size: 24px;
+    --type-heading-leading: 32px;
+    --type-small-heading-size: 20px;
+    --type-small-heading-leading: 28px;
   }
+  #main-content h1 { padding-bottom: 7px; }
 }
 
 a {
@@ -187,12 +206,12 @@ img {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 64px 0 24px;
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 16px;
+    padding: 0 60px 0 16px;
   }
 }
 

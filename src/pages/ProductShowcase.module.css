@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   height: calc(88vh - 100px);
-  min-height: 520px;
+  min-height: 640px;
   max-height: 780px;
   margin-top: 100px;
   overflow: hidden;
@@ -127,7 +127,7 @@
 
 /* ── TEXT BLOCK ── */
 .textBlock {
-  max-width: 440px;
+  max-width: 560px;
   pointer-events: all;
 }
 
@@ -177,6 +177,7 @@
   font-size: var(--type-title-size);
   line-height: var(--type-title-leading);
   letter-spacing: var(--type-title-spacing);
+  padding-bottom: 14px;
 }
 
 .subtitle {
@@ -343,6 +344,8 @@
 @media (max-width: 768px) {
   .title { font-size: var(--type-title-size); }
   .contentWrap { padding-bottom: 20px; }
+  .textBlock { max-width: 100%; padding-right: 44px; }
+  :global(#main-content) .title { padding-bottom: 7px; }
   .controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
   .dots { flex-direction: row; gap: 0; }
   .dot, .dotActive { width: 36px; height: 24px; }

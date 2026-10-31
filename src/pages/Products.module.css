@@ -452,7 +452,7 @@
 
 .catGallery { min-width: 0; }
 .protectedImg { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
-.productCard .productDesc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0; margin-bottom: 18px; }
+.productCard .productDesc { display: block; overflow-wrap: anywhere; padding-bottom: 0; margin-bottom: 18px; }
 
 /* MAPAL overview pattern: solution-area cards */
 .solutionsSection { padding: 64px 0 56px; background: var(--white); }
