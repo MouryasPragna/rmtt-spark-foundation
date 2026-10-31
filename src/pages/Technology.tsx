@@ -86,6 +86,27 @@ export default function Technology() {
         </div>
       </section>
 
+      {/* Services — MAPAL information pattern with pending-evidence placeholders */}
+      <section className={styles.servicesSection} aria-labelledby="services-heading">
+        <div className="container">
+          <div className={styles.servicesHead}>
+            <div className="section-eyebrow">Beyond manufacturing</div>
+            <h2 id="services-heading" className={styles.servicesTitle}>Services</h2>
+            <p className={styles.servicesSub}>Support around the tools themselves, from the first enquiry to long-term supply.</p>
+          </div>
+          <div className={styles.servicesGrid}>
+            {serviceBlocks.map(block => (
+              <div key={block.id} className={styles.serviceBlock}>
+                <h3 className={styles.serviceTitle}>{block.title}</h3>
+                {block.pending
+                  ? <ContentPending tone="inline" what="This service" />
+                  : <p className={styles.serviceBody}>{block.body}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Process */}
       <section className={styles.processSection}>
         <div className="container">

@@ -170,13 +170,9 @@
   }
 }
 
-.storySection {
-  padding: 80px 0;
-  background: #fff;
-}
-
 @media (max-width: 900px) {
 }
+
 
 /* Values */
 .valuesSection {
