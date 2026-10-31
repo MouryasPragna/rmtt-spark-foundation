@@ -170,68 +170,12 @@
   }
 }
 
-/* Story */
 .storySection {
   padding: 80px 0;
   background: #fff;
 }
 
-.storyGrid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 64px;
-  align-items: start;
-}
-
 @media (max-width: 900px) {
-  .storyGrid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-}
-
-.storyImg {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  aspect-ratio: 4/3;
-}
-
-.storyImg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.storyText {
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.75;
-  margin-bottom: 14px;
-}
-
-.storyStats {
-  display: flex;
-  gap: 32px;
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border-light);
-}
-
-.storyStat {
-  text-align: center;
-}
-
-.storyStatNum {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.storyStatLabel {
-  font-size: 12px;
-  color: var(--text-muted);
 }
 
 /* Values */
@@ -943,7 +887,6 @@
   .purposeSection,
   .productsSection,
   .manufacturingSection,
-  .storySection,
   .valuesSection,
   .locationSection {
     padding: 56px 0;
@@ -959,21 +902,4 @@
   }
 }
 
-/* Leadership Carousel */
-.leadershipSection {
-  padding: 100px 0;
-  background:  #D9E4EE;
-}
-.carouselArrow:hover {
-  background: var(--steel);
-  border-color: rgba(74,123,167,0.6);
-}
-@keyframes fadeInLeader {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.dot:hover { background: var(--white); }
-.dot::after { content: ''; width: 9px; height: 9px; background: var(--blue-light); border-radius: 50%; }
-.dotActive::after { background: var(--navy); }
-.dot:hover { background: transparent; }
 .heroTagline { color: var(--navy); font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 18px; }
