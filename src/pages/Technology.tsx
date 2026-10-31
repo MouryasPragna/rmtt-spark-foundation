@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './Technology.module.css';
 import ZoomImage from '../components/ZoomImage';
+import ContentPending from '../components/ContentPending';
 import { equipment } from '../data/equipment';
 
 const processSteps = [
@@ -11,15 +12,44 @@ const processSteps = [
   { step: '04', title: 'Inspection & dispatch', desc: 'The facility includes Walter Helicheck measurement equipment.' },
 ];
 
+// MAPAL services information pattern: titled service blocks, placeholders where no
+// approved commitment exists yet.
+const serviceBlocks = [
+  {
+    id: 'engineering',
+    title: 'Application engineering',
+    body: 'You share the part drawing, material, machine type and cycle requirements. We analyse and design the optimal tool geometry, applying Design for Manufacturability to balance performance and cost.',
+    pending: false,
+  },
+  {
+    id: 'custom',
+    title: 'Custom solutions',
+    body: 'Special machining tasks require special tools — custom tools are individually tailored to the customer’s requirements.',
+    pending: false,
+  },
+  {
+    id: 'reconditioning',
+    title: 'Regrinding & reconditioning',
+    body: '',
+    pending: true,
+  },
+  {
+    id: 'quote',
+    title: 'Quote & delivery',
+    body: '',
+    pending: true,
+  },
+];
+
 export default function Technology() {
   return (
     <div className={styles.main}>
       <section className={styles.pageHero}>
         <div className="container">
           <div className="section-eyebrow">Our capabilities</div>
-          <h1 className={styles.pageTitle}>Manufacturing technology</h1>
+          <h1 className={styles.pageTitle}>Technology & services</h1>
           <p className={styles.pageSubtitle}>
-            The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment.
+            The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment — supporting customers from application analysis to dispatch.
           </p>
         </div>
       </section>
@@ -51,6 +81,27 @@ export default function Technology() {
 
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services — MAPAL information pattern with pending-evidence placeholders */}
+      <section className={styles.servicesSection} aria-labelledby="services-heading">
+        <div className="container">
+          <div className={styles.servicesHead}>
+            <div className="section-eyebrow">Beyond manufacturing</div>
+            <h2 id="services-heading" className={styles.servicesTitle}>Services</h2>
+            <p className={styles.servicesSub}>Support around the tools themselves, from the first enquiry to long-term supply.</p>
+          </div>
+          <div className={styles.servicesGrid}>
+            {serviceBlocks.map(block => (
+              <div key={block.id} className={styles.serviceBlock}>
+                <h3 className={styles.serviceTitle}>{block.title}</h3>
+                {block.pending
+                  ? <ContentPending tone="inline" what="This service" />
+                  : <p className={styles.serviceBody}>{block.body}</p>}
+              </div>
             ))}
           </div>
         </div>

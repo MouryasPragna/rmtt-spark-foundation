@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Check, FileText } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
-import ProductCard from '../components/ProductCard';
 import Gallery from '../components/Gallery';
+import ContentPending from '../components/ContentPending';
 
+/**
+ * Competence page in the MAPAL information pattern: hero intro, featured example
+ * highlight, key capability blocks, then product-family sections with the actual tools.
+ */
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const { hash } = useLocation();
@@ -32,6 +36,7 @@ export default function CategoryPage() {
           <div className="section-eyebrow">{cat.label}</div>
           <h1 className={styles.pageTitle}>{cat.headline}</h1>
           <p className={styles.pageSubtitle}>{cat.intro}</p>
+          <p className={styles.pageSubtitleSecond}>{cat.intro2}</p>
           <div className={styles.jumpLinks}>
             {categories.map(c => (
               <Link
@@ -48,39 +53,65 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      <section id={cat.id} className={styles.catSection}>
+      {/* Featured example — MAPAL highlight card pattern */}
+      <section className={styles.featuredSection} aria-labelledby="featured-heading">
         <div className="container">
-          <div className={styles.catHeader}>
-            <div className={styles.catHeaderText}>
-              <ul className={styles.features}>
-                {cat.features.map(f => (
-                  <li key={f} className={styles.feature}>
-                    <Check size={14} style={{ color: cat.color, flexShrink: 0 }} />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className={styles.featuredGrid}>
+            <div className={styles.featuredImg}>
+              <Gallery images={[{ src: cat.featured.image, alt: cat.featured.imageAlt }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
             </div>
-            <div className={styles.catGallery}>
-              <Gallery images={[{ src: cat.image, alt: cat.imageAlt }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
+            <div className={styles.featuredBody}>
+              <div className="section-eyebrow" style={{ color: cat.color }}>Featured from this programme</div>
+              <h2 id="featured-heading" className={styles.featuredTitle}>{cat.featured.title}</h2>
+              <p className={styles.featuredBlurb}>{cat.featured.blurb}</p>
+              <Link to={cat.featured.href} className={styles.featuredLink} style={{ color: cat.color }}>
+                View the family <ArrowRight size={15} aria-hidden="true" />
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
 
-          {cat.subcategories.map(sub => (
-            <div key={sub.id} id={sub.id} className={styles.subCat}>
-              <div className={styles.subCatHead}>
-                <h2 className={styles.subCatTitle}>{sub.title}</h2>
-                <p className={styles.subCatBlurb}>{sub.blurb}</p>
+      {/* Key capability blocks — MAPAL key-info pattern */}
+      <section className={styles.capSection} aria-labelledby="capabilities-heading">
+        <div className="container">
+          <div className={styles.sectionHeadRow}>
+            <h2 id="capabilities-heading" className={styles.catTitle}>Key capabilities</h2>
+            <p className={styles.sectionHeadSub}>What defines the tools in this programme.</p>
+          </div>
+          <div className={styles.capGrid}>
+            {cat.capabilities.map(block => (
+              <div key={block.id} className={styles.capBlock}>
+                <h3 className={styles.capTitle}>{block.title}</h3>
+                {block.body ? <p className={styles.capBody}>{block.body}</p> : null}
+                {block.pending ? <ContentPending tone="inline" what="This capability" /> : block.pendingNote ? <ContentPending tone="inline" note={block.pendingNote} /> : null}
               </div>
-              <div className={styles.productCards}>
-                {sub.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={3} />)}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product families — each on its own page */}
+      <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
+        <div className="container">
+          <div className={styles.sectionHeadRow}>
+            <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
+            <p className={styles.sectionHeadSub}>Each tool category has its own page with the tools in that programme.</p>
+          </div>
+          <div className={styles.familiesGrid}>
+            {cat.subcategories.map(sub => (
+              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={styles.familyCard}>
+                <h3 className={styles.familyTitle}>{sub.title}</h3>
+                <p className={styles.familyBlurb}>{sub.blurb}</p>
+                <span className={styles.solutionLink} style={{ color: cat.color }}>
+                  View the family <ArrowRight size={15} aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
 
           <div className={styles.catFooter}>
             <Link to="/contact" className={styles.catCta}>
-              <FileText size={15} />
               Request quote for {cat.label}
               <ChevronRight size={15} />
             </Link>
@@ -92,7 +123,8 @@ export default function CategoryPage() {
         <div className="container">
           <h2 className={styles.ctaTitle}>Don't see what you need?</h2>
           <p className={styles.ctaSub}>
-            We regularly manufacture custom and special tools to customer specifications. Share your drawing or describe your challenge.
+            Special machining tasks require special tools. We manufacture custom tools individually
+            tailored to the customer's requirements — share your drawing or describe your challenge.
           </p>
           <Link to="/contact" className={styles.ctaBtn}>
             Describe your requirement <ArrowRight size={16} />

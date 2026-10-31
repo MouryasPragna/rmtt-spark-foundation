@@ -5,16 +5,17 @@
 - Store approved legal sections in `src/data/legal.ts`; empty arrays render a contact placeholder so legal copy is never fabricated.
 - Use the shared NotFound page for unmatched application and catalogue routes so recovery links and page titles agree.
 - Use the inherited `--focus-outline` token or `data-focus-surface` for dark focus contexts so CSS Modules share one focus-ring rule.
-- Keep optional leadership and customer sections gated by their typed arrays in src/data so empty client data never renders fabricated profiles or logos.
+- Product pages follow the MAPAL reference information pattern — competence hero intro, featured example highlight, key capability blocks and product-family sections — with the solution areas on the /products overview and the filterable catalogue as the secondary browse view; structure lives in src/pages/productsData.tsx.
+- Render unapproved capability or service claims through the shared ContentPending component instead of fabricating copy; pending blocks carry no invented body text.
+- The About page renders no founders or leadership content; founder material is not required for this site.
 - Share the industry options and icons through src/data/industries.ts across Home, Contact and catalogue filters; keep product industry assignments source-backed rather than inferred from company sectors.
-- Leadership profiles omit biographies, hide blank roles and render initials for missing portraits so approved names can appear without invented titles or images.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
 - Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.
 - Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
 - Use index.css and CSS Modules only; unused shadcn scaffolding is removed to keep the static site dependency surface minimal.
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
-- Keep quote selections in QuoteContext with guarded localStorage persistence because RFQ drafts must survive reloads without a backend.
+- No add-to-quote selection exists: product cards, detail pages and the navbar link to /contact for a quote instead; the contact form collects requirements through its own fields.
 - Preserve the quote context identity through Vite hot-update data so mounted providers and refreshed consumers cannot diverge during preview updates.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
@@ -25,4 +26,4 @@
 - Keep news content in `src/data/news.ts` (supplied file, only `published` items render) with presentation helpers in `src/lib/news.ts`; regenerate `public/sitemap.xml` with `bun scripts/sitemap.ts` from `siteConfig.siteUrl` so held articles never leak into routes or the sitemap.
 - Generate `public/rss.xml` during both build modes from published news; share links use the configured public HashRouter article URL, and RSS omits unconfirmed publication dates so subscriptions never expose held posts or fabricated dates.
 
-- Category photographs and verified matching product/news entries use optimized client-source asset pointers; preserve complete tool geometry and distinguish pictured examples from the broader range. Cards share ZoomImage and the Lightbox, with image inspection separate from detail navigation so zoom is available consistently without nested controls.
+- Category photographs and verified matching product/news entries use optimized client-source asset pointers; preserve complete tool geometry and distinguish pictured examples from the broader range. Images render plainly with no zoom, lens or lightbox anywhere (removed at client request); Gallery offers thumbnail switching only.

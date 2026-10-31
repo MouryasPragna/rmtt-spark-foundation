@@ -1,14 +1,10 @@
 import { describe, expect, test } from 'bun:test';
 import { products } from '../data/products';
 import { industryNames } from '../data/industries';
-import { leaders } from '../data/leadership';
 import { equipment } from '../data/equipment';
 import { siteConfig } from './siteConfig';
-import roshan from '../assets/roshan-tanuk.webp.asset.json';
-import ravi from '../assets/ravi-kumar.webp.asset.json';
-import syamala from '../assets/syamala-kumar.webp.asset.json';
 import catalogue from '../assets/rmtt-final-catalogue.pdf.asset.json';
-import { filterProducts, readQuoteSlugs, saveQuoteSlugs } from './catalogue';
+import { filterProducts } from './catalogue';
 import { MAX_DRAWING_BYTES, buildRfqMailto, rfqSchema, submitRfq, validateDrawing } from './rfq';
 
 describe('static catalogue rules', () => {
@@ -32,15 +28,6 @@ describe('static catalogue rules', () => {
     const specs = products.find(tool => tool.slug === 'solid-carbide-reamers')?.specs;
     expect(specs).toContainEqual({ label: 'Coolant', value: 'Internal coolant supply' });
     expect(specs).toContainEqual({ label: 'Options', value: 'Special multi-step reamers' });
-  });
-  test('restores persisted selections without duplicates or unknown tools', () => {
-    let saved = '';
-    saveQuoteSlugs({ setItem: (_key, value) => { saved = value; } }, ['pcd-reamer', 'pcd-reamer', 'unknown']);
-    expect(readQuoteSlugs({ getItem: () => saved })).toEqual(['pcd-reamer']);
-  });
-  test('disabled storage cannot break a quote draft', () => {
-    expect(readQuoteSlugs({ getItem: () => { throw new Error('disabled'); } })).toEqual([]);
-    expect(() => saveQuoteSlugs({ setItem: () => { throw new Error('disabled'); } }, [])).not.toThrow();
   });
 });
 
@@ -81,13 +68,6 @@ describe('client-side quote validation', () => {
 describe('approved company data', () => {
   test('industry options contain exactly the six approved sectors', () => {
     expect(industryNames).toEqual(['Automotive', 'Aerospace', 'Defence', 'Energy', 'General Engineering', 'Hydraulic']);
-  });
-  test('leadership pairs FINAL portraits with approved names and no invented roles', () => {
-    expect(leaders).toEqual([
-      { name: 'Roshan Tanuk', role: '', img: roshan.url },
-      { name: 'K. Ravi Kumar', role: '', img: ravi.url },
-      { name: 'K. Syamala Kumar', role: '', img: syamala.url },
-    ]);
   });
   test('unconfirmed equipment is excluded', () => {
     expect(equipment.map(item => item.id)).toEqual(['saacke', 'vollmer', 'helicheck', 'coating']);

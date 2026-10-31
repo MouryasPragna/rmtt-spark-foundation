@@ -2,7 +2,7 @@ import styles from './ContentPending.module.css';
 
 type Props = {
   /** What is missing, e.g. "The detailed coating programme". Rendered inside the sentence. */
-  what: string;
+  what?: string;
   /** Optional replacement wording when the default sentence does not fit. */
   note?: string;
   /** Visual tone: compact inline note or a full standalone block. */

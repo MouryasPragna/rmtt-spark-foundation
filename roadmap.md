@@ -40,3 +40,14 @@
 - [x] Add article share controls and a static published-news RSS feed; verified copied public links, new-tab destinations, eight feed entries, omitted unconfirmed RSS date, nine tests and automatic build.
 - [x] Review the supplied Google Drive tool images against category descriptions and improve Home product-card prominence using matching photos; used labelled Solid Carbide/PCD/Brazed folders with visually matching end mill, boring tool and T-slot cutter, cropped empty margins without altering geometry, verified image zoom, PCD range link, mobile overflow, 18 tests and automatic build.
 - [x] Improve manufacturing-process readability and layout: continuous rail with direction markers, equal-height step panels, centred section label, vertical rail on phones. Verified at 1280/900/375px; 42 tests pass and automatic build OK.
+
+- [x] Restructure the site on the MAPAL reference pattern: products overview with solution areas, competence pages (intro, featured example, key capabilities, product families), services blocks; catalogue kept as the secondary browse view.
+- [x] Remove the founders' note and leadership section from About; delete the leadership data and its test.
+- [ ] Client: approve or supply the pending capability/service items now flagged by ContentPending (solid-carbide reconditioning, PCD Ra 0.2 unit, coating programme, regrinding service, quote & delivery commitments).
+
+- [x] Remove "Add to quote" selection controls (cards, detail pages, navbar counter); plain "Request a quote" links to /contact remain.
+- [x] Remove image zoom (ZoomImage/Gallery lightbox) across all pages; images render plainly.
+- [x] Fix ContentPending required-prop type error (make `what` optional).
+
+- [x] Give each tool category (family) its own page under /products/:category/:family in the MAPAL family-page pattern; competence pages link to them.
+- [x] Investigate 404s: Lovable-hosted assets were pointer-only; images are now materialized into public/images/assets like the deploy step (the 47 MB catalogue PDF stays on the asset host and is fetched at build time). Contact form verified — it simply requires the company field.

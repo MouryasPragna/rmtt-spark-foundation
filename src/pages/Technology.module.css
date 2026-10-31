@@ -326,3 +326,63 @@
 @media (max-width: 600px) { .main { padding-top: 64px; } }
 
 .processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); margin-left: auto; margin-right: auto; }
+
+/* Services blocks — MAPAL information pattern */
+.servicesSection {
+  padding: 72px 0;
+  background: var(--surface);
+}
+
+.servicesHead {
+  margin-bottom: 40px;
+}
+
+.servicesTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.servicesSub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 560px;
+  margin: 0;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.serviceBlock {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-top: 2px solid var(--navy);
+  padding: 24px 24px 26px;
+  min-width: 0;
+}
+
+.serviceTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+.serviceBody {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .servicesSection { padding: 56px 0; }
+  .servicesGrid { grid-template-columns: 1fr; }
+}

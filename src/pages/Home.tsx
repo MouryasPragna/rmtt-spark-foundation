@@ -198,20 +198,23 @@ export default function Home() {
               className={`${styles.techLeft} ${styles.reveal} ${techReveal.shown ? styles.revealShown : ''}`}
             >
               <div className="section-eyebrow" style={{ background: 'var(--blue-xlight)', color: 'var(--steel)' }}>
-                Our equipment
+                Key capabilities
               </div>
-              <h2 className={styles.techTitle}>Manufacturing technology</h2>
-              <p className={styles.techSub}>
-                The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck optical measurement.
-              </p>
-              <ul className={styles.equipList}>
-                {homeEquipment.map(m => (
-                  <li key={m.id}>
-                    <strong>{m.shortName}</strong>
-                    <span>{m.summary}</span>
-                  </li>
-                ))}
-              </ul>
+              <h2 className={styles.techTitle}>What defines our tools</h2>
+              <div className={styles.capBlocks}>
+                <div className={styles.capBlock}>
+                  <h3 className={styles.capBlockTitle}>Latest production equipment</h3>
+                  <p className={styles.capBlockBody}>The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck optical measurement.</p>
+                </div>
+                <div className={styles.capBlock}>
+                  <h3 className={styles.capBlockTitle}>For every workpiece material</h3>
+                  <p className={styles.capBlockBody}>Geometries for cast iron, alloyed and stainless steels, titanium, Inconel and aluminium, with application-specific PVD wear-resistant coatings.</p>
+                </div>
+                <div className={styles.capBlock}>
+                  <h3 className={styles.capBlockTitle}>Customer-specific solutions</h3>
+                  <p className={styles.capBlockBody}>Special machining tasks require special tools — solutions are engineered individually from the customer's component and production requirements.</p>
+                </div>
+              </div>
               <Link to="/services" className={styles.techLink}>
                 See all technology <ArrowRight size={14} />
               </Link>
