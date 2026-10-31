@@ -60,3 +60,4 @@
 - [x] Redesign Contact using the Airox contact reference; verify desktop/mobile layouts, validation and enquiry email draft; 41 tests pass.
 - [x] Remove Contact location panel, move map link into Visit us and restore previous right-side information; verified at 1280/1138/390px, 41 tests pass and build OK.
 - [x] Widen About section introductions and tighten section spacing; verified single-line Mission introduction at 1280/1138px, natural wrapping at 390px and build OK.
+- [ ] Apply compact spacing across all pages and verify every product and news page for overflow and overlapping text.

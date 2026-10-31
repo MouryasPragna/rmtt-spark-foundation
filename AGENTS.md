@@ -14,6 +14,7 @@
 - Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
 - Use index.css and CSS Modules only; unused shadcn scaffolding is removed to keep the static site dependency surface minimal.
 - Define responsive title, section, small-heading and body tokens in index.css; apply the semantic hierarchy above module typography and share tokens with non-semantic titles and the Home carousel to keep content consistent without resizing compact navigation controls.
+- Share section-spacing and section-heading-gap tokens for regular content bands; preserve hero framing and readable article widths.
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
 - Mount one shared EnquiryFab outside route content linking to /contact so every page has the same right-side enquiry action; no quote buttons or add-to-quote selection exist.
