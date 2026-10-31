@@ -15,6 +15,7 @@
 - Use index.css and CSS Modules only; unused shadcn scaffolding is removed to keep the static site dependency surface minimal.
 - Define responsive title, section, small-heading and body tokens in index.css; apply the semantic hierarchy above module typography and share tokens with non-semantic titles and the Home carousel to keep content consistent without resizing compact navigation controls.
 - Share section-spacing and section-heading-gap tokens for regular content bands; preserve hero framing and readable article widths.
+- Render journey milestones once in a responsive chronological list; use semantic heading accent/rule tokens to keep the reference treatment themeable.
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
 - Mount one shared EnquiryFab outside route content linking to /contact so every page has the same right-side enquiry action; no quote buttons or add-to-quote selection exist.
