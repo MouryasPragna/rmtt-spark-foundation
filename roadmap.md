@@ -58,4 +58,4 @@
 - [x] Apply Airox text sizes and heading hierarchy throughout; verify 43 routes at desktop/mobile widths with no text overflow, 41 passing tests and enquiry navigation.
 - [x] Remove Our capability and What we deliver sections from About.
 - [x] Redesign Contact using the Airox contact reference; verify desktop/mobile layouts, validation and enquiry email draft; 41 tests pass.
-- [ ] Remove Contact location panel, move map link into Visit us and restore previous right-side information; verify desktop/mobile.
+- [x] Remove Contact location panel, move map link into Visit us and restore previous right-side information; verified at 1280/1138/390px, 41 tests pass and build OK.
