@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './Technology.module.css';
 import ZoomImage from '../components/ZoomImage';
+import ContentPending from '../components/ContentPending';
 import { equipment } from '../data/equipment';
 
 const processSteps = [
@@ -9,6 +10,35 @@ const processSteps = [
   { step: '02', title: 'Tool design & DFM', desc: 'Our engineers create the tool design optimised for your application. We apply Design for Manufacturability to balance performance and cost.' },
   { step: '03', title: 'Manufacturing', desc: 'Tool is manufactured on SAACKE grinding or VOLLMER EDM, with edge preparation and appropriate coating applied.' },
   { step: '04', title: 'Inspection & dispatch', desc: 'The facility includes Walter Helicheck measurement equipment.' },
+];
+
+// MAPAL services information pattern: titled service blocks, placeholders where no
+// approved commitment exists yet.
+const serviceBlocks = [
+  {
+    id: 'engineering',
+    title: 'Application engineering',
+    body: 'You share the part drawing, material, machine type and cycle requirements. We analyse and design the optimal tool geometry, applying Design for Manufacturability to balance performance and cost.',
+    pending: false,
+  },
+  {
+    id: 'custom',
+    title: 'Custom solutions',
+    body: 'Special machining tasks require special tools — custom tools are individually tailored to the customer’s requirements.',
+    pending: false,
+  },
+  {
+    id: 'reconditioning',
+    title: 'Regrinding & reconditioning',
+    body: '',
+    pending: true,
+  },
+  {
+    id: 'quote',
+    title: 'Quote & delivery',
+    body: '',
+    pending: true,
+  },
 ];
 
 export default function Technology() {
