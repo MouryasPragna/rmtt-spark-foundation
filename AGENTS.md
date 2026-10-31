@@ -9,7 +9,6 @@
 - Render unapproved capability or service claims through the shared ContentPending component instead of fabricating copy; pending blocks carry no invented body text.
 - The About page renders no founders or leadership content; founder material is not required for this site.
 - Share the industry options and icons through src/data/industries.ts across Home, Contact and catalogue filters; keep product industry assignments source-backed rather than inferred from company sectors.
-- Leadership profiles omit biographies, hide blank roles and render initials for missing portraits so approved names can appear without invented titles or images.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
 - Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.
 - Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
