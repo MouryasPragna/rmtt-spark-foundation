@@ -22,7 +22,7 @@
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.
 - Keep one focusable main landmark around route content and lazy-load all non-Home pages so navigation stays accessible and the initial bundle stays lean.
 - Use the shared carousel playback hook so every timer respects reduced motion, focus, touch and explicit pause.
-- Serve Source Sans 3 through Fontsource with swap, avoiding third-party font requests on static hosting.
+- Use system Arial for body text and the Rotis Sans Serif heading stack (`--font-heading`, Arial fallback) from index.css so typography matches the MAPAL reference without third-party font requests.
 - Allow the resolved dependency directory in Vite's development file serving so symlinked Fontsource assets load in the preview.
 - Keep news content in `src/data/news.ts` (supplied file, only `published` items render) with presentation helpers in `src/lib/news.ts`; regenerate `public/sitemap.xml` with `bun scripts/sitemap.ts` from `siteConfig.siteUrl` so held articles never leak into routes or the sitemap.
 - Generate `public/rss.xml` during both build modes from published news; share links use the configured public HashRouter article URL, and RSS omits unconfirmed publication dates so subscriptions never expose held posts or fabricated dates.
