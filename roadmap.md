@@ -48,3 +48,6 @@
 - [x] Remove "Add to quote" selection controls (cards, detail pages, navbar counter); plain "Request a quote" links to /contact remain.
 - [x] Remove image zoom (ZoomImage/Gallery lightbox) across all pages; images render plainly.
 - [x] Fix ContentPending required-prop type error (make `what` optional).
+
+- [ ] Give each tool category (family) its own page under /products/:category/:family in the MAPAL family-page pattern; competence pages link to them.
+- [ ] Investigate 5 console 404s and the contact form submit result in the browser check.
