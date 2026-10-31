@@ -56,3 +56,5 @@
 - [x] Replace quote buttons with a shared right-side floating Enquire now link on every page.
 - [x] Restrict file downloads to the Downloads page and verify enquiry navigation and desktop/mobile layouts; 41 tests pass.
 - [x] Apply Airox text sizes and heading hierarchy throughout; verify 43 routes at desktop/mobile widths with no text overflow, 41 passing tests and enquiry navigation.
+- [ ] Remove Our capability and What we deliver sections.
+- [ ] Redesign Contact using the Airox contact reference and verify desktop/mobile form flow.
