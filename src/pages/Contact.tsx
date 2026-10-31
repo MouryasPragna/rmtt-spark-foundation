@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Send, Upload } from 'lucide-react';
+import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
 import { industryNames } from '../data/industries';
-import { fieldLimits, rfqSchema, submitRfq, validateDrawing, type RfqForm, type RfqResult } from '../lib/rfq';
+import { fieldLimits, rfqSchema, submitRfq, type RfqForm, type RfqResult } from '../lib/rfq';
 
 const fields: { name: keyof typeof fieldLimits; label: string; required?: boolean; type?: string; placeholder?: string }[] = [
   { name: 'name', label: 'Full name', required: true, placeholder: 'Your full name' },
@@ -14,8 +14,6 @@ const fields: { name: keyof typeof fieldLimits; label: string; required?: boolea
   { name: 'toolType', label: 'Tool type required' },
   { name: 'industry', label: 'Industry' },
   { name: 'material', label: 'Component material', placeholder: 'Aluminium die casting, Grey CI…' },
-  { name: 'machine', label: 'Machine type', placeholder: 'VMC, HMC, SPM…' },
-  { name: 'qty', label: 'Quantity per month (components)', placeholder: 'e.g. 500 components' },
 ];
 const industryOptions = industryNames;
 const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', toolType: '', industry: '', material: '', machine: '', qty: '', description: '', website: '', consent: false };
@@ -23,8 +21,6 @@ const initialForm: RfqForm = { name: '', company: '', email: '', phone: '', tool
 export default function Contact() {
   const [form, setForm] = useState<RfqForm>(initialForm);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [drawing, setDrawing] = useState<File>();
-  const [fileError, setFileError] = useState<string>();
   const [submitError, setSubmitError] = useState('');
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<RfqResult>();
@@ -40,25 +36,23 @@ export default function Contact() {
     const parsed = rfqSchema.safeParse(form);
     const nextErrors: Record<string, string> = {};
     if (!parsed.success) parsed.error.issues.forEach(issue => { const key = String(issue.path[0]); if (!nextErrors[key]) nextErrors[key] = issue.message; });
-    const attachmentError = validateDrawing(drawing) || fileError;
     setErrors(nextErrors);
-    setFileError(attachmentError);
-    if (!parsed.success || attachmentError) {
+    if (!parsed.success) {
       requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
       return;
     }
     setSending(true);
     try {
-      const outcome = await submitRfq({ ...parsed.data, tools: [], drawing }, siteConfig.email);
+      const outcome = await submitRfq({ ...parsed.data, tools: [] }, siteConfig.email);
       setResult(outcome);
-      if (outcome === 'sent') { setForm(initialForm); setDrawing(undefined); setErrors({}); }
+      if (outcome === 'sent') { setForm(initialForm); setErrors({}); }
       requestAnimationFrame(() => document.getElementById('rfq-result')?.focus());
     }
     catch (error) { setSubmitError(error instanceof Error ? error.message : 'Your request could not be sent. Please contact us directly.'); }
     finally { setSending(false); }
   };
   return <div className={styles.main}>
-    <section className={styles.pageHero}><div className="container"><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Request a quote</h1><p className={styles.pageSubtitle}>Share your application details to request a technical proposal and pricing.</p></div></section>
+    <section className={styles.pageHero}><div className="container"><div className="section-eyebrow">Get in touch</div><h1 className={styles.pageTitle}>Contact us</h1><p className={styles.pageSubtitle}>Share your application details and tooling requirements with our team.</p></div></section>
     <section className={styles.contactSection}><div className="container"><div className={styles.contactGrid}>
       <div className={styles.formWrap}>
         <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
@@ -72,9 +66,6 @@ export default function Contact() {
             </div>)}
           </div>
           <div className={styles.formField}><label className={styles.label} htmlFor="description">Application description / challenges *</label><textarea id="description" name="description" required className={styles.textarea} maxLength={fieldLimits.description} placeholder="Describe the machining challenge, current tool and the problem you want to solve…" value={form.description} onChange={event => change('description', event.target.value)} onBlur={event => change('description', event.target.value.trim())} aria-invalid={!!errors.description} aria-describedby={errors.description ? 'description-error' : undefined} />{errors.description && <p id="description-error" role="alert" className={styles.error}>{errors.description}</p>}</div>
-          <div className={styles.drawingField}><label htmlFor="drawing" className={styles.uploadTitle}><Upload size={18} />Upload drawing (optional)</label><p id="drawing-help" className={styles.uploadSub}>PDF, DXF, DWG — up to 10 MB</p><input id="drawing" type="file" accept=".pdf,.dxf,.dwg" aria-invalid={!!fileError} aria-describedby={`drawing-help${fileError ? ' drawing-error' : ''}`} onChange={event => {
-            const file = event.target.files?.[0]; const error = validateDrawing(file); setFileError(error); setDrawing(error ? undefined : file); setSubmitError(''); if (error) event.target.value = '';
-          }} />{fileError && <p id="drawing-error" role="alert" className={styles.error}>{fileError}</p>}</div>
           {errors.website && <p role="alert" className={styles.error}>{errors.website}</p>}
           <p id="consent-help" className={styles.formNote}>By submitting this form you agree that RMTT may use your details to respond to your enquiry, as described in our <Link to="/privacy">privacy policy</Link>.</p>
           <div className={styles.consentField}>
@@ -88,10 +79,10 @@ export default function Contact() {
           {result && <div id="rfq-result" tabIndex={-1} role="status" className={styles.notice}>
             {result === 'sent'
               ? <><strong>Thank you. Your request has been sent.</strong> Our team will get back to you shortly.</>
-              : <><strong>Almost done: your email app should have opened with your request.</strong> Press Send there to submit it{drawing ? `, and attach your drawing (${drawing.name})` : ''}. If nothing opened, email <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or call <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>. Your request has not been sent until you do.</>}
+              : <><strong>Almost done: your email app should have opened with your request.</strong> Press Send there to submit it. If nothing opened, email <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or call <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>. Your request has not been sent until you do.</>}
           </div>}
           {submitError && <p role="alert" className={styles.submitError}>{submitError} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>}
-          <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Submit request'}</button>
+          <button type="submit" className={styles.submitBtn} disabled={sending}><Send size={16} />{sending ? 'Submitting…' : 'Enquire now'}</button>
         </form>
       </div>
             {/* Info sidebar */}
