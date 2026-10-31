@@ -17,6 +17,9 @@
   --type-title-leading: 60px;
   --type-title-spacing: 1.2px;
   --type-content-spacing: 0;
+  /* MAPAL typography: Rotis Sans Serif headings (licensed; Arial fallback), Arial body. */
+  --font-heading: 'Rotis Sans Serif W04', 'Rotis Sans Std', Arial, 'Helvetica Neue', sans-serif;
+  --font-body: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   /* Brand colors — Fraisa-inspired deep navy + steel blue */
   --navy: #002855;
   --navy-mid: #003B73;
@@ -83,7 +86,7 @@ html, body {
 
 
 body {
-  font-family: 'Source Sans 3 Variable', 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
   font-weight: var(--type-body-weight);
@@ -111,6 +114,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   font-weight: var(--type-heading-weight);
   line-height: var(--type-heading-leading);
   color: var(--navy);
