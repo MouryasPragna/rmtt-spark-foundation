@@ -47,10 +47,9 @@ export default function Contact() {
       requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
       return;
     }
-    setForm({ ...parsed.data, toolType });
     setSending(true);
     try {
-      const outcome = await submitRfq({ ...parsed.data, toolType, drawing }, siteConfig.email);
+      const outcome = await submitRfq({ ...parsed.data, tools: [], drawing }, siteConfig.email);
       setResult(outcome);
       if (outcome === 'sent') { setForm(initialForm); setDrawing(undefined); setErrors({}); }
       requestAnimationFrame(() => document.getElementById('rfq-result')?.focus());
