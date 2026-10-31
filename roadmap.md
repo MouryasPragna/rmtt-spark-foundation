@@ -44,3 +44,7 @@
 - [x] Restructure the site on the MAPAL reference pattern: products overview with solution areas, competence pages (intro, featured example, key capabilities, product families), services blocks; catalogue kept as the secondary browse view.
 - [x] Remove the founders' note and leadership section from About; delete the leadership data and its test.
 - [ ] Client: approve or supply the pending capability/service items now flagged by ContentPending (solid-carbide reconditioning, PCD Ra 0.2 unit, coating programme, regrinding service, quote & delivery commitments).
+
+- [ ] Remove "Add to quote" selection controls (cards, detail pages, navbar counter); plain "Request a quote" links to /contact remain.
+- [ ] Remove image zoom (ZoomImage/Gallery lightbox) across all pages; images render plainly.
+- [ ] Fix ContentPending required-prop type error (make `what` optional).
