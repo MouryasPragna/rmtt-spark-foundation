@@ -20,6 +20,7 @@ export default function Footer() {
                 <li><Link to="/products/solid-carbide">Solid Carbide Tools</Link></li>
                 <li><Link to="/products/pcd">PCD Tools</Link></li>
                 <li><Link to="/products/brazed">Brazed Carbide Tools</Link></li>
+                <li><Link to="/products/specialized">Specialized Solutions</Link></li>
                 <li><Link to="/products">All products</Link></li>
               </ul>
             </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2 } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Sparkles, Car, Zap, Droplets, CircleCheck as CheckCircle2 } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
@@ -15,6 +15,7 @@ import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
+import specialTool from '../assets/brazed-tool-8.png.asset.json';
 import { getLatestNews } from '../data/news';
 const latestNews = getLatestNews(3);
 import NewsCard from '../components/NewsCard';
@@ -57,6 +58,18 @@ const products = [
     color: 'var(--cat-brazed)',
     bg: 'var(--cat-brazed-bg)',
     image: brazedTool1.url,
+  },
+  {
+    id: 'specialized',
+    icon: Sparkles,
+    category: 'Specialized Solutions',
+    name: 'Special & Combination Tools',
+    description:
+      'Application-engineered special, form and combination tools manufactured to customer-specific requirements.',
+    imageAlt: 'Special carbide tool with a long cylindrical body',
+    color: 'var(--cat-specialized)',
+    bg: 'var(--cat-specialized-bg)',
+    image: specialTool.url,
   },
 ];
 

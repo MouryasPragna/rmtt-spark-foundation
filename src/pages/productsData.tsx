@@ -1,9 +1,10 @@
 import { products, type Product } from '../data/products';
-import { Settings, Gem, Layers } from 'lucide-react';
+import { Settings, Gem, Layers, Sparkles } from 'lucide-react';
 import solidCarbideOverview from '../assets/home-solid-endmill.webp.asset.json';
 import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
 import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers.jpg.asset.json';
+import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
 
 export type SubCategory = {
   id: string;
@@ -35,7 +36,7 @@ export type FeaturedExample = {
 };
 
 export type Category = {
-  id: 'solid-carbide' | 'pcd' | 'brazed';
+  id: 'solid-carbide' | 'pcd' | 'brazed' | 'specialized';
   icon: typeof Settings;
   color: string;
   bg: string;
@@ -241,7 +242,7 @@ export const categories: Category[] = [
     color: 'var(--cat-brazed)',
     bg: 'var(--cat-brazed-bg)',
     label: 'Brazed Carbide',
-    headline: 'Brazed Carbide Tools & Special Solutions',
+    headline: 'Brazed Carbide Tools',
     intro:
       'Brazed carbide-tipped tools offer a cost-conscious alternative amid high carbide raw-material costs, with performance comparable to solid carbide for the intended application.',
     intro2:
@@ -253,7 +254,6 @@ export const categories: Category[] = [
       'Carbide tips brazed into prepared pockets',
       'Cutting edges ground on 5-axis CNC equipment',
       'Manufactured to customer-specific requirements',
-      'Stepped special tools and form tools',
       'T-slot milling cutters',
       'Reamers with internal coolant and PVD coating',
       'Lugged carbide drills and reamers with internal coolant',
@@ -278,12 +278,6 @@ export const categories: Category[] = [
         title: 'Ground in one setup',
         body:
           'Cutting edges are ground on 5-axis CNC tool-grinding machines to achieve the required geometries in a single setup.',
-      },
-      {
-        id: 'special',
-        title: 'Stepped and form tools',
-        body:
-          'Stepped special tools, form tools and multi-grooving solutions are manufactured to customer-specific component requirements.',
       },
       {
         id: 'coolant',
@@ -313,12 +307,70 @@ export const categories: Category[] = [
           'Brazed carbide drilling and reaming tools, including internal-coolant options and application-specific geometries.',
         products: products.filter(product => product.subcategory === 'bc-reamers'),
       },
+    ],
+  },
+  {
+    id: 'specialized',
+    icon: Sparkles,
+    color: 'var(--cat-specialized)',
+    bg: 'var(--cat-specialized-bg)',
+    label: 'Specialized Solutions',
+    headline: 'Specialized Solutions & Custom Tooling',
+    intro:
+      'Application-engineered special tools manufactured to customer-specific component and process requirements.',
+    intro2:
+      'Combination tools consolidate multiple machining operations into a single tool to reduce tool changes and production cost; form and stepped tools are purpose-designed around the required profile and machining sequence.',
+    image: specializedOverview.url,
+    imageAlt: 'Special carbide tool — example from the Specialized Solutions range',
+    features: [
+      'Combination tools consolidating multiple operations',
+      'Purpose-designed PCD and carbide form tools',
+      'Stepped special tools matched to the machining sequence',
+      'Manufactured to customer-specific requirements',
+      'PCD and brazed carbide constructions',
+      'Engineered from the component, material and production requirements',
+    ],
+    featured: {
+      title: 'Special Carbide Tools',
+      blurb:
+        'Application-engineered special tools manufactured to customer-specific requirements — from stepped and form tools to combination tooling that consolidates several machining operations into one tool.',
+      image: specializedOverview.url,
+      imageAlt: 'Special carbide tool — example from the Specialized Solutions range',
+      href: '/products/specialized/special-solutions',
+    },
+    capabilities: [
       {
-        id: 'bc-special',
-        title: 'Stepped & Form Tools',
+        id: 'combined',
+        title: 'Combined operations',
+        body:
+          'Combination tooling can consolidate multiple machining operations into one tool to reduce tool changes and production cost.',
+      },
+      {
+        id: 'form',
+        title: 'Form and stepped tools',
+        body:
+          'Purpose-designed form geometry and stepped tools are manufactured to suit the required profile and machining sequence.',
+      },
+      {
+        id: 'custom',
+        title: 'Engineered to the component',
+        body:
+          'Special machining tasks are engineered individually from the customer’s component, material and production requirements.',
+      },
+      {
+        id: 'constructions',
+        title: 'PCD and brazed carbide constructions',
+        body:
+          'Special solutions are built as PCD tools for high-speed aluminium machining or as brazed carbide tools on heat-treated tool-steel bodies.',
+      },
+    ],
+    subcategories: [
+      {
+        id: 'special-solutions',
+        title: 'Special & Combination Tools',
         blurb:
-          'Special and form tools are designed around customer-specific component requirements.',
-        products: products.filter(product => product.subcategory === 'bc-special'),
+          'Custom PCD and carbide special tools — combination, form and stepped tools designed around the component and its production requirements.',
+        products: products.filter(product => product.subcategory === 'special-solutions'),
       },
     ],
   },
