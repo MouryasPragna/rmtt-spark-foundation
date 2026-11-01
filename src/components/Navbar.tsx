@@ -113,7 +113,7 @@ export default function Navbar() {
                     <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark">
                       {link.dropdown.map(opt => (
                         <div key={opt.href} className={styles.dropdownGroup}>
-                          {opt.families.length > 0 ? <button type="button" className={styles.dropdownItem} onClick={() => toggleCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`desktop-families-${opt.href.split('/').pop()}`}>
+                          {opt.families.length > 0 ? <button type="button" className={styles.dropdownItem} onClick={() => openCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`desktop-families-${opt.href.split('/').pop()}`}>
                             <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
                           </button> : <Link to={opt.href} className={styles.dropdownItem}>
                             <span>{menuLabel(opt)}</span><ChevronRight size={16} aria-hidden="true" />
