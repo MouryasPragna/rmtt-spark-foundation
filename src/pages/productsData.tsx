@@ -1,9 +1,9 @@
 import { products, type Product } from '../data/products';
 import { Settings, Gem, Layers, Sparkles } from 'lucide-react';
-import solidCarbideOverview from '../assets/home-solid-endmill.webp.asset.json';
+import solidCarbideOverview from '../assets/solid-carbide-end-mills-range.webp.asset.json';
 import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
 import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
-import solidCarbideReamers from '../assets/solid-carbide-reamers.jpg.asset.json';
+import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
 
 export type SubCategory = {
@@ -128,21 +128,21 @@ export const categories: Category[] = [
         id: 'sc-end-mills',
         title: 'End Mills',
         blurb:
-          'Reliable, productive and cost-effective milling tools for slot and shoulder milling, grooving, chamfering, roughing, finishing, high-feed and 3D profile milling. Suitable materials include nodular cast iron, Inconel, titanium, stainless steel, PH steels and aerospace aluminium alloys.',
+          'Precision milling. Consistent performance.',
         products: products.filter(product => product.subcategory === 'sc-end-mills'),
       },
       {
         id: 'sc-reamers',
         title: 'Reamers',
         blurb:
-          'Full-carbide reamers for precision bores and critical geometric accuracy in automotive, aerospace and other demanding applications.',
+          'Precision reaming for demanding materials.',
         products: products.filter(product => product.subcategory === 'sc-reamers'),
       },
       {
         id: 'sc-drills',
         title: 'Drills & Step Drills',
         blurb:
-          'Solid carbide drilling solutions with smooth polished flutes and cutting edges honed to match the application.',
+          'Precision drilling for demanding materials.',
         products: products.filter(product => product.subcategory === 'sc-drills'),
       },
     ],
