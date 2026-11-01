@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';

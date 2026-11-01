@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Pause, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2 } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
