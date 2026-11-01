@@ -114,12 +114,7 @@
   }
   .vignette { display: none; }
   .textBlock { max-width: 100%; }
-  .controls {
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-  }
+  .controls { position: static; transform: none; width: 100%; justify-content: center; }
 }
 
 /* ── TEXT BLOCK ── */
@@ -221,16 +216,18 @@
   .ctaRow { flex-direction: column; }
 }
 
-/* ── COUNTER + DOTS ── */
+/* ── DOTS — simple circles, centred below the slide ── */
 .controls {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
   pointer-events: all;
-  background: rgba(255,255,255,0.92);
-  padding: 12px 14px;
-  border-radius: 2px;
+  background: transparent;
+  padding: 0;
 }
 
 .counter {
@@ -266,14 +263,14 @@
 }
 
 .dot {
-  width: 20px;
-  height: 4px;
-  border-radius: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   border: none;
   background: #D0DCF0;
   padding: 0;
   cursor: pointer;
-  transition: background 0.2s, width 0.2s;
+  transition: background 0.2s;
 }
 
 .dot:hover {
@@ -282,7 +279,6 @@
 
 .dotActive {
   background: #4A7BA7;
-  width: 36px;
 }
 
 /* 3. PROGRESS BAR — hidden */
@@ -333,19 +329,16 @@
   .textShow, .textHide { animation: none; opacity: 1; transform: none; }
   .bgEnterNext, .bgEnterPrev { animation: none; }
 }
-/* Preserve the narrow dot graphic inside a generously sized hit area. */
+/* Preserve the small dot graphic inside a generously sized hit area. */
 .dot { width: 24px; height: 24px; min-width: 24px; padding: 0; background: transparent; position: relative; }
-.dot::after { content: ''; display: block; width: 20px; height: 4px; margin: auto; border-radius: var(--radius-sm); background: var(--border); }
+.dot::after { content: ''; display: block; width: 10px; height: 10px; margin: auto; border-radius: 50%; background: var(--border); }
 .dotActive, .dot:hover { background: transparent; }
-.dotActive { width: 40px; }
-.dotActive::after { background: var(--steel); width: 36px; }
+.dotActive::after { background: var(--steel); }
 @media (max-width: 768px) {
   .title { font-size: var(--type-title-size); }
   .contentWrap { padding-bottom: 20px; }
   .textBlock { max-width: 100%; padding-right: 44px; }
   :global(#main-content) .title { padding-bottom: 7px; }
-  .controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
-  .dots { gap: 0; }
 }
 @media (max-width: 600px) { .showcase { margin-top: 64px; } }
 
@@ -360,10 +353,7 @@
 /* Minimal, text-free controls */
 .controls { background: transparent; padding: 0; gap: 10px; align-items: center; }
 .dots { gap: 2px; }
-.dot::after { height: 3px; background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: height 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), background 0.4s ease; }
+.dot::after { background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: background 0.4s ease; }
 .dot:hover::after { background: rgba(255,255,255,0.9); }
 .dotActive::after { background: var(--white); }
-@media (max-width: 768px) {
-  .controls { justify-content: flex-start; width: auto; }
-}
 @media (prefers-reduced-motion: reduce) { .dot::after { transition: none; } }
