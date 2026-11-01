@@ -45,9 +45,11 @@
   --cat-solid: #002855;
   --cat-pcd: #3D6FA0;
   --cat-brazed: #4A6786;
+  --cat-specialized: #3A6B5E;
   --cat-solid-bg: #E6EDF4;
   --cat-pcd-bg: #EAF0F6;
   --cat-brazed-bg: #EBEFF3;
+  --cat-specialized-bg: #E8F0ED;
 
   /* Neutrals */
   --dark: #001E40;
