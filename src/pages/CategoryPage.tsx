@@ -3,7 +3,6 @@ import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
-import Gallery from '../components/Gallery';
 import ContentPending from '../components/ContentPending';
 import PageHero from '../components/PageHero';
 
