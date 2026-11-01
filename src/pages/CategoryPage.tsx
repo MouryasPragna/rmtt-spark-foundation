@@ -7,8 +7,8 @@ import ContentPending from '../components/ContentPending';
 import PageHero from '../components/PageHero';
 
 /**
- * Competence page in the MAPAL information pattern: hero intro, featured example
- * highlight, key capability blocks, then product-family sections with the actual tools.
+ * Competence page in the MAPAL information pattern: hero intro, product-family
+ * brief cards, key capability blocks, then product-family sections with the actual tools.
  */
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();

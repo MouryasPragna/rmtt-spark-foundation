@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown, ChevronRight } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { siteConfig } from '../lib/siteConfig';
@@ -58,7 +58,11 @@ export default function Navbar() {
     return () => document.removeEventListener('pointerdown', closeOutside);
   }, [productsOpen]);
 
-  const toggleCategory = (href: string) => setExpandedCategory(value => value === href ? null : href);
+  // Clicking a product group opens its page and expands its families in the menu.
+  const openCategory = (href: string) => {
+    setExpandedCategory(value => value === href ? null : href);
+    navigate(href);
+  };
   const menuLabel = (option: typeof productOptions[number]) => option.href === '/products/brazed' ? 'Brazed Tools' : option.label;
 
   return (
