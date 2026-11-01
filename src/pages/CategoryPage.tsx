@@ -119,28 +119,6 @@ export default function CategoryPage() {
         </div>
       </section>
 
-      {/* Product families — each on its own page */}
-      <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
-        <div className="container">
-          <div className={`section-heading ${styles.sectionHeadRow}`}>
-            <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
-            <p className={styles.sectionHeadSub}>Each tool category has its own page with the tools in that programme.</p>
-          </div>
-          <div className={styles.familiesGrid}>
-            {cat.subcategories.map(sub => (
-              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={styles.familyCard}>
-                <h3 className={styles.familyTitle}>{sub.title}</h3>
-                <p className={styles.familyBlurb}>{sub.blurb}</p>
-                <span className={styles.solutionLink} style={{ color: cat.color }}>
-                  View the family <ArrowRight size={15} aria-hidden="true" />
-                </span>
-              </Link>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
       <section className={styles.bottomCta}>
         <div className="container">
           <h2 className={styles.ctaTitle}>Don't see what you need?</h2>
