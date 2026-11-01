@@ -114,12 +114,6 @@
   }
   .vignette { display: none; }
   .textBlock { max-width: 100%; }
-  .controls {
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-  }
 }
 
 /* ── TEXT BLOCK ── */
@@ -221,16 +215,18 @@
   .ctaRow { flex-direction: column; }
 }
 
-/* ── COUNTER + DOTS ── */
+/* ── DOTS — simple circles, centred below the slide ── */
 .controls {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
   pointer-events: all;
-  background: rgba(255,255,255,0.92);
-  padding: 12px 14px;
-  border-radius: 2px;
+  background: transparent;
+  padding: 0;
 }
 
 .counter {
