@@ -6,6 +6,7 @@
 - Use the shared NotFound page for unmatched application and catalogue routes so recovery links and page titles agree.
 - Use the inherited `--focus-outline` token or `data-focus-surface` for dark focus contexts so CSS Modules share one focus-ring rule.
 - Product pages follow the MAPAL reference information pattern — competence hero intro, featured example highlight, key capability blocks and product-family sections — with exactly four solution areas on the /products overview (Solid Carbide with End Mills/Reamers/Drills families, PCD Tools, Brazed Carbide Tools, Specialized Solutions); no all-products catalogue view exists, structure lives in src/pages/productsData.tsx.
+- Derive Products overview navigation and navbar product options from the shared category definitions so the reference-style divided lists cannot omit a solution area.
 - Render unapproved capability or service claims through the shared ContentPending component instead of fabricating copy; pending blocks carry no invented body text.
 - The About page renders no founders or leadership content; founder material is not required for this site.
 - Share the industry options and icons through src/data/industries.ts across Home, Contact and catalogue filters; keep product industry assignments source-backed rather than inferred from company sectors.

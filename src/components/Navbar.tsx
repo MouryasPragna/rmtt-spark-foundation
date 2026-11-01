@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, ChevronDown, ChevronRight } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { siteConfig } from '../lib/siteConfig';
+import { categories } from '../pages/productsData';
 
-const productOptions = [
-  { label: 'Solid Carbide', href: '/products/solid-carbide' },
-  { label: 'PCD', href: '/products/pcd' },
-  { label: 'Brazed Carbide', href: '/products/brazed' },
-];
+const productOptions = categories.map(area => ({
+  label: area.id === 'brazed' ? 'Brazed Carbide Tools' : area.label,
+  href: `/products/${area.id}`,
+}));
 
 const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOptions }> = [
   { label: 'Home', href: '/' },
@@ -109,11 +109,10 @@ export default function Navbar() {
                     <ChevronDown size={14} style={{ marginLeft: 4, verticalAlign: 'middle' }} />
                   </button>
                   {productsOpen && (
-                    <div id="products-dropdown" className={styles.dropdown} onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
-                      <Link to="/products" className={styles.dropdownItem}>All products</Link>
+                    <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark" onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
                       {link.dropdown.map(opt => (
                         <Link key={opt.href} to={opt.href} className={styles.dropdownItem}>
-                          {opt.label}
+                          <span>{opt.label}</span><ChevronRight size={16} aria-hidden="true" />
                         </Link>
                       ))}
                     </div>

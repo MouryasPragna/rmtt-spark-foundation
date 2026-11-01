@@ -1,7 +1,7 @@
 import PageHero from '../components/PageHero';
 import heroPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { categories } from './productsData';
 import styles from './Products.module.css';
 
@@ -23,22 +23,33 @@ export default function Products() {
         <h2 id="solutions-heading" className={styles.catTitle}>Solution areas</h2>
         <p className={styles.sectionHeadSub}>Four tool technologies, one manufacturing standard — choose a competence to explore its programme.</p>
       </div>
-      <div className={styles.solutionsGrid}>
-        {categories.map(area => (
-          <Link key={area.id} to={`/products/${area.id}`} className={styles.solutionCard}>
-            <div className={styles.solutionCardImg}>
-              <img src={area.image} alt={area.imageAlt} width={640} height={420} loading="lazy" />
-              <span className={styles.solutionLabel} style={{ color: area.color }}>{area.label}</span>
+      <div className={styles.productsLayout}>
+        <nav className={styles.solutionNav} aria-label="Product solution areas" data-focus-surface="dark">
+          {categories.map(area => (
+            <div key={area.id} className={styles.solutionNavGroup}>
+              <Link to={`/products/${area.id}`} className={styles.solutionNavLink}>
+                <span>{area.id === 'brazed' ? 'Brazed Carbide Tools' : area.label}</span>
+                <ChevronRight size={18} aria-hidden="true" />
+              </Link>
+              {area.id === 'solid-carbide' && <div className={styles.solutionNavFamilies}>
+                {area.subcategories.map(family => <Link key={family.id} to={`/products/${area.id}/${family.id}`} className={styles.solutionNavFamily}>
+                  <span>{family.id === 'sc-end-mills' ? 'End Milling' : family.id === 'sc-drills' ? 'Drills' : family.title}</span>
+                  <ChevronRight size={16} aria-hidden="true" />
+                </Link>)}
+              </div>}
             </div>
-            <div className={styles.solutionCardBody}>
-              <h3 className={styles.solutionTitle}>{area.headline}</h3>
-              <p className={styles.solutionBlurb}>{area.intro}</p>
-              <span className={styles.solutionLink} style={{ color: area.color }}>
-                Explore <ArrowRight size={16} aria-hidden="true" />
-              </span>
+          ))}
+        </nav>
+        <div className={styles.solutionTiles}>
+        {categories.map(area => (
+          <Link key={area.id} to={`/products/${area.id}`} className={styles.solutionTile}>
+            <h3 className={styles.solutionTileTitle}>{area.id === 'brazed' ? 'Brazed Carbide Tools' : area.label}<ChevronRight size={18} aria-hidden="true" /></h3>
+            <div className={styles.solutionTileImage}>
+              <img src={area.image} alt={area.imageAlt} width={640} height={420} loading="lazy" />
             </div>
           </Link>
         ))}
+        </div>
       </div>
     </div></section>
   </div>;

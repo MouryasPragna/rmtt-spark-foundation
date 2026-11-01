@@ -505,3 +505,23 @@
 .familyTitle { font-size: 18px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3; }
 .familyBlurb { font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin: 0; flex: 1; }
 @media (max-width: 900px) { .familiesGrid { grid-template-columns: 1fr; } }
+
+/* Compact reference navigation with matching, uncropped tool examples. */
+.productsLayout { display: grid; grid-template-columns: minmax(250px, 320px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.solutionNav { background: var(--navy-mid); color: var(--white); padding: 12px 20px; }
+.solutionNavGroup + .solutionNavGroup { border-top: 1px solid var(--on-dark-muted); }
+.solutionNavLink, .solutionNavFamily { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--white); min-height: 52px; padding: 12px 0; line-height: 24px; }
+.solutionNavLink { font-weight: 600; }
+.solutionNavLink svg, .solutionNavFamily svg { flex-shrink: 0; }
+.solutionNavLink:hover, .solutionNavFamily:hover { text-decoration: underline; text-underline-offset: 4px; }
+.solutionNavFamilies { padding: 0 0 10px 16px; }
+.solutionNavFamily { min-height: 44px; padding: 8px 0; border-top: 1px solid var(--accent); }
+.solutionTiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.solutionTile { min-width: 0; border: 1px solid var(--border-light); border-top: 3px solid var(--navy-mid); background: var(--white); }
+.solutionTile:hover { border-color: var(--navy-mid); }
+.solutionTileTitle { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px 0; margin: 0; color: var(--navy); overflow-wrap: anywhere; }
+.solutionTileTitle svg { flex-shrink: 0; }
+.solutionTileImage { height: 220px; padding: 16px; }
+.solutionTileImage img { width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 900px) { .productsLayout { grid-template-columns: 1fr; gap: 24px; } }
+@media (max-width: 600px) { .solutionTiles { grid-template-columns: 1fr; gap: 16px; } .solutionTileImage { height: 240px; } }

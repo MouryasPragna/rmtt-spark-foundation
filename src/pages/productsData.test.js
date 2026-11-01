@@ -2,6 +2,13 @@ import { describe, expect, test } from 'bun:test';
 import { categories } from './productsData';
 
 describe('MAPAL-pattern competence data', () => {
+  test('the overview has exactly the four approved solution groups', () => {
+    expect(categories.map(category => category.id)).toEqual(['solid-carbide', 'pcd', 'brazed', 'specialized']);
+  });
+  test('Solid Carbide contains End Milling, Reamers and Drills families', () => {
+    expect(categories.find(category => category.id === 'solid-carbide')?.subcategories.map(family => family.id))
+      .toEqual(['sc-end-mills', 'sc-reamers', 'sc-drills']);
+  });
   test('every category defines the competence pattern: intro, featured example, capability blocks and families', () => {
     for (const cat of categories) {
       expect(cat.intro.length).toBeGreaterThan(0);
