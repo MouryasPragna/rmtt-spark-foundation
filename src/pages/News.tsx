@@ -1,3 +1,5 @@
+import PageHero from '../components/PageHero';
+import heroPhoto from '../assets/factory-hero-floor.jpg.asset.json';
 import { useMemo, useState } from 'react';
 import { Rss, Search } from 'lucide-react';
 import { rssUrl } from '../lib/newsSharing';
@@ -23,9 +25,9 @@ export default function News() {
 
   return (
     <div className={productStyles.main}>
-      <section className={productStyles.pageHero}>
+      <PageHero image={heroPhoto.url} alt="RMTT manufacturing facility">
         <div className={`container ${styles.newsHeader}`}><h1 className={productStyles.pageTitle}>News &amp; Articles</h1><a href={rssUrl} className={styles.allLink} target="_blank" rel="noopener noreferrer" aria-label="RSS feed (opens in a new tab)"><Rss size={20} aria-hidden="true" /> RSS feed</a></div>
-      </section>
+      </PageHero>
       <section className={styles.section}>
         <div className="container">
           {publishedNews.length > 0 ? <>

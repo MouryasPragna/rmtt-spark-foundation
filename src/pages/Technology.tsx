@@ -1,3 +1,4 @@
+import PageHero from '../components/PageHero';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './Technology.module.css';
@@ -16,7 +17,7 @@ const processSteps = [
 export default function Technology() {
   return (
     <div className={styles.main}>
-      <section className={styles.pageHero}>
+      <PageHero image="images/hero/inspection.webp" alt="Precision cutting tool in RMTT inspection equipment">
         <div className="container">
           <div className="section-eyebrow">Our capabilities</div>
           <h1 className={styles.pageTitle}>Technology & services</h1>
@@ -24,39 +25,7 @@ export default function Technology() {
             The Bengaluru facility includes SAACKE grinding, VOLLMER Wire EDM and Walter Helicheck measurement equipment — supporting customers from application analysis to dispatch.
           </p>
         </div>
-      </section>
-
-      {/* Machines */}
-      <section className={styles.machinesSection}>
-        <div className="container">
-          <div className={styles.machinesGrid}>
-            {equipment.map(m => (
-              <article key={m.num} className={`${styles.machineCard} ${m.image ? '' : styles.machineCardText}`}>
-                {m.image && (
-                  <div className={styles.machineImg}>
-                    <ZoomImage src={m.image} alt={m.imageAlt} width={1000} height={700} />
-                  </div>
-                )}
-                <div className={styles.machineBody}>
-                  <h2 className={styles.machineName}>{m.name}</h2>
-                  <p className={styles.machineDetail}>{m.detail}</p>
-                  {m.uses && (
-                    <ul className={styles.machineSpecs}>
-                      {m.uses.map(u => (
-                        <li key={u} className={styles.machineSpec}>
-                          <Check size={15} className={styles.specIcon} aria-hidden="true" />
-                          {u}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* Services — MAPAL information pattern with pending-evidence placeholders */}
       <section className={styles.servicesSection} aria-labelledby="services-heading">
@@ -110,6 +79,39 @@ export default function Technology() {
           </Link>
         </div>
       </section>
+      {/* Machines */}
+      <section className={styles.machinesSection}>
+        <div className="container">
+          <h2 className="section-heading-title">Equipment</h2>
+          <div className={styles.machinesGrid}>
+            {equipment.map(m => (
+              <article key={m.num} className={`${styles.machineCard} ${m.image ? '' : styles.machineCardText}`}>
+                {m.image && (
+                  <div className={styles.machineImg}>
+                    <ZoomImage src={m.image} alt={m.imageAlt} width={1000} height={700} />
+                  </div>
+                )}
+                <div className={styles.machineBody}>
+                  <h2 className={styles.machineName}>{m.name}</h2>
+                  <p className={styles.machineDetail}>{m.detail}</p>
+                  {m.uses && (
+                    <ul className={styles.machineSpecs}>
+                      {m.uses.map(u => (
+                        <li key={u} className={styles.machineSpec}>
+                          <Check size={15} className={styles.specIcon} aria-hidden="true" />
+                          {u}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

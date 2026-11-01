@@ -1,3 +1,5 @@
+import PageHero from '../components/PageHero';
+import heroPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import { useEffect } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Search, X, ArrowRight, Wrench } from 'lucide-react';
@@ -63,7 +65,7 @@ export default function Products() {
     });
   };
   return <div className={styles.main}>
-    <section className={styles.pageHero}><div className="container">
+    <PageHero image={heroPhoto.url} alt="RMTT precision tooling and manufacturing facility"><div className="container">
       <div className="section-eyebrow">Products & solutions</div>
       <h1 className={styles.pageTitle}>Tools and process solutions</h1>
       <p className={styles.pageSubtitle}>
@@ -72,7 +74,7 @@ export default function Products() {
         by application engineering and manufacturing technology, customers receive a complete
         package for the machining process.
       </p>
-    </div></section>
+    </div></PageHero>
     <section className={styles.solutionsSection} aria-labelledby="solutions-heading"><div className="container">
       <div className={`section-heading ${styles.sectionHeadRow}`}>
         <h2 id="solutions-heading" className={styles.catTitle}>Solution areas</h2>

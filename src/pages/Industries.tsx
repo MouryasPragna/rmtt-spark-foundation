@@ -1,3 +1,5 @@
+import PageHero from '../components/PageHero';
+import heroPhoto from '../assets/factory-hero-machining.jpg.asset.json';
 import { Link } from 'react-router-dom';
 import { Car, Zap, Droplets, Plane, Cpu, CircleCheck as CheckCircle2, ArrowRight, TrendingUp, Clock, Target } from 'lucide-react';
 import styles from './Industries.module.css';
@@ -117,7 +119,7 @@ const caseStudies = [
 export default function Industries() {
   return (
     <div className={styles.main}>
-      <section className={styles.pageHero}>
+      <PageHero image={heroPhoto.url} alt="Precision tool machining at the RMTT facility">
         <div className="container">
           <div className="section-eyebrow">Proven results</div>
           <h1 className={styles.pageTitle}>Application case studies</h1>
@@ -125,7 +127,7 @@ export default function Industries() {
             Real machining challenges solved with engineered tooling solutions. Every case study represents a problem we solved with a custom-designed tool.
           </p>
         </div>
-      </section>
+      </PageHero>
 
       <section className={styles.casesSection}>
         <div className="container">

@@ -63,3 +63,5 @@
 - [x] Apply compact spacing across all pages; checked all 53 routes at 1280/1138/390px with no text overflow, overlap checks passed, 41 tests pass and build OK.
 - [x] Redesign the About journey section with the supplied centered heading style and compact milestone rows; verified all five milestones at 1648/1138/390px, no horizontal overflow and build OK.
 - [x] Extend the reference heading treatment across all pages; verified 47 linked routes at 1280/1198/390px, 291 heading instances without overflow, 41 passing tests and build OK.
+- [x] Add related image heroes across pages while retaining the Home and Contact heroes; checked 54 image-banner routes at desktop/mobile widths with loaded images and no horizontal overflow.
+- [x] Move Services equipment details to the last section and verify page layouts; all 41 tests pass.

@@ -1,3 +1,4 @@
+import PageHero from '../components/PageHero';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide-react';
@@ -68,66 +69,13 @@ export default function About() {
   const [facilityPhotoUnavailable, setFacilityPhotoUnavailable] = useState(false);
   return (
     <div className={styles.main}>
-      {/* ── ABOUT HERO — MAPAL split style ── */}
-<section className={styles.pageHero}>
-  <div className={styles.pageHeroGrid}>
-
-    {/* LEFT — text */}
-    <div className={styles.pageHeroLeft}>
-      <div className="section-eyebrow">
-        Who we are
-      </div>
-
-      <h1 className={styles.pageTitle}>
-        Riddhi Machine<br />Tool Technology
-      </h1>
-
-      <p className={styles.heroTagline}>Transforming raw materials into finer tools</p>
-      <p className={styles.pageSubtitle}>
-        Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting
-        tools manufacturer delivering solid carbide and PCD solutions through advanced
-        and innovative technologies.
-      </p>
-      <p className={styles.pageSubtitleSecond}>
-        The company designs and manufactures using state-of-the-art CNC, 5-axis SAACKE
-        grinding, and VOLLMER Wire EDM machines, serving the automotive, aerospace, and
-        precision engineering industries, aligned with the vision of{' '}
-        <strong>"Make in India."</strong>
-      </p>
-
-      {/* Key facts strip */}
-      <div className={styles.heroFacts}>
-        <div className={styles.heroFact}>
-          <div className={styles.heroFactVal}>5-axis</div>
-          <div className={styles.heroFactLbl}>SAACKE grinding</div>
-        </div>
-        <div className={styles.heroFactDivider} />
-        <div className={styles.heroFact}>
-          <div className={styles.heroFactVal}>PCD + SC</div>
-          <div className={styles.heroFactLbl}>Tool technologies</div>
-        </div>
-        <div className={styles.heroFactDivider} />
-        <div className={styles.heroFact}>
-          <div className={styles.heroFactVal}>Bengaluru</div>
-          <div className={styles.heroFactLbl}>Made in India</div>
-        </div>
-      </div>
-    </div>
-
-    {/* RIGHT — image in contained square */}
-<div className={styles.pageHeroRight} style={{ position: 'relative' }}>
-  <img
-    src={`${import.meta.env.BASE_URL}0.jpg`}
-    alt="RMTT SAACKE CNC grinding machine in operation"
-    width={2420} height={3226} loading="lazy" className={styles.pageHeroImg}
-  />
-  <div className={styles.pageHeroBadge}>
-    <img src={`${import.meta.env.BASE_URL}2.png`} alt="Make in India" width={1500} height={704} loading="lazy" className={styles.makeInIndiaImg} />
-  </div>
-</div>
-
-  </div>
-</section>
+      <PageHero image={factoryCollage.url} alt="RMTT precision tool manufacturing facility">
+        <div className="section-eyebrow">Who we are</div>
+        <h1>Riddhi Machine Tool Technology</h1>
+        <p className={styles.heroTagline}>Transforming raw materials into finer tools</p>
+        <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies.</p>
+        <p>The company designs and manufactures using state-of-the-art CNC, 5-axis SAACKE grinding, and VOLLMER Wire EDM machines, serving the automotive, aerospace, and precision engineering industries, aligned with the vision of <strong>"Make in India."</strong></p>
+      </PageHero>
 
       <JourneyTimeline />
       {/* Mission & Vision */}
