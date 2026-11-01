@@ -30,7 +30,7 @@ import model00229 from '../assets/final-brazed-17.webp.asset.json';
 import model00227 from '../assets/final-brazed-19.webp.asset.json';
 import model006301 from '../assets/final-brazed-21.webp.asset.json';
 
-export type ProductCategory = 'solid-carbide' | 'pcd' | 'brazed';
+export type ProductCategory = 'solid-carbide' | 'pcd' | 'brazed' | 'specialized';
 export type Product = {
   slug: string;
   name: string;
@@ -192,8 +192,8 @@ export const products: Product[] = [
           },
 {
     slug: 'pcd-special-tool',
-    category: 'pcd',
-    subcategory: 'pcd-milling',
+    category: 'specialized',
+    subcategory: 'special-solutions',
     materials: ['aluminium'],
     industries: ['Automotive', 'Aerospace'],
             name: 'PCD Special Tool',
@@ -203,8 +203,8 @@ export const products: Product[] = [
           },
 {
     slug: 'pcd-combination-tool',
-    category: 'pcd',
-    subcategory: 'pcd-milling',
+    category: 'specialized',
+    subcategory: 'special-solutions',
     materials: ['aluminium'],
     industries: ['Automotive', 'Aerospace'],
             name: 'PCD Combination Tool',
@@ -214,8 +214,8 @@ export const products: Product[] = [
           },
 {
     slug: 'pcd-form-tool',
-    category: 'pcd',
-    subcategory: 'pcd-milling',
+    category: 'specialized',
+    subcategory: 'special-solutions',
     materials: ['aluminium'],
     industries: ['Automotive', 'Aerospace'],
             name: 'PCD Form Tool',
@@ -317,8 +317,8 @@ export const products: Product[] = [
           },
 {
     slug: 'stepped-special-tool',
-    category: 'brazed',
-    subcategory: 'bc-special',
+    category: 'specialized',
+    subcategory: 'special-solutions',
     materials: [],
     industries: [],
             name: 'Stepped Special Tool',
@@ -329,8 +329,8 @@ export const products: Product[] = [
           },
 {
     slug: 'brazed-carbide-form-tool',
-    category: 'brazed',
-    subcategory: 'bc-special',
+    category: 'specialized',
+    subcategory: 'special-solutions',
     materials: [],
     industries: [],
             name: 'Brazed Carbide Form Tool',
@@ -341,8 +341,8 @@ export const products: Product[] = [
           },
 {
     slug: 'special-carbide-tool',
-    category: 'brazed',
-    subcategory: 'bc-special',
+    category: 'specialized',
+    subcategory: 'special-solutions',
     materials: [],
     industries: [],
             name: 'Special Carbide Tool',
