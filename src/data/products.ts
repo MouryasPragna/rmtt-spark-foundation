@@ -1,6 +1,6 @@
-import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
-import solidCarbideReamers from '../assets/solid-carbide-reamers.jpg.asset.json';
-import solidCarbideDrills from '../assets/solid-carbide-drills.jpg.asset.json';
+import solidCarbideEndmills from '../assets/solid-carbide-end-mills-range.webp.asset.json';
+import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
+import solidCarbideDrills from '../assets/solid-carbide-drills-range.webp.asset.json';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
@@ -57,11 +57,11 @@ export const products: Product[] = [
     slug: 'finishing-application-solid-carbide-endmill',
     category: 'solid-carbide',
     subcategory: 'sc-end-mills',
-    materials: ['cast iron', 'nodular cast iron', 'Inconel', 'titanium', 'stainless steel', 'PH steels', 'aluminium', 'aerospace aluminium alloys'],
+    materials: ['nodular cast iron', 'Inconel', 'titanium', 'stainless steel', 'PH steels', 'aerospace aluminium alloys'],
     industries: [],
-            name: 'Finishing Application Solid Carbide Endmill',
+            name: 'Solid Carbide End Mills',
             description:
-              'Solid carbide end mill for finish milling flat surfaces, shoulders and contours, removing remaining stock after roughing to achieve the required surface finish and final shape.',
+              'RIDDHI high-performance end mills deliver reliable results across milling applications, with a focus on cost-effectiveness, productivity and demanding customer requirements. The range includes application-specific milling solutions tailored to the customer’s exact machining requirements.',
             image: solidCarbideEndmills.url,
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
@@ -77,16 +77,17 @@ export const products: Product[] = [
     slug: 'solid-carbide-reamers',
     category: 'solid-carbide',
     subcategory: 'sc-reamers',
-    materials: ['cast iron', 'steel', 'stainless steel', 'titanium', 'Inconel'],
+    materials: ['grey cast iron', 'nodular iron', 'alloyed steel', 'stainless steel', 'titanium', 'Inconel'],
     industries: ['Automotive', 'Aerospace'],
             name: 'Solid Carbide Reamers',
             description:
-              'High-performance multi-blade monoblock reamers with unequal spacing and application-specific cutting geometry. Straight flutes suit through and blind holes; left-hand spiral flutes are available for through holes.',
+              'RIDDHI high-performance reamers with internal coolant supply provide precision bore machining for demanding workpiece materials. Developed for automotive and aerospace applications requiring critical bore tolerances and tight geometrical accuracy, the multi-blade, monoblock range combines unequal spacing with application-specific cutting geometry.',
             image: solidCarbideReamers.url,
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
               { label: 'Tolerance', value: 'Customer-specific, e.g. H6 / H7' },
-              { label: 'Flutes', value: 'Straight or left-hand spiral' },
+              { label: 'Straight flutes', value: 'Through and blind holes' },
+              { label: 'Left-hand spiral flutes', value: 'Through holes' },
               { label: 'Material', value: 'Ultra-fine carbide' },
               { label: 'Coolant', value: 'Internal coolant supply' },
               { label: 'Options', value: 'Special multi-step reamers' },
@@ -99,7 +100,7 @@ export const products: Product[] = [
     slug: 'solid-carbide-drills',
     category: 'solid-carbide',
     subcategory: 'sc-drills',
-    materials: ['cast iron', 'steel', 'stainless steel', 'titanium', 'aluminium'],
+    materials: ['grey cast iron', 'nodular iron', 'alloyed steel', 'stainless steel', 'PH steel', 'titanium alloys', 'aluminium alloys', 'aerospace aluminium alloys'],
     industries: ['Aerospace'],
             name: 'Solid Carbide Drills',
             description:

@@ -34,4 +34,4 @@
 
 - Category photographs and verified matching product/news entries use optimized client-source asset pointers; preserve complete tool geometry and distinguish pictured examples from the broader range. Images render plainly with no zoom, lens or lightbox anywhere (removed at client request); Gallery offers thumbnail switching only.
 
-- Use PageHero for non-product secondary banners; product pages use a shared text-only productIntro style, retaining content photos without duplicate banner images. Preserve Home and Contact heroes.
+- Use PageHero for secondary banners; product pages keep text-only intros. Solid Carbide family pages show PDF range photos and specifications from shared product records. Preserve Home/Contact heroes.
