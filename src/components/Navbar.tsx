@@ -3,12 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown, ChevronRight } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { siteConfig } from '../lib/siteConfig';
-import { categories } from '../pages/productsData';
-
-const productOptions = categories.map(area => ({
-  label: area.id === 'brazed' ? 'Brazed Carbide Tools' : area.label,
-  href: `/products/${area.id}`,
-}));
+import { productNavigation as productOptions } from '../pages/productsData';
 
 const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOptions }> = [
   { label: 'Home', href: '/' },
@@ -111,9 +106,18 @@ export default function Navbar() {
                   {productsOpen && (
                     <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark" onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
                       {link.dropdown.map(opt => (
-                        <Link key={opt.href} to={opt.href} className={styles.dropdownItem}>
-                          <span>{opt.label}</span><ChevronRight size={16} aria-hidden="true" />
-                        </Link>
+                        <div key={opt.href} className={styles.dropdownGroup}>
+                          <Link to={opt.href} className={styles.dropdownItem}>
+                            <span>{opt.label}</span><ChevronRight size={16} aria-hidden="true" />
+                          </Link>
+                          {opt.families.length > 0 && <ul className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
+                            {opt.families.map(family => <li key={family.href}>
+                              <Link to={family.href} className={styles.dropdownFamily}>
+                                <span>{family.label}</span><ChevronRight size={14} aria-hidden="true" />
+                              </Link>
+                            </li>)}
+                          </ul>}
+                        </div>
                       ))}
                     </div>
                   )}
@@ -158,9 +162,14 @@ export default function Navbar() {
                 {link.dropdown && (
                   <div className={styles.mobileSubMenu}>
                     {link.dropdown.map(opt => (
-                      <Link key={opt.href} to={opt.href} className={styles.mobileSubLink}>
-                        {opt.label}
-                      </Link>
+                      <div key={opt.href}>
+                        <Link to={opt.href} className={styles.mobileSubLink}>{opt.label}</Link>
+                        {opt.families.length > 0 && <ul className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
+                          {opt.families.map(family => <li key={family.href}>
+                            <Link to={family.href} className={styles.mobileFamilyLink}>{family.label}</Link>
+                          </li>)}
+                        </ul>}
+                      </div>
                     ))}
                   </div>
                 )}
