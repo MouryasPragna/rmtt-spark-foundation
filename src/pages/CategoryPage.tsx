@@ -40,8 +40,12 @@ export default function CategoryPage() {
       ) : null}
       <section className={styles.productIntro}>
         <div className="container">
-          <div className="section-eyebrow">{cat.label}</div>
-          <h1 className={styles.pageTitle}>{cat.headline}</h1>
+          {cat.heroImage ? null : (
+            <>
+              <div className="section-eyebrow">{cat.label}</div>
+              <h1 className={styles.pageTitle}>{cat.headline}</h1>
+            </>
+          )}
           <p className={styles.pageSubtitle}>{cat.intro}</p>
           <p className={styles.pageSubtitleSecond}>{cat.intro2}</p>
           <div className={styles.jumpLinks}>
