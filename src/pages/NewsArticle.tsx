@@ -1,3 +1,5 @@
+import heroPhoto from '../assets/factory-hero-floor.jpg.asset.json';
+import PageHero from '../components/PageHero';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Newspaper } from 'lucide-react';
 import { getNewsById, publishedNews } from '../data/news';
@@ -21,21 +23,16 @@ export default function NewsArticle() {
 
   return (
     <div className={productStyles.main}>
-      <section className={productStyles.pageHero}>
+      <PageHero image={hero || heroPhoto.url} alt={item.image?.alt || "RMTT manufacturing facility"} tools={Boolean(hero)}>
         <div className={`container ${styles.article}`}>
           <Link to="/news" className={styles.back}><ArrowLeft size={16} aria-hidden="true" /> Back to News</Link>
           <div className={styles.articleMeta}><span>{item.category}</span><time dateTime={item.date}>{formatNewsDate(item.date)}</time></div>
           <h1 className={styles.articleTitle}>{item.title}</h1>
         </div>
-      </section>
+      </PageHero>
       <section className={styles.section}>
         <article className={`container ${styles.article}`}>
-          {hero && item.image && (
-            <figure className={styles.figure}>
-              <Gallery images={[{ src: hero, alt: item.image.alt }]} icon={Newspaper} width={1600} height={900} aspect="16 / 9" eager />
-              {item.image.credit && <figcaption className={styles.caption}>{item.image.credit}</figcaption>}
-            </figure>
-          )}
+          {item.image?.credit && <p className={styles.caption}>{item.image.credit}</p>}
           <div className={styles.content}>
             {item.body.map((block, i) => block.type === 'p' ? <p key={i}>{block.text}</p>
               : block.type === 'h' ? <h2 key={i}>{block.text}</h2>

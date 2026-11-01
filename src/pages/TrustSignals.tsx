@@ -1,3 +1,5 @@
+import PageHero from '../components/PageHero';
+import heroPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import { useState } from 'react';
 import { Download } from 'lucide-react';
 import styles from './TrustSignals.module.css';
@@ -61,11 +63,11 @@ export default function TrustSignals() {
 
   return (
     <div className={styles.wrapper}>
-      <section className={pageStyles.pageHero}>
+      <PageHero image={heroPhoto.url} alt="RMTT precision tools featured in the catalogue">
         <div className="container">
           <h1 className={pageStyles.pageTitle}>Downloads</h1>
         </div>
-      </section>
+      </PageHero>
 
       {/* ── 2. QUALITY CERTIFICATES ── */}
       <section className={styles.certSection}>

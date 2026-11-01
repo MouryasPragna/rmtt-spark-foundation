@@ -34,7 +34,7 @@
 
 .content > div { min-width: 0; }
 
-#main-content .content :is(h1, p, a, strong, time, span),
+:global(#main-content) .content :is(h1, p, a, strong, time, span),
 .content :global(.section-eyebrow) { color: var(--white); }
 
 .content :global(.section-eyebrow) { border-color: var(--on-dark); }
@@ -59,7 +59,7 @@
   object-fit: contain;
   padding: 0 60px 24px 16px;
 }
-#main-content .tools .content :is(h1, p, a, strong, time, span),
+:global(#main-content) .tools .content :is(h1, p, a, strong, time, span),
 .tools .content :global(.section-eyebrow) { color: var(--navy); }
 .tools .content :global(.section-eyebrow) { border-color: var(--navy); }
 

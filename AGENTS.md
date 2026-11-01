@@ -32,3 +32,5 @@
 - Generate `public/rss.xml` during both build modes from published news; share links use the configured public HashRouter article URL, and RSS omits unconfirmed publication dates so subscriptions never expose held posts or fabricated dates.
 
 - Category photographs and verified matching product/news entries use optimized client-source asset pointers; preserve complete tool geometry and distinguish pictured examples from the broader range. Images render plainly with no zoom, lens or lightbox anywhere (removed at client request); Gallery offers thumbnail switching only.
+
+- Use shared PageHero for secondary page image banners, with cover photography for facility views and uncropped contain photography below titles for tool pages; retain the Home carousel and Contact hero so existing primary flows stay intact.

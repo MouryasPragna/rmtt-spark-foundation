@@ -1,3 +1,4 @@
+import PageHero from '../components/PageHero';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import styles from './Products.module.css';
 import { categories } from './productsData';
@@ -12,7 +13,7 @@ export default function FamilyPage() {
 
   return (
     <div className={styles.main}>
-      <section className={styles.pageHero}>
+      <PageHero image={family.products[0]?.image || cat.image} alt={family.products[0]?.name || cat.imageAlt} tools>
         <div className="container">
           <Link to={`/products/${cat.id}`} className={styles.detailLink}>Products / {cat.label}</Link>
           <h1 className={styles.pageTitle}>{family.title}</h1>
@@ -30,7 +31,7 @@ export default function FamilyPage() {
             ))}
           </div>
         </div>
-      </section>
+      </PageHero>
       <section className={styles.catalogueSection} aria-labelledby="family-tools-heading">
         <div className="container">
           <h2 id="family-tools-heading" className="visually-hidden">Tools in this family</h2>

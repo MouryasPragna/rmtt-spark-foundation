@@ -1,3 +1,5 @@
+import PageHero from '../components/PageHero';
+import heroPhoto from '../assets/factory-hero-floor.jpg.asset.json';
 import styles from './Contact.module.css';
 import { privacy, terms } from '../data/legal';
 import { siteConfig } from '../lib/siteConfig';
@@ -6,11 +8,11 @@ export default function LegalPage({ title }: { title: string }) {
   const sections = title === 'Privacy Policy' ? privacy : terms;
   return (
     <div className={styles.main}>
-      <section className={styles.pageHero}>
+      <PageHero image={heroPhoto.url} alt="RMTT manufacturing facility">
         <div className="container">
           <h1 className={styles.pageTitle}>{title}</h1>
         </div>
-      </section>
+      </PageHero>
       <section className={styles.contactSection}>
         <div className="container">
           {sections.length ? sections.map(section => (
