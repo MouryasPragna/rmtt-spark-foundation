@@ -6,6 +6,8 @@ import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { homeEquipment } from '../data/equipment';
+import { serviceBlocks } from '../data/services';
+import ContentPending from '../components/ContentPending';
 import EquipmentCarousel from '../components/EquipmentCarousel';
 import { industries } from '../data/industries';
 import ZoomImage from '../components/ZoomImage';
@@ -102,6 +104,8 @@ export default function Home() {
   const industryReveal = useReveal<HTMLDivElement>();
   const productsHeadReveal = useReveal<HTMLDivElement>();
   const productsGridReveal = useReveal<HTMLDivElement>();
+  const servicesHeadReveal = useReveal<HTMLDivElement>();
+  const servicesGridReveal = useReveal<HTMLDivElement>();
   const techReveal = useReveal<HTMLDivElement>();
   const techRightReveal = useReveal<HTMLDivElement>();
   const appsHeadReveal = useReveal<HTMLDivElement>();
@@ -183,6 +187,40 @@ export default function Home() {
                   </Link>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className={styles.section} aria-labelledby="home-services-heading">
+        <div className="container">
+          <div
+            ref={servicesHeadReveal.ref}
+            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${servicesHeadReveal.shown ? styles.revealShown : ''}`}
+          >
+            <div>
+              <div className="section-eyebrow">Beyond manufacturing</div>
+              <h2 id="home-services-heading" className={styles.sectionTitle}>Services</h2>
+              <p className={styles.sectionSub}>
+                Support around the tools themselves, from the first enquiry to long-term supply.
+              </p>
+            </div>
+            <Link to="/services" className={styles.sectionLink}>
+              All services <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div
+            ref={servicesGridReveal.ref}
+            className={`${styles.svcGrid} ${styles.revealStagger} ${servicesGridReveal.shown ? styles.revealStaggerShown : ''}`}
+          >
+            {serviceBlocks.map(block => (
+              <div key={block.id} className={styles.svcBlock}>
+                <h3 className={styles.svcTitle}>{block.title}</h3>
+                {block.pending
+                  ? <ContentPending tone="inline" what="This service" />
+                  : <p className={styles.svcBody}>{block.body}</p>}
+              </div>
             ))}
           </div>
         </div>
