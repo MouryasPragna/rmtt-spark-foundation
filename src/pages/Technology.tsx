@@ -69,16 +69,6 @@ export default function Technology() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.ctaSection}>
-        <div className="container">
-          <h2 className={styles.ctaTitle}>See our technology in action</h2>
-          <p className={styles.ctaSub}>Submit your application requirement and our engineers will demonstrate how our equipment solves your machining challenge.</p>
-          <Link to="/contact" className={styles.ctaBtn}>
-            Start a technical discussion <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
       {/* Machines */}
       <section className={styles.machinesSection}>
         <div className="container">
@@ -109,6 +99,17 @@ export default function Technology() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className={styles.ctaSection}>
+        <div className="container">
+          <h2 className={styles.ctaTitle}>See our technology in action</h2>
+          <p className={styles.ctaSub}>Submit your application requirement and our engineers will demonstrate how our equipment solves your machining challenge.</p>
+          <Link to="/contact" className={styles.ctaBtn}>
+            Start a technical discussion <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 
