@@ -1,5 +1,3 @@
-import heroPhoto from '../assets/factory-hero-floor.jpg.asset.json';
-import PageHero from '../components/PageHero';
 import { Link } from 'react-router-dom';
 import { Settings } from 'lucide-react';
 import { products, getProductImages, type Product } from '../data/products';
@@ -12,10 +10,10 @@ export default function ProductDetail({ product }: { product: Product }) {
   const category = categories.find(cat => cat.id === product.category);
   const related = products.filter(tool => tool.category === product.category && tool.slug !== product.slug).sort((a, b) => Number(b.subcategory === product.subcategory) - Number(a.subcategory === product.subcategory)).slice(0, 3);
   return <div className={styles.main}>
-    <PageHero image={product.image || category?.image || heroPhoto.url} alt={product.name} tools><div className="container">
+    <section className={styles.productIntro}><div className="container">
       <Link to={`/products?cat=${product.category}`} className={styles.detailLink}>Products / {category?.label}</Link>
       <h1 className={styles.pageTitle}>{product.name}</h1>
-    </div></PageHero>
+    </div></section>
     <section className={styles.catalogueSection}><div className="container">
       <div className={styles.detailGrid}>
         <div className={styles.detailImage}><Gallery images={getProductImages(product)} icon={Settings} eager /></div>

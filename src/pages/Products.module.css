@@ -2,6 +2,13 @@
   padding-top: 100px;
 }
 
+.productIntro {
+  padding: 28px 0;
+  background: var(--white);
+  color: var(--navy);
+  border-bottom: 1px solid var(--border-light);
+}
+
 /* Page hero — Fraisa-style light blue gradient */
 .pageHero {
   background: linear-gradient(180deg, #D9E4EE 0%, #F2F5F8 100%);
