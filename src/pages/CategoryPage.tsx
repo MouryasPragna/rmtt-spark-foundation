@@ -3,13 +3,12 @@ import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
-import Gallery from '../components/Gallery';
 import ContentPending from '../components/ContentPending';
 import PageHero from '../components/PageHero';
 
 /**
- * Competence page in the MAPAL information pattern: hero intro, featured example
- * highlight, key capability blocks, then product-family sections with the actual tools.
+ * Competence page in the MAPAL information pattern: hero intro, product-family
+ * brief cards, key capability blocks, then product-family sections with the actual tools.
  */
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -81,25 +80,6 @@ export default function CategoryPage() {
                 </span>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured example — MAPAL highlight card pattern */}
-      <section className={styles.featuredSection} aria-labelledby="featured-heading">
-        <div className="container">
-          <div className={styles.featuredGrid}>
-            <div className={styles.featuredImg}>
-              <Gallery images={[{ src: cat.featured.image, alt: cat.featured.imageAlt }]} icon={cat.icon} width={800} height={600} aspect="4 / 3" eager />
-            </div>
-            <div className={styles.featuredBody}>
-              <header className="section-heading"><div className="section-eyebrow" style={{ color: cat.color }}>Featured from this programme</div>
-              <h2 id="featured-heading" className={styles.featuredTitle}>{cat.featured.title}</h2>
-              <p className={styles.featuredBlurb}>{cat.featured.blurb}</p></header>
-              <Link to={cat.featured.href} className={styles.featuredLink} style={{ color: cat.color }}>
-                View the family <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-            </div>
           </div>
         </div>
       </section>
