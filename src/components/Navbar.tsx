@@ -20,11 +20,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const location = useLocation();
   const isActive = (href: string) => href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
   const menuButton = useRef<HTMLButtonElement>(null);
   const productsButton = useRef<HTMLButtonElement>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const productsContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -35,6 +36,7 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
     setProductsOpen(false);
+    setExpandedCategory(null);
   }, [location]);
 
   useEffect(() => {
@@ -47,16 +49,17 @@ export default function Navbar() {
     document.addEventListener('keydown', escape);
     return () => { document.body.style.overflow = previous; document.removeEventListener('keydown', escape); };
   }, [open]);
-  useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
+  useEffect(() => {
+    if (!productsOpen) return;
+    const closeOutside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !productsContainer.current?.contains(event.target)) setProductsOpen(false);
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    return () => document.removeEventListener('pointerdown', closeOutside);
+  }, [productsOpen]);
 
-  const openDropdown = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setProductsOpen(true);
-  };
-  const scheduleClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setProductsOpen(false), 150);
-  };
+  const toggleCategory = (href: string) => setExpandedCategory(value => value === href ? null : href);
+  const menuLabel = (option: typeof productOptions[number]) => option.href === '/products/brazed' ? 'Brazed Tools' : option.label;
 
   return (
     <>
@@ -84,18 +87,16 @@ export default function Navbar() {
               link.dropdown ? (
                 <div
                   key={link.href}
+                  ref={productsContainer}
                   className={styles.navItem}
-                  onFocus={event => { if (!event.currentTarget.contains(event.relatedTarget)) openDropdown(); }}
                   onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setProductsOpen(false); }}
                   onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); setProductsOpen(false); productsButton.current?.focus(); } }}
-                  onMouseEnter={openDropdown}
-                  onMouseLeave={scheduleClose}
                 >
                   <button
                     type="button"
                     ref={productsButton}
                     onClick={() => setProductsOpen(value => !value)}
-                    onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDropdown(); } }}
+                    onKeyDown={event => { if (event.key === 'ArrowDown') { event.preventDefault(); setProductsOpen(true); } }}
                     aria-controls="products-dropdown"
                     className={`${styles.navLink} ${isActive(link.href) ? styles.active : ''}`}
                                         aria-expanded={productsOpen}
@@ -104,13 +105,15 @@ export default function Navbar() {
                     <ChevronDown size={14} style={{ marginLeft: 4, verticalAlign: 'middle' }} />
                   </button>
                   {productsOpen && (
-                    <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark" onMouseEnter={openDropdown} onMouseLeave={scheduleClose}>
+                    <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark">
                       {link.dropdown.map(opt => (
                         <div key={opt.href} className={styles.dropdownGroup}>
-                          <Link to={opt.href} className={styles.dropdownItem}>
-                            <span>{opt.label}</span><ChevronRight size={16} aria-hidden="true" />
-                          </Link>
-                          {opt.families.length > 0 && <ul className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
+                          {opt.families.length > 0 ? <button type="button" className={styles.dropdownItem} onClick={() => toggleCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`desktop-families-${opt.href.split('/').pop()}`}>
+                            <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
+                          </button> : <Link to={opt.href} className={styles.dropdownItem}>
+                            <span>{menuLabel(opt)}</span><ChevronRight size={16} aria-hidden="true" />
+                          </Link>}
+                          {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`desktop-families-${opt.href.split('/').pop()}`} className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
                             {opt.families.map(family => <li key={family.href}>
                               <Link to={family.href} className={styles.dropdownFamily}>
                                 <span>{family.label}</span><ChevronRight size={14} aria-hidden="true" />
@@ -163,8 +166,10 @@ export default function Navbar() {
                   <div className={styles.mobileSubMenu}>
                     {link.dropdown.map(opt => (
                       <div key={opt.href}>
-                        <Link to={opt.href} className={styles.mobileSubLink}>{opt.label}</Link>
-                        {opt.families.length > 0 && <ul className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
+                        {opt.families.length > 0 ? <button type="button" className={styles.mobileSubLink} onClick={() => toggleCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`mobile-families-${opt.href.split('/').pop()}`}>
+                          <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
+                        </button> : <Link to={opt.href} className={styles.mobileSubLink}>{menuLabel(opt)}</Link>}
+                        {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`mobile-families-${opt.href.split('/').pop()}`} className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
                           {opt.families.map(family => <li key={family.href}>
                             <Link to={family.href} className={styles.mobileFamilyLink}>{family.label}</Link>
                           </li>)}
