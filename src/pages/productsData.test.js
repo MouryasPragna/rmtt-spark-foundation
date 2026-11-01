@@ -2,6 +2,16 @@ import { describe, expect, test } from 'bun:test';
 import { categories, productNavigation } from './productsData';
 
 describe('MAPAL-pattern competence data', () => {
+  test('product navigation has four destinations and each nested destination resolves to its own family', () => {
+    expect(productNavigation.map(area => area.href)).toEqual(['/products/solid-carbide', '/products/pcd', '/products/brazed', '/products/specialized']);
+    for (const area of productNavigation) {
+      const category = categories.find(item => area.href === `/products/${item.id}`);
+      expect(category).toBeDefined();
+      for (const family of area.families) {
+        expect(category?.subcategories.some(item => family.href === `/products/${category.id}/${item.id}`)).toBe(true);
+      }
+    }
+  });
   test('Solid Carbide second-level navigation contains the three requested families', () => {
     expect(productNavigation.find(area => area.href === '/products/solid-carbide')?.families).toEqual([
       { label: 'End Mills', href: '/products/solid-carbide/sc-end-mills' },

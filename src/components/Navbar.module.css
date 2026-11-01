@@ -263,6 +263,11 @@
 }
 
 .dropdownItem {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -296,7 +301,15 @@
 }
 
 .mobileSubLink {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
   padding: 10px 24px 10px 44px;
   font-size: 14px;
   color: var(--white);
@@ -304,6 +317,7 @@
   border-left: 3px solid transparent;
   transition: background 0.15s ease;
 }
+.mobileSubLink svg { flex-shrink: 0; }
 
 .mobileSubLink:hover {
   background: var(--navy);
