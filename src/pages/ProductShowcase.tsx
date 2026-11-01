@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
@@ -161,9 +161,6 @@ export default function ProductShowcase(): JSX.Element {
 
         {/* Right — slide counter + dots */}
         <div className={styles.controls}>
-          <button type="button" className={styles.playBtn} onClick={playback.toggle} disabled={playback.reducedMotion} aria-label={playback.paused || playback.reducedMotion ? 'Play slideshow' : 'Pause slideshow'}>
-            {playback.paused || playback.reducedMotion ? <Play size={12} /> : <Pause size={12} />}
-          </button>
           <div className={styles.dots}>
             {slides.map((_, i) => (
               <button

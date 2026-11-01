@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2, Pause, Play } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Car, Zap, Droplets, CircleCheck as CheckCircle2 } from 'lucide-react';
 import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
@@ -298,9 +298,6 @@ export default function Home() {
               <ChevronRight size={20} />
             </button>
             <div className={styles.carDots}>
-              <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion}>
-                {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
-              </button>
               {applications.map((_, i) => (
                 <button
                   key={i}
