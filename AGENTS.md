@@ -11,6 +11,7 @@
 - Share the industry options and icons through src/data/industries.ts across Home, Contact and catalogue filters; keep product industry assignments source-backed rather than inferred from company sectors.
 - Use the shared PhotoPlaceholder for missing real photos so neutral icon panels replace stock imagery consistently.
 - Keep equipment definitions in src/data/equipment.ts with page-specific summaries so Home, About and Technology share one inventory without changing their copy.
+- Keep service block definitions in src/data/services.ts so the Home services section and the Technology & services page render the same approved copy and pending placeholders.
 - Define category colours only in src/index.css and reference category tokens from shared catalog data and application pages so product technologies remain visually consistent.
 - Use index.css and CSS Modules only; unused shadcn scaffolding is removed to keep the static site dependency surface minimal.
 - Define responsive title, section, small-heading and body tokens in index.css; apply the semantic hierarchy above module typography and share tokens with non-semantic titles and the Home carousel to keep content consistent without resizing compact navigation controls.
