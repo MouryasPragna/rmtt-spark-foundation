@@ -2,7 +2,7 @@ import PageHero from '../components/PageHero';
 import heroPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { categories } from './productsData';
+import { categories, productNavigation } from './productsData';
 import styles from './Products.module.css';
 
 /** MAPAL products-overview pattern: the four solution areas, each linking to its competence page. */
@@ -25,15 +25,15 @@ export default function Products() {
       </div>
       <div className={styles.productsLayout}>
         <nav className={styles.solutionNav} aria-label="Product solution areas" data-focus-surface="dark">
-          {categories.map(area => (
-            <div key={area.id} className={styles.solutionNavGroup}>
-              <Link to={`/products/${area.id}`} className={styles.solutionNavLink}>
-                <span>{area.id === 'brazed' ? 'Brazed Carbide Tools' : area.label}</span>
+          {productNavigation.map(area => (
+            <div key={area.href} className={styles.solutionNavGroup}>
+              <Link to={area.href} className={styles.solutionNavLink}>
+                <span>{area.label}</span>
                 <ChevronRight size={18} aria-hidden="true" />
               </Link>
-              {area.id === 'solid-carbide' && <div className={styles.solutionNavFamilies}>
-                {area.subcategories.map(family => <Link key={family.id} to={`/products/${area.id}/${family.id}`} className={styles.solutionNavFamily}>
-                  <span>{family.id === 'sc-end-mills' ? 'End Milling' : family.id === 'sc-drills' ? 'Drills' : family.title}</span>
+              {area.families.length > 0 && <div className={styles.solutionNavFamilies}>
+                {area.families.map(family => <Link key={family.href} to={family.href} className={styles.solutionNavFamily}>
+                  <span>{family.label}</span>
                   <ChevronRight size={16} aria-hidden="true" />
                 </Link>)}
               </div>}

@@ -66,3 +66,4 @@
 - [x] Add related image heroes across pages while retaining the Home and Contact heroes; checked 54 image-banner routes at desktop/mobile widths with loaded images and no horizontal overflow.
 - [x] Move Services equipment details to the last section and verify page layouts; all 41 tests pass.
 - [x] Restyle Products overview and its navigation as a divided blue list with the four approved groups and Solid Carbide families; verified matching images, family/category links and desktop/mobile layouts.
+- [ ] Add and verify shared second-level Solid Carbide and source-backed Brazed Carbide links on the Products page and desktop/mobile menu.

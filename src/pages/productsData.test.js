@@ -1,7 +1,20 @@
 import { describe, expect, test } from 'bun:test';
-import { categories } from './productsData';
+import { categories, productNavigation } from './productsData';
 
 describe('MAPAL-pattern competence data', () => {
+  test('Solid Carbide second-level navigation contains the three requested families', () => {
+    expect(productNavigation.find(area => area.href === '/products/solid-carbide')?.families).toEqual([
+      { label: 'End Mills', href: '/products/solid-carbide/sc-end-mills' },
+      { label: 'Reamers', href: '/products/solid-carbide/sc-reamers' },
+      { label: 'Drills', href: '/products/solid-carbide/sc-drills' },
+    ]);
+  });
+  test('Brazed Carbide second-level navigation uses the available milling and drilling/reaming families', () => {
+    expect(productNavigation.find(area => area.href === '/products/brazed')?.families).toEqual([
+      { label: 'Milling Cutters', href: '/products/brazed/bc-milling' },
+      { label: 'Drills & Reamers', href: '/products/brazed/bc-reamers' },
+    ]);
+  });
   test('the overview has exactly the four approved solution groups', () => {
     expect(categories.map(category => category.id)).toEqual(['solid-carbide', 'pcd', 'brazed', 'specialized']);
   });

@@ -375,3 +375,15 @@ export const categories: Category[] = [
     ],
   },
 ];
+
+/** Shared two-level navigation; family pages keep their fuller range titles. */
+export const productNavigation = categories.map(area => ({
+  label: area.id === 'brazed' ? 'Brazed Carbide Tools' : area.label,
+  href: `/products/${area.id}`,
+  families: area.id === 'solid-carbide' || area.id === 'brazed'
+    ? area.subcategories.map(family => ({
+      label: family.id === 'sc-drills' ? 'Drills' : family.title,
+      href: `/products/${area.id}/${family.id}`,
+    }))
+    : [],
+}));
