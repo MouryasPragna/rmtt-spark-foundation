@@ -68,4 +68,4 @@
 - [x] Restyle Products overview and its navigation as a divided blue list with the four approved groups and Solid Carbide families; verified matching images, family/category links and desktop/mobile layouts.
 - [x] Add shared second-level Solid Carbide and source-backed Brazed Carbide links on the Products page and desktop/mobile menu; verified family destinations, mobile layout, 21 passing tests and build OK.
 - [x] Show four product-menu types with click-to-expand families; verified all Solid Carbide destinations, refresh, PCD/Specialized and Brazed links, desktop/mobile menus, 22 tests and build OK.
-- [ ] Update Solid Carbide family images and information from FINAL PDF pages 7–9 and verify each page.
+- [x] Update Solid Carbide family images and information from FINAL PDF pages 7–9; verified complete photos and specifications on all three desktop/mobile pages, preserved detail URLs, 27 tests pass and build OK.
