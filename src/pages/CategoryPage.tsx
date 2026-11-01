@@ -5,6 +5,7 @@ import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import Gallery from '../components/Gallery';
 import ContentPending from '../components/ContentPending';
+import PageHero from '../components/PageHero';
 
 /**
  * Competence page in the MAPAL information pattern: hero intro, featured example

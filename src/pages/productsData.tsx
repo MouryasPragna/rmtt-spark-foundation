@@ -69,6 +69,8 @@ export const categories: Category[] = [
       'The range includes precision end mills, reamers and drills with application-specific geometries, polished flutes, internal coolant options and wear-resistant PVD coatings — all ground on German CNC equipment in Bengaluru.',
     image: solidCarbideOverview.url,
     imageAlt: 'Solid carbide end mill — example from the Solid Carbide range',
+    heroImage: solidCarbideHero,
+    heroAlt: 'Solid carbide end mills, reamers and drills from the RMTT range on a display stand',
     features: [
       'End mill diameters from 2 to 32 mm',
       '2, 3, 4, 5 and 6-flute options',
