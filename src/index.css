@@ -24,6 +24,7 @@
   --section-heading-gap: 24px;
   --section-heading-accent: #b95000;
   --section-heading-rule: #14820b;
+  --page-hero-overlay: rgba(0, 30, 64, 0.68);
   /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
