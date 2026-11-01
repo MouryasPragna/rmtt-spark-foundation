@@ -264,19 +264,19 @@
 
 .dots {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 6px;
 }
 
 .dot {
-  width: 4px;
-  height: 20px;
+  width: 20px;
+  height: 4px;
   border-radius: 2px;
   border: none;
   background: #D0DCF0;
   padding: 0;
   cursor: pointer;
-  transition: background 0.2s, height 0.2s;
+  transition: background 0.2s, width 0.2s;
 }
 
 .dot:hover {
@@ -285,7 +285,7 @@
 
 .dotActive {
   background: #4A7BA7;
-  height: 36px;
+  width: 36px;
 }
 
 /* 3. PROGRESS BAR — hidden */
@@ -337,10 +337,11 @@
   .bgEnterNext, .bgEnterPrev { animation: none; }
 }
 /* Preserve the narrow dot graphic inside a generously sized hit area. */
-.dot { width: 24px; height: 36px; min-width: 24px; padding: 0; background: transparent; position: relative; }
-.dot::after { content: ''; display: block; width: 4px; height: 20px; margin: auto; border-radius: var(--radius-sm); background: var(--border); }
+.dot { width: 24px; height: 24px; min-width: 24px; padding: 0; background: transparent; position: relative; }
+.dot::after { content: ''; display: block; width: 20px; height: 4px; margin: auto; border-radius: var(--radius-sm); background: var(--border); }
 .dotActive, .dot:hover { background: transparent; }
-.dotActive::after { background: var(--steel); height: 36px; }
+.dotActive { width: 40px; }
+.dotActive::after { background: var(--steel); width: 36px; }
 @media (max-width: 768px) {
   .title { font-size: var(--type-title-size); }
   .contentWrap { padding-bottom: 20px; }
@@ -365,12 +366,10 @@
 /* Minimal, text-free controls */
 .controls { background: transparent; padding: 0; gap: 10px; align-items: center; }
 .dots { gap: 2px; }
-.dot::after { width: 3px; background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: height 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), background 0.4s ease; }
+.dot::after { height: 3px; background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: height 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), background 0.4s ease; }
 .dot:hover::after { background: rgba(255,255,255,0.9); }
-.dotActive::after { background: var(--white); height: 32px; }
+.dotActive::after { background: var(--white); }
 @media (max-width: 768px) {
   .controls { justify-content: flex-start; width: auto; }
-  .dot::after { height: 3px; }
-  .dotActive::after { width: 28px; height: 3px; }
 }
 @media (prefers-reduced-motion: reduce) { .dot::after { transition: none; } }
