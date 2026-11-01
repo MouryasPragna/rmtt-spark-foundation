@@ -5,6 +5,7 @@ import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
 import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
+import solidCarbideHero from '../assets/solid-carbide-hero.png';
 
 export type SubCategory = {
   id: string;
@@ -46,6 +47,8 @@ export type Category = {
   intro2: string;
   image: string;
   imageAlt: string;
+  heroImage?: string;
+  heroAlt?: string;
   features: string[];
   featured: FeaturedExample;
   capabilities: CapabilityBlock[];
@@ -66,6 +69,8 @@ export const categories: Category[] = [
       'The range includes precision end mills, reamers and drills with application-specific geometries, polished flutes, internal coolant options and wear-resistant PVD coatings — all ground on German CNC equipment in Bengaluru.',
     image: solidCarbideOverview.url,
     imageAlt: 'Solid carbide end mill — example from the Solid Carbide range',
+    heroImage: solidCarbideHero,
+    heroAlt: 'Solid carbide end mills, reamers and drills from the RMTT range on a display stand',
     features: [
       'End mill diameters from 2 to 32 mm',
       '2, 3, 4, 5 and 6-flute options',

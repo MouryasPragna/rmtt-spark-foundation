@@ -5,6 +5,7 @@ import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import Gallery from '../components/Gallery';
 import ContentPending from '../components/ContentPending';
+import PageHero from '../components/PageHero';
 
 /**
  * Competence page in the MAPAL information pattern: hero intro, featured example
@@ -31,10 +32,20 @@ export default function CategoryPage() {
 
   return (
     <div className={styles.main}>
-      <section className={styles.productIntro}>
-        <div className="container">
+      {cat.heroImage ? (
+        <PageHero image={cat.heroImage} alt={cat.heroAlt ?? ''} tools>
           <div className="section-eyebrow">{cat.label}</div>
           <h1 className={styles.pageTitle}>{cat.headline}</h1>
+        </PageHero>
+      ) : null}
+      <section className={styles.productIntro}>
+        <div className="container">
+          {cat.heroImage ? null : (
+            <>
+              <div className="section-eyebrow">{cat.label}</div>
+              <h1 className={styles.pageTitle}>{cat.headline}</h1>
+            </>
+          )}
           <p className={styles.pageSubtitle}>{cat.intro}</p>
           <p className={styles.pageSubtitleSecond}>{cat.intro2}</p>
           <div className={styles.jumpLinks}>
@@ -47,6 +58,27 @@ export default function CategoryPage() {
               >
                 <c.icon size={14} />
                 {c.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product families — brief cards linking to each family page */}
+      <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
+        <div className="container">
+          <div className={`section-heading ${styles.sectionHeadRow}`}>
+            <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
+            <p className={styles.sectionHeadSub}>Each tool category has its own page with the tools in that programme.</p>
+          </div>
+          <div className={styles.familiesGrid}>
+            {cat.subcategories.map(sub => (
+              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={styles.familyCard}>
+                <h3 className={styles.familyTitle}>{sub.title}</h3>
+                <p className={styles.familyBlurb}>{sub.blurb}</p>
+                <span className={styles.solutionLink} style={{ color: cat.color }}>
+                  View the family <ArrowRight size={15} aria-hidden="true" />
+                </span>
               </Link>
             ))}
           </div>
@@ -88,28 +120,6 @@ export default function CategoryPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Product families — each on its own page */}
-      <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
-        <div className="container">
-          <div className={`section-heading ${styles.sectionHeadRow}`}>
-            <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
-            <p className={styles.sectionHeadSub}>Each tool category has its own page with the tools in that programme.</p>
-          </div>
-          <div className={styles.familiesGrid}>
-            {cat.subcategories.map(sub => (
-              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={styles.familyCard}>
-                <h3 className={styles.familyTitle}>{sub.title}</h3>
-                <p className={styles.familyBlurb}>{sub.blurb}</p>
-                <span className={styles.solutionLink} style={{ color: cat.color }}>
-                  View the family <ArrowRight size={15} aria-hidden="true" />
-                </span>
-              </Link>
-            ))}
-          </div>
-
         </div>
       </section>
 
