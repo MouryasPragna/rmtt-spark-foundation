@@ -1,5 +1,4 @@
 import PageHero from '../components/PageHero';
-import heroPhoto from '../assets/factory-hero-inspection.jpg.asset.json';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './Technology.module.css';
@@ -18,7 +17,7 @@ const processSteps = [
 export default function Technology() {
   return (
     <div className={styles.main}>
-      <PageHero image={heroPhoto.url} alt="RMTT tool inspection and reconditioning facility">
+      <PageHero image="images/hero/inspection.webp" alt="Precision cutting tool in RMTT inspection equipment">
         <div className="container">
           <div className="section-eyebrow">Our capabilities</div>
           <h1 className={styles.pageTitle}>Technology & services</h1>

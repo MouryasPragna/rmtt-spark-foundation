@@ -33,6 +33,7 @@
 }
 
 .content > div { min-width: 0; }
+.content > :global(.container) { width: 100%; padding: 0; }
 
 :global(#main-content) .content :is(h1, p, a, strong, time, span),
 .content :global(.section-eyebrow) { color: var(--white); }
