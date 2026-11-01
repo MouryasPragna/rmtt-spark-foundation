@@ -114,6 +114,7 @@
   }
   .vignette { display: none; }
   .textBlock { max-width: 100%; }
+  .controls { position: static; transform: none; width: 100%; justify-content: center; }
 }
 
 /* ── TEXT BLOCK ── */
