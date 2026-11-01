@@ -65,4 +65,4 @@
 - [x] Extend the reference heading treatment across all pages; verified 47 linked routes at 1280/1198/390px, 291 heading instances without overflow, 41 passing tests and build OK.
 - [x] Add related image heroes across pages while retaining the Home and Contact heroes; checked 54 image-banner routes at desktop/mobile widths with loaded images and no horizontal overflow.
 - [x] Move Services equipment details to the last section and verify page layouts; all 41 tests pass.
-- [ ] Restyle Products overview and its navigation as a divided blue list with the four approved groups and Solid Carbide families; verify links and layouts.
+- [x] Restyle Products overview and its navigation as a divided blue list with the four approved groups and Solid Carbide families; verified matching images, family/category links and desktop/mobile layouts.
