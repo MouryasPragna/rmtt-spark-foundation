@@ -19,6 +19,7 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
   const [productsOpen, setProductsOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const location = useLocation();
