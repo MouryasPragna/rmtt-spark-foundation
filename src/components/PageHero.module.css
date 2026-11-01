@@ -56,9 +56,8 @@
   position: relative;
   z-index: 0;
   display: block;
-  height: 240px;
-  object-fit: contain;
-  padding: 0 60px 24px 16px;
+  width: 100%;
+  height: auto;
 }
 :global(#main-content) .tools .content :is(h1, p, a, strong, time, span),
 .tools .content :global(.section-eyebrow) { color: var(--navy); }
@@ -66,5 +65,4 @@
 
 @media (max-width: 768px) {
   .content { min-height: 280px; padding-top: 28px; padding-bottom: 28px; }
-  .tools .photo { height: 200px; }
 }
