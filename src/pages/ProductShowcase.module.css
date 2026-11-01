@@ -338,8 +338,6 @@
   .contentWrap { padding-bottom: 20px; }
   .textBlock { max-width: 100%; padding-right: 44px; }
   :global(#main-content) .title { padding-bottom: 7px; }
-  .controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
-  .dots { gap: 0; }
 }
 @media (max-width: 600px) { .showcase { margin-top: 64px; } }
 
@@ -354,10 +352,7 @@
 /* Minimal, text-free controls */
 .controls { background: transparent; padding: 0; gap: 10px; align-items: center; }
 .dots { gap: 2px; }
-.dot::after { height: 3px; background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: height 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), background 0.4s ease; }
+.dot::after { background: rgba(255,255,255,0.6); box-shadow: 0 0 0 1px rgba(15,35,60,0.12); transition: background 0.4s ease; }
 .dot:hover::after { background: rgba(255,255,255,0.9); }
 .dotActive::after { background: var(--white); }
-@media (max-width: 768px) {
-  .controls { justify-content: flex-start; width: auto; }
-}
 @media (prefers-reduced-motion: reduce) { .dot::after { transition: none; } }
