@@ -1,5 +1,3 @@
-import PageHero from '../components/PageHero';
-import heroPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { categories, productNavigation } from './productsData';
@@ -8,7 +6,7 @@ import styles from './Products.module.css';
 /** MAPAL products-overview pattern: the four solution areas, each linking to its competence page. */
 export default function Products() {
   return <div className={styles.main}>
-    <PageHero image={heroPhoto.url} alt="RMTT precision tooling and manufacturing facility"><div className="container">
+    <section className={styles.productIntro}><div className="container">
       <div className="section-eyebrow">Products & solutions</div>
       <h1 className={styles.pageTitle}>Tools and process solutions</h1>
       <p className={styles.pageSubtitle}>
@@ -17,7 +15,7 @@ export default function Products() {
         by application engineering and manufacturing technology, customers receive a complete
         package for the machining process.
       </p>
-    </div></PageHero>
+    </div></section>
     <section className={styles.solutionsSection} aria-labelledby="solutions-heading"><div className="container">
       <div className={`section-heading ${styles.sectionHeadRow}`}>
         <h2 id="solutions-heading" className={styles.catTitle}>Solution areas</h2>

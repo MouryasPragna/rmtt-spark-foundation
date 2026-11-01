@@ -1,4 +1,3 @@
-import PageHero from '../components/PageHero';
 import { useEffect } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -32,7 +31,7 @@ export default function CategoryPage() {
 
   return (
     <div className={styles.main}>
-      <PageHero image={cat.image} alt={cat.imageAlt} tools>
+      <section className={styles.productIntro}>
         <div className="container">
           <div className="section-eyebrow">{cat.label}</div>
           <h1 className={styles.pageTitle}>{cat.headline}</h1>
@@ -52,7 +51,7 @@ export default function CategoryPage() {
             ))}
           </div>
         </div>
-      </PageHero>
+      </section>
 
       {/* Featured example — MAPAL highlight card pattern */}
       <section className={styles.featuredSection} aria-labelledby="featured-heading">
