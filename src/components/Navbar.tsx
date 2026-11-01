@@ -171,7 +171,7 @@ export default function Navbar() {
                   <div className={styles.mobileSubMenu}>
                     {link.dropdown.map(opt => (
                       <div key={opt.href}>
-                        {opt.families.length > 0 ? <button type="button" className={styles.mobileSubLink} onClick={() => toggleCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`mobile-families-${opt.href.split('/').pop()}`}>
+                        {opt.families.length > 0 ? <button type="button" className={styles.mobileSubLink} onClick={() => openCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`mobile-families-${opt.href.split('/').pop()}`}>
                           <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
                         </button> : <Link to={opt.href} className={styles.mobileSubLink}>{menuLabel(opt)}</Link>}
                         {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`mobile-families-${opt.href.split('/').pop()}`} className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
