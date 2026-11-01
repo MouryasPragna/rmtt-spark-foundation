@@ -32,6 +32,12 @@ export default function CategoryPage() {
 
   return (
     <div className={styles.main}>
+      {cat.heroImage ? (
+        <PageHero image={cat.heroImage} alt={cat.heroAlt ?? ''} tools>
+          <div className="section-eyebrow">{cat.label}</div>
+          <h1 className={styles.pageTitle}>{cat.headline}</h1>
+        </PageHero>
+      ) : null}
       <section className={styles.productIntro}>
         <div className="container">
           <div className="section-eyebrow">{cat.label}</div>
