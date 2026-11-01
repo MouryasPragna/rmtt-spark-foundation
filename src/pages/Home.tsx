@@ -30,7 +30,6 @@ const products = [
     description:
       'Solid carbide tools for milling, precision bores and drilling, with application-specific geometries.',
     imageAlt: 'Solid carbide end mill with helical cutting flutes',
-    caption: 'Solid carbide end mill',
     color: 'var(--cat-solid)',
     bg: 'var(--cat-solid-bg)',
     image: solidCarbideEndmills.url,
@@ -43,7 +42,6 @@ const products = [
     description:
       'PCD tools for aluminium machining, including precision boring, reaming and milling solutions.',
     imageAlt: 'PCD boring tool with a visible cutting tip and holder',
-    caption: 'PCD boring tool',
     color: 'var(--cat-pcd)',
     bg: 'var(--cat-pcd-bg)',
     image: pcdTool1.url,
@@ -56,7 +54,6 @@ const products = [
     description:
       'Carbide-tipped tools on steel bodies, including T-slot cutters, reamers and customer-specific forms.',
     imageAlt: 'Brazed carbide T-slot milling cutter with a wide cutting head',
-    caption: 'Brazed carbide T-slot cutter',
     color: 'var(--cat-brazed)',
     bg: 'var(--cat-brazed-bg)',
     image: brazedTool1.url,
@@ -176,7 +173,6 @@ export default function Home() {
                   ) : (
                     <p.icon size={40} color={p.color} strokeWidth={1.5} />
                   )}
-                  <span className={styles.prodCaption}>{p.caption}</span>
                 </div>
                 <div className={styles.prodCardBody}>
                   <div className={styles.prodCat} style={{ color: p.color }}>{p.category}</div>

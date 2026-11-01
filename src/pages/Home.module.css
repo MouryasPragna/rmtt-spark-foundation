@@ -178,9 +178,8 @@
 
 }
 .prodExpand:hover { background: var(--surface); border-color: var(--navy); }
-.prodCaption { position: absolute; bottom: 16px; left: 16px; right: 16px; text-align: center; font-size: 12px; color: var(--text-muted); }
 .prodCardBody { padding: 22px 22px 18px; border-top: 1px solid var(--border-light); background: var(--surface); display: flex; flex: 1; flex-direction: column; }
-.prodCat { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+.prodCat { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
 .prodName { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.25; }
 .prodDesc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
 .prodLink { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; min-height: 44px; margin-top: auto; }
