@@ -65,5 +65,4 @@
 
 @media (max-width: 768px) {
   .content { min-height: 280px; padding-top: 28px; padding-bottom: 28px; }
-  .tools .photo { height: 200px; }
 }
