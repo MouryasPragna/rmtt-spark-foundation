@@ -298,9 +298,6 @@ export default function Home() {
               <ChevronRight size={20} />
             </button>
             <div className={styles.carDots}>
-              <button type="button" className="carousel-playback" onClick={playback.toggle} disabled={playback.reducedMotion}>
-                {playback.paused || playback.reducedMotion ? <Play size={16} /> : <Pause size={16} />}{playback.paused || playback.reducedMotion ? 'Play' : 'Pause'}
-              </button>
               {applications.map((_, i) => (
                 <button
                   key={i}
