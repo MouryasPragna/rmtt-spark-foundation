@@ -643,8 +643,6 @@
 .carDotActive {
   background: var(--navy);
   border-color: var(--border-light);
-  width: 24px;
-  border-radius: 4px;
 }
 
 /* === Animations === */
@@ -751,7 +749,7 @@
 .carDots { align-items: center; }
 .carDot, .carDotActive { width: 24px; height: 24px; background: transparent; border: 0; box-shadow: none; display: grid; place-items: center; }
 .carDot::after { content: ''; width: 8px; height: 8px; border: 1px solid var(--border); border-radius: 50%; background: var(--white); }
-.carDotActive::after { width: 24px; background: var(--navy); border-radius: var(--radius-lg); }
+.carDotActive::after { background: var(--navy); }
 .carDot:hover { background: transparent; }
 
 .equipList { list-style: none; margin: 0 0 28px; padding: 0; border-top: 1px solid var(--border-light); }
