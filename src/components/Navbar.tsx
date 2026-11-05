@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown, ChevronRight } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { siteConfig } from '../lib/siteConfig';
@@ -19,9 +19,7 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
   const [productsOpen, setProductsOpen] = useState(false);
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const location = useLocation();
   const isActive = (href: string) => href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -37,7 +35,6 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
     setProductsOpen(false);
-    setExpandedCategory(null);
   }, [location]);
 
   useEffect(() => {
@@ -59,11 +56,7 @@ export default function Navbar() {
     return () => document.removeEventListener('pointerdown', closeOutside);
   }, [productsOpen]);
 
-  // Clicking a product group opens its page and expands its families in the menu.
-  const openCategory = (href: string) => {
-    setExpandedCategory(value => value === href ? null : href);
-    navigate(href);
-  };
+  // Product groups link to their page; family sub-links are always visible below.
   const menuLabel = (option: typeof productOptions[number]) => option.href === '/products/brazed' ? 'Brazed Tools' : option.label;
 
   return (
@@ -113,12 +106,10 @@ export default function Navbar() {
                     <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark">
                       {link.dropdown.map(opt => (
                         <div key={opt.href} className={styles.dropdownGroup}>
-                          {opt.families.length > 0 ? <button type="button" className={styles.dropdownItem} onClick={() => openCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`desktop-families-${opt.href.split('/').pop()}`}>
-                            <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
-                          </button> : <Link to={opt.href} className={styles.dropdownItem}>
+                          <Link to={opt.href} className={styles.dropdownItem}>
                             <span>{menuLabel(opt)}</span><ChevronRight size={16} aria-hidden="true" />
-                          </Link>}
-                          {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`desktop-families-${opt.href.split('/').pop()}`} className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
+                          </Link>
+                          {opt.families.length > 0 && <ul id={`desktop-families-${opt.href.split('/').pop()}`} className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
                             {opt.families.map(family => <li key={family.href}>
                               <Link to={family.href} className={styles.dropdownFamily}>
                                 <span>{family.label}</span><ChevronRight size={14} aria-hidden="true" />
@@ -171,10 +162,8 @@ export default function Navbar() {
                   <div className={styles.mobileSubMenu}>
                     {link.dropdown.map(opt => (
                       <div key={opt.href}>
-                        {opt.families.length > 0 ? <button type="button" className={styles.mobileSubLink} onClick={() => openCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`mobile-families-${opt.href.split('/').pop()}`}>
-                          <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
-                        </button> : <Link to={opt.href} className={styles.mobileSubLink}>{menuLabel(opt)}</Link>}
-                        {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`mobile-families-${opt.href.split('/').pop()}`} className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
+                        <Link to={opt.href} className={styles.mobileSubLink}>{menuLabel(opt)}</Link>
+                        {opt.families.length > 0 && <ul id={`mobile-families-${opt.href.split('/').pop()}`} className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
                           {opt.families.map(family => <li key={family.href}>
                             <Link to={family.href} className={styles.mobileFamilyLink}>{family.label}</Link>
                           </li>)}
