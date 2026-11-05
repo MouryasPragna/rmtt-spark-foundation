@@ -266,6 +266,16 @@
 
 .techRight { min-width: 0; }
 
+.techPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  background: var(--white);
+}
+
 .techCard {
   background: var(--white);
   border: 1px solid var(--border-light);

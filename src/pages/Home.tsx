@@ -5,14 +5,13 @@ import styles from './Home.module.css';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
-import { homeEquipment } from '../data/equipment';
 import { serviceBlocks } from '../data/services';
 import ContentPending from '../components/ContentPending';
-import EquipmentCarousel from '../components/EquipmentCarousel';
 import { industries } from '../data/industries';
 import ZoomImage from '../components/ZoomImage';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
+import equipmentHero from '../assets/equipment-hero.png';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
 import specialTool from '../assets/brazed-tool-8.png.asset.json';
@@ -269,7 +268,12 @@ export default function Home() {
               ref={techRightReveal.ref}
               className={`${styles.techRight} ${styles.revealStagger} ${techRightReveal.shown ? styles.revealStaggerShown : ''}`}
             >
-              <EquipmentCarousel items={homeEquipment} />
+              <img
+                src={equipmentHero}
+                alt="SAACKE grinding, VOLLMER Wire EDM and Walter measurement machines at the RMTT facility"
+                className={styles.techPhoto}
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
