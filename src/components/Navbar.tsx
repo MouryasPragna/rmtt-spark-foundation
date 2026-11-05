@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronDown, ChevronRight } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { siteConfig } from '../lib/siteConfig';
@@ -19,7 +19,6 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
   const [productsOpen, setProductsOpen] = useState(false);
   const location = useLocation();
   const isActive = (href: string) => href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
