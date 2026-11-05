@@ -6,6 +6,7 @@ import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
 import solidCarbideHero from '../assets/solid-carbide-hero.png';
+import brazedCarbideHero from '../assets/brazed-carbide-hero.png';
 
 export type SubCategory = {
   id: string;
