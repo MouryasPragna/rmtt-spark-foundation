@@ -21,7 +21,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const [productsOpen, setProductsOpen] = useState(false);
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const location = useLocation();
   const isActive = (href: string) => href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -37,7 +36,6 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
     setProductsOpen(false);
-    setExpandedCategory(null);
   }, [location]);
 
   useEffect(() => {
@@ -59,11 +57,7 @@ export default function Navbar() {
     return () => document.removeEventListener('pointerdown', closeOutside);
   }, [productsOpen]);
 
-  // Clicking a product group opens its page and expands its families in the menu.
-  const openCategory = (href: string) => {
-    setExpandedCategory(value => value === href ? null : href);
-    navigate(href);
-  };
+  // Product groups link to their page; family sub-links are always visible below.
   const menuLabel = (option: typeof productOptions[number]) => option.href === '/products/brazed' ? 'Brazed Tools' : option.label;
 
   return (
