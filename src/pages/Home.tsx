@@ -11,6 +11,7 @@ import { industries } from '../data/industries';
 import ZoomImage from '../components/ZoomImage';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
+import equipmentHero from '../assets/equipment-hero.png';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
 import specialTool from '../assets/brazed-tool-8.png.asset.json';
