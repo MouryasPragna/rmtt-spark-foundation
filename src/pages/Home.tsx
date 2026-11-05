@@ -268,7 +268,12 @@ export default function Home() {
               ref={techRightReveal.ref}
               className={`${styles.techRight} ${styles.revealStagger} ${techRightReveal.shown ? styles.revealStaggerShown : ''}`}
             >
-              <EquipmentCarousel items={homeEquipment} />
+              <img
+                src={equipmentHero}
+                alt="SAACKE grinding, VOLLMER Wire EDM and Walter measurement machines at the RMTT facility"
+                className={styles.techPhoto}
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
