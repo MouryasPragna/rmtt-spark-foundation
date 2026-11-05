@@ -106,12 +106,10 @@ export default function Navbar() {
                     <div id="products-dropdown" className={styles.dropdown} data-focus-surface="dark">
                       {link.dropdown.map(opt => (
                         <div key={opt.href} className={styles.dropdownGroup}>
-                          {opt.families.length > 0 ? <button type="button" className={styles.dropdownItem} onClick={() => openCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`desktop-families-${opt.href.split('/').pop()}`}>
-                            <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
-                          </button> : <Link to={opt.href} className={styles.dropdownItem}>
+                          <Link to={opt.href} className={styles.dropdownItem}>
                             <span>{menuLabel(opt)}</span><ChevronRight size={16} aria-hidden="true" />
-                          </Link>}
-                          {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`desktop-families-${opt.href.split('/').pop()}`} className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
+                          </Link>
+                          {opt.families.length > 0 && <ul id={`desktop-families-${opt.href.split('/').pop()}`} className={styles.dropdownFamilies} aria-label={`${opt.label} tool families`}>
                             {opt.families.map(family => <li key={family.href}>
                               <Link to={family.href} className={styles.dropdownFamily}>
                                 <span>{family.label}</span><ChevronRight size={14} aria-hidden="true" />
@@ -164,10 +162,8 @@ export default function Navbar() {
                   <div className={styles.mobileSubMenu}>
                     {link.dropdown.map(opt => (
                       <div key={opt.href}>
-                        {opt.families.length > 0 ? <button type="button" className={styles.mobileSubLink} onClick={() => openCategory(opt.href)} aria-expanded={expandedCategory === opt.href} aria-controls={`mobile-families-${opt.href.split('/').pop()}`}>
-                          <span>{menuLabel(opt)}</span>{expandedCategory === opt.href ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
-                        </button> : <Link to={opt.href} className={styles.mobileSubLink}>{menuLabel(opt)}</Link>}
-                        {opt.families.length > 0 && expandedCategory === opt.href && <ul id={`mobile-families-${opt.href.split('/').pop()}`} className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
+                        <Link to={opt.href} className={styles.mobileSubLink}>{menuLabel(opt)}</Link>
+                        {opt.families.length > 0 && <ul id={`mobile-families-${opt.href.split('/').pop()}`} className={styles.mobileFamilies} aria-label={`${opt.label} tool families`}>
                           {opt.families.map(family => <li key={family.href}>
                             <Link to={family.href} className={styles.mobileFamilyLink}>{family.label}</Link>
                           </li>)}
