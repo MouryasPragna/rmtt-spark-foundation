@@ -7,6 +7,7 @@ import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asse
 import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
 import solidCarbideHero from '../assets/solid-carbide-hero.png';
 import brazedCarbideHero from '../assets/brazed-carbide-hero.png';
+import pcdHero from '../assets/pcd-hero.png';
 
 export type SubCategory = {
   id: string;
@@ -166,6 +167,8 @@ export const categories: Category[] = [
       'RMTT starts with the customer’s component and application requirements, then develops a proposal, tool design and manufacturing solution to meet production and performance requirements for drilling, milling and precision boring.',
     image: pcdOverview.url,
     imageAlt: 'PCD boring tool — example from the PCD range',
+    heroImage: pcdHero,
+    heroAlt: 'PCD tools from the RMTT range on a display stand',
     features: [
       'Application-specific drilling, milling and boring solutions',
       'Wire EDM, lapping and grinding of cutting edges',
