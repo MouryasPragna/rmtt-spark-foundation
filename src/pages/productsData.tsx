@@ -6,6 +6,7 @@ import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
 import solidCarbideHero from '../assets/solid-carbide-hero.png';
+import brazedCarbideHero from '../assets/brazed-carbide-hero.png';
 
 export type SubCategory = {
   id: string;
@@ -254,6 +255,8 @@ export const categories: Category[] = [
       'A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets. Cutting edges are ground on a 5-axis CNC tool-grinding machine to achieve the required geometries in one setup.',
     image: brazedCarbideOverview.url,
     imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
+    heroImage: brazedCarbideHero,
+    heroAlt: 'Brazed carbide tools from the RMTT range on a display stand',
     features: [
       'Tool-steel body, heat-treated for the application',
       'Carbide tips brazed into prepared pockets',
