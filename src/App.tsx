@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -14,7 +14,6 @@ const Industries = lazy(() => import('./pages/Industries'));
 const Technology = lazy(() => import('./pages/Technology'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
-const TrustSignals = lazy(() => import('./pages/TrustSignals'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const News = lazy(() => import('./pages/News'));
@@ -38,7 +37,7 @@ export default function App() {
         <Route path="/services" element={<Technology />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-        <Route path="/downloads" element={<TrustSignals />} />
+        <Route path="/downloads" element={<Navigate to="/contact" replace />} />
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsArticle />} />
         <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />

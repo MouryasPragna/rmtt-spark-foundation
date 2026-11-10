@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Send, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, ArrowUpRight, Download } from 'lucide-react';
 import factoryPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
@@ -95,6 +95,13 @@ export default function Contact() {
         </form>
       </div>
       <aside className={styles.sidebar}>
+        <section className={styles.sideCard} id="product-catalogue">
+          <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
+          <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
+            <span><strong>Download product catalogue</strong><small>PDF · Full product range</small></span>
+            <Download size={20} aria-hidden="true" />
+          </a>
+        </section>
         <section className={styles.sideCard}>
           <h2 className={`section-heading-title ${styles.sideTitle}`}>What happens next?</h2>
           <ul className={styles.nextSteps}>

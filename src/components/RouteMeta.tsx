@@ -10,9 +10,8 @@ const pages: Record<string, [string, string]> = {
   '/about': ['About Riddhi', 'Discover Riddhi Machine Tool Technology, our journey and manufacturing equipment.'],
   '/applications': ['Applications', 'Explore cutting tool applications for automotive, aerospace and precision machining.'],
   '/services': ['Technology & services', 'Application engineering, custom solutions and the SAACKE, VOLLMER and Walter Helicheck equipment behind our tools.'],
-  '/downloads': ['Downloads', 'Download the Riddhi Machine Tool Technology product catalogue.'],
   '/news': ['News & Articles', 'Company news and technical articles on cutting tools from Riddhi Machine Tool Technology.'],
-  '/contact': ['Contact us', 'Contact Riddhi Machine Tool Technology to discuss your application details and tooling requirements.'],
+  '/contact': ['Contact us', 'Contact Riddhi Machine Tool Technology to discuss your tooling requirements and download the product catalogue.'],
   '/privacy': ['Privacy Policy', 'Riddhi Machine Tool Technology privacy policy — client legal copy pending.'],
   '/terms': ['Terms', 'Riddhi Machine Tool Technology terms — client legal copy pending.'],
 };

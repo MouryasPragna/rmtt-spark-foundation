@@ -21,7 +21,7 @@
 
 - Retain HashRouter for refresh-safe static hosting; resolve category IDs and product slugs through the shared product route to preserve existing links.
 - Mount one shared EnquiryFab outside route content linking to /contact so every page has the same right-side enquiry action; no quote buttons or add-to-quote selection exist.
-- Render file download links only on the Downloads page; navigation links to /downloads remain available sitewide to keep downloads centralized.
+- Render the shared catalogue download on Contact; redirect legacy /downloads links to /contact so existing bookmarks still reach the catalogue without a separate Downloads page.
 - Preserve the quote context identity through Vite hot-update data so mounted providers and refreshed consumers cannot diverge during preview updates.
 - Validate quote fields and attachments in src/lib/rfq.ts and call its single submitRfq boundary; future delivery connects here without changing the form.
 - Apply client-side route titles and descriptions through RouteMeta and useDocumentMeta; static social previews remain sitewide.

@@ -374,6 +374,12 @@ a.contactValue:hover {
 .sidebar .sideTitle { margin-bottom: 24px; }
 .sidebar .nextTitle { font-size: var(--type-small-heading-size); line-height: var(--type-small-heading-leading); font-weight: var(--type-small-heading-weight); }
 .sidebar .toolsImg { display: block; height: auto; }
+.catalogueLink { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px; background: var(--navy); color: var(--white); border-radius: var(--radius-lg); min-height: 48px; }
+.catalogueLink:hover { background: var(--steel-dark); }
+.catalogueLink span { min-width: 0; overflow-wrap: anywhere; }
+.catalogueLink strong { display: block; font-size: var(--type-body-size); font-weight: 600; }
+.catalogueLink small { display: block; color: var(--on-dark); margin-top: 4px; }
+.catalogueLink svg { flex-shrink: 0; }
 .directionsLink { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--navy); text-decoration: underline; min-height: 44px; }
 @media (max-width: 900px) {
   .enquirySection .contactGrid { grid-template-columns: minmax(0, 1fr); gap: 40px; }

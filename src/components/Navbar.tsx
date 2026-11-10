@@ -11,7 +11,6 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
   { label: 'Products', href: '/products', dropdown: productOptions },
   { label: 'Applications', href: '/applications' },
   { label: 'Services', href: '/services' },
-  { label: 'Downloads', href: '/downloads' },
   { label: 'News', href: '/news' },
   { label: 'Contact', href: '/contact' },
 ];
