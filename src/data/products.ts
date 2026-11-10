@@ -1,8 +1,6 @@
-import solidCarbideEndmills from '../assets/solid-carbide-end-mills-range.webp.asset.json';
 import solidCarbideEndmillsBrand from '../assets/solid-carbide-end-mills-brand.jpg';
-import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import solidCarbideReamersBrand from '../assets/solid-carbide-reamers-brand.jpg';
-import solidCarbideDrills from '../assets/solid-carbide-drills-range.webp.asset.json';
+import solidCarbideDrillsBrand from '../assets/solid-carbide-drills-brand.jpg';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
@@ -41,6 +39,7 @@ export type Product = {
   description: string;
   tagline?: string;
   descriptionSecond?: string;
+  descriptionThird?: string;
   imageAspect?: string;
   image?: string;
   images?: { src: string; alt: string }[];
@@ -73,7 +72,6 @@ export const products: Product[] = [
             imageAspect: '768 / 1120',
             images: [
               { src: solidCarbideEndmillsBrand, alt: 'Seven Solid Carbide End Mills with different flute geometries and coatings — pictured examples from the RIDDHI range' },
-              { src: solidCarbideEndmills.url, alt: 'Solid Carbide End Mills range from the FINAL catalogue' },
             ],
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
@@ -100,7 +98,6 @@ export const products: Product[] = [
             imageAspect: '768 / 1056',
             images: [
               { src: solidCarbideReamersBrand, alt: 'Seven Solid Carbide Reamers with straight and spiral flutes — pictured examples from the RIDDHI range' },
-              { src: solidCarbideReamers.url, alt: 'Solid Carbide Reamers range from the FINAL catalogue' },
             ],
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
@@ -122,9 +119,14 @@ export const products: Product[] = [
     materials: ['grey cast iron', 'nodular iron', 'alloyed steel', 'stainless steel', 'PH steel', 'titanium alloys', 'aluminium alloys', 'aerospace aluminium alloys'],
     industries: ['Aerospace'],
             name: 'Solid Carbide Drills',
+            tagline: 'Precision drilling for demanding materials',
             description:
-              'Application-designed two- and three-edge drills for cast iron, alloyed steel, stainless steel, PH steels and titanium. Aluminium options include straight-fluted, high-polished, edge-honed burnishing designs. For low-silicon aerospace aluminium alloys, specific rake geometry, high-gloss polished helical flutes and internal coolant address long chips and built-up edge.',
-            image: solidCarbideDrills.url,
+              'RIDDHI offers suitable solid carbide drills for practically all workpiece materials, mainly Grey cast iron, Nodular iron, Alloyed steel, Stainless steel, PH steel, and titanium alloys.',
+            descriptionSecond: 'The drills are superficially designed with smooth flutes and effective 2 & 3 edges based on individual applications; cutting edges are edge-honed according to the application. For aluminium alloy applications, we offer straight-fluted, high-polished, and edge-honed burnishing designs.',
+            descriptionThird: 'We have a specific design suitable for aerospace aluminium alloy because of the low silicon content in this particular material; drilling is always challenging due to long chips and the built-up edge effect on the drilling point cutting edge. We avoid this phenomenon with our specific rake design, together with high gloss polish fluted design, adapting helical flutes together with internal coolant supply.',
+            image: solidCarbideDrillsBrand,
+            imageAspect: '768 / 964',
+            images: [{ src: solidCarbideDrillsBrand, alt: 'Five Solid Carbide Drills and step drills — pictured examples from the RIDDHI range' }],
             specs: [
               { label: 'Diameter', value: '2–25 mm' },
               { label: 'Edges', value: '2 or 3' },

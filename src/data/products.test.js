@@ -23,4 +23,11 @@ describe('Solid Carbide specifications from FINAL PDF pages 7–9', () => {
     expect(spec('sc-drills', 'Edges')).toBe('2 or 3');
     expect(spec('sc-drills', 'Helix')).toBe('30° standard; 40° for multi-step');
   });
+  test('supplied drills range includes standard and special step drills', () => {
+    expect(spec('sc-drills', 'Range')).toBe('Standard drills and special step drills');
+  });
+  test('supplied drills use ultra-fine carbide with PVD wear-resistant coating', () => {
+    expect(spec('sc-drills', 'Material')).toBe('Ultra-fine carbide');
+    expect(spec('sc-drills', 'Coating')).toBe('Application-specific PVD wear-resistant coating');
+  });
 });

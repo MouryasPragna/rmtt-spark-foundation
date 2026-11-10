@@ -72,3 +72,4 @@
 - [x] Move the product catalogue to Contact, remove the Downloads page and menu links, and verify desktop/mobile access, hosted PDF and legacy redirect; 27 tests pass.
 - [x] Enhance the supplied End Mills photo with Lovable AI and add supplied text; verified complete imagery, catalogue thumbnail switching and specifications on desktop/mobile with no overflow, 27 passing tests and build OK.
 - [x] Enhance the supplied Reamers photo and add supplied text; verified both pages on desktop/mobile, catalogue below What happens next, hosted PDF download, 27 passing tests and build OK.
+- [x] Replace Drills imagery and text from supplied slides; remove secondary End Mills and Reamers images. Verified one loaded image per family, complete Drills copy, specifications and no overflow on desktop/mobile; tests and build pass.

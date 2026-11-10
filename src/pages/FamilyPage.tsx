@@ -42,6 +42,7 @@ export default function FamilyPage() {
               {product.tagline ? <h2 className={`section-heading-title ${styles.subCatTitle}`}>{product.tagline}</h2> : null}
               <p className={styles.catIntro}>{product.description}</p>
               {product.descriptionSecond ? <p className={styles.catIntro}>{product.descriptionSecond}</p> : null}
+              {product.descriptionThird ? <p className={styles.catIntro}>{product.descriptionThird}</p> : null}
               <h2 className={`section-heading-title ${styles.subCatTitle}`}>Product range & technology</h2>
               <table className={styles.specTable}><tbody>{product.specs?.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>
               <h2 className={`section-heading-title ${styles.subCatTitle}`}>Applications & materials</h2>
