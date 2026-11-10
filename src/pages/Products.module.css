@@ -437,7 +437,7 @@
 .emptyState h2 { margin-bottom: 24px; }
 .detailGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .detailImage { min-width: 0; }
-.detailImage > div > button:first-child img { padding: 24px; }
+.detailImage > div > button:first-child img { padding: 24px 24px 24px 4px; }
 .applicationList { padding-left: 20px; margin: 16px 0 24px; color: var(--text-secondary); }
 .specTable { width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left; }
 .specTable caption { text-align: left; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
