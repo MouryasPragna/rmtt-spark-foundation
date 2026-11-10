@@ -70,3 +70,4 @@
 - [x] Show four product-menu types with click-to-expand families; verified all Solid Carbide destinations, refresh, PCD/Specialized and Brazed links, desktop/mobile menus, 22 tests and build OK.
 - [x] Update Solid Carbide family images and information from FINAL PDF pages 7–9; verified complete photos and specifications on all three desktop/mobile pages, preserved detail URLs, 27 tests pass and build OK.
 - [x] Move the product catalogue to Contact, remove the Downloads page and menu links, and verify desktop/mobile access, hosted PDF and legacy redirect; 27 tests pass.
+- [x] Enhance the supplied End Mills photo with Lovable AI and add supplied text; verified complete imagery, catalogue thumbnail switching and specifications on desktop/mobile with no overflow, 27 passing tests and build OK.

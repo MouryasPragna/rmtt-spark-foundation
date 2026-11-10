@@ -1,4 +1,5 @@
 import solidCarbideEndmills from '../assets/solid-carbide-end-mills-range.webp.asset.json';
+import solidCarbideEndmillsBrand from '../assets/solid-carbide-end-mills-brand.jpg';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import solidCarbideDrills from '../assets/solid-carbide-drills-range.webp.asset.json';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
@@ -37,6 +38,9 @@ export type Product = {
   category: ProductCategory;
   subcategory: string;
   description: string;
+  tagline?: string;
+  descriptionSecond?: string;
+  imageAspect?: string;
   image?: string;
   images?: { src: string; alt: string }[];
   applications: string[];
@@ -60,9 +64,16 @@ export const products: Product[] = [
     materials: ['nodular cast iron', 'Inconel', 'titanium', 'stainless steel', 'PH steels', 'aerospace aluminium alloys'],
     industries: [],
             name: 'Solid Carbide End Mills',
+            tagline: 'Precision Milling. Consistent Performance.',
             description:
-              'RIDDHI high-performance end mills deliver reliable results across milling applications, with a focus on cost-effectiveness, productivity and demanding customer requirements. The range includes application-specific milling solutions tailored to the customer’s exact machining requirements.',
-            image: solidCarbideEndmills.url,
+              'The high-performance end mills from RIDDHI ensure excellent, reliable results during all machining tasks. The focus is on cost-effectiveness and productivity, along with meeting customers’ demanding requirements.',
+            descriptionSecond: 'Irrespective of whether customers need cost-effective milling cutters for all milling applications, RIDDHI offers comprehensive, right solutions based on customers’ exact demands, offering specially tailored milling solutions.',
+            image: solidCarbideEndmillsBrand,
+            imageAspect: '768 / 1120',
+            images: [
+              { src: solidCarbideEndmillsBrand, alt: 'Seven Solid Carbide End Mills with different flute geometries and coatings — pictured examples from the RIDDHI range' },
+              { src: solidCarbideEndmills.url, alt: 'Solid Carbide End Mills range from the FINAL catalogue' },
+            ],
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
               { label: 'Flutes (Z)', value: '2, 3, 4, 5, 6' },
@@ -70,7 +81,7 @@ export const products: Product[] = [
               { label: 'Features', value: 'high-polished and edge-honed' },
             ],
             
-            applications: ['Slot and shoulder milling', 'Groove and chamfer milling', 'Rough and finish milling', 'High-feed and 3D profile milling', 'Nodular cast iron, Inconel, titanium, stainless steel, PH steels and aerospace aluminium alloys'],
+            applications: ['Slot and shoulder milling', 'Groove and chamfer milling', 'Rough and finish milling', 'High-feed milling, 3D profile milling', 'Nodular cast iron, Inconel, titanium, stainless steel, PH steels and aerospace aluminium alloys'],
             benefits: ['Reliable milling results with a focus on cost-effectiveness and productivity', 'Application-specific milling solutions tailored to customer requirements'],
           },
 {

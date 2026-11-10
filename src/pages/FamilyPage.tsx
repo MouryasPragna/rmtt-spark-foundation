@@ -37,9 +37,11 @@ export default function FamilyPage() {
         <div className="container">
           <h2 id="family-tools-heading" className="visually-hidden">Tools in this family</h2>
           {cat.id === 'solid-carbide' ? family.products.map(product => <div key={product.slug} className={styles.detailGrid}>
-            <div className={styles.detailImage}><Gallery images={getProductImages(product)} icon={cat.icon} eager /></div>
+            <div className={styles.detailImage}><Gallery images={getProductImages(product)} icon={cat.icon} aspect={product.imageAspect} eager /></div>
             <div>
+              {product.tagline ? <h2 className={`section-heading-title ${styles.subCatTitle}`}>{product.tagline}</h2> : null}
               <p className={styles.catIntro}>{product.description}</p>
+              {product.descriptionSecond ? <p className={styles.catIntro}>{product.descriptionSecond}</p> : null}
               <h2 className={`section-heading-title ${styles.subCatTitle}`}>Product range & technology</h2>
               <table className={styles.specTable}><tbody>{product.specs?.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>
               <h2 className={`section-heading-title ${styles.subCatTitle}`}>Applications & materials</h2>
