@@ -24,7 +24,13 @@ jobs:
           node-version: 22
           cache: npm
       - uses: oven-sh/setup-bun@v2
-      - run: npm ci
+      # package-lock.json is out of sync with package.json (Lovable-only dev tools were added
+      # without regenerating it), so `npm ci` fails. The site build does not use those tools:
+      # drop them for CI and resolve everything from the public npm registry.
+      - name: Install dependencies
+        run: |
+          node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));for(const n of ['lovable-tagger','@lovable.dev/vite-plugin-dev-server-bridge','@lovable.dev/vite-plugin-hmr-gate'])delete p.devDependencies[n];fs.writeFileSync('package.json',JSON.stringify(p,null,2))"
+          npm install --no-audit --no-fund
       # Lovable-hosted images are only pointers in the repo. Pull them from the published
       # site at build time until they are committed to public/images/assets/.
       - name: Fetch Lovable-hosted images
