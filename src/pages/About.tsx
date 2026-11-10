@@ -5,6 +5,7 @@ import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
+import facilityBrand from '../assets/bengaluru-facility-brand.jpg';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { siteConfig } from '../lib/siteConfig';
 
@@ -187,9 +188,9 @@ export default function About() {
             </div>
             <div className={styles.locationImgWrap}>
               {facilityPhotoUnavailable ? <PhotoPlaceholder icon={Factory} /> : <img
-                src={factoryCollage.url}
-                alt="Riddhi facility Bengaluru"
-                width={1600} height={900} loading="lazy" className={styles.locationImg}
+                src={facilityBrand}
+                alt="Riddhi precision machining — Engineering confidence in every cut, Make In India"
+                width={1365} height={768} loading="lazy" className={styles.locationImg}
                 onError={() => setFacilityPhotoUnavailable(true)}
               />}
             </div>
