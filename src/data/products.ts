@@ -1,6 +1,7 @@
 import solidCarbideEndmills from '../assets/solid-carbide-end-mills-range.webp.asset.json';
 import solidCarbideEndmillsBrand from '../assets/solid-carbide-end-mills-brand.jpg';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
+import solidCarbideReamersBrand from '../assets/solid-carbide-reamers-brand.jpg';
 import solidCarbideDrills from '../assets/solid-carbide-drills-range.webp.asset.json';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
@@ -91,9 +92,16 @@ export const products: Product[] = [
     materials: ['grey cast iron', 'nodular iron', 'alloyed steel', 'stainless steel', 'titanium', 'Inconel'],
     industries: ['Automotive', 'Aerospace'],
             name: 'Solid Carbide Reamers',
+            tagline: 'Precision reaming for demanding materials',
             description:
-              'RIDDHI high-performance reamers with internal coolant supply provide precision bore machining for demanding workpiece materials. Developed for automotive and aerospace applications requiring critical bore tolerances and tight geometrical accuracy, the multi-blade, monoblock range combines unequal spacing with application-specific cutting geometry.',
-            image: solidCarbideReamers.url,
+              'RIDDHI high-tech and high-performance reamers with internal coolant supply are the ideal solutions for precision bore machining of all kinds of workpiece materials. We are highly specialised in developing our know-how and have established niche areas in machining precision bores in the automotive and aerospace industries. Our reaming solutions are widely deployed where critical bore tolerances and tight geometrical accuracy are required for workpiece materials like grey cast iron, nodular iron, alloyed steel, and stainless steel, as well as advanced materials like titanium and Inconel.',
+            descriptionSecond: 'The multi-blade reamers, together with unequal spacing, specific cutting geometry, and monoblock design, offer a comprehensive full-carbide reamer program for the highest performance.',
+            image: solidCarbideReamersBrand,
+            imageAspect: '768 / 1056',
+            images: [
+              { src: solidCarbideReamersBrand, alt: 'Seven Solid Carbide Reamers with straight and spiral flutes — pictured examples from the RIDDHI range' },
+              { src: solidCarbideReamers.url, alt: 'Solid Carbide Reamers range from the FINAL catalogue' },
+            ],
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
               { label: 'Tolerance', value: 'Customer-specific, e.g. H6 / H7' },

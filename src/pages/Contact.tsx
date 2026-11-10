@@ -95,13 +95,6 @@ export default function Contact() {
         </form>
       </div>
       <aside className={styles.sidebar}>
-        <section className={styles.sideCard} id="product-catalogue">
-          <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
-          <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
-            <span><strong>Download product catalogue</strong><small>PDF · Full product range</small></span>
-            <Download size={20} aria-hidden="true" />
-          </a>
-        </section>
         <section className={styles.sideCard}>
           <h2 className={`section-heading-title ${styles.sideTitle}`}>What happens next?</h2>
           <ul className={styles.nextSteps}>
@@ -109,6 +102,13 @@ export default function Contact() {
             <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical proposal</h3><p className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</p></div></li>
             <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Sample &amp; trial</h3><p className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</p></div></li>
           </ul>
+        </section>
+        <section className={styles.sideCard} id="product-catalogue">
+          <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
+          <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
+            <span><strong>Download product catalogue</strong><small>PDF · Full product range</small></span>
+            <Download size={20} aria-hidden="true" />
+          </a>
         </section>
         <div className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}image002.png`} alt="Riddhi cutting tool range" width={377} height={86} loading="lazy" className={styles.toolsImg} /></div>
       </aside>
