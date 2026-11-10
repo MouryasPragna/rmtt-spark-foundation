@@ -17,7 +17,7 @@ const processSteps = [
 export default function Technology() {
   return (
     <div className={styles.main}>
-      <PageHero image="images/hero/inspection.webp" alt="Precision cutting tool in RMTT inspection equipment">
+      <PageHero image="/images/hero/inspection.webp" alt="Precision cutting tool in RMTT inspection equipment">
         <div className="container">
           <div className="section-eyebrow">Our capabilities</div>
           <h1 className={styles.pageTitle}>Technology & services</h1>
