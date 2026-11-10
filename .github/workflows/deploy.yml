@@ -30,6 +30,8 @@ jobs:
       - name: Fetch Lovable-hosted images
         run: node scripts/fetch-assets.mjs https://rmtt-website.lovable.app
       - run: npm run build
+        env:
+          VITE_SITE_URL: https://mouryaspragna.github.io/rmtt-spark-foundation
       - name: Check no Lovable image links remain
         run: |
           if grep -rq "/__l5e/" dist; then echo "::error::dist still references /__l5e/ image URLs"; exit 1; fi
