@@ -532,3 +532,4 @@
 .solutionTileImage img { width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 900px) { .productsLayout { grid-template-columns: 1fr; gap: 24px; } }
 @media (max-width: 600px) { .solutionTiles { grid-template-columns: 1fr; gap: 16px; } .solutionTileImage { height: 240px; } }
+.detailGrid .catIntro { text-align: justify; hyphens: auto; }
