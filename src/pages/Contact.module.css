@@ -366,7 +366,7 @@ a.contactValue:hover {
 .enquirySection :is(.input, .select, .textarea) { background: var(--surface); font-size: var(--type-body-size); border-radius: var(--radius-lg); }
 .enquirySection .input, .enquirySection .select { min-height: 48px; }
 .enquirySection .select { appearance: auto; background-image: none; }
-.enquirySection .textarea { min-height: 144px; }
+.enquirySection .textarea { min-height: 88px; height: 88px; }
 .enquirySection .formNote { text-align: left; }
 .enquirySection .submitBtn { background: var(--navy); min-height: 48px; }
 .enquirySection .submitBtn:hover { background: var(--steel-dark); transform: none; }
