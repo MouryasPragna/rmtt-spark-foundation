@@ -10,6 +10,6 @@ export const siteConfig = {
   whatsapp: '919945909155',
   address: {
     street: 'GNC Industrial Estate, Agara Village, Tataguni Post, Kanakapura Main Road',
-    cityLine: 'Bengaluru – 560082, India',
+    cityLine: 'Bengaluru – 560082, Karnataka, India.',
   },
 } as const;
