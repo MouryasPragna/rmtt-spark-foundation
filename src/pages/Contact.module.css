@@ -392,3 +392,5 @@ a.contactValue:hover {
 }
 .noRule { border-top: none; }
 #main-content .noRule h2.section-heading-title::after { display: none; }
+.sidebar .noRule { padding-top: 0; }
+.enquirySection .contactGrid { align-items: start; }
