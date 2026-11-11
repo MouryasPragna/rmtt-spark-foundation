@@ -390,3 +390,5 @@ a.contactValue:hover {
   .contactOverview { padding-top: 32px; }
   .enquirySection { padding: 32px 0 48px; }
 }
+.noRule { border-top: none; }
+#main-content .noRule h2.section-heading-title::after { display: none; }

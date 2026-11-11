@@ -95,7 +95,7 @@ export default function Contact() {
         </form>
       </div>
       <aside className={styles.sidebar}>
-        <section className={styles.sideCard}>
+        <section className={`${styles.sideCard} ${styles.noRule}`}>
           <h2 className={`section-heading-title ${styles.sideTitle}`}>What happens next?</h2>
           <ul className={styles.nextSteps}>
             <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></div></li>
