@@ -790,3 +790,5 @@
 .appSlide .appCardImg { height: 180px; }
 .appSlide .appCardBody { padding: 14px 18px; }
 @media (max-width: 600px) { .appSlide .appCardImg { height: 140px; } }
+.appSlide { padding: 0; }
+.appSlide .appCard { max-width: none; margin: 0; }
