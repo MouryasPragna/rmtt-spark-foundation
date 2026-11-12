@@ -82,6 +82,7 @@ export default function Footer() {
             <div className={styles.bottomLinks}>
               <Link to="/privacy">Privacy Policy</Link>
               <Link to="/terms">Terms</Link>
+              <span>Designed by Mouryas Pragna LLP</span>
             </div>
           </div>
         </div>
