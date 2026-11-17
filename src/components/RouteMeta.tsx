@@ -6,7 +6,7 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta';
 
 const pages: Record<string, [string, string]> = {
   '/': ['Precision cutting tools', 'Riddhi Machine Tool Technology manufactures solid carbide, PCD and brazed carbide cutting tools in Bengaluru.'],
-  '/products': ['Product range', 'Explore solid carbide, PCD and brazed carbide tools. Search applications and select tools for a quote.'],
+  '/products': ['Product range', 'Explore solid carbide, PCD, brazed carbide and specialized cutting tools for milling, drilling, reaming and precision boring.'],
   '/about': ['About Riddhi', 'Discover Riddhi Machine Tool Technology, our journey and manufacturing equipment.'],
   '/applications': ['Applications', 'Explore cutting tool applications for automotive, aerospace and precision machining.'],
   '/services': ['Technology & services', 'Application engineering, custom solutions and the SAACKE, VOLLMER and Walter Helicheck equipment behind our tools.'],

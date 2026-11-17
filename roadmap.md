@@ -1,3 +1,4 @@
+- [x] Sweep SEO rules across all page types, redirects, generated feeds, sitemap and publication jobs: verified 52 public pages and four redirect/recovery paths, repaired missing category/family sitemap entries and stale Products metadata, and passed 19 tests. GitHub hosting override left unchanged; fragment routes remain unsuitable for separate search indexing.
 - [x] Correct the three failing SEO findings; verified About/Terms headings, public crawler access and desktop/mobile layouts.
 - [x] Refresh existing sitemap and RSS URLs to the published domain; record completed SEO corrections awaiting rescan. Five related tests pass and automatic build is OK.
 - [x] Refresh Solid Carbide, PCD, and Brazed Carbide copy and imagery from PDF pages 6–14.
