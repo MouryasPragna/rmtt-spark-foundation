@@ -72,7 +72,7 @@ export default function About() {
     <div className={styles.main}>
       <PageHero image={factoryCollage.url} alt="RMTT precision tool manufacturing facility">
         <div className="section-eyebrow">Who we are</div>
-        <h1>Riddhi Machine Tool Technology</h1>
+        <h1>Precision cutting tool manufacturer in Bengaluru</h1>
         <p className={styles.heroTagline}>Transforming raw materials into finer tools</p>
         <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies.</p>
         <p>The company designs and manufactures using state-of-the-art CNC, 5-axis SAACKE grinding, and VOLLMER Wire EDM machines, serving the automotive, aerospace, and precision engineering industries, aligned with the vision of <strong>"Make in India."</strong></p>

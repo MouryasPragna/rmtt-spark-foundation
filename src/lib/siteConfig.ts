@@ -3,7 +3,7 @@ export const siteConfig = {
   catalogueUrl: catalogue.url,
   // Public site address (no trailing slash). Override with VITE_SITE_URL, e.g. in the deploy
   // workflow, when the client's own domain is connected.
-  siteUrl: String(import.meta.env?.VITE_SITE_URL || 'https://ck9819.github.io/rmtt-website').replace(/\/$/, ''),
+  siteUrl: String(import.meta.env?.VITE_SITE_URL || 'https://rmtt-spark-foundation.lovable.app').replace(/\/$/, ''),
   email: 'sales@rmtt.co.in',
   phone: '+91 99459 09155',
   phoneHref: 'tel:+919945909155',

@@ -1,3 +1,5 @@
+- [x] Correct the three failing SEO findings; verified About/Terms headings, public crawler access and desktop/mobile layouts.
+- [x] Refresh existing sitemap and RSS URLs to the published domain; record completed SEO corrections awaiting rescan. Five related tests pass and automatic build is OK.
 - [x] Refresh Solid Carbide, PCD, and Brazed Carbide copy and imagery from PDF pages 6–14.
 - [x] Verify category pages render with their matching PDF product photos.
 - [x] Use the PDF factory photos in the home page hero.
