@@ -11,6 +11,7 @@ const Products = lazy(() => import('./pages/Products'));
 const ProductRoute = lazy(() => import('./pages/ProductRoute'));
 const FamilyPage = lazy(() => import('./pages/FamilyPage'));
 const PCDTools = lazy(() => import('./pages/PCDTools'));
+const PCDTechnology = lazy(() => import('./pages/PCDTechnology'));
 const Technology = lazy(() => import('./pages/Technology'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:categoryId" element={<ProductRoute />} />
         <Route path="/products/pcd/pcd-tooling" element={<PCDTools />} />
+        <Route path="/products/pcd/pcd-technology" element={<PCDTechnology />} />
         <Route path="/products/:categoryId/:familyId" element={<FamilyPage />} />
         <Route path="/applications" element={<Navigate to="/" replace />} />
         <Route path="/services" element={<Technology />} />

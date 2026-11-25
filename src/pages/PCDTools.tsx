@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Products.module.css';
-import PcdAnatomy from '../components/PcdAnatomy';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 
 const WHY_PCD = [
@@ -73,9 +72,9 @@ export default function PCDTools() {
               <ul className={styles.applicationList}>
                 {BENEFITS.map(benefit => <li key={benefit}>{benefit}</li>)}
               </ul>
+              <Link to="/products/pcd/pcd-technology" className={styles.detailLink}>PCD Tooling Technology</Link>
             </div>
           </div>
-          <PcdAnatomy />
         </div>
       </section>
     </div>

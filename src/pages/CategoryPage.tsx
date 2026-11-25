@@ -92,7 +92,7 @@ export default function CategoryPage() {
           </div>
           <div className={styles.familiesGrid}>
             {[
-              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb, href: '/products/pcd/pcd-tooling#why-pcd', action: 'View the technology' },
+              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb, href: '/products/pcd/pcd-technology', action: 'View the technology' },
               { id: 'tools', title: 'PCD Tools', blurb: 'Application-based individual solutions for drilling, milling and precision boring PCD tools — from proposal and tool design to manufacturing.', href: '/products/pcd/pcd-tooling', action: 'View the tools' },
             ].map(block => (
               <Link key={block.id} to={block.href} className={styles.familyCard}>
