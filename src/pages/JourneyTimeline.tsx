@@ -1,19 +1,31 @@
+import { useState } from 'react';
 import styles from './JourneyTimeline.module.css';
+import img2017 from '../assets/journey-2017.jpg.asset.json';
+import img2018 from '../assets/journey-2018.jpg.asset.json';
+import img2020 from '../assets/journey-2020.jpg.asset.json';
+import img2022 from '../assets/journey-2022.jpg.asset.json';
+import img2025 from '../assets/journey-2025.jpg.asset.json';
 
 interface Milestone {
   year: string;
+  label: string;
+  title: string;
   text: string;
+  image: string;
+  alt: string;
 }
 
 const milestones: Milestone[] = [
-  { year: '2017', text: 'Established a dedicated manufacturing unit for solid carbide tools, marking the shift from trading to production.' },
-  { year: '2018', text: 'Strategic investment in a 5-axis CNC tool grinding machine strengthened capabilities in high-precision tool manufacturing.' },
-  { year: '2020', text: 'Expanded into PCD tool manufacturing with the addition of a Vollmer EDM machine, enabling advanced specialised tooling solutions.' },
-  { year: '2022', text: 'Capacity and efficiency further enhanced with the installation of a second CNC tool grinding machine.' },
-  { year: '2025', text: 'Integration of a Walter Helicheck Pro measuring machine for advanced inspection and quality control.' },
+  { year: '2017', label: 'Manufacturing unit', title: 'From trading to production', image: img2017.url, alt: 'Tool being ground on a SAACKE machine', text: 'Established a dedicated manufacturing unit for solid carbide tools, marking the shift from trading to production.' },
+  { year: '2018', label: '5-axis grinding', title: 'High-precision CNC grinding', image: img2018.url, alt: 'SAACKE 5-axis grinding machine running', text: 'Strategic investment in a 5-axis CNC tool grinding machine strengthened capabilities in high-precision tool manufacturing.' },
+  { year: '2020', label: 'PCD tooling', title: 'Expansion into PCD tools', image: img2020.url, alt: 'Vollmer machine for PCD tools', text: 'Expanded into PCD tool manufacturing with the addition of a Vollmer EDM machine, enabling advanced specialised tooling solutions.' },
+  { year: '2022', label: 'Added capacity', title: 'Second CNC grinding machine', image: img2022.url, alt: 'Tool face grinding on a CNC machine', text: 'Capacity and efficiency further enhanced with the installation of a second CNC tool grinding machine.' },
+  { year: '2025', label: 'Inspection', title: 'Advanced quality control', image: img2025.url, alt: 'Tool inspection on a Walter Helicheck machine', text: 'Integration of a Walter Helicheck Pro measuring machine for advanced inspection and quality control.' },
 ];
 
 export default function JourneyTimeline() {
+  const [active, setActive] = useState(milestones.length - 1);
+  const current = milestones[active];
   return (
     <section className={styles.section} aria-labelledby="journey-heading">
       <div className="container">
@@ -25,14 +37,32 @@ export default function JourneyTimeline() {
           We began our journey in 2013 as a startup trading company, laying the foundation
           for our presence in the precision tooling industry.
         </p>
-        <ol className={styles.milestones}>
-          {milestones.map(milestone => (
-            <li key={milestone.year} className={styles.milestone}>
-              <span className={styles.year}>{milestone.year}</span>
-              <p className={styles.text}>{milestone.text}</p>
-            </li>
-          ))}
-        </ol>
+        <div className={styles.timeline}>
+          <ol className={styles.years} aria-label="Milestone years">
+            {milestones.map((m, i) => (
+              <li key={m.year}>
+                <button
+                  type="button"
+                  className={`${styles.yearBtn} ${i === active ? styles.yearActive : ''}`}
+                  aria-current={i === active ? 'step' : undefined}
+                  aria-controls="journey-panel"
+                  onClick={() => setActive(i)}
+                >
+                  <span className={styles.year}>{m.year}</span>
+                  <span className={styles.label}>{m.label}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+          <article id="journey-panel" className={styles.card} aria-live="polite" key={current.year}>
+            <div className={styles.cardBody}>
+              <span className={styles.cardYear}>{current.year}</span>
+              <h3 className={styles.cardTitle}>{current.title}</h3>
+              <p className={styles.text}>{current.text}</p>
+            </div>
+            <img className={styles.cardImg} src={current.image} alt={current.alt} loading="lazy" />
+          </article>
+        </div>
       </div>
     </section>
   );

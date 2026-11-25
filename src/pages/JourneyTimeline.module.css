@@ -32,38 +32,119 @@
   margin-bottom: 28px;
 }
 
-.milestones {
-  list-style: none;
-  border-top: 1px solid var(--border-light);
+.timeline {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
 }
 
-.milestone {
-  display: grid;
-  grid-template-columns: 100px minmax(0, 1fr);
-  align-items: start;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-light);
+.years {
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
+
+.years::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: var(--border-light);
+}
+
+.yearBtn {
+  box-shadow: none;
+  backdrop-filter: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px 10px 40px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.yearBtn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: var(--border-light);
+  transition: background 0.2s;
+}
+
+.yearBtn:hover::before { background: var(--section-heading-rule); }
+.yearActive { background: var(--off-white, var(--border-light)); }
+.yearActive::before { background: var(--section-heading-accent); }
 
 .year {
   color: var(--navy);
-  font-size: var(--type-small-heading-size);
-  line-height: var(--type-small-heading-leading);
   font-weight: var(--type-heading-weight);
-  border-left: 3px solid var(--section-heading-rule);
-  padding-left: 14px;
 }
 
-.text {
-  margin: 0;
-  min-width: 0;
+.label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
-@media (max-width: 600px) {
-  .milestone {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
-    padding: 18px 0;
-  }
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  height: 420px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--off-white, var(--border-light));
+  animation: fadeIn 0.35s ease;
+}
+
+.cardBody {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardYear {
+  color: var(--section-heading-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 0;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+
+@media (max-width: 900px) {
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+  .years { flex-direction: row; overflow-x: auto; gap: 4px; }
+  .years::before { display: none; }
+  .yearBtn { padding: 30px 12px 8px; align-items: center; text-align: center; white-space: nowrap; }
+  .yearBtn::before { left: 50%; top: 6px; margin: 0 0 0 -8px; width: 16px; height: 16px; }
+  .card { grid-template-columns: minmax(0, 1fr); height: auto; }
+  .cardImg { order: -1; height: 280px; }
+  .cardBody { padding: 22px; }
 }
