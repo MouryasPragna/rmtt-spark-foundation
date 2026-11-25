@@ -369,7 +369,7 @@
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--section-heading-accent);
+  color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
   padding: 6px 14px;
@@ -385,15 +385,56 @@
 }
 
 .textBlockBrand .title { color: var(--white); }
-.brandAccent { color: var(--section-heading-accent); }
+.brandAccent { color: var(--white); }
 
 .brandTagline {
-  font-size: 17px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.6;
-  margin-bottom: 16px;
-  max-width: 460px;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  line-height: 1.45;
+  margin-bottom: 18px;
+  max-width: 560px;
+}
+
+.brandCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 26px;
+  padding: 13px 28px;
+  border-radius: 999px;
+  background: var(--cta);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.brandCta:hover {
+  background: var(--cta-dark);
+  transform: translateY(-2px);
+}
+
+/* Beat the global `#main-content p` body rule (ID specificity). */
+:global(#main-content) .brandTagline {
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+  :global(#main-content) .brandTagline { font-size: 18px; }
+}
+
+@media (max-width: 768px) {
+  .brandTagline { max-width: 100%; }
+  .brandCta { margin-top: 20px; padding: 12px 24px; }
 }
 
 .textBlockBrand .tag { color: rgba(255, 255, 255, 0.65); }
