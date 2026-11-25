@@ -350,6 +350,55 @@
   .controls { gap: 12px; }
 }
 
+/* ── BRAND SLIDE — dark navy photo, white/orange text ── */
+.showcaseBrand { background: #0E1A2E; }
+
+.vignetteDark {
+  background: linear-gradient(
+    to right,
+    rgba(10, 22, 40, 0.92) 0,
+    rgba(10, 22, 40, 0.55) 620px,
+    rgba(10, 22, 40, 0) 920px
+  );
+}
+
+.brandPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--section-heading-accent);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.brandPill::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--section-heading-accent);
+}
+
+.textBlockBrand .title { color: var(--white); }
+.brandAccent { color: var(--section-heading-accent); }
+
+.brandTagline {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  max-width: 460px;
+}
+
+.textBlockBrand .tag { color: rgba(255, 255, 255, 0.65); }
+.textBlockBrand .rangeLink { color: var(--white); }
+
 /* Minimal, text-free controls */
 .controls { background: transparent; padding: 0; gap: 10px; align-items: center; }
 .dots { gap: 2px; }
@@ -357,3 +406,9 @@
 .dot:hover::after { background: rgba(255,255,255,0.9); }
 .dotActive::after { background: var(--white); }
 @media (prefers-reduced-motion: reduce) { .dot::after { transition: none; } }
+
+/* Mobile: keep the dots in the flow below the text (must come after the base
+   absolute-positioned .controls rule to win). */
+@media (max-width: 768px) {
+  .controls { position: static; transform: none; width: 100%; justify-content: center; margin-top: 12px; }
+}

@@ -18,11 +18,26 @@ interface Slide {
   subtitle: string;
   tag: string;
   href: string;
+  brand?: boolean;      // dark company-intro slide (white/orange text)
+  titleAccent?: string; // trailing part of the title, shown in orange
+  linkText?: string;
 }
 
 // ── DATA — factory photography from the company PDF ──────────────────────────
 const slides: Slide[] = [
-  
+  {
+    id: 'brand',
+    brand: true,
+    image: `${import.meta.env.BASE_URL}images/hero/home-hero-brand.jpg`,
+    imageAlt: 'Grinding wheel sending up sparks as it regrinds a precision cutting tool',
+    category: 'Precision Cutting Tool Manufacturer',
+    title: 'Riddhi Machine Tool Technology',
+    titleAccent: 'Machine Tool Technology',
+    subtitle: 'Engineering Confidence in Every Cut',
+    tag: 'Solid Carbide · PCD · Brazed · Reconditioning',
+    href: '/products',
+    linkText: 'Explore products →',
+  },
   {
     id: 'solid-carbide-drills',
     image: factoryCollage.url,
@@ -103,7 +118,7 @@ export default function ProductShowcase(): JSX.Element {
 
   return (
     <section
-      className={styles.showcase}
+      className={`${styles.showcase} ${slide.brand ? styles.showcaseBrand : ''}`}
       style={{ '--hero-img-h': slide.mobileImage ? '340px' : '240px' } as React.CSSProperties}
       role="region"
       aria-roledescription="carousel"
@@ -135,7 +150,7 @@ export default function ProductShowcase(): JSX.Element {
             />
             </picture>
             {/* Dark vignette — strong at edges, lighter centre so product pops */}
-            <div className={styles.vignette} />
+            <div className={`${styles.vignette} ${slide.brand ? styles.vignetteDark : ''}`} />
           </div>
         ))}
       </div>
@@ -145,17 +160,31 @@ export default function ProductShowcase(): JSX.Element {
 
         {/* Left — text */}
         <div
-          className={`${styles.textBlock} ${animating ? styles.textHide : styles.textShow}`}
+          className={`${styles.textBlock} ${slide.brand ? styles.textBlockBrand : ''} ${animating ? styles.textHide : styles.textShow}`}
           key={current}
           aria-live={playback.playing ? 'off' : 'polite'}
         >
-          <p className={styles.tagline}>Engineering confidence in every cut</p>
-          <div className={styles.category}>{slide.category}</div>
-          <h2 className={styles.title}>{slide.title}</h2>
-          <p className={styles.subtitle}>{slide.subtitle}</p>
+          {slide.brand ? (
+            <>
+              <p className={styles.brandPill}>{slide.category}</p>
+              <h2 className={styles.title}>
+                {slide.titleAccent
+                  ? <>{slide.title.slice(0, slide.title.length - slide.titleAccent.length)}<span className={styles.brandAccent}>{slide.titleAccent}</span></>
+                  : slide.title}
+              </h2>
+              <p className={styles.brandTagline}>{slide.subtitle}</p>
+            </>
+          ) : (
+            <>
+              <p className={styles.tagline}>Engineering confidence in every cut</p>
+              <div className={styles.category}>{slide.category}</div>
+              <h2 className={styles.title}>{slide.title}</h2>
+              <p className={styles.subtitle}>{slide.subtitle}</p>
+            </>
+          )}
           <div className={styles.tag}>
             <span>{slide.tag}</span>
-            <Link to={slide.href} className={styles.rangeLink}>View range →</Link>
+            <Link to={slide.href} className={styles.rangeLink}>{slide.linkText ?? 'View range →'}</Link>
           </div>
         </div>
 
