@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Products.module.css';
+import PcdAnatomy from '../components/PcdAnatomy';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 
 const WHY_PCD = [
@@ -74,6 +75,7 @@ export default function PCDTools() {
               </ul>
             </div>
           </div>
+          <PcdAnatomy />
         </div>
       </section>
     </div>
