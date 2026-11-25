@@ -10,14 +10,11 @@ import ScrollToTop from './components/ScrollToTop';
 const Products = lazy(() => import('./pages/Products'));
 const ProductRoute = lazy(() => import('./pages/ProductRoute'));
 const FamilyPage = lazy(() => import('./pages/FamilyPage'));
-const Industries = lazy(() => import('./pages/Industries'));
 const Technology = lazy(() => import('./pages/Technology'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const News = lazy(() => import('./pages/News'));
-const NewsArticle = lazy(() => import('./pages/NewsArticle'));
 
 export default function App() {
   return (
@@ -33,13 +30,13 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:categoryId" element={<ProductRoute />} />
         <Route path="/products/:categoryId/:familyId" element={<FamilyPage />} />
-        <Route path="/applications" element={<Industries />} />
+        <Route path="/applications" element={<Navigate to="/" replace />} />
         <Route path="/services" element={<Technology />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/downloads" element={<Navigate to="/contact" replace />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/news/:id" element={<NewsArticle />} />
+        <Route path="/news" element={<Navigate to="/" replace />} />
+        <Route path="/news/:id" element={<Navigate to="/" replace />} />
         <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />
         <Route path="/terms" element={<LegalPage title="Terms" />} />
         <Route path="*" element={<NotFound />} />

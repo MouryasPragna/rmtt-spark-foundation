@@ -9,9 +9,7 @@ const navLinks: Array<{ label: string; href: string; dropdown?: typeof productOp
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Products', href: '/products', dropdown: productOptions },
-  { label: 'Applications', href: '/applications' },
   { label: 'Services', href: '/services' },
-  { label: 'News', href: '/news' },
   { label: 'Contact', href: '/contact' },
 ];
 

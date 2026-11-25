@@ -34,10 +34,8 @@ test('article bodies do not repeat the shared call-to-action paragraph', () => {
     expect(hits).toEqual([]);
   }
 });
-test('sitemap lists every published article and not the held one, on the site domain', () => {
+test('sitemap lists no news pages while News is hidden', () => {
   const xml = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8');
-  for (const item of publishedNews) expect(xml).toContain(`${siteConfig.siteUrl}/#/news/${item.id}`);
-  expect(xml).toContain(`${siteConfig.siteUrl}/#/news</loc>`);
-  expect(xml).toContain('vollmer-edm-welcome');
+  expect(xml).not.toContain('/#/news');
   expect(xml).not.toContain('example.com');
 });

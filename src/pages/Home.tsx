@@ -1,24 +1,17 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, ArrowRight, Settings, Gem, Layers, Sparkles, Car, Zap, Droplets, CircleCheck as CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Settings, Gem, Layers, Sparkles } from 'lucide-react';
 import styles from './Home.module.css';
-import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { useReveal} from '../hooks/useReveal';
 import ProductShowcase from './ProductShowcase';
 import { serviceBlocks } from '../data/services';
 import ContentPending from '../components/ContentPending';
 import { industries } from '../data/industries';
 import ZoomImage from '../components/ZoomImage';
-import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
 import equipmentHero from '../assets/equipment-hero.png';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
 import specialTool from '../assets/brazed-tool-8.png.asset.json';
-import { getLatestNews } from '../data/news';
-const latestNews = getLatestNews(3);
-import NewsCard from '../components/NewsCard';
-import newsStyles from './News.module.css';
 
 
 const products = [
@@ -72,42 +65,7 @@ const products = [
   },
 ];
 
-const applications = [
-  {
-    title: 'Cylinder Head Valve Seat & Guide',
-    industry: 'Automotive',
-    color: 'var(--cat-pcd)',
-    material: 'Grey cast iron',
-    tool: 'Steel body + PCD tipped multi-step reamer',
-    result: 'Improved profile accuracy, better finish consistency',
-    icon: Car,
-  },
-  {
-    title: 'Two-Wheeler Shock Absorber Bore',
-    industry: 'Two-wheeler',
-    color: 'var(--cat-pcd)',
-    material: 'Aluminium die casting',
-    tool: 'PCD 5-step reamer (Module 70, Z-4 tips)',
-    result: '5 steps in one tool, Vc=210 m/min',
-    icon: Zap,
-  },
-  {
-    title: 'Hydraulic Manifold Spool Bore Grooving',
-    industry: 'Hydraulics',
-    color: 'var(--cat-brazed)',
-    material: 'Grey cast iron',
-    tool: 'Special multi-grooving brazed carbide tool',
-    result: 'Special multi-grooving brazed carbide tool',
-    icon: Droplets,
-  },
-];
-
-
-
 export default function Home() {
-  const [appIndex, setAppIndex] = useState(0);
-  const playback = useCarouselPlayback(applications.length);
-  const appCount = applications.length;
 
   
   const industryReveal = useReveal<HTMLDivElement>();
@@ -117,18 +75,7 @@ export default function Home() {
   const servicesGridReveal = useReveal<HTMLDivElement>();
   const techReveal = useReveal<HTMLDivElement>();
   const techRightReveal = useReveal<HTMLDivElement>();
-  const appsHeadReveal = useReveal<HTMLDivElement>();
-  const appsBodyReveal = useReveal<HTMLDivElement>();
   const ctaReveal = useReveal<HTMLDivElement>();
-
-  useEffect(() => {
-    if (!playback.playing) return;
-    const id = setInterval(() => setAppIndex(i => (i + 1) % appCount), 4500);
-    return () => clearInterval(id);
-  }, [playback.playing, appCount]);
-
-  const goPrev = () => setAppIndex(i => (i - 1 + appCount) % appCount);
-  const goNext = () => setAppIndex(i => (i + 1) % appCount);
 
   return (
     <div>
@@ -279,102 +226,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Applications */}
-      <section className={styles.appSection}>
-        <div className="container">
-          <div
-            ref={appsHeadReveal.ref}
-            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${appsHeadReveal.shown ? styles.revealShown : ''}`}
-          >
-            <div>
-              <div className="section-eyebrow">Proven results</div>
-              <h2 className={styles.sectionTitle}>Application case studies</h2>
-              <p className={styles.sectionSub}>Real challenges solved with engineered tooling solutions.</p>
-            </div>
-            <Link to="/applications" className={styles.sectionLink}>
-              All case studies <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div
-            ref={appsBodyReveal.ref}
-            className={`${styles.appCarousel} ${styles.reveal} ${appsBodyReveal.shown ? styles.revealShown : ''}`}
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="Application case studies"
-            {...playback.interactionProps}
-          >
-            <div className={styles.appTrackWrap} aria-live={playback.playing ? 'off' : 'polite'}>
-              <div
-                className={styles.appTrack}
-                style={{ transform: `translateX(-${appIndex * 100}%)` }}
-              >
-                {applications.map((app, i) => (
-                  <div key={app.title} className={styles.appSlide} aria-hidden={i !== appIndex}>
-                    <div className={styles.appCard}>
-                      <div className={styles.appCardImg}>
-                        <PhotoPlaceholder icon={app.icon} />
-                        <div className={styles.appCardImgOverlay} />
-                        <span className={styles.appBadge} style={{ background: app.color }}>{app.industry}</span>
-                      </div>
-                      <div className={styles.appCardBody}>
-                        <h3 className={styles.appTitle}>{app.title}</h3>
-                        <div className={styles.appMeta}>
-                          <span><strong>Material:</strong> {app.material}</span>
-                          <span><strong>Tool:</strong> {app.tool}</span>
-                        </div>
-                        <div className={styles.appResult}>
-                          <CheckCircle2 size={14} className={styles.appResultIcon} />
-                          <span>{app.result}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button
-              type="button"
-              aria-label="Previous case study"
-              className={`${styles.carBtn} ${styles.carBtnPrev}`}
-              onClick={goPrev}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              type="button"
-              aria-label="Next case study"
-              className={`${styles.carBtn} ${styles.carBtnNext}`}
-              onClick={goNext}
-            >
-              <ChevronRight size={20} />
-            </button>
-            <div className={styles.carDots}>
-              {applications.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`Go to case study ${i + 1}`}
-                  aria-current={i === appIndex ? 'true' : undefined}
-                  className={`${styles.carDot} ${i === appIndex ? styles.carDotActive : ''}`}
-                  onClick={() => setAppIndex(i)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {latestNews.length > 0 && (
-        <section className={newsStyles.section} aria-labelledby="latest-news-heading">
-          <div className="container">
-            <div className={`section-heading ${newsStyles.heading}`}>
-              <h2 id="latest-news-heading" className={newsStyles.sectionTitle}>Latest news</h2>
-              <Link to="/news" className={newsStyles.allLink}>View all news <ArrowRight size={16} aria-hidden="true" /></Link>
-            </div>
-            <div className={newsStyles.grid}>{latestNews.map(item => <NewsCard key={item.id} item={item} headingLevel={3} />)}</div>
-          </div>
-        </section>
-      )}
       {/* CTA Banner */}
       <section className={styles.ctaSection}>
         <div className="container">

@@ -64,7 +64,7 @@ export default function CategoryPage() {
       </section>
 
       {/* Product families — brief cards linking to each family page */}
-      <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
+      {cat.id !== 'pcd' && <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
         <div className="container">
           <div className={`section-heading ${styles.sectionHeadRow}`}>
             <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
@@ -82,7 +82,7 @@ export default function CategoryPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* Key capability blocks — MAPAL key-info pattern */}
       <section className={styles.capSection} aria-labelledby="capabilities-heading">

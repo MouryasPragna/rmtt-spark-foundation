@@ -29,7 +29,7 @@ export default function ProductDetail({ product }: { product: Product }) {
         <p className={styles.catIntro}>Model references shown in the FINAL catalogue. These are customer-specific examples, not standard availability or range specifications.</p></header>
         <div className={styles.productCards}>{product.examples.map(example => <figure key={example.model}><Gallery images={[{ src: example.image, alt: `${example.model} — customer-specific brazed carbide example` }]} icon={Settings} /><figcaption className={styles.catIntro}>{example.model}</figcaption></figure>)}</div>
       </section> : null}
-      {related.length > 0 && <section className={styles.relatedSection}><h2 className={`section-heading-title ${styles.catTitle}`}>Related products</h2><div className={styles.productCards}>{related.map(tool => <ProductCard key={tool.slug} product={tool} />)}</div></section>}
+      {product.category !== 'pcd' && related.length > 0 && <section className={styles.relatedSection}><h2 className={`section-heading-title ${styles.catTitle}`}>Related products</h2><div className={styles.productCards}>{related.map(tool => <ProductCard key={tool.slug} product={tool} />)}</div></section>}
     </div></section>
   </div>;
 }
