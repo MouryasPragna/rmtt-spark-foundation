@@ -8,7 +8,7 @@ test('sitemap covers all current public category, family, product and published 
   const xml = readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
   const paths = [...xml.matchAll(/<loc>[^<]*#(\/[^<]*)<\/loc>/g)].map(match => match[1]);
   const expected = [
-    '/', '/about', '/products', '/services', '/contact', '/privacy', '/terms',
+    '/', '/about', '/products', '/services', '/contact', '/privacy', '/terms', '/products/pcd/pcd-tooling',
     ...categories.flatMap(category => category.id === 'pcd' ? [`/products/${category.id}`] : [`/products/${category.id}`, ...category.subcategories.map(family => `/products/${category.id}/${family.id}`)]),
     ...products.filter(product => product.category !== 'pcd').map(product => `/products/${product.slug}`),
   ];

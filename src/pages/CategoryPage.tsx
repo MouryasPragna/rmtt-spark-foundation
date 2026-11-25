@@ -84,7 +84,7 @@ export default function CategoryPage() {
         </div>
       </section>}
 
-      {/* PCD overview — families stay hidden, so these cards summarise without linking */}
+      {/* PCD overview — families stay hidden; these cards link to the PCD Tools page */}
       {cat.id === 'pcd' && <section id={cat.id} className={styles.catSection} aria-labelledby="pcd-overview-heading">
         <div className="container">
           <div className={`section-heading ${styles.sectionHeadRow}`}>
@@ -92,13 +92,16 @@ export default function CategoryPage() {
           </div>
           <div className={styles.familiesGrid}>
             {[
-              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb },
-              { id: 'tools', title: 'PCD Tools', blurb: cat.subcategories.filter(sub => sub.id !== 'pcd-tools').map(sub => sub.blurb).join(' ') },
+              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb, href: '/products/pcd/pcd-tooling#why-pcd', action: 'View the technology' },
+              { id: 'tools', title: 'PCD Tools', blurb: 'Application-based individual solutions for drilling, milling and precision boring PCD tools — from proposal and tool design to manufacturing.', href: '/products/pcd/pcd-tooling', action: 'View the tools' },
             ].map(block => (
-              <div key={block.id} className={styles.familyCard}>
+              <Link key={block.id} to={block.href} className={styles.familyCard}>
                 <h3 className={styles.familyTitle}>{block.title}</h3>
                 <p className={styles.familyBlurb}>{block.blurb}</p>
-              </div>
+                <span className={styles.solutionLink} style={{ color: cat.color }}>
+                  {block.action} <ArrowRight size={15} aria-hidden="true" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>

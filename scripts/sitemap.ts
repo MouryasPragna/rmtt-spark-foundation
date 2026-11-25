@@ -4,7 +4,7 @@ import { siteConfig } from '../src/lib/siteConfig';
 import { products } from '../src/data/products';
 import { categories } from '../src/pages/productsData';
 const file = new URL('../public/sitemap.xml', import.meta.url);
-const paths = ['/', '/about', '/products', '/services', '/contact', '/privacy', '/terms'];
+const paths = ['/', '/about', '/products', '/services', '/contact', '/privacy', '/terms', '/products/pcd/pcd-tooling'];
 const all = [...new Set([
   ...paths,
   ...categories.flatMap(category => category.id === 'pcd' ? [`/products/${category.id}`] : [
