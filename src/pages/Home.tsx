@@ -31,7 +31,7 @@ const products = [
     id: 'pcd',
     icon: Gem,
     category: 'PCD Tools',
-    name: 'PCD Boring, Reaming & Milling',
+    name: 'PCD Tools and Technology',
     description:
       'PCD tools for aluminium machining, including precision boring, reaming and milling solutions.',
     imageAlt: 'PCD boring tool with a visible cutting tip and holder',
