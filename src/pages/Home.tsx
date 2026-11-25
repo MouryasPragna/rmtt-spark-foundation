@@ -137,7 +137,7 @@ export default function Home() {
                   <div className={styles.prodCat} style={{ color: 'var(--cat-solid)' }}>{p.category}</div>
                   <h3 className={styles.prodName}>{p.name}</h3>
                   <p className={styles.prodDesc}>{p.description}</p>
-                  <Link to={`/products/${p.id}`} className={styles.prodLink} style={{ color: p.color }}>
+                  <Link to={`/products/${p.id}`} className={styles.prodLink} style={{ color: 'var(--cat-solid)' }}>
                     Explore range <ArrowRight size={16} aria-hidden="true" />
                   </Link>
                 </div>
