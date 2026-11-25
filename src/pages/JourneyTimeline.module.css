@@ -103,7 +103,7 @@
 
 .card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   height: 420px;
   border-radius: 14px;
   overflow: hidden;
@@ -112,7 +112,7 @@
 }
 
 .cardBody {
-  padding: 36px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
