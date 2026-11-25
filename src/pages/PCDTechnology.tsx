@@ -44,6 +44,10 @@ export default function PCDTechnology() {
           <p className={styles.pageSubtitleSecond}>
             RMTT starts with the customer's component and application requirements, then develops a proposal, tool design and manufacturing solution to meet production and performance requirements for drilling, milling and precision boring.
           </p>
+          <div className={styles.jumpLinks}>
+            <Link to="/products/pcd/pcd-technology" className={styles.jumpLink} style={{ background: 'rgba(0,40,85,0.08)' }} aria-current="page">PCD Technology</Link>
+            <Link to="/products/pcd/pcd-tooling" className={styles.jumpLink}>PCD Tools</Link>
+          </div>
         </div>
       </section>
 
