@@ -140,11 +140,29 @@
 
 @media (max-width: 900px) {
   .timeline { grid-template-columns: minmax(0, 1fr); }
-  .years { flex-direction: row; overflow-x: auto; gap: 4px; }
+  .years {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 4px;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+  }
+  .years::-webkit-scrollbar { display: none; }
   .years::before { display: none; }
-  .yearBtn { padding: 30px 12px 8px; align-items: center; text-align: center; white-space: nowrap; }
-  .yearBtn::before { left: 50%; top: 6px; margin: 0 0 0 -8px; width: 16px; height: 16px; }
+  .years li { scroll-snap-align: center; }
+  .yearBtn {
+    padding: 26px 10px 8px;
+    min-width: 104px;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .yearBtn::before { left: 50%; top: 5px; margin: 0 0 0 -8px; width: 14px; height: 14px; }
+  .label { font-size: 0.78rem; }
   .card { grid-template-columns: minmax(0, 1fr); height: auto; }
-  .cardImg { order: -1; height: 280px; }
+  .cardImg { order: -1; height: 260px; }
   .cardBody { padding: 22px; }
 }

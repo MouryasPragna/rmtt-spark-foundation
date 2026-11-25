@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './JourneyTimeline.module.css';
 import img2017 from '../assets/journey-2017.jpg.asset.json';
 import img2018 from '../assets/journey-2018.jpg.asset.json';
@@ -25,7 +25,18 @@ const milestones: Milestone[] = [
 
 export default function JourneyTimeline() {
   const [active, setActive] = useState(milestones.length - 1);
+  const yearsRef = useRef<HTMLOListElement>(null);
   const current = milestones[active];
+
+  // Keep the selected year centred when the row scrolls sideways (phones).
+  useEffect(() => {
+    const list = yearsRef.current;
+    const item = list?.children[active] as HTMLElement | undefined;
+    if (!list || !item) return;
+    if (list.scrollWidth <= list.clientWidth) return;
+    const left = item.offsetLeft - (list.clientWidth - item.clientWidth) / 2;
+    list.scrollTo({ left, behavior: 'smooth' });
+  }, [active]);
   return (
     <section className={styles.section} aria-labelledby="journey-heading">
       <div className="container">
@@ -38,7 +49,7 @@ export default function JourneyTimeline() {
           for our presence in the precision tooling industry.
         </p>
         <div className={styles.timeline}>
-          <ol className={styles.years} aria-label="Milestone years">
+          <ol className={styles.years} aria-label="Milestone years" ref={yearsRef}>
             {milestones.map((m, i) => (
               <li key={m.year}>
                 <button
