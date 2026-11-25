@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import styles from './Products.module.css';
 import PcdAnatomy from '../components/PcdAnatomy';
-import pcdTechnologyImage from '../assets/home-pcd-boring.webp.asset.json';
+import pcdTechnologyImage from '../assets/pcd-technology-brand.webp.asset.json';
 
 /** Approved copy only: the PCD Tooling Technology blurb and the Manufacturing technology capability block. */
 const TECHNOLOGY = [
@@ -55,9 +54,9 @@ export default function PCDTechnology() {
             <div className={styles.detailImage}>
               <img
                 src={`${import.meta.env.BASE_URL}${pcdTechnologyImage.url}`}
-                alt="PCD boring tool — example from the PCD range"
-                width={800}
-                height={800}
+                alt="PCD boring tool with a machined steel body and PCD cutting tip, shown on a dark navy brand background"
+                width={1024}
+                height={1536}
                 loading="eager"
                 decoding="async"
                 draggable={false}
@@ -71,9 +70,6 @@ export default function PCDTechnology() {
                   <p className={styles.catIntro}>{block.body}</p>
                 </div>
               ))}
-              <Link to="/products/pcd/pcd-tooling" className={styles.detailLink}>
-                See the PCD tools <ArrowRight size={15} aria-hidden="true" />
-              </Link>
             </div>
           </div>
           <PcdAnatomy />

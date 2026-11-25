@@ -437,6 +437,9 @@
 .emptyState h2 { margin-bottom: 24px; }
 .detailGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .detailImage { min-width: 0; }
+/* Plain <img> in the detail column: keep the photograph's true ratio instead of
+   the width/height attributes, which browsers apply as presentational hints. */
+.detailImage > img { width: 100%; height: auto; }
 .detailImage > div > button:first-child img { padding: 24px 24px 24px 4px; }
 .applicationList { padding-left: 20px; margin: 16px 0 24px; color: var(--text-secondary); }
 .specTable { width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left; }
