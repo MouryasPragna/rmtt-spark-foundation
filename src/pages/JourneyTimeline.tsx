@@ -54,7 +54,7 @@ export default function JourneyTimeline() {
               <li key={m.year}>
                 <button
                   type="button"
-                  className={`${styles.yearBtn} ${i === active ? styles.yearActive : ''}`}
+                  className={`${styles.yearButton} ${i === active ? styles.yearActive : ''}`}
                   aria-current={i === active ? 'step' : undefined}
                   aria-controls="journey-panel"
                   onClick={() => setActive(i)}

@@ -57,7 +57,7 @@
   background: var(--border-light);
 }
 
-.yearBtn {
+.yearButton {
   box-shadow: none;
   backdrop-filter: none;
   position: relative;
@@ -73,7 +73,7 @@
   font: inherit;
 }
 
-.yearBtn::before {
+.yearButton::before {
   content: '';
   position: absolute;
   left: 0;
@@ -86,13 +86,14 @@
   transition: background 0.2s;
 }
 
-.yearBtn:hover::before { background: var(--section-heading-rule); }
-.yearActive { background: var(--off-white, var(--border-light)); }
+.yearButton:hover::before { background: var(--section-heading-rule); }
 .yearActive::before { background: var(--section-heading-accent); }
+.yearActive .year { color: var(--section-heading-accent); }
 
 .year {
   color: var(--navy);
   font-weight: var(--type-heading-weight);
+  transition: color 0.2s;
 }
 
 .label {
@@ -153,14 +154,14 @@
   .years::-webkit-scrollbar { display: none; }
   .years::before { display: none; }
   .years li { scroll-snap-align: center; }
-  .yearBtn {
+  .yearButton {
     padding: 26px 10px 8px;
     min-width: 104px;
     align-items: center;
     text-align: center;
     white-space: nowrap;
   }
-  .yearBtn::before { left: 50%; top: 5px; margin: 0 0 0 -8px; width: 14px; height: 14px; }
+  .yearButton::before { left: 50%; top: 5px; margin: 0 0 0 -8px; width: 14px; height: 14px; }
   .label { font-size: 0.78rem; }
   .card { grid-template-columns: minmax(0, 1fr); height: auto; }
   .cardImg { order: -1; height: 260px; }
