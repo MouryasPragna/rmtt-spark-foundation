@@ -190,8 +190,6 @@
   letter-spacing: 0.04em;
 }
 
-.rangeLink { color: var(--navy); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-
 .ctaRow { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 .primaryCta, .secondaryCta {
   display: inline-flex;
@@ -398,7 +396,7 @@
   max-width: 560px;
 }
 
-.brandCta {
+.rangeCta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -414,7 +412,7 @@
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.brandCta:hover {
+.rangeCta:hover {
   background: var(--cta-dark);
   transform: translateY(-2px);
 }
@@ -434,11 +432,10 @@
 
 @media (max-width: 768px) {
   .brandTagline { max-width: 100%; }
-  .brandCta { margin-top: 20px; padding: 12px 24px; }
+  .rangeCta { margin-top: 20px; padding: 12px 24px; }
 }
 
 .textBlockBrand .tag { color: rgba(255, 255, 255, 0.65); }
-.textBlockBrand .rangeLink { color: var(--white); }
 
 /* Minimal, text-free controls */
 .controls { background: transparent; padding: 0; gap: 10px; align-items: center; }

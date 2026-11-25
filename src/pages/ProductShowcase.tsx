@@ -184,13 +184,8 @@ export default function ProductShowcase(): JSX.Element {
           )}
           <div className={styles.tag}>
             <span>{slide.tag}</span>
-            {!slide.brand && (
-              <Link to={slide.href} className={styles.rangeLink}>{slide.linkText ?? 'View range →'}</Link>
-            )}
           </div>
-          {slide.brand && (
-            <Link to={slide.href} className={styles.brandCta}>{slide.linkText}</Link>
-          )}
+          <Link to={slide.href} className={styles.rangeCta}>{slide.linkText ?? 'View range →'}</Link>
         </div>
 
         {/* Right — slide counter + dots */}
