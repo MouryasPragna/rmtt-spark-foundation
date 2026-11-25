@@ -84,6 +84,26 @@ export default function CategoryPage() {
         </div>
       </section>}
 
+      {/* PCD overview — families stay hidden, so these cards summarise without linking */}
+      {cat.id === 'pcd' && <section id={cat.id} className={styles.catSection} aria-labelledby="pcd-overview-heading">
+        <div className="container">
+          <div className={`section-heading ${styles.sectionHeadRow}`}>
+            <h2 id="pcd-overview-heading" className={styles.catTitle}>PCD technology and tools</h2>
+          </div>
+          <div className={styles.familiesGrid}>
+            {[
+              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb },
+              { id: 'tools', title: 'PCD Tools', blurb: cat.subcategories.filter(sub => sub.id !== 'pcd-tools').map(sub => sub.blurb).join(' ') },
+            ].map(block => (
+              <div key={block.id} className={styles.familyCard}>
+                <h3 className={styles.familyTitle}>{block.title}</h3>
+                <p className={styles.familyBlurb}>{block.blurb}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>}
+
       {/* Key capability blocks — MAPAL key-info pattern */}
       <section className={styles.capSection} aria-labelledby="capabilities-heading">
         <div className="container">
