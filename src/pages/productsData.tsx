@@ -176,7 +176,7 @@ export const categories: Category[] = [
       'Seamless brazing and high-quality pocket seats',
       'Smooth flutes and balanced PCD material',
       'Long tool life and high wear resistance',
-      'Surface finish below Ra 0.2 is possible (unit not stated in the FINAL deck)',
+      'Surface finish below Ra 0.2 is possible',
       'Tight tolerances maintained over longer machining cycles',
       'Combined operations reduce tool changes and production costs',
       'High cutting speeds and feeds can reduce machining time',
