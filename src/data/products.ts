@@ -1,6 +1,7 @@
-import solidCarbideEndmillsBrand from '../assets/solid-carbide-end-mills-brand.jpg';
-import solidCarbideReamersBrand from '../assets/solid-carbide-reamers-brand.jpg';
-import solidCarbideDrillsGroup from '../assets/solid-carbide-drills-group.webp';
+// Solid Carbide family photos: client studio group shots (Drive: FOR WEBSITE / Product_Page).
+import solidCarbideEndmillsGroup from '../assets/sc-end-mills-group.webp';
+import solidCarbideReamersGroup from '../assets/sc-reamers-group.webp';
+import solidCarbideDrillsGroup from '../assets/sc-drills-group.webp';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
 import brazedShellCutter from '../assets/brazed-shell-cutter.webp.asset.json';
@@ -68,10 +69,10 @@ export const products: Product[] = [
             description:
               'The high-performance end mills from RIDDHI ensure excellent, reliable results during all machining tasks. The focus is on cost-effectiveness and productivity, along with meeting customers’ demanding requirements.',
             descriptionSecond: 'Irrespective of whether customers need cost-effective milling cutters for all milling applications, RIDDHI offers comprehensive, right solutions based on customers’ exact demands, offering specially tailored milling solutions.',
-            image: solidCarbideEndmillsBrand,
-            imageAspect: '768 / 1120',
+            image: solidCarbideEndmillsGroup,
+            imageAspect: '16 / 9',
             images: [
-              { src: solidCarbideEndmillsBrand, alt: 'Seven Solid Carbide End Mills with different flute geometries and coatings — pictured examples from the RIDDHI range' },
+              { src: solidCarbideEndmillsGroup, alt: 'Solid Carbide End Mills with different flute geometries and coatings, including ball-nose and micro end mills — pictured examples from the RIDDHI range' },
             ],
             specs: [
               { label: 'Diameter', value: '2–32 mm' },
@@ -94,10 +95,10 @@ export const products: Product[] = [
             description:
               'RIDDHI high-tech and high-performance reamers with internal coolant supply are the ideal solutions for precision bore machining of all kinds of workpiece materials. We are highly specialised in developing our know-how and have established niche areas in machining precision bores in the automotive and aerospace industries. Our reaming solutions are widely deployed where critical bore tolerances and tight geometrical accuracy are required for workpiece materials like grey cast iron, nodular iron, alloyed steel, and stainless steel, as well as advanced materials like titanium and Inconel.',
             descriptionSecond: 'The multi-blade reamers, together with unequal spacing, specific cutting geometry, and monoblock design, offer a comprehensive full-carbide reamer program for the highest performance.',
-            image: solidCarbideReamersBrand,
-            imageAspect: '768 / 1056',
+            image: solidCarbideReamersGroup,
+            imageAspect: '16 / 9',
             images: [
-              { src: solidCarbideReamersBrand, alt: 'Seven Solid Carbide Reamers with straight and spiral flutes — pictured examples from the RIDDHI range' },
+              { src: solidCarbideReamersGroup, alt: 'Solid Carbide Reamers with straight and spiral flutes, including multi-blade and step reamers — pictured examples from the RIDDHI range' },
             ],
             specs: [
               { label: 'Diameter', value: '2–32 mm' },

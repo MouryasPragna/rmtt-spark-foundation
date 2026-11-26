@@ -3,6 +3,7 @@ import styles from './Products.module.css';
 import { categories } from './productsData';
 import ProductCard from '../components/ProductCard';
 import Gallery from '../components/Gallery';
+import StudioPhoto from '../components/StudioPhoto';
 import { getProductImages } from '../data/products';
 
 /** One tool category (family) on its own page, in the MAPAL family-page pattern. */
@@ -34,7 +35,32 @@ export default function FamilyPage() {
           </div>
         </div>
       </section>
-      <section className={styles.catalogueSection} aria-labelledby="family-tools-heading">
+      {cat.studio ? family.products.map(product => {
+        const photo = getProductImages(product)[0];
+        return <div key={product.slug}>
+          {photo ? <StudioPhoto src={photo.src} alt={photo.alt} eager maxWidth={1280} /> : null}
+          <section className={`${styles.catalogueSection} ${styles.studioDetail}`} aria-labelledby="family-tools-heading">
+            <div className="container">
+              <h2 id="family-tools-heading" className="visually-hidden">Tools in this family</h2>
+              <div className={styles.studioDetailGrid}>
+                <div className={styles.studioDetailText}>
+                  {product.tagline ? <h2 className={`section-heading-title ${styles.subCatTitle}`}>{product.tagline}</h2> : null}
+                  <p className={styles.catIntro}>{product.description}</p>
+                  {product.descriptionSecond ? <p className={styles.catIntro}>{product.descriptionSecond}</p> : null}
+                  {product.descriptionThird ? <p className={styles.catIntro}>{product.descriptionThird}</p> : null}
+                  {product.benefits?.length ? <><h3 className={styles.studioSubhead}>Benefits</h3><ul className={styles.applicationList}>{product.benefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul></> : null}
+                </div>
+                <aside className={styles.studioDetailSpecs} aria-label={`${product.name} specifications`}>
+                  <h3 className={styles.studioSubhead}>Product range &amp; technology</h3>
+                  <table className={styles.specTable}><tbody>{product.specs?.map(spec => <tr key={spec.label}><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>)}</tbody></table>
+                  <h3 className={styles.studioSubhead}>Applications &amp; materials</h3>
+                  <ul className={styles.applicationList}>{product.applications.map(application => <li key={application}>{application}</li>)}</ul>
+                </aside>
+              </div>
+            </div>
+          </section>
+        </div>;
+      }) : <section className={styles.catalogueSection} aria-labelledby="family-tools-heading">
         <div className="container">
           <h2 id="family-tools-heading" className="visually-hidden">Tools in this family</h2>
           {cat.id === 'solid-carbide' ? family.products.map(product => <div key={product.slug} className={styles.detailGrid}>
@@ -54,7 +80,7 @@ export default function FamilyPage() {
             {family.products.map(product => <ProductCard key={product.slug} product={product} headingLevel={3} />)}
           </div>}
         </div>
-      </section>
+      </section>}
     </div>
   );
 }
