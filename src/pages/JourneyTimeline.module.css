@@ -119,7 +119,8 @@
 }
 
 .cardYear {
-  color: var(--section-heading-accent);
+  /* Darker shade of the accent: the card's grey background left --section-heading-accent at 3.96:1. */
+  color: var(--cta-dark);
   font-weight: 600;
   margin-bottom: 8px;
 }
