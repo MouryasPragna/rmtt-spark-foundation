@@ -59,8 +59,8 @@ export default function PCDTechnology() {
               <img
                 src={pcdTechnologyImage}
                 alt="RIDDHI PCD tool on an HSK-A63 holder, with brazed PCD cutting edges set in pockets along the steel body"
-                width={620}
-                height={930}
+                width={589}
+                height={1070}
                 loading="eager"
                 decoding="async"
                 draggable={false}
