@@ -7,9 +7,12 @@ import { AppShell } from './App';
 export { getRouteMeta, canonicalUrl, localBusinessJsonLd, SITE_NAME } from './lib/routeMeta';
 export { publicRoutes } from './lib/publicRoutes';
 
+// Same basename as the browser router, so links in the pre-rendered HTML include any sub-path.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || undefined;
+
 const tree = (url: string) => (
   <StrictMode>
-    <StaticRouter location={url}>
+    <StaticRouter location={`${basename ?? ''}${url === '/' && basename ? '' : url}`} basename={basename}>
       <AppShell />
     </StaticRouter>
   </StrictMode>
