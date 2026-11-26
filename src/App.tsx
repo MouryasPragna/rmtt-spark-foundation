@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppFab from './components/WhatsAppFab';
 import Home from './pages/Home';
 import RouteMeta from './components/RouteMeta';
 import ScrollToTop from './components/ScrollToTop';
+import { startScrollMotion } from './lib/scrollMotion';
 const Products = lazy(() => import('./pages/Products'));
 const ProductRoute = lazy(() => import('./pages/ProductRoute'));
 const FamilyPage = lazy(() => import('./pages/FamilyPage'));
@@ -20,6 +21,8 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 /** Everything inside the router. The browser wraps it in BrowserRouter (below);
  *  the build-time pre-render wraps it in StaticRouter (src/entry-server.tsx). */
 export function AppShell() {
+  // Scroll reveals and image fades start after hydration; see src/lib/scrollMotion.ts.
+  useEffect(() => startScrollMotion(), []);
   return (
     <>
       <RouteMeta />

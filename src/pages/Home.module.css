@@ -663,32 +663,6 @@
 
 /* === Animations === */
 
-/* Scroll reveal */
-/* Scroll reveal (standards): fade + 16px rise, 600ms, 90ms stagger. Content is hidden only once
-   JavaScript is running (html.js), so the pre-rendered page stays readable if scripts are slow
-   or blocked. */
-:global(.js) .reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-:global(.js) .revealShown {
-  opacity: 1;
-  transform: none;
-}
-:global(.js) .revealStagger > * {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-:global(.js) .revealStaggerShown > * {
-  opacity: 1;
-  transform: none;
-}
-:global(.js) .revealStaggerShown > *:nth-child(2) { transition-delay: 90ms; }
-:global(.js) .revealStaggerShown > *:nth-child(3) { transition-delay: 180ms; }
-:global(.js) .revealStaggerShown > *:nth-child(n+4) { transition-delay: 270ms; }
-
 /* Industry tag pop-in */
 .industryTag {
   transition: border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -725,7 +699,6 @@
   overflow: hidden;
 }
 
-/* Stat number subtle pulse on reveal */
 
 /* Carousel slide fade-in */
 .appSlide .appCard {
@@ -734,7 +707,6 @@
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  :global(.js) .reveal, :global(.js) .revealStagger > * { transition: none; opacity: 1; transform: none; }
   .prodCard::after { display: none; }
 }
 
