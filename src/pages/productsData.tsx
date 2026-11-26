@@ -9,7 +9,7 @@ import solidCarbideHero from '../assets/sc-hero-group.webp';
 import scEndMillsCard from '../assets/sc-end-mills-group-card.webp';
 import scReamersCard from '../assets/sc-reamers-group-card.webp';
 import scDrillsCard from '../assets/sc-drills-group-card.webp';
-import brazedCarbideHero from '../assets/brazed-carbide-hero.webp';
+import brazedCarbideHero from '../assets/brazed-hero-group.webp';
 import pcdHero from '../assets/pcd-hero-group.webp';
 
 export type SubCategory = {
@@ -59,6 +59,8 @@ export type Category = {
   heroAlt?: string;
   /** The hero and family photos are studio shots on the shared grey backdrop (shown on a matching band). */
   studio?: boolean;
+  /** Band gradient when the hero photo's backdrop differs from the shared --studio-backdrop. */
+  studioBackdrop?: string;
   features: string[];
   featured: FeaturedExample;
   capabilities: CapabilityBlock[];
@@ -275,7 +277,10 @@ export const categories: Category[] = [
     image: brazedCarbideOverview.url,
     imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
     heroImage: brazedCarbideHero,
-    heroAlt: 'Brazed carbide tools from the RMTT range on a display stand',
+    heroAlt: 'The RIDDHI brazed carbide range: reamers, step and form tools, a T-slot cutter and shell milling cutters with brazed carbide tips',
+    studio: true,
+    // Sampled from this photo's left and right edges (a lighter backdrop than the other studio shots).
+    studioBackdrop: 'linear-gradient(180deg, #DADADA 0%, #DCDCDC 5%, #DEDEDE 10%, #E0E0E0 15%, #E2E2E2 20%, #E4E4E4 25%, #E7E7E7 30%, #E8E8E8 35%, #E8E8E8 40%, #EAEAEA 45%, #EAEAEA 50%, #EBEBEB 55%, #EFEFEF 60%, #F7F7F7 65%, #FDFDFD 70%, #FCFCFC 75%, #F2F2F2 80%, #EFEFEF 85%, #F4F4F4 90%, #F8F8F8 95%, #FAFAFA 100%)',
     features: [
       'Tool-steel body, heat-treated for the application',
       'Carbide tips brazed into prepared pockets',

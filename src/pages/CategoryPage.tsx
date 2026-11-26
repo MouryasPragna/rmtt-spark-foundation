@@ -39,7 +39,7 @@ export default function CategoryPage() {
             <div className="section-eyebrow">{cat.label}</div>
             <h1 className={styles.pageTitle}>{cat.headline}</h1>
           </div>
-          <StudioPhoto src={cat.heroImage} alt={cat.heroAlt ?? ''} eager maxWidth={1280} />
+          <StudioPhoto src={cat.heroImage} alt={cat.heroAlt ?? ''} eager maxWidth={1280} backdrop={cat.studioBackdrop} />
         </section>
       ) : cat.heroImage ? (
         <PageHero image={cat.heroImage} alt={cat.heroAlt ?? ''} tools>

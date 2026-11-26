@@ -7,6 +7,8 @@ type Props = {
   eager?: boolean;
   /** Widest the photo itself is shown, in px; the backdrop band carries on to the edges. */
   maxWidth?: number;
+  /** Band gradient for photos shot on a different backdrop (sampled from the photo's edges). */
+  backdrop?: string;
 };
 
 /**
@@ -14,9 +16,9 @@ type Props = {
  * (`--studio-backdrop`), so the picture blends into the page instead of sitting in a box.
  * The band is exactly as tall as the photo, which keeps the gradients lined up.
  */
-export default function StudioPhoto({ src, alt, eager = false, maxWidth = 1200 }: Props) {
+export default function StudioPhoto({ src, alt, eager = false, maxWidth = 1200, backdrop }: Props) {
   return (
-    <div className={styles.band}>
+    <div className={styles.band} style={backdrop ? { background: backdrop } : undefined}>
       <img
         className={styles.photo}
         src={src}
