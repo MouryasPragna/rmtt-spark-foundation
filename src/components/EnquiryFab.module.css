@@ -27,12 +27,11 @@
   background: var(--cta-dark);
 }
 
+/* On phones the side tab covered page content and sat beside the WhatsApp
+   button. The mobile menu already carries the Contact action and the top bar
+   shows phone and email, so the tab is hidden below 768px. */
 @media (max-width: 768px) {
   .link {
-    top: 160px;
-    bottom: auto;
-    transform: none;
-    min-height: 132px;
-    font-size: 14px;
+    display: none;
   }
 }

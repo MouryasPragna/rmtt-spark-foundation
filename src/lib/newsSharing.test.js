@@ -5,7 +5,7 @@ import { generateNewsRss } from './rss';
 
 test('share destinations preserve the full static article URL', () => {
   const links = newsShareLinks('vollmer-edm-welcome', 'VOLLMER & RMTT');
-  expect(articleUrl('vollmer-edm-welcome')).toBe('https://rmtt-spark-foundation.lovable.app/#/news/vollmer-edm-welcome');
+  expect(articleUrl('vollmer-edm-welcome')).toBe('https://rmtt-spark-foundation.lovable.app/news/vollmer-edm-welcome');
   expect(new URL(links.linkedin).searchParams.get('url')).toBe(links.url);
   expect(new URL(links.whatsapp).searchParams.get('text')).toBe(`VOLLMER & RMTT ${links.url}`);
 });

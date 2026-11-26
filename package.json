@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "bun scripts/rss.ts && bun scripts/sitemap.ts && tsc -b && vite build",
+    "build": "bun scripts/rss.ts && bun scripts/sitemap.ts && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && bun scripts/prerender.ts && bun scripts/headers.ts",
     "build:dev": "bun scripts/rss.ts && bun scripts/sitemap.ts && vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",

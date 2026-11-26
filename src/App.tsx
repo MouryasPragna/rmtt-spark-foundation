@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -18,9 +18,11 @@ const About = lazy(() => import('./pages/About'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-export default function App() {
+/** Everything inside the router. The browser wraps it in BrowserRouter (below);
+ *  the build-time pre-render wraps it in StaticRouter (src/entry-server.tsx). */
+export function AppShell() {
   return (
-    <HashRouter>
+    <>
       <RouteMeta />
       <ScrollToTop />
       <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to main content</a>
@@ -50,6 +52,14 @@ export default function App() {
       <Footer />
       <EnquiryFab />
       <WhatsAppFab />
-    </HashRouter>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || undefined}>
+      <AppShell />
+    </BrowserRouter>
   );
 }

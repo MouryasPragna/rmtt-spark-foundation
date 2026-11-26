@@ -11,7 +11,7 @@ export function generateNewsRss(items: NewsItem[]): string {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 <title>RMTT News &amp; Articles</title>
-<link>${xml(`${siteConfig.siteUrl}/#/news`)}</link>
+<link>${xml(`${siteConfig.siteUrl}/news`)}</link>
 <description>News and articles from Riddhi Machine Tool Technology.</description>
 <language>en-in</language>
 <atom:link href="${xml(rssUrl)}" rel="self" type="application/rss+xml" />

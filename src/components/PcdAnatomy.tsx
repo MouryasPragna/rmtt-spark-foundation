@@ -67,7 +67,7 @@ export default function PcdAnatomy() {
         {FIGURES.map((fig, fi) => (
           <figure key={fig.src} className={styles.figure} style={{ ['--ratio' as string]: String(fig.ratio), ['--photo-ratio' as string]: String(fig.ratio * fig.photo.width / fig.photo.height), ['--fi' as string]: fi }}>
             <img
-              src={`${import.meta.env.BASE_URL}${fig.src}`}
+              src={fig.src}
               alt={fig.alt}
               className={styles.photo}
               style={{ left: `${fig.photo.left}%`, top: `${fig.photo.top}%`, width: `${fig.photo.width}%`, height: `${fig.photo.height}%` }}

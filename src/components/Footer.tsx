@@ -54,7 +54,7 @@ export default function Footer() {
               <h2 className={styles.colTitle}>Follow us</h2>
               <div className={styles.socials}>
                 <a
-                  href="https://in.linkedin.com/company/riddhi-machine-tool-technology-blr"
+                  href={siteConfig.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow Riddhi on LinkedIn — opens LinkedIn in a new tab"

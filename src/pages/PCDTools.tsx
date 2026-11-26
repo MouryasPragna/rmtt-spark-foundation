@@ -56,7 +56,7 @@ export default function PCDTools() {
           <div className={styles.detailGrid}>
             <div className={styles.detailImage}>
               <img
-                src={`${import.meta.env.BASE_URL}${pcdToolingRange.url}`}
+                src={pcdToolingRange.url}
                 alt="PCD tools from the RIDDHI range — pictured examples"
                 width={800}
                 height={800}

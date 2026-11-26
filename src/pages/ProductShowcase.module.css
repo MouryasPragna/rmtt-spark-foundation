@@ -313,7 +313,7 @@
 }
 
 .arrowLeft  { left: 20px; }
-.arrowRight { right: 20px; }
+.arrowRight { right: 64px; }   /* clears the 44px "Enquire now" side tab, which sits over the right edge at mid-height */
 
 @media (max-width: 768px) {
   .arrow { display: none; }
@@ -449,4 +449,48 @@
    absolute-positioned .controls rule to win). */
 @media (max-width: 768px) {
   .controls { position: static; transform: none; width: 100%; justify-content: center; margin-top: 12px; }
+}
+
+/* ── PAGE HEADLINE (h1) — fixed above the rotating slides ── */
+.copyColumn {
+  max-width: 680px;
+  pointer-events: all;
+}
+.heroHeading {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--navy);
+  margin-bottom: 18px;
+  max-width: 34ch;
+}
+/* Overrides the global #main-content h1 title size: the slide title stays the largest text. */
+:global(#main-content) .heroHeading {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.heroHeadingBrand { color: var(--white); }
+
+/* ── PLAY / PAUSE (WCAG 2.2.2) ── */
+.playToggle {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+  padding: 0;
+}
+.playToggle:hover { border-color: var(--steel); }
+
+@media (max-width: 768px) {
+  .copyColumn { max-width: 100%; padding-right: 44px; }
+  .copyColumn .textBlock { padding-right: 0; }
+  .heroHeading, :global(#main-content) .heroHeading { font-size: 16px; margin-bottom: 12px; }
 }
