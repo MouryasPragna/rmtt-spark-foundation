@@ -26,7 +26,7 @@ export default function FamilyPage() {
                 key={sub.id}
                 to={`/products/${cat.id}/${sub.id}`}
                 className={styles.jumpLink}
-                style={sub.id === family.id ? { background: 'rgba(0,40,85,0.08)' } : undefined}
+                style={sub.id === family.id ? { background: 'rgba(30, 51, 68,0.08)' } : undefined}
               >
                 {sub.title}
               </Link>

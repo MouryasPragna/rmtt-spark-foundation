@@ -9,7 +9,7 @@
 }
 
 .pageTitle {
-  font-size: 42px;
+  font-size: var(--type-title-size);
   font-weight: 700;
   color: #fff;
   margin-bottom: 14px;
@@ -17,14 +17,14 @@
 }
 
 .pageSubtitle {
-  font-size: 16px;
+  font-size: var(--text-md);
   color: rgba(255,255,255,0.65);
   line-height: 1.65;
   max-width: 100%;
 }
 
 .machinesSection {
-  padding: 72px 0;
+  padding: var(--section-spacing) 0;
   background: #fff;
 }
 
@@ -38,7 +38,7 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm, 2px);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   background: var(--white);
 }
@@ -71,7 +71,7 @@
 }
 
 .machineNum {
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--blue);
@@ -79,7 +79,7 @@
 }
 
 .machineName {
-  font-size: 22px;
+  font-size: var(--type-small-heading-size);
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 12px;
@@ -87,7 +87,7 @@
 }
 
 .machineDetail {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 20px;
@@ -104,7 +104,7 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
 }
 
@@ -117,24 +117,24 @@
 /* Process */
 .processSection {
   background: var(--navy);
-  padding: 88px 0;
+  padding: var(--section-spacing) 0;
 }
 
 .processHead {
-  text-align: center;
-  margin-bottom: 64px;
+  text-align: left;
+  margin-bottom: var(--section-heading-gap);
 }
 
 .processTitle {
-  font-size: 34px;
+  font-size: var(--type-heading-size);
   font-weight: 700;
-  color: var(--white);
+  color: var(--section-heading-accent-on-dark);
   margin-bottom: 12px;
   letter-spacing: -0.02em;
 }
 
 .processSub {
-  font-size: 17px;
+  font-size: var(--text-md);
   color: var(--white);
   max-width: 620px;
   margin: 0 auto;
@@ -205,7 +205,7 @@
   border-radius: 50%;
   background: var(--white);
   color: var(--navy);
-  font-size: 16px;
+  font-size: var(--text-md);
   font-weight: 700;
   letter-spacing: 0.02em;
   display: flex;
@@ -256,7 +256,7 @@
 }
 
 @media (max-width: 768px) {
-  .processSection { padding: 64px 0; }
+  .processSection { padding: var(--section-spacing) 0; }
   .processHead { margin-bottom: 40px; }
   .processSteps {
     grid-template-columns: 1fr;
@@ -287,19 +287,19 @@
 /* CTA */
 .ctaSection {
   background: var(--surface);
-  padding: 72px 0;
+  padding: var(--section-spacing) 0;
   text-align: center;
 }
 
 .ctaTitle {
-  font-size: 28px;
+  font-size: var(--type-heading-size);
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 12px;
 }
 
 .ctaSub {
-  font-size: 15px;
+  font-size: var(--text-md);
   color: var(--text-secondary);
   line-height: 1.65;
   max-width: 480px;
@@ -312,7 +312,7 @@
   gap: 8px;
   background: var(--navy);
   color: #fff;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   padding: 13px 28px;
   border-radius: var(--radius-lg);
@@ -329,18 +329,18 @@
     padding: 24px 20px 28px;
   }
   .machinesSection {
-    padding: 48px 0;
+    padding: var(--section-spacing) 0;
   }
 }
 
 .pageHero :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); }
 @media (max-width: 600px) { .main { padding-top: 64px; } }
 
-.processSection :global(.section-eyebrow) { color: var(--white); border-left-color: var(--white); margin-left: auto; margin-right: auto; }
+
 
 /* Services blocks — MAPAL information pattern */
 .servicesSection {
-  padding: 72px 0;
+  padding: var(--section-spacing) 0;
   background: var(--surface);
 }
 
@@ -349,7 +349,7 @@
 }
 
 .servicesTitle {
-  font-size: 30px;
+  font-size: var(--type-heading-size);
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 12px;
@@ -357,7 +357,7 @@
 }
 
 .servicesSub {
-  font-size: 15px;
+  font-size: var(--text-md);
   color: var(--text-secondary);
   line-height: 1.65;
   max-width: 560px;
@@ -379,7 +379,7 @@
 }
 
 .serviceTitle {
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-weight: 700;
   color: var(--navy);
   margin: 0 0 10px;
@@ -387,13 +387,16 @@
 }
 
 .serviceBody {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.65;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  .servicesSection { padding: 56px 0; }
+  .servicesSection { padding: var(--section-spacing) 0; }
   .servicesGrid { grid-template-columns: 1fr; }
 }
+
+/* Centred band: keep the capped paragraph centred. */
+:global(#main-content) .ctaSection p { margin-inline: auto; }

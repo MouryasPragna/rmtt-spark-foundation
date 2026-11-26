@@ -7,6 +7,9 @@ import '@fontsource/poppins/700.css'
 import './index.css'
 import App from './App.tsx'
 
+// Scroll-reveal styles hide content only once JavaScript is running (see .reveal rules).
+document.documentElement.classList.add('js')
+
 // Old links used hash routes (/#/about). Move them to the real path before React starts.
 const legacy = window.location.hash.startsWith('#/') ? window.location.hash.slice(1) : null
 if (legacy) window.history.replaceState(null, '', `${import.meta.env.BASE_URL.replace(/\/$/, '')}${legacy}`)

@@ -54,7 +54,7 @@
 }
 
 .tagline {
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.7;
   color: var(--on-dark-muted);
   margin-bottom: 20px;
@@ -91,13 +91,13 @@
 
 .badge {
   display: inline-block;
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--blue-light);
   background: var(--steel);
-  border: 1px solid rgba(74,123,167,0.3);
+  border: 1px solid rgba(59, 90, 114,0.3);
   padding: 4px 10px;
   border-radius: 4px;
 }
@@ -116,7 +116,7 @@
 }
 
 .colTitle {
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -132,7 +132,7 @@
 }
 
 .links a {
-  font-size: 13px;
+  font-size: var(--text-sm);
   color: var(--on-dark-muted);
   transition: color 0.2s;
 }
@@ -152,7 +152,7 @@
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   color: var(--on-dark-muted);
   line-height: 1.5;
 }
@@ -180,7 +180,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: var(--text-xs);
   color: var(--on-dark-muted);
   gap: 16px;
   flex-wrap: wrap;
@@ -212,7 +212,7 @@
 }
 
 .followUs {
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
