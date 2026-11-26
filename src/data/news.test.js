@@ -36,6 +36,6 @@ test('article bodies do not repeat the shared call-to-action paragraph', () => {
 });
 test('sitemap lists no news pages while News is hidden', () => {
   const xml = readFileSync(new URL('../../public/sitemap.xml', import.meta.url), 'utf8');
-  expect(xml).not.toContain('/#/news');
+  expect(xml).not.toContain('/news');
   expect(xml).not.toContain('example.com');
 });

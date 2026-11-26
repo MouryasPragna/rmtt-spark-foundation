@@ -8,6 +8,7 @@ export const siteConfig = {
   phone: '+91 99459 09155',
   phoneHref: 'tel:+919945909155',
   whatsapp: '919945909155',
+  linkedin: 'https://in.linkedin.com/company/riddhi-machine-tool-technology-blr',
   address: {
     street: 'GNC Industrial Estate, Agara Village, Tataguni Post, Kanakapura Main Road',
     cityLine: 'Bengaluru – 560082, Karnataka, India.',

@@ -57,7 +57,7 @@ export default function PCDTechnology() {
           <div className={styles.detailGrid}>
             <div className={styles.detailImage}>
               <img
-                src={`${import.meta.env.BASE_URL}${pcdTechnologyImage.url}`}
+                src={pcdTechnologyImage.url}
                 alt="PCD boring tool with a machined steel body and PCD cutting tip, shown on a dark navy brand background"
                 width={1024}
                 height={1536}

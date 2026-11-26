@@ -6,7 +6,8 @@ import { siteConfig } from '../src/lib/siteConfig';
 
 test('sitemap covers all current public category, family, product and published article routes', () => {
   const xml = readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
-  const paths = [...xml.matchAll(/<loc>[^<]*#(\/[^<]*)<\/loc>/g)].map(match => match[1]);
+  const paths = [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map(match => new URL(match[1]).pathname);
+  expect(xml).not.toContain('/#/');
   const expected = [
     '/', '/about', '/products', '/services', '/contact', '/privacy', '/terms', '/products/pcd/pcd-tooling', '/products/pcd/pcd-technology',
     ...categories.flatMap(category => category.id === 'pcd' ? [`/products/${category.id}`] : [`/products/${category.id}`, ...category.subcategories.map(family => `/products/${category.id}/${family.id}`)]),
@@ -21,4 +22,9 @@ test('sitemap covers all current public category, family, product and published 
   for (const match of xml.matchAll(/<loc>([^<]*)<\/loc>/g)) {
     expect(new URL(match[1]).origin).toBe(new URL(siteConfig.siteUrl).origin);
   }
+});
+
+test('robots.txt points crawlers at the sitemap', () => {
+  const robots = readFileSync(new URL('../public/robots.txt', import.meta.url), 'utf8');
+  expect(robots).toContain(`Sitemap: ${siteConfig.siteUrl}/sitemap.xml`);
 });

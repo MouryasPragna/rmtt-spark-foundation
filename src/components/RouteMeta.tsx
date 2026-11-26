@@ -1,32 +1,12 @@
 import { useLocation } from 'react-router-dom';
-import { products } from '../data/products';
-import { categories } from '../pages/productsData';
-import { getNewsById } from '../data/news';
+import { getRouteMeta } from '../lib/routeMeta';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 
-const pages: Record<string, [string, string]> = {
-  '/': ['Precision cutting tools', 'Riddhi Machine Tool Technology manufactures solid carbide, PCD and brazed carbide cutting tools in Bengaluru.'],
-  '/products': ['Product range', 'Explore solid carbide, PCD, brazed carbide and specialized cutting tools for milling, drilling, reaming and precision boring.'],
-  '/products/pcd/pcd-tooling': ['PCD Tools', 'Precision PCD tooling for high-performance aluminium machining, from application-based design to manufacture.'],
-  '/products/pcd/pcd-technology': ['PCD Tooling Technology', 'PCD material and manufacturing technology — wire EDM, lapping, grinding, brazing and pocket seats, with the anatomy of an RMTT PCD tool.'],
-  '/about': ['About Riddhi', 'Discover Riddhi Machine Tool Technology, our journey and manufacturing equipment.'],
-  '/applications': ['Applications', 'Explore cutting tool applications for automotive, aerospace and precision machining.'],
-  '/services': ['Technology & services', 'Application engineering, custom solutions and the SAACKE, VOLLMER and Walter Helicheck equipment behind our tools.'],
-  '/news': ['News & Articles', 'Company news and technical articles on cutting tools from Riddhi Machine Tool Technology.'],
-  '/contact': ['Contact us', 'Contact Riddhi Machine Tool Technology to discuss your tooling requirements and download the product catalogue.'],
-  '/privacy': ['Privacy Policy', 'Riddhi Machine Tool Technology privacy policy — client legal copy pending.'],
-  '/terms': ['Terms', 'Riddhi Machine Tool Technology terms — client legal copy pending.'],
-};
+/** Keeps the title, description and canonical link in step with client-side navigation.
+ *  The same values are written into each page's HTML at build time (scripts/prerender.ts). */
 export default function RouteMeta() {
   const { pathname } = useLocation();
-  const segments = pathname.split('/').filter(Boolean);
-  const isFamily = /^\/products\/[^/]+\/[^/]+$/.test(pathname);
-  const id = /^\/products\/[^/]+\/?$/.test(pathname) ? segments[1] : undefined;
-  const product = products.find(tool => tool.slug === id);
-  const category = categories.find(cat => cat.id === id);
-  const article = /^\/news\/[^/]+\/?$/.test(pathname) ? getNewsById(pathname.split('/')[2]) : undefined;
-  const family = isFamily ? categories.find(cat => cat.id === segments[1])?.subcategories.find(sub => sub.id === segments[2]) : undefined;
-  const [title, description] = article ? [article.title, article.summary] : product ? [product.name, product.description] : family ? [family.title, family.blurb] : category ? [category.label, category.intro] : pages[pathname] || ['Page not found', 'Explore Riddhi Machine Tool Technology cutting tools.'];
-  useDocumentMeta(title, description);
+  const { title, description } = getRouteMeta(pathname);
+  useDocumentMeta(title, description, pathname);
   return null;
 }

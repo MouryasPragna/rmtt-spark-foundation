@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
@@ -158,7 +158,11 @@ export default function ProductShowcase(): JSX.Element {
       {/* Content overlay */}
       <div className={styles.contentWrap}>
 
-        {/* Left — text */}
+        {/* Left — page headline (fixed) above the rotating slide text */}
+        <div className={styles.copyColumn}>
+        <h1 className={`${styles.heroHeading} ${slide.brand ? styles.heroHeadingBrand : ''}`}>
+          Precision cutting tools: solid carbide, PCD and brazed carbide, made in Bengaluru
+        </h1>
         <div
           className={`${styles.textBlock} ${slide.brand ? styles.textBlockBrand : ''} ${animating ? styles.textHide : styles.textShow}`}
           key={current}
@@ -176,7 +180,6 @@ export default function ProductShowcase(): JSX.Element {
             </>
           ) : (
             <>
-              <p className={styles.tagline}>Engineering confidence in every cut</p>
               <div className={styles.category}>{slide.category}</div>
               <h2 className={styles.title}>{slide.title}</h2>
               <p className={styles.subtitle}>{slide.subtitle}</p>
@@ -187,9 +190,21 @@ export default function ProductShowcase(): JSX.Element {
           </div>
           <Link to={slide.href} className={styles.rangeCta}>{slide.linkText ?? 'View range →'}</Link>
         </div>
+        </div>
 
         {/* Right — slide counter + dots */}
         <div className={styles.controls}>
+          {!playback.reducedMotion && (
+            <button
+              type="button"
+              data-carousel-toggle
+              className={styles.playToggle}
+              aria-label={playback.paused ? 'Play carousel' : 'Pause carousel'}
+              onClick={playback.toggle}
+            >
+              {playback.paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+            </button>
+          )}
           <div className={styles.dots}>
             {slides.map((_, i) => (
               <button
