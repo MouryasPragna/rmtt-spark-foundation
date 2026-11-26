@@ -42,6 +42,9 @@
   --btn-bg-hover: #8F4A05;
   --radius-pill: 999px;
   --page-hero-overlay: rgba(30, 51, 68, 0.72);
+  /* The studio backdrop shared by the client's product group photos (sampled from the photos):
+     a band behind a photo in this gradient lets it run edge to edge without a visible box. */
+  --studio-backdrop: linear-gradient(180deg, #C7C7C7 0%, #CBCBCB 10%, #D0D0D0 20%, #D5D5D5 30%, #D8D8D8 40%, #DADADA 50%, #E0E0E0 60%, #EAEAEA 65%, #F7F7F7 69%, #FAFAFA 71%, #F6F6F6 75%, #EDEDED 78%, #E4E4E4 81%, #E6E6E6 85%, #E8E8E8 90%, #EFEFEF 95%, #F6F6F6 100%);
   /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;

@@ -5,7 +5,10 @@ import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
 import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
 import specializedOverview from '../assets/brazed-tool-8.webp.asset.json';
-import solidCarbideHero from '../assets/solid-carbide-hero.webp';
+import solidCarbideHero from '../assets/sc-hero-group.webp';
+import scEndMillsCard from '../assets/sc-end-mills-group-card.webp';
+import scReamersCard from '../assets/sc-reamers-group-card.webp';
+import scDrillsCard from '../assets/sc-drills-group-card.webp';
 import brazedCarbideHero from '../assets/brazed-carbide-hero.webp';
 import pcdHero from '../assets/pcd-hero.webp';
 
@@ -14,6 +17,9 @@ export type SubCategory = {
   title: string;
   blurb: string;
   products: Product[];
+  /** Photo on the family card (Solid Carbide: studio group shots). */
+  cardImage?: string;
+  cardImageAlt?: string;
 };
 
 /**
@@ -51,6 +57,8 @@ export type Category = {
   imageAlt: string;
   heroImage?: string;
   heroAlt?: string;
+  /** The hero and family photos are studio shots on the shared grey backdrop (shown on a matching band). */
+  studio?: boolean;
   features: string[];
   featured: FeaturedExample;
   capabilities: CapabilityBlock[];
@@ -72,7 +80,8 @@ export const categories: Category[] = [
     image: solidCarbideOverview.url,
     imageAlt: 'Solid carbide end mill — example from the Solid Carbide range',
     heroImage: solidCarbideHero,
-    heroAlt: 'Solid carbide end mills, reamers and drills from the RMTT range on a display stand',
+    heroAlt: 'The RIDDHI solid carbide range: end mills, reamers, drills, step drills and special form tools',
+    studio: true,
     features: [
       'End mill diameters from 2 to 32 mm',
       '2, 3, 4, 5 and 6-flute options',
@@ -137,6 +146,8 @@ export const categories: Category[] = [
         blurb:
           'Precision milling. Consistent performance.',
         products: products.filter(product => product.subcategory === 'sc-end-mills'),
+        cardImage: scEndMillsCard,
+        cardImageAlt: 'Solid carbide end mills from the RIDDHI range',
       },
       {
         id: 'sc-reamers',
@@ -144,6 +155,8 @@ export const categories: Category[] = [
         blurb:
           'Precision reaming for demanding materials.',
         products: products.filter(product => product.subcategory === 'sc-reamers'),
+        cardImage: scReamersCard,
+        cardImageAlt: 'Solid carbide reamers from the RIDDHI range',
       },
       {
         id: 'sc-drills',
@@ -151,6 +164,8 @@ export const categories: Category[] = [
         blurb:
           'Precision drilling for demanding materials.',
         products: products.filter(product => product.subcategory === 'sc-drills'),
+        cardImage: scDrillsCard,
+        cardImageAlt: 'Solid carbide drills and step drills from the RIDDHI range',
       },
     ],
   },

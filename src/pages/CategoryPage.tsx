@@ -5,6 +5,7 @@ import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import ContentPending from '../components/ContentPending';
 import PageHero from '../components/PageHero';
+import StudioPhoto from '../components/StudioPhoto';
 import { SHOW_PENDING } from '../lib/contentPending';
 
 /**
@@ -32,7 +33,15 @@ export default function CategoryPage() {
 
   return (
     <div className={styles.main}>
-      {cat.heroImage ? (
+      {cat.heroImage && cat.studio ? (
+        <section className={styles.studioHero} data-page-hero>
+          <div className={`container ${styles.studioHeroHead}`}>
+            <div className="section-eyebrow">{cat.label}</div>
+            <h1 className={styles.pageTitle}>{cat.headline}</h1>
+          </div>
+          <StudioPhoto src={cat.heroImage} alt={cat.heroAlt ?? ''} eager maxWidth={1280} />
+        </section>
+      ) : cat.heroImage ? (
         <PageHero image={cat.heroImage} alt={cat.heroAlt ?? ''} tools>
           <div className="section-eyebrow">{cat.label}</div>
           <h1 className={styles.pageTitle}>{cat.headline}</h1>
@@ -73,12 +82,19 @@ export default function CategoryPage() {
           </div>
           <div className={styles.familiesGrid}>
             {cat.subcategories.map(sub => (
-              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={styles.familyCard}>
-                <h3 className={styles.familyTitle}>{sub.title}</h3>
-                <p className={styles.familyBlurb}>{sub.blurb}</p>
-                <span className={styles.solutionLink} style={{ color: cat.color }}>
-                  View the family <ArrowRight size={15} aria-hidden="true" />
-                </span>
+              <Link key={sub.id} to={`/products/${cat.id}/${sub.id}`} className={`${styles.familyCard} ${sub.cardImage ? styles.familyCardPhoto : ''}`}>
+                {sub.cardImage ? (
+                  <div className={styles.familyCardMedia}>
+                    <img src={sub.cardImage} alt={sub.cardImageAlt ?? ''} width={800} height={450} loading="lazy" decoding="async" />
+                  </div>
+                ) : null}
+                <div className={styles.familyCardBody}>
+                  <h3 className={styles.familyTitle}>{sub.title}</h3>
+                  <p className={styles.familyBlurb}>{sub.blurb}</p>
+                  <span className={styles.solutionLink} style={{ color: cat.color }}>
+                    View the family <ArrowRight size={15} aria-hidden="true" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

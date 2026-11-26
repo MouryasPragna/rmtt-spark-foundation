@@ -1,0 +1,11 @@
+.band {
+  background: var(--studio-backdrop);
+  line-height: 0;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
