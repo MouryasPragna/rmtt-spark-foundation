@@ -74,7 +74,7 @@ export default function Contact() {
               {errors[field.name] && <p id={`${field.name}-error`} role="alert" className={styles.error}>{errors[field.name]}</p>}
             </div>)}
           </div>
-          <div className={styles.formField}><label className={styles.label} htmlFor="description">Application description / challenges *</label><textarea id="description" name="description" required className={styles.textarea} maxLength={fieldLimits.description} placeholder="Describe the machining challenge, current tool and the problem you want to solve…" value={form.description} onChange={event => change('description', event.target.value)} onBlur={event => change('description', event.target.value.trim())} aria-invalid={!!errors.description} aria-describedby={errors.description ? 'description-error' : undefined} />{errors.description && <p id="description-error" role="alert" className={styles.error}>{errors.description}</p>}</div>
+          <div className={`${styles.formField} ${styles.descField}`}><label className={styles.label} htmlFor="description">Application description / challenges *</label><textarea id="description" name="description" required className={styles.textarea} maxLength={fieldLimits.description} placeholder="Describe the machining challenge, current tool and the problem you want to solve…" value={form.description} onChange={event => change('description', event.target.value)} onBlur={event => change('description', event.target.value.trim())} aria-invalid={!!errors.description} aria-describedby={errors.description ? 'description-error' : undefined} />{errors.description && <p id="description-error" role="alert" className={styles.error}>{errors.description}</p>}</div>
           {errors.website && <p role="alert" className={styles.error}>{errors.website}</p>}
           <p id="consent-help" className={styles.formNote}>By submitting this form you agree that RMTT may use your details to respond to your enquiry, as described in our <Link to="/privacy">privacy policy</Link>.</p>
           <div className={styles.consentField}>
@@ -101,10 +101,12 @@ export default function Contact() {
             <li className={styles.nextStep}><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></li>
             <li className={styles.nextStep}><h3 className={styles.nextTitle}>Technical proposal</h3><p className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</p></li>
             <li className={styles.nextStep}><h3 className={styles.nextTitle}>Sample &amp; trial</h3><p className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</p></li>
+            <li className={styles.nextStep}><h3 className={styles.nextTitle}>Production</h3><p className={styles.nextDesc}>Once the sample is approved, your tools are manufactured on SAACKE grinding or VOLLMER EDM, with edge preparation and coating applied.</p></li>
+            <li className={styles.nextStep}><h3 className={styles.nextTitle}>Inspection &amp; dispatch</h3><p className={styles.nextDesc}>Each tool is checked against your drawing on the Walter Helicheck measuring machine before dispatch.</p></li>
           </ol>
         </section>
-        <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.png`} alt="Riddhi cutting tool range" width={370} height={66} loading="lazy" className={styles.toolsImg} /></figure>
-        <section className={`${styles.sideCard} ${styles.noRule}`} id="product-catalogue">
+        <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.png`} alt="Riddhi cutting tool range" width={1110} height={198} loading="lazy" className={styles.toolsImg} /></figure>
+        <section className={`${styles.sideCard} ${styles.noRule} ${styles.catalogueCard}`} id="product-catalogue">
           <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
           <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
             <Download size={18} aria-hidden="true" />
