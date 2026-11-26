@@ -1,25 +1,25 @@
 import solidCarbideEndmillsBrand from '../assets/solid-carbide-end-mills-brand.jpg';
 import solidCarbideReamersBrand from '../assets/solid-carbide-reamers-brand.jpg';
-import solidCarbideDrillsBrand from '../assets/solid-carbide-drills-brand.jpg';
+import solidCarbideDrillsGroup from '../assets/solid-carbide-drills-group.webp';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
-import brazedShellCutter from '../assets/brazed-shell-cutter.png.asset.json';
+import brazedShellCutter from '../assets/brazed-shell-cutter.webp.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
-import pcdTool2 from '../assets/pcd-tool-2.png.asset.json';
-import pcdTool4 from '../assets/pcd-tool-4.png.asset.json';
-import pcdTool5 from '../assets/pcd-tool-5.png.asset.json';
+import pcdTool2 from '../assets/pcd-tool-2.webp.asset.json';
+import pcdTool4 from '../assets/pcd-tool-4.webp.asset.json';
+import pcdTool5 from '../assets/pcd-tool-5.webp.asset.json';
 import pcdTool6 from '../assets/pcd-tool-6.png.asset.json';
-import pcdTool7 from '../assets/pcd-tool-7.png.asset.json';
-import pcdTool1Throttle from '../assets/pcd-tool-1.png.asset.json';
-import pcdTool8 from '../assets/pcd-tool-8.png.asset.json';
+import pcdTool7 from '../assets/pcd-tool-7.webp.asset.json';
+import pcdTool1Throttle from '../assets/pcd-tool-1.webp.asset.json';
+import pcdTool8 from '../assets/pcd-tool-8.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
-import brazedTool2 from '../assets/brazed-tool-2.png.asset.json';
-import brazedTool3 from '../assets/brazed-tool-3.png.asset.json';
-import brazedTool4 from '../assets/brazed-tool-4.png.asset.json';
-import brazedTool5 from '../assets/brazed-tool-5.png.asset.json';
-import brazedTool6 from '../assets/brazed-tool-6.png.asset.json';
-import brazedTool7 from '../assets/brazed-tool-7.png.asset.json';
-import brazedTool8 from '../assets/brazed-tool-8.png.asset.json';
+import brazedTool2 from '../assets/brazed-tool-2.webp.asset.json';
+import brazedTool3 from '../assets/brazed-tool-3.webp.asset.json';
+import brazedTool4 from '../assets/brazed-tool-4.webp.asset.json';
+import brazedTool5 from '../assets/brazed-tool-5.webp.asset.json';
+import brazedTool6 from '../assets/brazed-tool-6.webp.asset.json';
+import brazedTool7 from '../assets/brazed-tool-7.webp.asset.json';
+import brazedTool8 from '../assets/brazed-tool-8.webp.asset.json';
 import shellDrawing from '../assets/shell-cutter-drawing.webp.asset.json';
 import model00200 from '../assets/final-brazed-7.webp.asset.json';
 import model00220 from '../assets/final-brazed-9.webp.asset.json';
@@ -124,9 +124,9 @@ export const products: Product[] = [
               'RIDDHI offers suitable solid carbide drills for practically all workpiece materials, mainly Grey cast iron, Nodular iron, Alloyed steel, Stainless steel, PH steel, and titanium alloys.',
             descriptionSecond: 'The drills are superficially designed with smooth flutes and effective 2 & 3 edges based on individual applications; cutting edges are edge-honed according to the application. For aluminium alloy applications, we offer straight-fluted, high-polished, and edge-honed burnishing designs.',
             descriptionThird: 'We have a specific design suitable for aerospace aluminium alloy because of the low silicon content in this particular material; drilling is always challenging due to long chips and the built-up edge effect on the drilling point cutting edge. We avoid this phenomenon with our specific rake design, together with high gloss polish fluted design, adapting helical flutes together with internal coolant supply.',
-            image: solidCarbideDrillsBrand,
-            imageAspect: '768 / 964',
-            images: [{ src: solidCarbideDrillsBrand, alt: 'Five Solid Carbide Drills and step drills — pictured examples from the RIDDHI range' }],
+            image: solidCarbideDrillsGroup,
+            imageAspect: '16 / 9',
+            images: [{ src: solidCarbideDrillsGroup, alt: 'Solid Carbide Drills and step drills with different point and flute geometries — pictured examples from the RIDDHI range' }],
             specs: [
               { label: 'Diameter', value: '2–25 mm' },
               { label: 'Edges', value: '2 or 3' },

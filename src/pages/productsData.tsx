@@ -4,10 +4,10 @@ import solidCarbideOverview from '../assets/solid-carbide-end-mills-range.webp.a
 import pcdOverview from '../assets/home-pcd-boring.webp.asset.json';
 import brazedCarbideOverview from '../assets/home-brazed-tslot.webp.asset.json';
 import solidCarbideReamers from '../assets/solid-carbide-reamers-range.webp.asset.json';
-import specializedOverview from '../assets/brazed-tool-8.png.asset.json';
-import solidCarbideHero from '../assets/solid-carbide-hero.png';
-import brazedCarbideHero from '../assets/brazed-carbide-hero.png';
-import pcdHero from '../assets/pcd-hero.png';
+import specializedOverview from '../assets/brazed-tool-8.webp.asset.json';
+import solidCarbideHero from '../assets/solid-carbide-hero.webp';
+import brazedCarbideHero from '../assets/brazed-carbide-hero.webp';
+import pcdHero from '../assets/pcd-hero.webp';
 
 export type SubCategory = {
   id: string;

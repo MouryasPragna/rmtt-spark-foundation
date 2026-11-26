@@ -105,7 +105,7 @@ export default function Contact() {
             <li className={styles.nextStep}><h3 className={styles.nextTitle}>Inspection &amp; dispatch</h3><p className={styles.nextDesc}>Each tool is checked against your drawing on the Walter Helicheck measuring machine before dispatch.</p></li>
           </ol>
         </section>
-        <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.png`} alt="Riddhi cutting tool range" width={1110} height={198} loading="lazy" className={styles.toolsImg} /></figure>
+        <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.webp`} alt="Riddhi cutting tool range" width={1110} height={198} loading="lazy" className={styles.toolsImg} /></figure>
         <section className={`${styles.sideCard} ${styles.noRule} ${styles.catalogueCard}`} id="product-catalogue">
           <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
           <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
