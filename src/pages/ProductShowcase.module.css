@@ -496,5 +496,3 @@
 }
 
 /* Brand slide sits on a dark photo: invert the primary button so its edge stays visible. */
-:global(#main-content) .textBlockBrand .rangeCta { background: var(--white); border-color: var(--white); color: var(--navy); }
-:global(#main-content) .textBlockBrand .rangeCta:hover { background: var(--blue-xlight); border-color: var(--blue-xlight); }

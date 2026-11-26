@@ -107,8 +107,8 @@ export default function Contact() {
         <section className={`${styles.sideCard} ${styles.noRule}`} id="product-catalogue">
           <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
           <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
-            <span><strong>Download product catalogue</strong><small>PDF · Full product range</small></span>
-            <Download size={20} aria-hidden="true" />
+            <Download size={18} aria-hidden="true" />
+            <span>Download catalogue <small>(PDF)</small></span>
           </a>
         </section>
       </aside>
