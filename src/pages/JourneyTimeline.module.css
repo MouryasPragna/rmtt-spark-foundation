@@ -15,14 +15,10 @@
 }
 
 
-.sub, .intro, .text {
+.sub, .text {
   color: var(--text-secondary);
 }
 
-.intro {
-  text-align: left;
-  margin-bottom: 28px;
-}
 
 .timeline {
   display: grid;
@@ -78,7 +74,7 @@
   transition: background 0.2s;
 }
 
-.yearButton:hover::before { background: var(--section-heading-rule); }
+.yearButton:hover::before { background: var(--logo-slate); }
 .yearActive::before { background: var(--section-heading-accent); }
 .yearActive .year { color: var(--section-heading-accent); }
 
@@ -130,6 +126,18 @@
   min-height: 0;
 }
 
+.cardMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: var(--navy);
+  color: var(--logo-steel);
+  font-size: 120px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .card { animation: none; } }
 
@@ -139,7 +147,8 @@
     flex-direction: row;
     overflow-x: auto;
     gap: 4px;
-    padding-bottom: 4px;
+    padding: 0 28px 4px;
+    scroll-padding-inline: 28px;
     scroll-snap-type: x proximity;
     scrollbar-width: none;
     -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
@@ -158,6 +167,7 @@
   .yearButton::before { left: 50%; top: 5px; margin: 0 0 0 -8px; width: 14px; height: 14px; }
   .label { font-size: var(--text-xs); }
   .card { grid-template-columns: minmax(0, 1fr); height: auto; }
-  .cardImg { order: -1; height: 260px; }
+  .cardImg, .cardMark { order: -1; height: 260px; }
+  .cardMark { font-size: 88px; }
   .cardBody { padding: 22px; }
 }
