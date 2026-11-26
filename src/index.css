@@ -426,3 +426,43 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 1
 @media (prefers-reduced-motion: reduce) {
   #main-content > div { animation: none; }
 }
+
+/* Scroll motion (standards): fade + 16px rise, 600ms, once; groups stagger 90ms, four steps at
+   most. Elements are tagged by src/lib/scrollMotion.ts after hydration: hidden → in → done.
+   "done" drops these rules so each card's own hover transition applies again. */
+html.js [data-reveal="hidden"],
+html.js [data-reveal-group="hidden"] > * {
+  opacity: 0;
+  transform: translateY(16px);
+}
+html.js [data-reveal="in"],
+html.js [data-reveal-group="in"] > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity 600ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+html.js [data-reveal-group="in"] > :nth-child(2) { transition-delay: 90ms; }
+html.js [data-reveal-group="in"] > :nth-child(3) { transition-delay: 180ms; }
+html.js [data-reveal-group="in"] > :nth-child(n+4) { transition-delay: 270ms; }
+
+/* Lazy images fade in once loaded instead of popping in. */
+html.js img[data-img] { transition: opacity 400ms ease; }
+html.js img[data-img="loading"] { opacity: 0; }
+
+/* One hover for every card: a 2px lift and the single raised shadow, 180ms. */
+#main-content :is([class*="_prodCard_"], [class*="_svcBlock_"], [class*="_solutionTile_"], [class*="_productCard_"],
+  [class*="_familyCard_"], [class*="_capBlock_"], [class*="_serviceBlock_"], [class*="_machineCard_"],
+  [class*="_contactCard_"], [class*="_principleCard_"], [class*="_valueCard_"]) {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+#main-content :is([class*="_prodCard_"], [class*="_svcBlock_"], [class*="_solutionTile_"], [class*="_productCard_"],
+  [class*="_familyCard_"], [class*="_capBlock_"], [class*="_serviceBlock_"], [class*="_machineCard_"],
+  [class*="_contactCard_"], [class*="_principleCard_"], [class*="_valueCard_"]):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+@media (prefers-reduced-motion: reduce) {
+  #main-content :is([class*="_prodCard_"], [class*="_svcBlock_"], [class*="_solutionTile_"], [class*="_productCard_"],
+    [class*="_familyCard_"], [class*="_capBlock_"], [class*="_serviceBlock_"], [class*="_machineCard_"],
+    [class*="_contactCard_"], [class*="_principleCard_"], [class*="_valueCard_"]):hover { transform: none; }
+}
