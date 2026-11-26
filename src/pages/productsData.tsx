@@ -11,6 +11,8 @@ import scReamersCard from '../assets/sc-reamers-group-card.webp';
 import scDrillsCard from '../assets/sc-drills-group-card.webp';
 import brazedCarbideHero from '../assets/brazed-hero-group.webp';
 import pcdHero from '../assets/pcd-hero-group.webp';
+import brazedDrawing from '../assets/brazed-drawing-rdh60-00164.webp';
+import brazedFinishedTool from '../assets/brazed-tool-rdh60-00164.webp';
 
 export type SubCategory = {
   id: string;
@@ -44,6 +46,15 @@ export type FeaturedExample = {
   href: string;
 };
 
+export type CategoryStory = {
+  heading: string;
+  lead: string;
+  construction: { heading: string; paragraphs: string[] };
+  /** Drawing and finished tool for the same model, shown side by side. */
+  drawingToTool: { model: string; drawing: string; drawingAlt: string; tool: string; toolAlt: string };
+  solutions: { heading: string; items: string[] };
+};
+
 export type Category = {
   id: 'solid-carbide' | 'pcd' | 'brazed' | 'specialized';
   icon: typeof Settings;
@@ -52,7 +63,7 @@ export type Category = {
   label: string;
   headline: string;
   intro: string;
-  intro2: string;
+  intro2?: string;
   image: string;
   imageAlt: string;
   heroImage?: string;
@@ -61,6 +72,8 @@ export type Category = {
   studio?: boolean;
   /** Band gradient when the hero photo's backdrop differs from the shared --studio-backdrop. */
   studioBackdrop?: string;
+  /** Single-page categories (Brazed Carbide): approved copy shown in place of product families. */
+  story?: CategoryStory;
   features: string[];
   featured: FeaturedExample;
   capabilities: CapabilityBlock[];
@@ -271,75 +284,59 @@ export const categories: Category[] = [
     label: 'Brazed Carbide',
     headline: 'Brazed Carbide Tools',
     intro:
-      'Brazed carbide-tipped tools offer a cost-conscious alternative amid high carbide raw-material costs, with performance comparable to solid carbide for the intended application.',
-    intro2:
-      'A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets. Cutting edges are ground on a 5-axis CNC tool-grinding machine to achieve the required geometries in one setup.',
+      'Due to the high cost of carbide raw material, RIDDHI brings a unique solution for reducing tool costs while maintaining the same performance as that of solid carbide tools by offering brazed carbide-tipped tools.',
     image: brazedCarbideOverview.url,
     imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
     heroImage: brazedCarbideHero,
-    heroAlt: 'The RIDDHI brazed carbide range: reamers, step and form tools, a T-slot cutter and shell milling cutters with brazed carbide tips',
+    heroAlt: 'RIDDHI brazed carbide-tipped tools: reamers, stepped and form tools and a T-slot cutter on heat-treated steel bodies',
     studio: true,
     // Sampled from this photo's left and right edges (a lighter backdrop than the other studio shots).
     studioBackdrop: 'linear-gradient(180deg, #DADADA 0%, #DCDCDC 5%, #DEDEDE 10%, #E0E0E0 15%, #E2E2E2 20%, #E4E4E4 25%, #E7E7E7 30%, #E8E8E8 35%, #E8E8E8 40%, #EAEAEA 45%, #EAEAEA 50%, #EBEBEB 55%, #EFEFEF 60%, #F7F7F7 65%, #FDFDFD 70%, #FCFCFC 75%, #F2F2F2 80%, #EFEFEF 85%, #F4F4F4 90%, #F8F8F8 95%, #FAFAFA 100%)',
+    // Approved client copy: "Solid Performance. Smarter Tooling".
+    story: {
+      heading: 'Solid Performance. Smarter Tooling',
+      lead: 'Due to the high cost of carbide raw material, RIDDHI brings a unique solution for reducing tool costs while maintaining the same performance as that of solid carbide tools by offering brazed carbide-tipped tools.',
+      construction: {
+        heading: 'The construction',
+        paragraphs: [
+          'The tool body is made of high-quality tool steel, which is heat-treated, and the carbide tips are brazed onto the steel body (suitably fluted and pockets are prepared).',
+          'The cutting edges are ground on a 5-axis CNC tool grinding machine, ensuring the required geometries are achieved in one go.',
+        ],
+      },
+      drawingToTool: {
+        model: 'RDH60-00164',
+        drawing: brazedDrawing,
+        drawingAlt: 'Engineering drawing of a brazed carbide helical cutter: Ø80 × 132 mm, Ø40 H6 bore, with an end view of the brazed carbide teeth',
+        tool: brazedFinishedTool,
+        toolAlt: 'The finished brazed carbide helical cutter RDH60-00164, Ø80 × 132.0, with carbide tips brazed along each helical flute',
+      },
+      solutions: {
+        heading: 'Our solutions',
+        items: [
+          'Tools are manufactured according to customer-specific requirements',
+          'Brazed carbide reamers with internal coolant supply and PVD coating',
+          'Stepped special tools and form tools',
+          'T-slot milling cutters',
+          'Lugged carbide drills and reamers with internal coolant supply',
+        ],
+      },
+    },
     features: [
       'Tool-steel body, heat-treated for the application',
       'Carbide tips brazed into prepared pockets',
       'Cutting edges ground on 5-axis CNC equipment',
       'Manufactured to customer-specific requirements',
-      'T-slot milling cutters',
-      'Reamers with internal coolant and PVD coating',
-      'Lugged carbide drills and reamers with internal coolant',
     ],
     featured: {
-      title: 'Special Brazed Tools & T-Slot Cutters',
+      title: 'Brazed carbide-tipped tools',
       blurb:
-        'Carbide-tipped T-slot milling cutters, multi-grooving tools and customer-specific form and stepped tools, manufactured around the component and its production requirements.',
-      image: brazedCarbideOverview.url,
-      imageAlt: 'Brazed carbide T-slot cutter — example from the Brazed Carbide range',
-      href: '/products/brazed/bc-milling',
+        'Brazed carbide-tipped tools manufactured to customer-specific requirements, with the performance of solid carbide at a lower tool cost.',
+      image: brazedFinishedTool,
+      imageAlt: 'Brazed carbide helical cutter RDH60-00164',
+      href: '/products/brazed',
     },
-    capabilities: [
-      {
-        id: 'construction',
-        title: 'Tool construction',
-        body:
-          'A heat-treated, high-quality tool-steel body is suitably fluted, with carbide tips brazed into prepared pockets.',
-      },
-      {
-        id: 'grinding',
-        title: 'Ground in one setup',
-        body:
-          'Cutting edges are ground on 5-axis CNC tool-grinding machines to achieve the required geometries in a single setup.',
-      },
-      {
-        id: 'coolant',
-        title: 'Coolant and coating options',
-        body:
-          'Reamers with internal coolant and PVD coating, and lugged carbide drills and reamers with internal coolant, are part of the programme.',
-      },
-      {
-        id: 'custom',
-        title: 'Custom solutions',
-        body:
-          'Special machining tasks require special tools — brazed carbide solutions are tailored to the customer’s application.',
-      },
-    ],
-    subcategories: [
-      {
-        id: 'bc-milling',
-        title: 'Milling Cutters',
-        blurb:
-          'Brazed carbide milling solutions include T-slot cutters and special milling tools manufactured for the component and customer requirements.',
-        products: products.filter(product => product.subcategory === 'bc-milling'),
-      },
-      {
-        id: 'bc-reamers',
-        title: 'Drills & Reamers',
-        blurb:
-          'Brazed carbide drilling and reaming tools, including internal-coolant options and application-specific geometries.',
-        products: products.filter(product => product.subcategory === 'bc-reamers'),
-      },
-    ],
+    capabilities: [],
+    subcategories: [],
   },
   {
     id: 'specialized',

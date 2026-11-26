@@ -61,7 +61,7 @@ const slides: Slide[] = [
     id: 'brazed-tools',
     image: `${import.meta.env.BASE_URL}images/hero/brazed-closeup.webp`,
     mobileImage: `${import.meta.env.BASE_URL}images/hero/brazed-closeup-mobile.webp`,
-    imageAlt: 'Close-up of RIDDHI brazed carbide tools: a helical shell milling cutter, a multi-flute reamer and a face milling cutter with brazed carbide tips',
+    imageAlt: 'Close-up of RIDDHI brazed carbide-tipped tools, with carbide tips brazed onto heat-treated steel bodies',
     category: 'Brazed Tools',
     title: 'Special Brazed Tools',
     subtitle: 'Carbide-tipped tools on steel bodies — T-slot cutters, reamers and customer-specific forms engineered for your component.',

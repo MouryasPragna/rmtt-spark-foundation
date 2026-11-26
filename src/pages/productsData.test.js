@@ -19,11 +19,12 @@ describe('MAPAL-pattern competence data', () => {
       { label: 'Drills', href: '/products/solid-carbide/sc-drills' },
     ]);
   });
-  test('Brazed Carbide second-level navigation uses the available milling and drilling/reaming families', () => {
-    expect(productNavigation.find(area => area.href === '/products/brazed')?.families).toEqual([
-      { label: 'Milling Cutters', href: '/products/brazed/bc-milling' },
-      { label: 'Drills & Reamers', href: '/products/brazed/bc-reamers' },
-    ]);
+  test('Brazed Carbide is a single page: no families, and the approved story with five solutions', () => {
+    expect(productNavigation.find(area => area.href === '/products/brazed')?.families).toEqual([]);
+    const brazed = categories.find(category => category.id === 'brazed');
+    expect(brazed?.subcategories).toEqual([]);
+    expect(brazed?.story?.heading).toBe('Solid Performance. Smarter Tooling');
+    expect(brazed?.story?.solutions.items).toHaveLength(5);
   });
   test('the overview has exactly the four approved solution groups', () => {
     expect(categories.map(category => category.id)).toEqual(['solid-carbide', 'pcd', 'brazed', 'specialized']);
@@ -35,7 +36,8 @@ describe('MAPAL-pattern competence data', () => {
   test('every category defines the competence pattern: intro, featured example, capability blocks and families', () => {
     for (const cat of categories) {
       expect(cat.intro.length).toBeGreaterThan(0);
-      expect(cat.intro2.length).toBeGreaterThan(0);
+      if (cat.story) continue;
+      expect(cat.intro2?.length).toBeGreaterThan(0);
       expect(cat.featured.blurb.length).toBeGreaterThan(0);
       expect(cat.featured.image.length).toBeGreaterThan(0);
       expect(cat.capabilities.length).toBeGreaterThanOrEqual(4);
@@ -53,7 +55,7 @@ describe('MAPAL-pattern competence data', () => {
     expect(categories.some(cat => cat.capabilities.some(block => block.pending))).toBe(true);
   });
   test('featured examples link to a family page of the same category', () => {
-    for (const cat of categories) {
+    for (const cat of categories.filter(item => !item.story)) {
       expect(cat.featured.href.startsWith(`/products/${cat.id}/`)).toBe(true);
       expect(cat.subcategories.some(sub => cat.featured.href.endsWith(`/${sub.id}`))).toBe(true);
     }

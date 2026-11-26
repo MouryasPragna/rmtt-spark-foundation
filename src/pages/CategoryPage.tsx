@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CircleCheck } from 'lucide-react';
 import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import ContentPending from '../components/ContentPending';
@@ -55,8 +55,9 @@ export default function CategoryPage() {
               <h1 className={styles.pageTitle}>{cat.headline}</h1>
             </>
           )}
+          {cat.story ? <h2 className={`section-heading-title ${styles.storyHeading}`}>{cat.story.heading}</h2> : null}
           <p className={styles.pageSubtitle}>{cat.intro}</p>
-          <p className={styles.pageSubtitleSecond}>{cat.intro2}</p>
+          {cat.intro2 ? <p className={styles.pageSubtitleSecond}>{cat.intro2}</p> : null}
           <div className={styles.jumpLinks}>
             {categories.map(c => (
               <Link
@@ -73,8 +74,38 @@ export default function CategoryPage() {
         </div>
       </section>
 
+      {/* Single-page categories: construction (drawing next to the finished tool), then solutions */}
+      {cat.story && <section className={styles.storySection} aria-labelledby="construction-heading">
+        <div className="container">
+          <div className={styles.storyGrid}>
+            <div>
+              <h2 id="construction-heading" className={`section-heading-title ${styles.catTitle}`}>{cat.story.construction.heading}</h2>
+              {cat.story.construction.paragraphs.map(text => <p key={text} className={styles.storyText}>{text}</p>)}
+            </div>
+            <figure className={styles.drawingToTool}>
+              <div className={styles.drawingToToolPair}>
+                <img src={cat.story.drawingToTool.drawing} alt={cat.story.drawingToTool.drawingAlt} width={700} height={1050} loading="lazy" decoding="async" />
+                <span className={styles.drawingToToolArrow} aria-hidden="true"><ArrowRight size={22} /></span>
+                <img src={cat.story.drawingToTool.tool} alt={cat.story.drawingToTool.toolAlt} width={700} height={1050} loading="lazy" decoding="async" />
+              </div>
+              <figcaption>From the customer's drawing to the finished tool: {cat.story.drawingToTool.model}</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>}
+      {cat.story && <section className={styles.capSection} aria-labelledby="solutions-heading">
+        <div className="container">
+          <div className={`section-heading ${styles.sectionHeadRow}`}>
+            <h2 id="solutions-heading" className={styles.catTitle}>{cat.story.solutions.heading}</h2>
+          </div>
+          <ul className={styles.solutionsList}>
+            {cat.story.solutions.items.map(item => <li key={item}><CircleCheck size={20} aria-hidden="true" /><span>{item}</span></li>)}
+          </ul>
+        </div>
+      </section>}
+
       {/* Product families — brief cards linking to each family page */}
-      {cat.id !== 'pcd' && <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
+      {cat.id !== 'pcd' && cat.subcategories.length > 0 && <section id={cat.id} className={styles.catSection} aria-labelledby="families-heading">
         <div className="container">
           <div className={`section-heading ${styles.sectionHeadRow}`}>
             <h2 id="families-heading" className={styles.catTitle}>Product families</h2>
@@ -125,7 +156,7 @@ export default function CategoryPage() {
       </section>}
 
       {/* Key capability blocks — MAPAL key-info pattern */}
-      <section className={styles.capSection} aria-labelledby="capabilities-heading">
+      {cat.capabilities.length > 0 && <section className={styles.capSection} aria-labelledby="capabilities-heading">
         <div className="container">
           <div className={`section-heading ${styles.sectionHeadRow}`}>
             <h2 id="capabilities-heading" className={styles.catTitle}>Key capabilities</h2>
@@ -141,7 +172,7 @@ export default function CategoryPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className={styles.bottomCta}>
         <div className="container">
