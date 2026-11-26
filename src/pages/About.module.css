@@ -869,18 +869,6 @@
 /* Centred band: keep the capped paragraph centred. */
 :global(#main-content) .ctaSection p { margin-inline: auto; }
 
-/* Shared icon box for principles and values. */
-.iconBox {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 20px;
-  border-radius: var(--radius-lg);
-  background: var(--blue-xlight);
-  color: var(--cta);
-}
 
 /* At a glance: supporting copy and five key facts under the hero. */
 .factsSection {
