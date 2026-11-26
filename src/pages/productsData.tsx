@@ -10,7 +10,7 @@ import scEndMillsCard from '../assets/sc-end-mills-group-card.webp';
 import scReamersCard from '../assets/sc-reamers-group-card.webp';
 import scDrillsCard from '../assets/sc-drills-group-card.webp';
 import brazedCarbideHero from '../assets/brazed-carbide-hero.webp';
-import pcdHero from '../assets/pcd-hero.webp';
+import pcdHero from '../assets/pcd-hero-group.webp';
 
 export type SubCategory = {
   id: string;
@@ -183,7 +183,8 @@ export const categories: Category[] = [
     image: pcdOverview.url,
     imageAlt: 'PCD boring tool — example from the PCD range',
     heroImage: pcdHero,
-    heroAlt: 'PCD tools from the RMTT range on a display stand',
+    heroAlt: 'The RIDDHI PCD range: step drills, reamers, boring and form tools with HSK and cylindrical shanks',
+    studio: true,
     features: [
       'Application-specific drilling, milling and boring solutions',
       'Wire EDM, lapping and grinding of cutting edges',

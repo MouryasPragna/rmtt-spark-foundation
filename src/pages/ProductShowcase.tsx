@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
-import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
 import factoryFloor from '../assets/factory-hero-floor.jpg.asset.json';
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
@@ -50,8 +49,9 @@ const slides: Slide[] = [
   },
   {
     id: 'pcd-hsk-reamer',
-    image: factoryMachining.url,
-    imageAlt: 'Close-up of precision machining in progress',
+    image: `${import.meta.env.BASE_URL}images/hero/pcd-closeup.webp`,
+    mobileImage: `${import.meta.env.BASE_URL}images/hero/pcd-closeup-mobile.webp`,
+    imageAlt: 'Close-up of RIDDHI PCD tools: a PCD milling cutter, form tools and a boring tool with brazed PCD cutting edges',
     category: 'PCD Tools',
     title: 'PCD Form Grooving Cutters',
     subtitle: 'Purpose-designed PCD form geometry for accurate profiles and long machining cycles.',
