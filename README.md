@@ -31,7 +31,7 @@ The build writes one pre-rendered HTML file per page (`dist/about.html`, `dist/p
 
 `dist/_headers` carries the security headers (Content-Security-Policy, Permissions-Policy, HSTS and others) for hosts that read it, such as Cloudflare Pages and Netlify. On a host that ignores it, set the same headers in the host's configuration or put Cloudflare in front of the site. Check the live site at securityheaders.com after deploying.
 
-Set `VITE_SITE_URL` to the public domain before building so canonical URLs, the sitemap, robots.txt and structured data use it. To serve from a sub-path (for example a GitHub Pages project site), also set `VITE_BASE=/repo-name/`.
+Set `VITE_SITE_URL` to the public address before building so canonical URLs, the sitemap, robots.txt and structured data use it. Its path also sets the asset base: `https://user.github.io/repo` builds for `/repo/`, a custom domain builds for `/`. `VITE_BASE` overrides the base if needed.
 
 ## Checks
 

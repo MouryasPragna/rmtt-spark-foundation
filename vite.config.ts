@@ -2,9 +2,19 @@ import { defineConfig, searchForWorkspaceRoot, type Plugin } from 'vite'
 import { readFileSync, realpathSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 
-// Real paths (/products/pcd/...) need absolute asset URLs, so the base is the site root.
-// To serve from a sub-path (e.g. a GitHub Pages project site), build with VITE_BASE=/repo-name/.
-const base = process.env.VITE_BASE || '/'
+// Real paths (/products/pcd/...) need absolute asset URLs. The base is the path part of the
+// public site address, so a GitHub Pages project site (VITE_SITE_URL=https://user.github.io/repo)
+// builds for /repo/ and a custom domain builds for /. VITE_BASE overrides it when set.
+function siteBase(): string {
+  if (process.env.VITE_BASE) return process.env.VITE_BASE
+  try {
+    const path = new URL(process.env.VITE_SITE_URL || 'https://example.invalid/').pathname.replace(/\/+$/, '')
+    return `${path}/`
+  } catch {
+    return '/'
+  }
+}
+const base = siteBase()
 
 // Checked-in asset pointers (*.asset.json) store relative URLs such as "images/assets/x.jpg".
 // Those only resolved correctly while every page lived at "/" under HashRouter; on a real
