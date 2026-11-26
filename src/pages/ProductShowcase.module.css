@@ -11,7 +11,7 @@
   max-height: 780px;
   margin-top: 100px;
   overflow: hidden;
-  background:  #D9E4EE;           /* 1. WHITE background */
+  background:  var(--blue-xlight);           /* 1. WHITE background */
 }
 
 /* ── BACKGROUND LAYER ── */
@@ -143,13 +143,13 @@
 
 .category {
   display: inline-block;
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--navy);
   background: var(--blue-xlight);
-  border: 1px solid rgba(74, 123, 167, 0.3);
+  border: 1px solid rgba(59, 90, 114, 0.3);
   border-radius: 4px;
   padding: 4px 10px;
   margin-bottom: 14px;
@@ -158,7 +158,7 @@
 .title {
   font-size: var(--type-title-size);
   font-weight: 700;
-  color: #1A2535;                 /* dark navy on white */
+  color: var(--text);                 /* dark navy on white */
   line-height: var(--type-title-leading);
   margin-bottom: 12px;
   letter-spacing: var(--type-title-spacing);
@@ -173,7 +173,7 @@
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.68;
   margin-bottom: 14px;
@@ -185,7 +185,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 16px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
@@ -200,7 +200,7 @@
   padding: 12px 16px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   line-height: 1.3;
   transition: background 0.2s ease;
@@ -235,21 +235,21 @@
 }
 
 .counterCurrent {
-  font-size: 26px;
+  font-size: var(--type-heading-size);
   font-weight: 700;
-  color: #1A2535;
+  color: var(--text);
   line-height: 1;
   letter-spacing: 0;
 }
 
 .counterSep {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   margin: 0 2px;
 }
 
 .counterTotal {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -265,18 +265,18 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: #D0DCF0;
+  background: var(--border);
   padding: 0;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .dot:hover {
-  background: #8AAAC8;
+  background: var(--logo-steel);
 }
 
 .dotActive {
-  background: #4A7BA7;
+  background: var(--accent);
 }
 
 /* 3. PROGRESS BAR — hidden */
@@ -294,7 +294,7 @@
   justify-content: center;
   z-index: 4;
   cursor: pointer;
-  color: #2B3A52;
+  color: var(--text-secondary);
   background: var(--white);
   border: 1px solid var(--border-light);
   box-shadow:
@@ -306,14 +306,14 @@
 .arrow:hover {
   background: var(--white);
   border-color: var(--border-light);
-  color: #4A7BA7;
+  color: var(--accent);
   box-shadow:
     var(--shadow-md);
   transform: translateY(-50%) scale(1.08);
 }
 
 .arrowLeft  { left: 20px; }
-.arrowRight { right: 64px; }   /* clears the 44px "Enquire now" side tab, which sits over the right edge at mid-height */
+.arrowRight { right: 20px; }
 
 @media (max-width: 768px) {
   .arrow { display: none; }
@@ -340,16 +340,16 @@
 }
 @media (max-width: 600px) { .showcase { margin-top: 64px; } }
 
-.tagline { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--navy); margin-bottom: 18px; }
+.tagline { font-size: var(--text-lg); font-weight: 600; line-height: 1.4; color: var(--navy); margin-bottom: 18px; }
 
 @media (max-width: 768px) {
-  .counterCurrent { font-size: 20px; }
-  .counterSep, .counterTotal { font-size: 12px; }
+  .counterCurrent { font-size: var(--text-lg); }
+  .counterSep, .counterTotal { font-size: var(--text-xs); }
   .controls { gap: 12px; }
 }
 
 /* ── BRAND SLIDE — dark navy photo, white/orange text ── */
-.showcaseBrand { background: #0E1A2E; }
+.showcaseBrand { background: var(--steel-dark); }
 
 .vignetteDark {
   background: linear-gradient(
@@ -364,7 +364,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--white);
@@ -386,10 +386,10 @@
 .brandAccent { color: var(--white); }
 
 .brandTagline {
-  font-size: 24px;
+  font-size: var(--type-small-heading-size);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
   color: var(--white);
   line-height: 1.45;
   margin-bottom: 18px;
@@ -405,7 +405,7 @@
   border-radius: 999px;
   background: var(--cta);
   color: var(--white);
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -419,15 +419,15 @@
 
 /* Beat the global `#main-content p` body rule (ID specificity). */
 :global(#main-content) .brandTagline {
-  font-size: 24px;
+  font-size: var(--type-small-heading-size);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none;
+  letter-spacing: 0;
   line-height: 1.45;
 }
 
 @media (max-width: 768px) {
-  :global(#main-content) .brandTagline { font-size: 18px; }
+  :global(#main-content) .brandTagline { font-size: var(--text-lg); }
 }
 
 @media (max-width: 768px) {
@@ -457,7 +457,7 @@
   pointer-events: all;
 }
 .heroHeading {
-  font-size: 18px;
+  font-size: var(--text-lg);
   font-weight: 600;
   line-height: 1.4;
   color: var(--navy);
@@ -466,7 +466,7 @@
 }
 /* Overrides the global #main-content h1 title size: the slide title stays the largest text. */
 :global(#main-content) .heroHeading {
-  font-size: 18px;
+  font-size: var(--text-lg);
   line-height: 1.4;
   font-weight: 600;
 }
@@ -492,5 +492,9 @@
 @media (max-width: 768px) {
   .copyColumn { max-width: 100%; padding-right: 44px; }
   .copyColumn .textBlock { padding-right: 0; }
-  .heroHeading, :global(#main-content) .heroHeading { font-size: 16px; margin-bottom: 12px; }
+  .heroHeading, :global(#main-content) .heroHeading { font-size: var(--text-md); margin-bottom: 12px; }
 }
+
+/* Brand slide sits on a dark photo: invert the primary button so its edge stays visible. */
+:global(#main-content) .textBlockBrand .rangeCta { background: var(--white); border-color: var(--white); color: var(--navy); }
+:global(#main-content) .textBlockBrand .rangeCta:hover { background: var(--blue-xlight); border-color: var(--blue-xlight); }

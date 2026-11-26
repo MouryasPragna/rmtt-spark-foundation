@@ -6,63 +6,76 @@
 
 :root {
   color-scheme: light only;
-  /* Airox reference measurements; keep the locally served brand font. */
+  /* Type scale — seven steps, used everywhere (no ad-hoc sizes in modules):
+     label 12 · small 14 · body 16 · lead 18 · card/H3 22 · section/H2 32 · page/H1 60. */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
   --type-body-size: 16px;
-  --type-body-leading: 24px;
+  --type-body-leading: 26px;
   --type-body-weight: 400;
-  --type-heading-size: 30px;
-  --type-heading-leading: 36px;
+  --type-heading-size: 32px;
+  --type-heading-leading: 40px;
   --type-heading-weight: 700;
-  --type-title-size: 72px;
-  --type-title-leading: 72px;
-  --type-title-spacing: 0;
-  --type-small-heading-size: 24px;
-  --type-small-heading-leading: 32px;
+  --type-title-size: 60px;
+  --type-title-leading: 64px;
+  --type-title-spacing: -0.01em;
+  --type-small-heading-size: 22px;
+  --type-small-heading-leading: 30px;
   --type-small-heading-weight: 600;
   --type-content-spacing: 0;
-  --section-spacing: 48px;
-  --section-heading-gap: 24px;
-  --section-heading-accent: #b95000;
-  --section-heading-rule: #14820b;
-  --page-hero-overlay: rgba(0, 30, 64, 0.68);
+  /* One section rhythm for every content band. */
+  --section-spacing: 96px;
+  --section-heading-gap: 32px;
+  /* Section label (small caps above each H2) and the page-hero overlay. */
+  --section-heading-accent: #3B5A72;
+  --section-heading-rule: #B8CBD9;
+  --page-hero-overlay: rgba(30, 51, 68, 0.72);
+  /* Readable line length for running text. */
+  --measure: 70ch;
   /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-  /* Brand colors — Fraisa-inspired deep navy + steel blue */
-  --navy: #002855;
-  --navy-mid: #003B73;
-  --blue: #002855;
-  --blue-light: #3D6FA0;
-  --blue-xlight: #E6EDF4;
-  --blue-pale: #F2F5F8;
-  --steel: #4A6786;
-  --steel-dark: #001E40;
-  /* TODO: accent colour needs client brand approval */
-  --cta: #B45F06;
-  --cta-dark: #8F4A05;
+  /* Brand colours — "Riddhi Steel", derived from the RMTT logo.
+     Logo colours: slate #707E85 and steel blue #B8CBD9. Both are below 4.5:1 on white, so
+     they are used only for rules, fills and large marks (--logo-*); text, buttons and links
+     use darker shades of the same hue. Existing token names are kept so modules inherit it. */
+  --logo-slate: #707E85;
+  --logo-steel: #B8CBD9;
+  --navy: #1E3344;
+  --navy-mid: #2A4559;
+  --blue: #1E3344;
+  --blue-light: #3B5A72;
+  --blue-xlight: #E4EBF1;
+  --blue-pale: #F3F6F9;
+  --steel: #50677A;
+  --steel-dark: #16242F;
+  --cta: #3B5A72;
+  --cta-dark: #2A4357;
 
   /* Product categories — shared across every page */
-  --cat-solid: #002855;
-  --cat-pcd: #3D6FA0;
-  --cat-brazed: #4A6786;
-  --cat-specialized: #3A6B5E;
-  --cat-solid-bg: #E6EDF4;
-  --cat-pcd-bg: #EAF0F6;
-  --cat-brazed-bg: #EBEFF3;
-  --cat-specialized-bg: #E8F0ED;
+  --cat-solid: #1E3344;
+  --cat-pcd: #3B5A72;
+  --cat-brazed: #56656D;
+  --cat-specialized: #2E6B5E;
+  --cat-solid-bg: #E4EBF1;
+  --cat-pcd-bg: #EAF0F5;
+  --cat-brazed-bg: #ECEFF1;
+  --cat-specialized-bg: #E6F0ED;
 
   /* Neutrals */
-  --dark: #001E40;
-  --text: #1A2A40;
-  --text-secondary: #3D4F66;
-  --text-muted: #53647A;
-  --accent: #3D6FA0;
-  --on-dark-muted: #C8D2DC;
-  --on-dark: #DCE5EE;
-  --border: #C8D2DC;
-  --border-light: #E0E6EC;
-  --surface: #F2F5F8;
-  --surface-blue: linear-gradient(180deg, #D9E4EE 0%, #F2F5F8 100%);
+  --dark: #1E3344;
+  --text: #1B262D;
+  --text-secondary: #3E4C54;
+  --text-muted: #4F5C63;
+  --accent: #3B5A72;
+  --on-dark-muted: #C9D5DE;
+  --on-dark: #E4EBF1;
+  --border: #D2DCE4;
+  --border-light: #E4EBF1;
+  --surface: #F3F6F9;
+  --surface-blue: linear-gradient(180deg, #DCE6EE 0%, #F3F6F9 100%);
   --white: #FFFFFF;
 
   /* Semantic */
@@ -72,22 +85,22 @@
   --warning-bg: #FBF4E6;
   --error: #B02A1A;
 
-  /* Shadows — Fraisa uses very flat design, minimal shadows */
-  --shadow-sm: 0 1px 2px rgba(0,40,85,.06);
-  --shadow-md: 0 2px 6px rgba(0,40,85,.08);
-  --shadow-lg: 0 4px 16px rgba(0,40,85,.10);
+  /* Depth — hairline borders carry structure; there is one shadow level, for raised or
+     hovered elements only. --shadow-sm/--shadow-md are kept as names so modules that
+     combined a border with a shadow now render the border alone. */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: 0 8px 24px rgba(30, 51, 68, 0.12);
 
-  /* Radii — sharp / minimal */
-  --radius-sm: 2px;
-  --radius-md: 3px;
+  /* Corners — one 4px radius for buttons, cards, inputs and panels; 999px only for status pills. */
+  --radius-sm: 4px;
+  --radius-md: 4px;
   --radius-lg: 4px;
 
 
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Default browser scrolling: no smooth-scroll override. */
 
 html, body {
   overflow-x: hidden;
@@ -162,6 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 #main-content :is(h4, h5, h6) { font-size: 20px; line-height: 28px; }
 
 #main-content p {
+  max-width: var(--measure);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
   font-weight: var(--type-body-weight);
@@ -172,13 +186,14 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   :root {
     --type-title-size: 36px;
-    --type-title-leading: 39.6px;
+    --type-title-leading: 42px;
     --type-title-spacing: 0;
-    --type-heading-size: 24px;
-    --type-heading-leading: 32px;
+    --type-heading-size: 26px;
+    --type-heading-leading: 34px;
     --type-small-heading-size: 20px;
     --type-small-heading-leading: 28px;
-    --section-spacing: 32px;
+    --section-spacing: 64px;
+    --section-heading-gap: 24px;
   }
   #main-content h1 { padding-bottom: 7px; }
 }
@@ -212,86 +227,69 @@ img {
 }
 
 .container {
-  max-width: 1360px;
+  max-width: 1288px;               /* 1240px content + 24px gutters */
   margin: 0 auto;
-  padding: 0 52px 0 16px;
+  padding: 0 24px;
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 52px 0 12px;
+    padding: 0 16px;
   }
 }
 
+/* Section label: small uppercase caption above a section headline (standards: label → headline → body). */
 .section-eyebrow {
-  display: flex;
+  display: block;
   width: fit-content;
   max-width: 100%;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--navy);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: var(--type-content-spacing);
+  color: var(--section-heading-accent);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
   text-transform: uppercase;
-  padding: 0 0 0 10px;
-  border-radius: 0;
-  margin-bottom: 14px;
-  border-left: 3px solid var(--navy);
+  margin-bottom: 12px;
 }
 
-.section-eyebrow::before {
-  content: none;
-}
-
-/* Shared reference treatment, explicitly scoped away from page and card titles. */
+/* Shared section heading: label, sentence-case headline in ink, short intro — left-aligned.
+   An optional link (e.g. "View all products") sits to the right on wide screens. */
 #main-content .section-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
+  display: block;
   width: 100%;
   min-width: 0;
-  max-width: none;
   margin: 0 0 var(--section-heading-gap);
-  text-align: center;
+  text-align: left;
 }
 
-#main-content .section-heading > div {
-  width: 100%;
+/* Only a heading with its own link ("View all products") lays out as a row: copy left, link right. */
+#main-content .section-heading:has(> a) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+
+#main-content .section-heading:has(> a) > div {
+  flex: 1 1 32rem;
   min-width: 0;
-}
-
-#main-content .section-heading .section-eyebrow {
-  display: none;
 }
 
 #main-content .section-heading h2,
 #main-content h2.section-heading-title {
-  color: var(--section-heading-accent);
-  text-transform: uppercase;
-  text-align: center;
+  color: var(--navy);
+  text-transform: none;
+  text-align: left;
   max-width: 100%;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
 }
 
 #main-content .section-heading p {
-  width: 100%;
-  max-width: none;
+  max-width: var(--measure);
   margin: 0;
-  text-align: center;
-}
-
-#main-content .section-heading::after,
-#main-content h2.section-heading-title::after {
-  content: '';
-  display: block;
-  width: min(128px, 100%);
-  height: 5px;
-  margin: 20px auto 0;
-  background: var(--section-heading-rule);
-  flex-shrink: 0;
+  text-align: left;
+  color: var(--text-secondary);
 }
 
 #main-content h2.section-heading-title {
@@ -299,8 +297,13 @@ img {
 }
 
 #main-content .section-heading > a {
-  margin-top: 14px;
+  flex: none;
+  margin: 12px 0 0;
 }
+
+/* Headings on dark bands (e.g. the Services process band). */
+#main-content [data-surface="dark"] .section-heading :is(h2, .section-eyebrow) { color: var(--white); }
+#main-content [data-surface="dark"] .section-heading p { color: var(--on-dark-muted); }
 
 /* Animations */
 @keyframes fadeInUp {
@@ -333,7 +336,6 @@ main { scroll-margin-top: 110px; }
 input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 1; }
 #main-content > div { scroll-margin-top: 110px; }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
@@ -342,25 +344,73 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 1
 @keyframes page-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 #main-content > div { animation: page-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* Glass effect for buttons */
-#main-content :is(button, a)[class*="Btn"],
-#main-content :is(button, a)[class*="btn"],
-#main-content a[class*="catalogueLink"],
-#main-content a[class*="sectionLink"] {
-  background-image: linear-gradient(135deg, hsl(0 0% 100% / 0.28), hsl(0 0% 100% / 0.04));
-  backdrop-filter: blur(10px) saturate(160%);
-  -webkit-backdrop-filter: blur(10px) saturate(160%);
-  border: 1px solid hsl(0 0% 100% / 0.35);
-  box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.45), 0 6px 18px hsl(220 40% 15% / 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+/* Button system (standards): one filled primary, one outlined secondary, one text link with an
+   arrow icon. Module classes are mapped here so every page shares the same three treatments;
+   the ID selector outranks the single-class module rules. */
+#main-content :is([class*="_rangeCta_"], [class*="_primaryCta_"], [class*="_ctaBtnPrimary_"], [class*="_submitBtn_"],
+  [class*="_catalogueLink_"], [class*="_catCta_"], [class*="_ctaBtn_"]) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 1px solid var(--cta);
+  border-radius: var(--radius-lg);
+  background: var(--cta);
+  background-image: none;
+  color: var(--white);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
-#main-content :is(button, a)[class*="Btn"]:hover,
-#main-content :is(button, a)[class*="btn"]:hover,
-#main-content a[class*="catalogueLink"]:hover,
-#main-content a[class*="sectionLink"]:hover {
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.55), 0 10px 26px hsl(220 40% 15% / 0.2);
+#main-content :is([class*="_rangeCta_"], [class*="_primaryCta_"], [class*="_ctaBtnPrimary_"], [class*="_submitBtn_"],
+  [class*="_catalogueLink_"], [class*="_catCta_"], [class*="_ctaBtn_"]):hover {
+  background: var(--cta-dark);
+  border-color: var(--cta-dark);
+  transform: none;
 }
+#main-content :is([class*="_secondaryCta_"], [class*="_ctaBtnSecondary_"]) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 1px solid var(--cta);
+  border-radius: var(--radius-lg);
+  background: transparent;
+  background-image: none;
+  color: var(--cta);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: none;
+  transition: background-color 0.18s ease;
+}
+#main-content :is([class*="_secondaryCta_"], [class*="_ctaBtnSecondary_"]):hover { background: var(--blue-pale); transform: none; }
+#main-content :is([class*="_sectionLink_"], [class*="_techLink_"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  background-image: none;
+  box-shadow: none;
+  color: var(--cta);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+#main-content :is([class*="_sectionLink_"], [class*="_techLink_"]):hover { color: var(--cta-dark); text-decoration: underline; text-underline-offset: 4px; transform: none; }
+
+/* Arrow cue: "goes somewhere". The icon moves 3px on hover. */
+#main-content a svg.lucide-arrow-right { transition: transform 0.18s ease; flex: none; }
+#main-content a:hover svg.lucide-arrow-right { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: reduce) {
   #main-content > div { animation: none; }

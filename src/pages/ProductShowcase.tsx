@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type JSX } from 'react';
 import { useCarouselPlayback } from '../hooks/useCarouselPlayback';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import styles from './ProductShowcase.module.css';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import factoryMachining from '../assets/factory-hero-machining.jpg.asset.json';
@@ -33,10 +33,10 @@ const slides: Slide[] = [
     category: 'Precision Cutting Tool Manufacturer',
     title: 'Riddhi Machine Tool Technology',
     titleAccent: 'Machine Tool Technology',
-    subtitle: 'Engineering Confidence in Every Cut',
+    subtitle: 'Engineering confidence in every cut',
     tag: 'Solid Carbide · PCD · Brazed · Reconditioning',
     href: '/products',
-    linkText: 'Explore products →',
+    linkText: 'Explore products',
   },
   {
     id: 'solid-carbide-drills',
@@ -84,7 +84,8 @@ const slides: Slide[] = [
 // ── COMPONENT ────────────────────────────────────────────────────────────────
 export default function ProductShowcase(): JSX.Element {
   const [current, setCurrent] = useState(0);
-  const playback = useCarouselPlayback(slides.length);
+  // Standards: no auto-moving content by default. The hero starts paused; Play is offered.
+  const playback = useCarouselPlayback(slides.length, { autoplay: false });
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -188,7 +189,7 @@ export default function ProductShowcase(): JSX.Element {
           <div className={styles.tag}>
             <span>{slide.tag}</span>
           </div>
-          <Link to={slide.href} className={styles.rangeCta}>{slide.linkText ?? 'View range →'}</Link>
+          <Link to={slide.href} className={styles.rangeCta}>{slide.linkText ?? 'View range'}<ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
         </div>
 

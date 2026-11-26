@@ -1,4 +1,5 @@
 import styles from './ContentPending.module.css';
+import { SHOW_PENDING } from '../lib/contentPending';
 
 type Props = {
   /** What is missing, e.g. "The detailed coating programme". Rendered inside the sentence. */
@@ -14,6 +15,7 @@ type Props = {
  * Used by capability and service blocks whose supporting evidence has not been supplied.
  */
 export default function ContentPending({ what, note, tone = 'inline' }: Props) {
+  if (!SHOW_PENDING) return null;
   return (
     <p className={`${styles.note} ${tone === 'block' ? styles.block : ''}`} role="note">
       <span className={styles.label}>Client approval pending</span>

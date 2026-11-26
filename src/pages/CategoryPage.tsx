@@ -5,6 +5,7 @@ import styles from './Products.module.css';
 import { categories, type Category } from './productsData';
 import ContentPending from '../components/ContentPending';
 import PageHero from '../components/PageHero';
+import { SHOW_PENDING } from '../lib/contentPending';
 
 /**
  * Competence page in the MAPAL information pattern: hero intro, product-family
@@ -53,7 +54,7 @@ export default function CategoryPage() {
                 key={c.id}
                 to={`/products/${c.id}`}
                 className={styles.jumpLink}
-                style={c.id === cat.id ? { background: 'rgba(0,40,85,0.08)' } : undefined}
+                style={c.id === cat.id ? { background: 'rgba(30, 51, 68,0.08)' } : undefined}
               >
                 <c.icon size={14} />
                 {c.label}
@@ -115,7 +116,7 @@ export default function CategoryPage() {
             <p className={styles.sectionHeadSub}>What defines the tools in this programme.</p>
           </div>
           <div className={styles.capGrid}>
-            {cat.capabilities.map(block => (
+            {cat.capabilities.filter(block => SHOW_PENDING || !block.pending).map(block => (
               <div key={block.id} className={styles.capBlock}>
                 <h3 className={styles.capTitle}>{block.title}</h3>
                 {block.body ? <p className={styles.capBody}>{block.body}</p> : null}

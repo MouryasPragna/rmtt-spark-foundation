@@ -3,7 +3,6 @@ import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppFab from './components/WhatsAppFab';
-import EnquiryFab from './components/EnquiryFab';
 import Home from './pages/Home';
 import RouteMeta from './components/RouteMeta';
 import ScrollToTop from './components/ScrollToTop';
@@ -50,7 +49,6 @@ export function AppShell() {
       </Suspense>
       </main>
       <Footer />
-      <EnquiryFab />
       <WhatsAppFab />
     </>
   );

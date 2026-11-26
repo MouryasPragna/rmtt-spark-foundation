@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
-  font-size: 13px;
+  font-size: var(--text-sm);
   color: var(--navy);
 }
 
@@ -100,25 +100,27 @@
   align-items: center;
   background: transparent;
   border: 0;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--navy);
   padding: 22px 18px;
   border-radius: 0;
-  transition: background 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
   white-space: nowrap;
   border-bottom: 3px solid transparent;
 }
 
 .navLink:hover {
-  background: var(--navy);
-  color: var(--white);
+  background: transparent;
+  color: var(--cta);
+  border-bottom-color: var(--border);
 }
 
+/* Current page: accent underline (standards cue), not a filled block. */
 .navLink.active {
-  background: var(--navy);
-  color: var(--white);
-  border-bottom-color: var(--navy);
+  background: transparent;
+  color: var(--navy);
+  border-bottom-color: var(--accent);
   font-weight: 600;
 }
 
@@ -133,7 +135,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 600;
   padding: 10px 18px;
   border-radius: var(--radius-lg);
@@ -188,7 +190,7 @@
 .mobileLink {
   display: block;
   min-height: 44px;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--navy);
   padding: 14px 24px;
@@ -197,17 +199,21 @@
   transition: background 0.2s ease;
 }
 
-.mobileLink:hover,
+.mobileLink:hover {
+  background: var(--blue-pale);
+}
+
 .mobileLink.active {
-  background: var(--navy);
-  color: var(--white);
-  border-left-color: var(--navy);
+  background: transparent;
+  color: var(--navy);
+  border-left-color: var(--accent);
+  font-weight: 600;
 }
 
 .mobileCta {
   display: block;
   margin: 12px 24px 8px;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   padding: 12px;
   border-radius: var(--radius-lg);
@@ -274,7 +280,7 @@
   gap: 14px;
   padding: 16px 0;
   min-height: 52px;
-  font-size: 16px;
+  font-size: var(--text-md);
   color: var(--white);
   border-bottom: 1px solid var(--on-dark-muted);
   transition: background 0.15s ease, border-color 0.15s ease;
@@ -287,11 +293,11 @@
 .dropdownItem { border-bottom: 0; }
 .dropdownGroup + .dropdownGroup { border-top: 1px solid var(--on-dark-muted); }
 .dropdownFamilies, .mobileFamilies { list-style: none; margin: 0; padding: 0 0 8px 16px; }
-.dropdownFamily { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 8px 0; font-size: 14px; line-height: 24px; color: var(--white); border-top: 1px solid var(--on-dark-muted); }
+.dropdownFamily { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 8px 0; font-size: var(--text-sm); line-height: 24px; color: var(--white); border-top: 1px solid var(--on-dark-muted); }
 .dropdownFamily svg { flex-shrink: 0; }
 .dropdownFamily:hover, .mobileFamilyLink:hover { text-decoration: underline; text-underline-offset: 4px; }
 .mobileFamilies { padding: 0 24px 8px 64px; }
-.mobileFamilyLink { display: block; min-height: 44px; padding: 10px 0; font-size: 14px; line-height: 24px; color: var(--white); border-top: 1px solid var(--on-dark-muted); }
+.mobileFamilyLink { display: block; min-height: 44px; padding: 10px 0; font-size: var(--text-sm); line-height: 24px; color: var(--white); border-top: 1px solid var(--on-dark-muted); }
 .dropdownItem svg { flex-shrink: 0; }
 
 .mobileSubMenu {
@@ -311,7 +317,7 @@
   text-align: left;
   cursor: pointer;
   padding: 10px 24px 10px 44px;
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--white);
   min-height: 44px;
   border-left: 3px solid transparent;
@@ -324,7 +330,7 @@
   border-left-color: var(--navy);
 }
 
-.quoteCount { min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: var(--white); color: var(--navy); border-radius: var(--radius-sm); font-size: 12px; }
+.quoteCount { min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; background: var(--white); color: var(--navy); border-radius: var(--radius-sm); font-size: var(--text-xs); }
 @media (max-width: 1200px) and (min-width: 1101px) { .navLink { padding: 22px 10px; } .inner { gap: 12px; } .nav { margin-left: 0; } }
 
 @media (max-width: 600px) { .mobileMenu { max-height: calc(100dvh - 64px); } }

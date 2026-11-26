@@ -6,6 +6,7 @@ import ZoomImage from '../components/ZoomImage';
 import ContentPending from '../components/ContentPending';
 import { equipment } from '../data/equipment';
 import { serviceBlocks } from '../data/services';
+import { SHOW_PENDING } from '../lib/contentPending';
 
 const processSteps = [
   { step: '01', title: 'Application analysis', desc: 'You share the part drawing, material, machine type and cycle requirements. We analyse and design the optimal tool geometry.' },
@@ -36,7 +37,7 @@ export default function Technology() {
             <p className={styles.servicesSub}>Support around the tools themselves, from the first enquiry to long-term supply.</p>
           </div>
           <div className={styles.servicesGrid}>
-            {serviceBlocks.map(block => (
+            {serviceBlocks.filter(block => SHOW_PENDING || !block.pending).map(block => (
               <div key={block.id} className={styles.serviceBlock}>
                 <h3 className={styles.serviceTitle}>{block.title}</h3>
                 {block.pending
@@ -49,7 +50,7 @@ export default function Technology() {
       </section>
 
       {/* Process */}
-      <section className={styles.processSection}>
+      <section className={styles.processSection} data-surface="dark">
         <div className="container">
           <div className={`section-heading ${styles.processHead}`}>
             <div className="section-eyebrow">From enquiry to delivery</div>

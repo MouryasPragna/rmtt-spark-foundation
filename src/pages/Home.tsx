@@ -12,6 +12,7 @@ import equipmentHero from '../assets/equipment-hero.png';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
 import specialTool from '../assets/brazed-tool-8.png.asset.json';
+import { SHOW_PENDING } from '../lib/contentPending';
 
 
 const products = [
@@ -168,7 +169,7 @@ export default function Home() {
             ref={servicesGridRef}
             className={`${styles.svcGrid} ${styles.revealStagger} ${servicesGridShown ? styles.revealStaggerShown : ''}`}
           >
-            {serviceBlocks.map(block => (
+            {serviceBlocks.filter(block => SHOW_PENDING || !block.pending).map(block => (
               <div key={block.id} className={styles.svcBlock}>
                 <h3 className={styles.svcTitle}>{block.title}</h3>
                 {block.pending
@@ -238,6 +239,9 @@ export default function Home() {
                 Share your application details and we'll engineer the right tool for your requirements.
               </p>
             </div>
+            <Link to="/contact" className={styles.ctaBtnPrimary}>
+              Send an enquiry <ArrowRight size={16} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

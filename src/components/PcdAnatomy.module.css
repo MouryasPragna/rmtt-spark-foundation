@@ -6,7 +6,7 @@
 .lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .line { stroke: var(--navy); stroke-width: 0.35; fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .6s ease, stroke .2s; transition-delay: calc(500ms + var(--i) * 120ms), 0s; }
 .lineActive { stroke: var(--cta); stroke-width: 0.6; }
-.marker { position: absolute; left: var(--x); top: var(--y); width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid var(--white); background: var(--navy); color: var(--white); font: 600 12px/1 var(--font-body); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 2px 6px rgba(0,30,64,.3); opacity: 0; transform: scale(.4); transition: opacity .35s ease, transform .35s ease, background .2s; transition-delay: calc(900ms + var(--i) * 120ms), calc(900ms + var(--i) * 120ms), 0s; }
+.marker { position: absolute; left: var(--x); top: var(--y); width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid var(--white); background: var(--navy); color: var(--white); font: 600 var(--text-xs)/1 var(--font-body); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 2px 6px rgba(22, 36, 47,.3); opacity: 0; transform: scale(.4); transition: opacity .35s ease, transform .35s ease, background .2s; transition-delay: calc(900ms + var(--i) * 120ms), calc(900ms + var(--i) * 120ms), 0s; }
 .dot { width: 12px; height: 12px; margin: -6px 0 0 -6px; pointer-events: none; }
 .marker.active, .marker:hover { background: var(--cta); }
 .marker:focus-visible { outline: 3px solid var(--cta); outline-offset: 2px; }
@@ -14,8 +14,8 @@
 .left { transform: translate(6px, -50%); }
 .right { transform: translate(calc(-100% - 6px), -50%); text-align: right; }
 .below { transform: translate(-50%, 0); text-align: center; max-width: 90%; }
-.labelTitle { display: block; font-weight: 600; font-size: 15px; line-height: 1.3; border-left: 0; transition: color .2s; }
-.labelDesc { display: block; font-size: 13px; line-height: 1.4; color: var(--text-secondary); max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .3s ease; }
+.labelTitle { display: block; font-weight: 600; font-size: var(--text-md); line-height: 1.3; border-left: 0; transition: color .2s; }
+.labelDesc { display: block; font-size: var(--text-sm); line-height: 1.4; color: var(--text-secondary); max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .3s ease; }
 .labelActive .labelTitle { color: var(--cta); }
 .labelActive .labelDesc { max-height: 80px; opacity: 1; margin-top: 4px; }
 .labelActive { z-index: 2; }
@@ -34,11 +34,11 @@
   .label { display: none; }
   .lines { display: none; }
   .list { display: grid; gap: 12px; list-style: none; padding: 0; margin: 24px 0 0; }
-  .list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: 14px; line-height: 1.45; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--white); transition: border-color .2s, background .2s; }
+  .list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: var(--text-sm); line-height: 1.45; padding: 10px 12px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--white); transition: border-color .2s, background .2s; }
   .list strong { color: var(--navy); font-weight: 600; }
   .listActive { border-color: var(--cta) !important; background: var(--cat-solid-bg) !important; }
   .listActive strong { color: var(--cta-dark); }
-  .listNum { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font: 600 12px/26px var(--font-body); text-align: center; }
+  .listNum { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font: 600 var(--text-xs)/26px var(--font-body); text-align: center; }
   .listActive .listNum { background: var(--cta); }
 }
 @media (max-width: 560px) {
