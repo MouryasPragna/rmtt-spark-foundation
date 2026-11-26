@@ -3,16 +3,19 @@
   background: var(--white);
 }
 
-/* Same treatment as the shared .section-heading: left-aligned, sentence case, no rule. */
+/* Same treatment as the shared .section-heading: left-aligned, orange uppercase title, short rule. */
 .head {
   text-align: left;
   margin-bottom: var(--section-heading-gap);
 }
 
 .head .title {
-  color: var(--navy);
+  color: var(--section-heading-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
   margin-bottom: 12px;
 }
+
 
 .sub, .intro, .text {
   color: var(--text-secondary);

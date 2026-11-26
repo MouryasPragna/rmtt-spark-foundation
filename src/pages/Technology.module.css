@@ -128,7 +128,7 @@
 .processTitle {
   font-size: var(--type-heading-size);
   font-weight: 700;
-  color: var(--white);
+  color: var(--section-heading-accent-on-dark);
   margin-bottom: 12px;
   letter-spacing: -0.02em;
 }
