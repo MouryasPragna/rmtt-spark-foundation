@@ -1,5 +1,5 @@
 .anatomy { margin-top: 48px; font-family: var(--font-body); }
-.heading { margin-bottom: 24px; }
+.heading { margin-bottom: 32px; }
 .figures { display: grid; grid-template-columns: 1.1fr 0.9fr 1.1fr; gap: 32px; align-items: start; }
 .figure { position: relative; margin: 0; width: 100%; aspect-ratio: var(--ratio); }
 .photo { position: absolute; object-fit: contain; opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; transition-delay: calc(var(--fi) * 150ms); user-select: none; }
@@ -15,17 +15,22 @@
 .right { transform: translate(calc(-100% - 6px), -50%); text-align: right; }
 .below { transform: translate(-50%, 0); text-align: center; max-width: 90%; }
 .labelTitle { display: block; font-weight: 600; font-size: var(--text-md); line-height: 1.3; border-left: 0; transition: color .2s; }
-.labelDesc { display: block; font-size: var(--text-sm); line-height: 1.4; color: var(--text-secondary); max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .3s ease; }
 .labelActive .labelTitle { color: var(--cta); }
-.labelActive .labelDesc { max-height: 80px; opacity: 1; margin-top: 4px; }
 .labelActive { z-index: 2; }
-.list { display: none; }
+.list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 40px 0 0; }
+.list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text-secondary); font-size: var(--text-sm); line-height: 1.5; padding: 14px 16px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--white); transition: border-color .2s, background .2s; }
+.list strong { color: var(--navy); font-weight: 600; font-size: var(--text-md); }
+.listActive { border-color: var(--btn-bg) !important; }
+.listActive strong { color: var(--cta-dark); }
+.listNum { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font: 600 var(--text-xs)/26px var(--font-body); text-align: center; }
+.listActive .listNum { background: var(--btn-bg); }
 
 .inView .photo { opacity: 1; transform: none; }
 .inView .line { stroke-dashoffset: 0; }
 .inView .marker { opacity: 1; transform: none; }
 .inView .label { opacity: 1; }
 
+@media (min-width: 901px) and (max-width: 1100px) { .list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) {
   .figures { grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: center; }
   .figure { aspect-ratio: var(--photo-ratio); }
@@ -33,7 +38,7 @@
   .marker { left: var(--px); top: var(--py); }
   .label { display: none; }
   .lines { display: none; }
-  .list { display: grid; gap: 12px; list-style: none; padding: 0; margin: 24px 0 0; }
+  .list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; list-style: none; padding: 0; margin: 24px 0 0; }
   .list li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: var(--text-sm); line-height: 1.45; padding: 10px 12px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--white); transition: border-color .2s, background .2s; }
   .list strong { color: var(--navy); font-weight: 600; }
   .listActive { border-color: var(--cta) !important; background: var(--cat-solid-bg) !important; }
@@ -47,5 +52,5 @@
   .figure:nth-child(2) { grid-column: 1 / -1; max-width: 70%; grid-row: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .photo, .line, .marker, .label, .labelDesc, .list li { transition: none !important; }
+  .photo, .line, .marker, .label, .list li { transition: none !important; }
 }
