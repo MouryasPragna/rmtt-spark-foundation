@@ -35,6 +35,11 @@
   --section-heading-accent: #B95000;
   --section-heading-accent-on-dark: #F0913A;
   --section-label: #3B5A72;
+  /* Buttons: orange pill (all primary actions — hero, enquiry, download, submit). White on
+     #B95000 is 4.99:1; hover darkens to #8F4A05 (7.2:1). */
+  --btn-bg: #B95000;
+  --btn-bg-hover: #8F4A05;
+  --radius-pill: 999px;
   --page-hero-overlay: rgba(30, 51, 68, 0.72);
   /* Readable line length for running text. */
   --measure: 70ch;
@@ -350,20 +355,20 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 1
 @keyframes page-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 #main-content > div { animation: page-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* Button system (standards): one filled primary, one outlined secondary, one text link with an
-   arrow icon. Module classes are mapped here so every page shares the same three treatments;
-   the ID selector outranks the single-class module rules. */
+/* Button system: every button is an orange pill — filled for primary actions, orange outline
+   for secondary ones; plain text links with an arrow stay steel blue. Module classes are mapped
+   here so every page shares the same treatment; the ID selector outranks module rules. */
 #main-content :is([class*="_rangeCta_"], [class*="_primaryCta_"], [class*="_ctaBtnPrimary_"], [class*="_submitBtn_"],
   [class*="_catalogueLink_"], [class*="_catCta_"], [class*="_ctaBtn_"]) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 48px;
-  padding: 12px 24px;
-  border: 1px solid var(--cta);
-  border-radius: var(--radius-lg);
-  background: var(--cta);
+  min-height: 44px;
+  padding: 10px 24px;
+  border: 1px solid var(--btn-bg);
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
   background-image: none;
   color: var(--white);
   font-size: var(--text-md);
@@ -375,29 +380,32 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 1
 }
 #main-content :is([class*="_rangeCta_"], [class*="_primaryCta_"], [class*="_ctaBtnPrimary_"], [class*="_submitBtn_"],
   [class*="_catalogueLink_"], [class*="_catCta_"], [class*="_ctaBtn_"]):hover {
-  background: var(--cta-dark);
-  border-color: var(--cta-dark);
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
+  color: var(--white);
   transform: none;
 }
+#main-content :is([class*="_rangeCta_"], [class*="_primaryCta_"], [class*="_ctaBtnPrimary_"], [class*="_submitBtn_"],
+  [class*="_catalogueLink_"], [class*="_catCta_"], [class*="_ctaBtn_"]) :is(svg, small, span) { color: inherit; }
 #main-content :is([class*="_secondaryCta_"], [class*="_ctaBtnSecondary_"]) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 48px;
-  padding: 12px 24px;
-  border: 1px solid var(--cta);
-  border-radius: var(--radius-lg);
+  min-height: 44px;
+  padding: 10px 24px;
+  border: 1px solid var(--btn-bg);
+  border-radius: var(--radius-pill);
   background: transparent;
   background-image: none;
-  color: var(--cta);
+  color: var(--btn-bg);
   font-size: var(--text-md);
   font-weight: 600;
   line-height: 1.2;
   box-shadow: none;
   transition: background-color 0.18s ease;
 }
-#main-content :is([class*="_secondaryCta_"], [class*="_ctaBtnSecondary_"]):hover { background: var(--blue-pale); transform: none; }
+#main-content :is([class*="_secondaryCta_"], [class*="_ctaBtnSecondary_"]):hover { background: #FBF1E8; transform: none; }
 #main-content :is([class*="_sectionLink_"], [class*="_techLink_"]) {
   display: inline-flex;
   align-items: center;
