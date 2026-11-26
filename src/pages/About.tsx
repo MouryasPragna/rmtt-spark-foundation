@@ -6,14 +6,19 @@ import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import facilityBrand from '../assets/bengaluru-facility-brand.jpg';
+import missionPhoto from '../assets/about-mission-saacke.webp';
+import visionPhoto from '../assets/about-vision-helicheck.webp';
+import type { CSSProperties } from 'react';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { siteConfig } from '../lib/siteConfig';
 import { industries } from '../data/industries';
 import { categories } from './productsData';
 
+// Panel backgrounds: client photos (Drive "FOR WEBSITE / Slide/cover images"), cropped to the panel shape.
 const missionVision = [
   {
     type: 'mission',
+    photo: missionPhoto,
     title: 'Advancing Make in India through world-class precision tools',
     desc: 'To advance the Make in India vision by manufacturing world-class precision cutting tools that meet global standards of quality and performance.',
     points: [
@@ -24,6 +29,7 @@ const missionVision = [
   },
   {
     type: 'vision',
+    photo: visionPhoto,
     title: 'One-stop partner for advanced precision cutting tools',
     desc: 'To be a trusted and reliable one-stop solution for advanced precision cutting tools across automotive, aerospace, and engineering industries.',
     points: [
@@ -119,7 +125,7 @@ export default function About() {
           </div>
           <div className={styles.missionVisionGrid}>
             {missionVision.map(item => (
-              <div key={item.type} className={`${styles.mvCard} ${styles[item.type]}`}>
+              <div key={item.type} className={`${styles.mvCard} ${styles[item.type]}`} style={{ '--mv-photo': `url(${item.photo})` } as CSSProperties}>
                 <div className={styles.mvLabel}>{item.type === 'mission' ? 'Our mission' : 'Our vision'}</div>
                 <h3 className={styles.mvTitle}>{item.title}</h3>
                 <p className={styles.mvDesc}>{item.desc}</p>
