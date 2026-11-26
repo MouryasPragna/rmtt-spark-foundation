@@ -23,8 +23,9 @@ const FIGURES: Figure[] = [
   {
     src: brazed.url, alt: 'Close-up of a PCD tip brazed onto the tool body',
     ratio: 0.64, photo: { left: 0, top: 0, width: 100, height: 77.6 },
+    // Points sit on the two brazed PCD tips (lower left and lower right of the photo); both lines meet at the label below.
     callouts: [
-      { n: 5, title: 'Seamless brazing', desc: 'PCD tips are brazed to the body for a clean, durable joint.', points: [[14, 58], [86, 72]], label: [50, 86], align: 'below' },
+      { n: 5, title: 'Seamless brazing', desc: 'PCD tips are brazed to the body for a clean, durable joint.', points: [[6, 51.2], [86, 54.3]], label: [50, 86], align: 'below' },
     ],
   },
   {
