@@ -7,10 +7,10 @@ import ContentPending from '../components/ContentPending';
 import { industries } from '../data/industries';
 import ZoomImage from '../components/ZoomImage';
 import solidCarbideEndmills from '../assets/home-solid-endmill.webp.asset.json';
-import equipmentHero from '../assets/equipment-hero.png';
+import equipmentHero from '../assets/equipment-hero.webp';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
-import specialTool from '../assets/brazed-tool-8.png.asset.json';
+import specialTool from '../assets/brazed-tool-8.webp.asset.json';
 import { SHOW_PENDING } from '../lib/contentPending';
 
 
