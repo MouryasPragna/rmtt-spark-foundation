@@ -245,7 +245,7 @@ a.contactValue:hover {
 .nextStep {
   position: relative;
   counter-increment: next-step;
-  padding: 0 0 28px 52px;
+  padding: 0 0 36px 52px;
 }
 .nextStep:last-child { padding-bottom: 0; }
 
@@ -293,11 +293,6 @@ a.contactValue:hover {
 
 .toolsPreview {
   margin: 8px 0 0;
-  padding: 16px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--cta);
-  border-radius: var(--radius-lg);
 }
 
 .toolsImg {
@@ -305,7 +300,7 @@ a.contactValue:hover {
   width: 100%;
   max-width: 370px;
   height: auto;
-  margin: 0 auto;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -395,4 +390,7 @@ a.contactValue:hover {
 .noRule { border-top: none; }
 #main-content .noRule h2.section-heading-title::after { display: none; }
 .sidebar .noRule { padding-top: 0; }
-.enquirySection .contactGrid { align-items: start; }
+.enquirySection .contactGrid { align-items: stretch; }
+/* The sidebar runs the full height of the form, and the catalogue block sits at its foot so
+   "Download catalogue" lines up with "Enquire now". Single-column phones just stack. */
+.sidebar .catalogueCard { margin-top: auto; padding-bottom: 0; }

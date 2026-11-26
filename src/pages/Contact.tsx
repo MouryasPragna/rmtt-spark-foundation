@@ -104,7 +104,7 @@ export default function Contact() {
           </ol>
         </section>
         <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.png`} alt="Riddhi cutting tool range" width={370} height={66} loading="lazy" className={styles.toolsImg} /></figure>
-        <section className={`${styles.sideCard} ${styles.noRule}`} id="product-catalogue">
+        <section className={`${styles.sideCard} ${styles.noRule} ${styles.catalogueCard}`} id="product-catalogue">
           <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
           <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
             <Download size={18} aria-hidden="true" />
