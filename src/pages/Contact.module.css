@@ -233,33 +233,48 @@ a.contactValue:hover {
   color: var(--blue);
 }
 
+/* What happens next: a static vertical timeline — numbered markers joined by a steel rule. */
 .nextSteps {
   list-style: none;
+  counter-reset: next-step;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
 }
 
 .nextStep {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  border-left: 3px solid var(--accent);
-  padding-left: 14px;
+  position: relative;
+  counter-increment: next-step;
+  padding: 0 0 28px 52px;
 }
+.nextStep:last-child { padding-bottom: 0; }
 
-.nextNum {
-  width: 28px;
-  height: 28px;
+/* Numbered marker */
+.nextStep::before {
+  content: counter(next-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: var(--blue-xlight);
-  color: var(--blue);
+  background: var(--navy);
+  color: var(--white);
   font-size: var(--text-sm);
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  line-height: 32px;
+  text-align: center;
+}
+
+/* Connecting rule to the next marker */
+.nextStep:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 36px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--logo-steel);
 }
 
 .nextTitle {
@@ -277,14 +292,20 @@ a.contactValue:hover {
 }
 
 .toolsPreview {
+  margin: 8px 0 0;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--cta);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border-light);
 }
 
 .toolsImg {
+  display: block;
   width: 100%;
-  object-fit: cover;
+  max-width: 370px;
+  height: auto;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -356,7 +377,7 @@ a.contactValue:hover {
 .enquirySection .formNote { text-align: left; }
 .contactCard .directionsLink { margin-top: 12px; }
 .sidebar .sideTitle { margin-bottom: 24px; }
-.sidebar .nextTitle { font-size: var(--type-small-heading-size); line-height: var(--type-small-heading-leading); font-weight: var(--type-small-heading-weight); }
+.sidebar .nextTitle { font-size: var(--type-small-heading-size); line-height: 32px; font-weight: var(--type-small-heading-weight); margin-bottom: 4px; }
 .sidebar .toolsImg { display: block; height: auto; }
 .catalogueLink span { min-width: 0; }
 .catalogueLink small { font-size: var(--text-sm); font-weight: 500; }

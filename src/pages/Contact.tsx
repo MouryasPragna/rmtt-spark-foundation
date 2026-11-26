@@ -97,13 +97,13 @@ export default function Contact() {
       <aside className={styles.sidebar}>
         <section className={`${styles.sideCard} ${styles.noRule}`}>
           <h2 className={`section-heading-title ${styles.sideTitle}`}>What happens next?</h2>
-          <ul className={styles.nextSteps}>
-            <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></div></li>
-            <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Technical proposal</h3><p className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</p></div></li>
-            <li className={styles.nextStep}><div><h3 className={styles.nextTitle}>Sample &amp; trial</h3><p className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</p></div></li>
-          </ul>
+          <ol className={styles.nextSteps}>
+            <li className={styles.nextStep}><h3 className={styles.nextTitle}>Technical review</h3><p className={styles.nextDesc}>Our engineers analyse your application requirements.</p></li>
+            <li className={styles.nextStep}><h3 className={styles.nextTitle}>Technical proposal</h3><p className={styles.nextDesc}>We send a technical proposal with recommended tool design and pricing.</p></li>
+            <li className={styles.nextStep}><h3 className={styles.nextTitle}>Sample &amp; trial</h3><p className={styles.nextDesc}>Sample tools manufactured for your approval before full production order.</p></li>
+          </ol>
         </section>
-        <div className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}image002.png`} alt="Riddhi cutting tool range" width={377} height={86} loading="lazy" className={styles.toolsImg} /></div>
+        <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.png`} alt="Riddhi cutting tool range" width={370} height={66} loading="lazy" className={styles.toolsImg} /></figure>
         <section className={`${styles.sideCard} ${styles.noRule}`} id="product-catalogue">
           <h2 className={`section-heading-title ${styles.sideTitle}`}>Product catalogue</h2>
           <a href={siteConfig.catalogueUrl} download="rmtt-catalogue.pdf" target="_blank" rel="noopener noreferrer" className={styles.catalogueLink}>
