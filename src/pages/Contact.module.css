@@ -158,27 +158,13 @@
   color: var(--text-muted);
 }
 
+/* Colour, shape and hover come from the shared orange pill in index.css; here it only sizes
+   to its label instead of stretching across the form. */
 .submitBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--cta);
-  color: var(--white);
-  font-size: var(--text-md);
-  font-weight: 600;
-  padding: 14px;
-  border-radius: var(--radius-lg);
-  border: none;
+  align-self: flex-start;
+  justify-self: start;
+  width: auto;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: var(--shadow-sm);
-}
-
-.submitBtn:hover {
-  background: var(--cta-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
 .formNote {
@@ -368,8 +354,6 @@ a.contactValue:hover {
 .enquirySection .select { appearance: auto; background-image: none; }
 .enquirySection .textarea { min-height: 88px; height: 88px; }
 .enquirySection .formNote { text-align: left; }
-.enquirySection .submitBtn { background: var(--navy); min-height: 48px; }
-.enquirySection .submitBtn:hover { background: var(--steel-dark); transform: none; }
 .contactCard .directionsLink { margin-top: 12px; }
 .sidebar .sideTitle { margin-bottom: 24px; }
 .sidebar .nextTitle { font-size: var(--type-small-heading-size); line-height: var(--type-small-heading-leading); font-weight: var(--type-small-heading-weight); }
