@@ -8,6 +8,8 @@ import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import facilityBrand from '../assets/bengaluru-facility-brand.jpg';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { siteConfig } from '../lib/siteConfig';
+import { industries } from '../data/industries';
+import { categories } from './productsData';
 
 const missionVision = [
   {
@@ -32,13 +34,14 @@ const missionVision = [
   },
 ];
 
-// Key facts, all taken from the site's own copy (founding, milestones and equipment).
+// Key facts, all taken from the site's own copy: founding and milestone years, the four product
+// families on the Products page, the industries list and the 5-axis grinding capability.
 const facts = [
   { value: '2013', label: 'Founded in Bengaluru' },
   { value: '2017', label: 'Manufacturing since' },
-  { value: 'SAACKE', label: '5-axis CNC tool grinding' },
-  { value: 'VOLLMER', label: 'Wire EDM for PCD tools' },
-  { value: 'WALTER', label: 'Helicheck Pro inspection' },
+  { value: String(categories.length), label: 'Product families' },
+  { value: String(industries.length), label: 'Industries served' },
+  { value: '5-axis', label: 'CNC tool grinding' },
 ];
 
 const principles = [
@@ -90,8 +93,7 @@ export default function About() {
         <div className="container">
           <h2 id="facts-heading" className="visually-hidden">At a glance</h2>
           <div className={styles.factsIntro}>
-            <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies.</p>
-            <p>We serve the automotive, aerospace and precision engineering industries, in line with the vision of <strong>Make in India</strong>.</p>
+            <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies, serving the automotive, aerospace and precision engineering industries in line with the vision of <strong>Make in India</strong>.</p>
           </div>
           <dl className={styles.factsGrid}>
             {facts.map(f => (

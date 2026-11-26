@@ -41,8 +41,6 @@
   --btn-bg-hover: #8F4A05;
   --radius-pill: 999px;
   --page-hero-overlay: rgba(30, 51, 68, 0.72);
-  /* Readable line length for running text. */
-  --measure: 70ch;
   /* Poppins everywhere (self-hosted via Fontsource). */
   --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
@@ -184,7 +182,6 @@ h1, h2, h3, h4, h5, h6 {
 #main-content :is(h4, h5, h6) { font-size: 20px; line-height: 28px; }
 
 #main-content p {
-  max-width: var(--measure);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);
   font-weight: var(--type-body-weight);
@@ -296,7 +293,7 @@ img {
 
 
 #main-content .section-heading p {
-  max-width: var(--measure);
+  max-width: none;
   margin: 0;
   text-align: left;
   color: var(--text-secondary);
