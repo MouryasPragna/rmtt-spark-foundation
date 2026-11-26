@@ -68,14 +68,14 @@ const products = [
 export default function Home() {
 
   
-  const industryReveal = useReveal<HTMLDivElement>();
-  const productsHeadReveal = useReveal<HTMLDivElement>();
-  const productsGridReveal = useReveal<HTMLDivElement>();
-  const servicesHeadReveal = useReveal<HTMLDivElement>();
-  const servicesGridReveal = useReveal<HTMLDivElement>();
-  const techReveal = useReveal<HTMLDivElement>();
-  const techRightReveal = useReveal<HTMLDivElement>();
-  const ctaReveal = useReveal<HTMLDivElement>();
+  const { ref: industryRef, shown: industryShown } = useReveal<HTMLDivElement>();
+  const { ref: productsHeadRef, shown: productsHeadShown } = useReveal<HTMLDivElement>();
+  const { ref: productsGridRef, shown: productsGridShown } = useReveal<HTMLDivElement>();
+  const { ref: servicesHeadRef, shown: servicesHeadShown } = useReveal<HTMLDivElement>();
+  const { ref: servicesGridRef, shown: servicesGridShown } = useReveal<HTMLDivElement>();
+  const { ref: techRef, shown: techShown } = useReveal<HTMLDivElement>();
+  const { ref: techRightRef, shown: techRightShown } = useReveal<HTMLDivElement>();
+  const { ref: ctaRef, shown: ctaShown } = useReveal<HTMLDivElement>();
 
   return (
     <div>
@@ -86,8 +86,8 @@ export default function Home() {
         <div className={`container ${styles.industryInner}`}>
           <span className={styles.industryLabel}>Industries served</span>
           <div
-            ref={industryReveal.ref}
-            className={`${styles.industryTags} ${styles.revealStagger} ${industryReveal.shown ? styles.revealStaggerShown : ''}`}
+            ref={industryRef}
+            className={`${styles.industryTags} ${styles.revealStagger} ${industryShown ? styles.revealStaggerShown : ''}`}
           >
             {industries.map(ind => (
               <div key={ind.label} className={styles.industryTag}>
@@ -105,8 +105,8 @@ export default function Home() {
       <section className={styles.section}>
         <div className="container">
           <div
-            ref={productsHeadReveal.ref}
-            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${productsHeadReveal.shown ? styles.revealShown : ''}`}
+            ref={productsHeadRef}
+            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${productsHeadShown ? styles.revealShown : ''}`}
           >
             <div>
               <div className="section-eyebrow">What we make</div>
@@ -120,8 +120,8 @@ export default function Home() {
             </Link>
           </div>
           <div
-            ref={productsGridReveal.ref}
-            className={`${styles.prodGrid} ${styles.revealStagger} ${productsGridReveal.shown ? styles.revealStaggerShown : ''}`}
+            ref={productsGridRef}
+            className={`${styles.prodGrid} ${styles.revealStagger} ${productsGridShown ? styles.revealStaggerShown : ''}`}
           >
             {products.map(p => (
               <article key={p.id} className={styles.prodCard}>
@@ -150,8 +150,8 @@ export default function Home() {
       <section className={styles.section} aria-labelledby="home-services-heading">
         <div className="container">
           <div
-            ref={servicesHeadReveal.ref}
-            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${servicesHeadReveal.shown ? styles.revealShown : ''}`}
+            ref={servicesHeadRef}
+            className={`section-heading ${styles.sectionHead} ${styles.reveal} ${servicesHeadShown ? styles.revealShown : ''}`}
           >
             <div>
               <div className="section-eyebrow">Beyond manufacturing</div>
@@ -165,8 +165,8 @@ export default function Home() {
             </Link>
           </div>
           <div
-            ref={servicesGridReveal.ref}
-            className={`${styles.svcGrid} ${styles.revealStagger} ${servicesGridReveal.shown ? styles.revealStaggerShown : ''}`}
+            ref={servicesGridRef}
+            className={`${styles.svcGrid} ${styles.revealStagger} ${servicesGridShown ? styles.revealStaggerShown : ''}`}
           >
             {serviceBlocks.map(block => (
               <div key={block.id} className={styles.svcBlock}>
@@ -185,8 +185,8 @@ export default function Home() {
         <div className="container">
           <div className={styles.techGrid}>
             <div
-              ref={techReveal.ref}
-              className={`${styles.techLeft} ${styles.reveal} ${techReveal.shown ? styles.revealShown : ''}`}
+              ref={techRef}
+              className={`${styles.techLeft} ${styles.reveal} ${techShown ? styles.revealShown : ''}`}
             >
               <header className="section-heading"><div className="section-eyebrow" style={{ background: 'var(--blue-xlight)', color: 'var(--steel)' }}>
                 Key capabilities
@@ -211,8 +211,8 @@ export default function Home() {
               </Link>
             </div>
             <div
-              ref={techRightReveal.ref}
-              className={`${styles.techRight} ${styles.revealStagger} ${techRightReveal.shown ? styles.revealStaggerShown : ''}`}
+              ref={techRightRef}
+              className={`${styles.techRight} ${styles.revealStagger} ${techRightShown ? styles.revealStaggerShown : ''}`}
             >
               <img
                 src={equipmentHero}
@@ -229,8 +229,8 @@ export default function Home() {
       <section className={styles.ctaSection}>
         <div className="container">
           <div
-            ref={ctaReveal.ref}
-            className={`${styles.ctaInner} ${styles.reveal} ${ctaReveal.shown ? styles.revealShown : ''}`}
+            ref={ctaRef}
+            className={`${styles.ctaInner} ${styles.reveal} ${ctaShown ? styles.revealShown : ''}`}
           >
             <div className={styles.ctaText}>
               <h2 className={styles.ctaTitle}>Ready to optimise your machining process?</h2>

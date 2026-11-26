@@ -29,10 +29,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
+  // Close both menus after navigation. Adjusting state during render when the location changes
+  // avoids an extra effect pass (https://react.dev/learn/you-might-not-need-an-effect).
+  const [menusLocation, setMenusLocation] = useState(location);
+  if (menusLocation !== location) {
+    setMenusLocation(location);
     setOpen(false);
     setProductsOpen(false);
-  }, [location]);
+  }
 
   useEffect(() => {
     if (!open) return;

@@ -1,79 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+/**
+ * Reveals an element once it scrolls into view.
+ * Returns a callback ref (attach with `ref={reveal.ref}`) and whether the element has been shown.
+ * The element is held in state rather than a ref object, so reading `shown` during render is
+ * safe and the observer re-attaches if the element changes.
+ */
 export function useReveal<T extends HTMLElement = HTMLDivElement>(
   options?: IntersectionObserverInit
 ) {
-  const ref = useRef<T | null>(null);
+  const [node, setNode] = useState<T | null>(null);
   const [shown, setShown] = useState(false);
+  const root = options?.root;
+  const rootMargin = options?.rootMargin ?? '0px 0px -40px 0px';
+  const threshold = options?.threshold ?? 0.08;
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el || shown) return;
-
+    if (!node || shown) return;
     const obs = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setShown(true);
-            obs.disconnect();
-          }
-        });
+        if (entries.some((e) => e.isIntersecting)) {
+          setShown(true);
+          obs.disconnect();
+        }
       },
-      {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px',
-        ...options,
-      }
+      { root, rootMargin, threshold },
     );
-
-    obs.observe(el);
+    obs.observe(node);
     return () => obs.disconnect();
-  }, [shown]); // options intentionally omitted — passed options are stable at call site
+  }, [node, shown, root, rootMargin, threshold]);
 
-  return { ref, shown };
-}
-
-export function useCountUp(
-  target: string,
-  start: boolean,
-  duration = 1600
-): string {
-  const [value, setValue] = useState(target);
-
-  useEffect(() => {
-    if (!start) return;
-
-    const match = target.match(/^([^\d.-]*)([\d.,]+)(.*)$/);
-    if (!match) {
-      setValue(target);
-      return;
-    }
-
-    const prefix = match[1];
-    const numStr = match[2].replace(/,/g, '');
-    const suffix = match[3];
-    const end = parseFloat(numStr);
-
-    if (Number.isNaN(end)) {
-      setValue(target);
-      return;
-    }
-
-    const decimals = (numStr.split('.')[1] || '').length;
-    const t0 = performance.now();
-    let raf = 0;
-
-    const tick = (now: number) => {
-      const p = Math.min(1, (now - t0) / duration);
-      const eased = 1 - Math.pow(1 - p, 3); // cubic ease-out
-      setValue(prefix + (end * eased).toFixed(decimals) + suffix);
-      if (p < 1) raf = requestAnimationFrame(tick);
-      else setValue(target); // snap to exact final value
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [start, target, duration]);
-
-  return value;
+  return { ref: setNode, shown };
 }

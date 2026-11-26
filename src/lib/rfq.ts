@@ -1,8 +1,20 @@
 import { z } from 'zod';
 
+// Zod 4 compiles fast validators with `new Function`, which the site's Content-Security-Policy
+// (script-src 'self', no 'unsafe-eval') blocks. Jitless mode uses the interpreted path from the
+// start, so validation behaves the same without the CSP violation report.
+z.config({ jitless: true });
+
+// C0 control characters other than tab, line feed and carriage return.
+const hasControlChars = (value: string) =>
+  Array.from(value).some(char => {
+    const code = char.charCodeAt(0);
+    return code <= 0x08 || code === 0x0b || code === 0x0c || (code >= 0x0e && code <= 0x1f);
+  });
+
 export const MAX_DRAWING_BYTES = 10 * 1024 * 1024;
 export const fieldLimits = { name: 100, company: 100, email: 255, phone: 40, toolType: 5000, industry: 100, material: 200, machine: 200, qty: 100, description: 2000, website: 200 } as const;
-const optionalText = (max: number) => z.string().trim().max(max).refine(value => !/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(value), 'Contains invalid characters.');
+const optionalText = (max: number) => z.string().trim().max(max).refine(value => !hasControlChars(value), 'Contains invalid characters.');
 export const rfqSchema = z.object({
   name: optionalText(fieldLimits.name).pipe(z.string().min(1, 'Enter your full name.')),
   company: optionalText(fieldLimits.company).pipe(z.string().min(1, 'Enter your company name.')),
