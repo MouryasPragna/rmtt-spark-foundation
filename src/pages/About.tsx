@@ -1,7 +1,8 @@
 import PageHero from '../components/PageHero';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory, MessagesSquare, Cpu, Headset, Crosshair, ShieldCheck, Lightbulb, Handshake } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
@@ -32,35 +33,51 @@ const missionVision = [
   },
 ];
 
-const principles = [
+// Key facts, all taken from the site's own copy (founding, milestones and equipment).
+const facts = [
+  { value: '2013', label: 'Founded in Bengaluru' },
+  { value: '2017', label: 'Manufacturing since' },
+  { value: 'SAACKE', label: '5-axis CNC tool grinding' },
+  { value: 'VOLLMER', label: 'Wire EDM for PCD tools' },
+  { value: 'WALTER', label: 'Helicheck Pro inspection' },
+];
+
+const principles: { title: string; desc: string; icon: LucideIcon }[] = [
   {
+    icon: MessagesSquare,
     title: 'Customer-oriented thinking',
     desc: 'We begin every engagement by deeply understanding the real application need — the material, the machine, the tolerance, and the production challenge. Solutions follow from genuine listening, not a catalogue.',
   },
   {
+    icon: Cpu,
     title: 'Technology-driven solutions',
     desc: 'We invest continuously in advanced global machinery — SAACKE 5-axis grinding, VOLLMER Wire EDM, Walter Helicheck measurement — to push the boundary of what Indian manufacturing can deliver.',
   },
   {
+    icon: Headset,
     title: 'Service excellence',
     desc: 'Precision tools must perform consistently on the shop floor. We provide long-term support, rapid responsiveness, and technical partnership — before, during, and after every order.',
   },
 ];
 
-const values = [
+const values: { title: string; desc: string; icon: LucideIcon }[] = [
   {
+    icon: Crosshair,
     title: 'Precision',
     desc: 'Every tool meets the tightest tolerance. No compromise on accuracy.',
   },
   {
+    icon: ShieldCheck,
     title: 'Reliability',
     desc: 'Consistent performance batch after batch, application after application.',
   },
   {
+    icon: Lightbulb,
     title: 'Innovation',
     desc: 'Adopting the latest processes and materials to solve harder problems.',
   },
   {
+    icon: Handshake,
     title: 'Partnership',
     desc: 'Long-term relationships grounded in technical support and trust.',
   },
@@ -74,9 +91,26 @@ export default function About() {
         <div className="section-eyebrow">Who we are</div>
         <h1>Precision cutting tool manufacturer in Bengaluru</h1>
         <p className={styles.heroTagline}>Transforming raw materials into finer tools</p>
-        <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies.</p>
-        <p>The company designs and manufactures using state-of-the-art CNC, 5-axis SAACKE grinding, and VOLLMER Wire EDM machines, serving the automotive, aerospace, and precision engineering industries, aligned with the vision of <strong>"Make in India."</strong></p>
       </PageHero>
+
+      {/* At a glance: the hero's supporting copy plus key facts */}
+      <section className={styles.factsSection} aria-labelledby="facts-heading">
+        <div className="container">
+          <h2 id="facts-heading" className="visually-hidden">At a glance</h2>
+          <div className={styles.factsIntro}>
+            <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies.</p>
+            <p>We serve the automotive, aerospace and precision engineering industries, in line with the vision of <strong>Make in India</strong>.</p>
+          </div>
+          <dl className={styles.factsGrid}>
+            {facts.map(f => (
+              <div key={f.label} className={styles.fact}>
+                <dt className={styles.factLabel}>{f.label}</dt>
+                <dd className={styles.factValue}>{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       <JourneyTimeline />
       {/* Mission & Vision */}
@@ -92,15 +126,13 @@ export default function About() {
           <div className={styles.missionVisionGrid}>
             {missionVision.map(item => (
               <div key={item.type} className={`${styles.mvCard} ${styles[item.type]}`}>
-                <div className={styles.mvCardHeader}>
-                  <div className={styles.mvLabel}>{item.type === 'mission' ? 'Mission' : 'Vision'}</div>
-                  <h3 className={styles.mvTitle}>{item.title}</h3>
-                </div>
+                <div className={styles.mvLabel}>{item.type === 'mission' ? 'Our mission' : 'Our vision'}</div>
+                <h3 className={styles.mvTitle}>{item.title}</h3>
                 <p className={styles.mvDesc}>{item.desc}</p>
                 <ul className={styles.mvPoints}>
                   {item.points.map(point => (
                     <li key={point} className={styles.mvPoint}>
-                      <CheckCircle2 size={14} className={styles.mvPointIcon} />
+                      <CheckCircle2 size={16} className={styles.mvPointIcon} aria-hidden="true" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -118,30 +150,25 @@ export default function About() {
             <div className="section-eyebrow">Our purpose</div>
             <h2 className={styles.purposeTitle}>Purpose & philosophy</h2>
             <p className={styles.purposeSub}>
-              At RMTT, our objective is to be more than a supplier — we aim to be a trusted manufacturing and technology partner.
-            </p>
-          </div>
-
-          <div className={styles.philosophyText}>
-            <p>
-              Our approach is guided by three core principles that shape every product, every process, and every partnership we build.
+              Our approach is guided by three core principles.
             </p>
           </div>
 
           <div className={styles.principlesGrid}>
             {principles.map(p => (
               <div key={p.title} className={styles.principleCard}>
+                <span className={styles.iconBox} aria-hidden="true"><p.icon size={22} strokeWidth={1.75} /></span>
                 <h3 className={styles.principleTitle}>{p.title}</h3>
                 <p className={styles.principleDesc}>{p.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className={styles.philosophyQuote}>
-            <p>
-              "These principles shape every product, every process, and every partnership we build — making RMTT more than a supplier, and a trusted manufacturing and technology partner."
-            </p>
-          </div>
+          <figure className={styles.philosophyQuote}>
+            <blockquote>
+              <p>These principles shape every product, every process and every partnership we build — making RMTT more than a supplier: a trusted manufacturing and technology partner.</p>
+            </blockquote>
+          </figure>
         </div>
       </section>
 
@@ -155,6 +182,7 @@ export default function About() {
           <div className={styles.valuesGrid}>
             {values.map(v => (
               <div key={v.title} className={styles.valueCard}>
+                <span className={styles.iconBox} aria-hidden="true"><v.icon size={22} strokeWidth={1.75} /></span>
                 <h3 className={styles.valueTitle}>{v.title}</h3>
                 <p className={styles.valueDesc}>{v.desc}</p>
               </div>
@@ -175,9 +203,9 @@ export default function About() {
               </p></header>
               <ul className={styles.locationDetails}>
                 <li>
-                  <MapPin size={16} style={{ color: 'var(--blue)', flexShrink: 0 }} />
+                  <MapPin size={16} aria-hidden="true" style={{ color: 'var(--blue)', flexShrink: 0, marginTop: 3 }} />
                   <div>
-                    <span className={styles.locationLabel}>Address</span>
+                    <span className="visually-hidden">Address: </span>
                     <span>{siteConfig.address.street}, {siteConfig.address.cityLine}</span>
                   </div>
                 </li>

@@ -11,11 +11,13 @@ interface Milestone {
   label: string;
   title: string;
   text: string;
-  image: string;
-  alt: string;
+  /** Milestones without a photo show the year as a large mark instead. */
+  image?: string;
+  alt?: string;
 }
 
 const milestones: Milestone[] = [
+  { year: '2013', label: 'Founded', title: 'Started as a trading company', text: 'We began our journey in 2013 as a startup trading company in Bengaluru, laying the foundation for our presence in the precision tooling industry.' },
   { year: '2017', label: 'Manufacturing unit', title: 'From trading to production', image: img2017.url, alt: 'Tool being ground on a SAACKE machine', text: 'Established a dedicated manufacturing unit for solid carbide tools, marking the shift from trading to production.' },
   { year: '2018', label: '5-axis grinding', title: 'High-precision CNC grinding', image: img2018.url, alt: 'SAACKE 5-axis grinding machine running', text: 'Strategic investment in a 5-axis CNC tool grinding machine strengthened capabilities in high-precision tool manufacturing.' },
   { year: '2020', label: 'PCD tooling', title: 'Expansion into PCD tools', image: img2020.url, alt: 'Vollmer machine for PCD tools', text: 'Expanded into PCD tool manufacturing with the addition of a Vollmer EDM machine, enabling advanced specialised tooling solutions.' },
@@ -44,10 +46,6 @@ export default function JourneyTimeline() {
           <h2 id="journey-heading" className={styles.title}>Milestones of innovation</h2>
           <p className={styles.sub}>From a 2013 trading startup to a precision tool manufacturer.</p>
         </header>
-        <p className={styles.intro}>
-          We began our journey in 2013 as a startup trading company, laying the foundation
-          for our presence in the precision tooling industry.
-        </p>
         <div className={styles.timeline}>
           <ol className={styles.years} aria-label="Milestone years" ref={yearsRef}>
             {milestones.map((m, i) => (
@@ -71,7 +69,9 @@ export default function JourneyTimeline() {
               <h3 className={styles.cardTitle}>{current.title}</h3>
               <p className={styles.text}>{current.text}</p>
             </div>
-            <img className={styles.cardImg} src={current.image} alt={current.alt} loading="lazy" />
+            {current.image
+              ? <img className={styles.cardImg} src={current.image} alt={current.alt ?? ''} loading="lazy" />
+              : <div className={styles.cardMark} aria-hidden="true">{current.year}</div>}
           </article>
         </div>
       </div>
