@@ -751,3 +751,7 @@
   box-shadow: var(--shadow-md), inset 0 1px 0 color-mix(in srgb, var(--white) 80%, transparent);
 }
 .appSlide .appCardBody { background: color-mix(in srgb, var(--white) 35%, transparent); }
+
+/* Neighbouring bands with the same background continue each other instead of doubling the gap. */
+.section + .section,
+.techSection + .ctaSection { padding-top: 0; }
