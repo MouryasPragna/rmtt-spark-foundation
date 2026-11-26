@@ -658,7 +658,7 @@
   line-height: var(--type-small-heading-leading);
   font-weight: 500;
   color: var(--navy);
-  max-width: 46ch;
+  max-width: none;
 }
 
 @media (max-width: 768px) {
@@ -869,18 +869,6 @@
 /* Centred band: keep the capped paragraph centred. */
 :global(#main-content) .ctaSection p { margin-inline: auto; }
 
-/* Shared icon box for principles and values. */
-.iconBox {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 20px;
-  border-radius: var(--radius-lg);
-  background: var(--blue-xlight);
-  color: var(--cta);
-}
 
 /* At a glance: supporting copy and five key facts under the hero. */
 .factsSection {
@@ -890,9 +878,6 @@
 }
 
 .factsIntro {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 48px;
   margin-bottom: 40px;
 }
 
@@ -936,7 +921,6 @@
 }
 
 @media (max-width: 900px) {
-  .factsIntro { grid-template-columns: minmax(0, 1fr); }
   .factsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fact, .fact + .fact { padding: 20px 16px 20px 0; border-left: 0; border-bottom: 1px solid var(--border); }
   .fact:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--border); }

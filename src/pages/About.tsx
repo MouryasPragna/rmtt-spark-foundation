@@ -1,14 +1,15 @@
 import PageHero from '../components/PageHero';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory, MessagesSquare, Cpu, Headset, Crosshair, ShieldCheck, Lightbulb, Handshake } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide-react';
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
 import facilityBrand from '../assets/bengaluru-facility-brand.jpg';
 import PhotoPlaceholder from '../components/PhotoPlaceholder';
 import { siteConfig } from '../lib/siteConfig';
+import { industries } from '../data/industries';
+import { categories } from './productsData';
 
 const missionVision = [
   {
@@ -33,51 +34,45 @@ const missionVision = [
   },
 ];
 
-// Key facts, all taken from the site's own copy (founding, milestones and equipment).
+// Key facts, all taken from the site's own copy: founding and milestone years, the four product
+// families on the Products page, the industries list and the 5-axis grinding capability.
 const facts = [
   { value: '2013', label: 'Founded in Bengaluru' },
   { value: '2017', label: 'Manufacturing since' },
-  { value: 'SAACKE', label: '5-axis CNC tool grinding' },
-  { value: 'VOLLMER', label: 'Wire EDM for PCD tools' },
-  { value: 'WALTER', label: 'Helicheck Pro inspection' },
+  { value: String(categories.length), label: 'Product families' },
+  { value: String(industries.length), label: 'Industries served' },
+  { value: '5-axis', label: 'CNC tool grinding' },
 ];
 
-const principles: { title: string; desc: string; icon: LucideIcon }[] = [
+const principles = [
   {
-    icon: MessagesSquare,
     title: 'Customer-oriented thinking',
     desc: 'We begin every engagement by deeply understanding the real application need — the material, the machine, the tolerance, and the production challenge. Solutions follow from genuine listening, not a catalogue.',
   },
   {
-    icon: Cpu,
     title: 'Technology-driven solutions',
     desc: 'We invest continuously in advanced global machinery — SAACKE 5-axis grinding, VOLLMER Wire EDM, Walter Helicheck measurement — to push the boundary of what Indian manufacturing can deliver.',
   },
   {
-    icon: Headset,
     title: 'Service excellence',
     desc: 'Precision tools must perform consistently on the shop floor. We provide long-term support, rapid responsiveness, and technical partnership — before, during, and after every order.',
   },
 ];
 
-const values: { title: string; desc: string; icon: LucideIcon }[] = [
+const values = [
   {
-    icon: Crosshair,
     title: 'Precision',
     desc: 'Every tool meets the tightest tolerance. No compromise on accuracy.',
   },
   {
-    icon: ShieldCheck,
     title: 'Reliability',
     desc: 'Consistent performance batch after batch, application after application.',
   },
   {
-    icon: Lightbulb,
     title: 'Innovation',
     desc: 'Adopting the latest processes and materials to solve harder problems.',
   },
   {
-    icon: Handshake,
     title: 'Partnership',
     desc: 'Long-term relationships grounded in technical support and trust.',
   },
@@ -98,8 +93,7 @@ export default function About() {
         <div className="container">
           <h2 id="facts-heading" className="visually-hidden">At a glance</h2>
           <div className={styles.factsIntro}>
-            <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies.</p>
-            <p>We serve the automotive, aerospace and precision engineering industries, in line with the vision of <strong>Make in India</strong>.</p>
+            <p>Riddhi Machine Tool Technology is a Bengaluru-based precision metal cutting tools manufacturer delivering solid carbide and PCD solutions through advanced and innovative technologies, serving the automotive, aerospace and precision engineering industries in line with the vision of <strong>Make in India</strong>.</p>
           </div>
           <dl className={styles.factsGrid}>
             {facts.map(f => (
@@ -157,7 +151,6 @@ export default function About() {
           <div className={styles.principlesGrid}>
             {principles.map(p => (
               <div key={p.title} className={styles.principleCard}>
-                <span className={styles.iconBox} aria-hidden="true"><p.icon size={22} strokeWidth={1.75} /></span>
                 <h3 className={styles.principleTitle}>{p.title}</h3>
                 <p className={styles.principleDesc}>{p.desc}</p>
               </div>
@@ -182,7 +175,6 @@ export default function About() {
           <div className={styles.valuesGrid}>
             {values.map(v => (
               <div key={v.title} className={styles.valueCard}>
-                <span className={styles.iconBox} aria-hidden="true"><v.icon size={22} strokeWidth={1.75} /></span>
                 <h3 className={styles.valueTitle}>{v.title}</h3>
                 <p className={styles.valueDesc}>{v.desc}</p>
               </div>
