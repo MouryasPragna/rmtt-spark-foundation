@@ -112,10 +112,11 @@
 }
 
 .cardBody {
-  padding: 28px;
+  padding: 40px 28px 28px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* Text starts at the top of the card, level with the year list, rather than floating mid-card. */
+  justify-content: flex-start;
 }
 
 .cardYear {
