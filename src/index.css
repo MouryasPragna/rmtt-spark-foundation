@@ -28,13 +28,13 @@
   /* One section rhythm for every content band. */
   --section-spacing: 96px;
   --section-heading-gap: 32px;
-  /* Section headings keep RMTT's orange as the wayfinding cue: every section H2 is orange,
-     with a short orange rule under the heading block. #B95000 is 4.99:1 on white and 4.15:1
+  /* Section headings keep RMTT's orange as the wayfinding cue: the section H2 text only
+     (sentence case, no rule; labels stay steel blue). #B95000 is 4.99:1 on white and 4.15:1
      on the palest band (headings are large text, AA needs 3:1). On dark bands the lighter
      #F0913A is used (5.47:1 on navy). Orange is for headings only, never for buttons or body. */
   --section-heading-accent: #B95000;
   --section-heading-accent-on-dark: #F0913A;
-  --section-heading-rule: #B95000;
+  --section-label: #3B5A72;
   --page-hero-overlay: rgba(30, 51, 68, 0.72);
   /* Readable line length for running text. */
   --measure: 70ch;
@@ -247,7 +247,7 @@ img {
   display: block;
   width: fit-content;
   max-width: 100%;
-  color: var(--section-heading-accent);
+  color: var(--section-label);
   font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -283,25 +283,12 @@ img {
 #main-content .section-heading h2,
 #main-content h2.section-heading-title {
   color: var(--section-heading-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
+  text-transform: none;
   text-align: left;
   max-width: 100%;
   margin: 0 0 12px;
 }
 
-/* Short orange rule closing each heading block — the second half of the visual cue. */
-#main-content .section-heading::after,
-#main-content .section-heading:has(> a) > div::after,
-#main-content h2.section-heading-title::after {
-  content: '';
-  display: block;
-  width: 56px;
-  height: 4px;
-  margin-top: 20px;
-  background: var(--section-heading-rule);
-}
-#main-content .section-heading:has(> a)::after { content: none; }
 
 #main-content .section-heading p {
   max-width: var(--measure);
@@ -322,7 +309,6 @@ img {
 /* Headings on dark bands (e.g. the Services process band). */
 #main-content [data-surface="dark"] .section-heading h2 { color: var(--section-heading-accent-on-dark); }
 #main-content [data-surface="dark"] .section-heading .section-eyebrow { color: var(--white); }
-#main-content [data-surface="dark"] .section-heading::after { background: var(--section-heading-accent-on-dark); }
 #main-content [data-surface="dark"] .section-heading p { color: var(--on-dark-muted); }
 
 /* Animations */
