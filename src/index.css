@@ -25,8 +25,9 @@
   --type-small-heading-leading: 30px;
   --type-small-heading-weight: 600;
   --type-content-spacing: 0;
-  /* One section rhythm for every content band. */
-  --section-spacing: 96px;
+  /* One section rhythm for every content band. Where two neighbouring bands share a background,
+     the second drops its top padding so the gap isn't doubled (see each page module). */
+  --section-spacing: 72px;
   --section-heading-gap: 32px;
   /* Section headings keep RMTT's orange as the wayfinding cue: the section H2 text only
      (sentence case, no rule; labels stay steel blue). #B95000 is 4.99:1 on white and 4.15:1
@@ -198,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
     --type-heading-leading: 34px;
     --type-small-heading-size: 20px;
     --type-small-heading-leading: 28px;
-    --section-spacing: 64px;
+    --section-spacing: 48px;
     --section-heading-gap: 24px;
   }
   #main-content h1 { padding-bottom: 7px; }

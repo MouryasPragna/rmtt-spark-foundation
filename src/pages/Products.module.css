@@ -64,10 +64,6 @@
   border-bottom: 1px solid var(--border-light);
 }
 
-.catSection:nth-of-type(even) {
-  background: var(--surface);
-}
-
 /* Category header */
 .catHeader {
   display: grid;
@@ -541,3 +537,6 @@
 
 /* Centred band: keep the capped paragraph centred. */
 :global(#main-content) .catFooter p { margin-inline: auto; }
+
+/* Same white background as the intro above: don't double the gap. */
+.productIntro + .catSection { padding-top: 40px; }
