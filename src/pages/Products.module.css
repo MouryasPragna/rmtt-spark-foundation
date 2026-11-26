@@ -570,3 +570,14 @@
   .studioDetailSpecs { padding: 22px; }
   .studioHeroHead { padding-top: 28px; padding-bottom: 20px; }
 }
+
+/* Photo on a pale studio backdrop: tight crop shown large in its column, edges faded into the
+   section so no box shows. */
+.softEdgeImg {
+  -webkit-mask-image: radial-gradient(ellipse 60% 56% at 50% 50%, #000 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 56% at 50% 50%, #000 70%, transparent 100%);
+  margin: 0 auto;
+  display: block;
+}
+.detailImage > img.softEdgeImg { width: auto; height: 760px; max-width: 100%; object-fit: contain; }
+@media (max-width: 900px) { .detailImage > img.softEdgeImg { width: min(100%, 340px); height: auto; } }
