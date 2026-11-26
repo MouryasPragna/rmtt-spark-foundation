@@ -63,7 +63,11 @@ export default function PcdAnatomy() {
 
   return (
     <section ref={ref} className={`${styles.anatomy} ${inView ? styles.inView : ''}`} aria-labelledby="pcd-anatomy-heading">
-      <h2 id="pcd-anatomy-heading" className={`section-heading-title ${styles.heading}`}>Anatomy of an RMTT PCD tool</h2>
+      <header className={`section-heading ${styles.heading}`}>
+        <div className="section-eyebrow">Tool construction</div>
+        <h2 id="pcd-anatomy-heading">How an RMTT PCD tool is built</h2>
+        <p>Seven details, from the PCD grade to the tool body, that decide how long a PCD tool cuts accurately.</p>
+      </header>
       <div className={styles.figures}>
         {FIGURES.map((fig, fi) => (
           <figure key={fig.src} className={styles.figure} style={{ ['--ratio' as string]: String(fig.ratio), ['--photo-ratio' as string]: String(fig.ratio * fig.photo.width / fig.photo.height), ['--fi' as string]: fi }}>
@@ -100,7 +104,6 @@ export default function PcdAnatomy() {
                 onMouseEnter={() => setActive(c.n)} onMouseLeave={() => setActive(a => (a === c.n ? null : a))}
                 onClick={() => setActive(a => (a === c.n ? null : c.n))}>
                 <span className={styles.labelTitle}>{c.title}</span>
-                <span className={styles.labelDesc}>{c.desc}</span>
               </div>
             ))}
           </figure>
@@ -108,7 +111,8 @@ export default function PcdAnatomy() {
       </div>
       <ol className={styles.list}>
         {ALL.map(c => (
-          <li key={c.n} className={active === c.n ? styles.listActive : ''} style={{ ['--i' as string]: c.n }}>
+          <li key={c.n} className={active === c.n ? styles.listActive : ''} style={{ ['--i' as string]: c.n }}
+            onMouseEnter={() => setActive(c.n)} onMouseLeave={() => setActive(a => (a === c.n ? null : a))}>
             <span className={styles.listNum} aria-hidden="true">{c.n}</span>
             <span><strong>{c.title}</strong><br />{c.desc}</span>
           </li>
