@@ -496,3 +496,13 @@
 }
 
 /* Brand slide sits on a dark photo: invert the primary button so its edge stays visible. */
+
+/* Split layout for product slides (tablet and desktop): text on a solid panel on the left, the
+   tool photo unfaded on the right, so neither covers the other. The brand slide stays full bleed. */
+.showcase { --hero-split: clamp(400px, 44%, 640px); }
+.vignetteSplit { background: linear-gradient(to right, var(--blue-xlight) 0, rgba(228, 235, 241, 0) 72px); }
+@media (min-width: 769px) {
+  .bgSlideSplit { left: var(--hero-split); }
+  .copyColumnSplit { max-width: calc(var(--hero-split) - 120px); }
+  :global(#main-content) .copyColumnSplit .title { font-size: clamp(34px, 3.4vw, 52px); line-height: 1.1; }
+}
