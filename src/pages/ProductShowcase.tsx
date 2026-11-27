@@ -138,24 +138,27 @@ export default function ProductShowcase(): JSX.Element {
             aria-hidden={i !== current}
             className={`
               ${styles.bgSlide}
-              ${s.brand ? '' : styles.bgSlideSplit}
               ${i === current ? styles.bgSlideActive : ''}
               ${animating && i === current ? (direction === 'next' ? styles.bgEnterNext : styles.bgEnterPrev) : ''}
             `}
           >
-            <picture>
-              {s.mobileImage && <source media="(max-width: 768px)" srcSet={s.mobileImage} />}
-            <img
-              src={s.image}
-              alt={s.imageAlt}
-              className={styles.bgImg}
-              style={s.focus ? { objectPosition: s.focus } : undefined}
-              width={1600}
-              height={900}
-              fetchPriority={i === 0 ? 'high' : undefined}
-              loading={i === 0 ? 'eager' : 'lazy'}
-            />
-            </picture>
+            {/* Split slides: the same photo, blurred, runs behind the translucent text panel */}
+            {!s.brand && <img src={s.image} alt="" aria-hidden="true" className={styles.bgBlur} width={1600} height={900} loading="lazy" decoding="async" />}
+            <div className={s.brand ? styles.photoFull : styles.photoSide}>
+              <picture>
+                {s.mobileImage && <source media="(max-width: 768px)" srcSet={s.mobileImage} />}
+              <img
+                src={s.image}
+                alt={s.imageAlt}
+                className={styles.bgImg}
+                style={s.focus ? { objectPosition: s.focus } : undefined}
+                width={1600}
+                height={900}
+                fetchPriority={i === 0 ? 'high' : undefined}
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+              </picture>
+            </div>
             {/* Dark vignette — strong at edges, lighter centre so product pops */}
             <div className={`${styles.vignette} ${s.brand ? styles.vignetteDark : styles.vignetteSplit}`} />
           </div>
