@@ -16,6 +16,7 @@ const Technology = lazy(() => import('./pages/Technology'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
+const Faq = lazy(() => import('./pages/Faq'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 /** Everything inside the router. The browser wraps it in BrowserRouter (below);
@@ -45,6 +46,7 @@ export function AppShell() {
         <Route path="/downloads" element={<Navigate to="/contact" replace />} />
         <Route path="/news" element={<Navigate to="/" replace />} />
         <Route path="/news/:id" element={<Navigate to="/" replace />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />
         <Route path="/terms" element={<LegalPage title="Terms of Use" />} />
         <Route path="*" element={<NotFound />} />

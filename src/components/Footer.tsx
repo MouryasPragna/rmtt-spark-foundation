@@ -29,6 +29,7 @@ export default function Footer() {
               <ul className={styles.links}>
                 <li><Link to="/about">About Riddhi</Link></li>
                 <li><Link to="/services">Services</Link></li>
+                <li><Link to="/faq">FAQ</Link></li>
                 <li><Link to="/contact">Contact Us</Link></li>
               </ul>
             </div>

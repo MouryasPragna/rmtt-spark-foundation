@@ -27,6 +27,7 @@ const overrides: Record<string, [string | null, string]> = {
   "/products/solid-carbide-drills": [null, "RIDDHI solid carbide drills for grey and nodular iron, steels, PH steel and titanium, with polished flutes, edge honing and internal coolant."],
   "/products/solid-carbide-reamers": [null, "High-performance RIDDHI solid carbide reamers with internal coolant for precision bores: unequal spacing, monoblock design and H6/H7 tolerances."],
   "/products/brazed": [null, "RIDDHI brazed carbide-tipped tools: solid carbide performance at lower tool cost, with heat-treated steel bodies and 5-axis ground cutting edges."],
+  "/faq": ["Frequently asked questions", "Answers about RIDDHI solid carbide, PCD and brazed carbide tools: sizes, materials, coatings, inspection and how to send an enquiry."],
   "/privacy": ["Privacy Policy", "How Riddhi Machine Tool Technology collects, uses and protects personal data sent through this website, and how to exercise your rights."],
   "/terms": ["Terms of Use", "Terms for using the Riddhi Machine Tool Technology website: product information, quotations, intellectual property, links and liability."],
 };
