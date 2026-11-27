@@ -8,15 +8,17 @@ type Align = 'left' | 'right' | 'below';
 interface Callout { n: number; title: string; desc: string; points: [number, number][]; label: [number, number]; align: Align }
 interface Figure { src: string; alt: string; ratio: number; photo: { left: number; top: number; width: number; height: number }; callouts: Callout[] }
 
-/** Coordinates are percentages of each figure canvas (photo + label space). */
+/** Coordinates are percentages of each figure canvas (photo + label space). Label positions are
+ *  spaced so that any one description, fully open, ends before the next label (checked from 1024px
+ *  to 1920px wide); move them only after re-checking that. */
 const FIGURES: Figure[] = [
   {
     src: carbide.url, alt: 'RMTT PCD tool with a solid carbide body, showing PCD cutting tips and smooth flutes',
     ratio: 0.733, photo: { left: 0, top: 0, width: 40, height: 100 },
     callouts: [
-      { n: 1, title: 'Well-balanced PCD material', desc: 'PCD grade selected to suit the workpiece material and application.', points: [[5.4, 3.6]], label: [48, 7], align: 'left' },
-      { n: 2, title: 'High-quality pocket seats', desc: 'Precisely machined seats hold each PCD tip securely in position.', points: [[6.4, 14]], label: [48, 21], align: 'left' },
-      { n: 3, title: 'Perfect smooth flutes', desc: 'Polished flutes guide chips cleanly away from the cutting zone.', points: [[12.4, 35]], label: [48, 40], align: 'left' },
+      { n: 1, title: 'Well-balanced PCD material', desc: 'PCD grade selected to suit the workpiece material and application.', points: [[5.4, 3.6]], label: [48, 4], align: 'left' },
+      { n: 2, title: 'High-quality pocket seats', desc: 'Precisely machined seats hold each PCD tip securely in position.', points: [[6.4, 14]], label: [48, 27], align: 'left' },
+      { n: 3, title: 'Perfect smooth flutes', desc: 'Polished flutes guide chips cleanly away from the cutting zone.', points: [[12.4, 35]], label: [48, 50], align: 'left' },
       { n: 4, title: 'Solid carbide body', desc: 'A rigid carbide body for stable, vibration-resistant cutting.', points: [[20.8, 74]], label: [48, 74], align: 'left' },
     ],
   },
@@ -25,15 +27,15 @@ const FIGURES: Figure[] = [
     ratio: 0.64, photo: { left: 0, top: 0, width: 100, height: 77.6 },
     // Points sit on the two brazed PCD tips (lower left and lower right of the photo); both lines meet at the label below.
     callouts: [
-      { n: 5, title: 'Seamless brazing', desc: 'PCD tips are brazed to the body for a clean, durable joint.', points: [[6, 51.2], [86, 54.3]], label: [50, 86], align: 'below' },
+      { n: 5, title: 'Seamless brazing', desc: 'PCD tips are brazed to the body for a clean, durable joint.', points: [[6, 51.2], [86, 54.3]], label: [50, 80], align: 'below' },
     ],
   },
   {
     src: steel.url, alt: 'RMTT PCD form tool with a steel body and ground PCD cutting edges',
     ratio: 0.95, photo: { left: 55, top: 0, width: 45, height: 100 },
     callouts: [
-      { n: 6, title: 'Wire EDM + lapping and grinding of cutting edges', desc: 'Edges are wire-eroded, then lapped and ground for a sharp finish.', points: [[71.7, 5], [58.2, 33]], label: [50, 18], align: 'right' },
-      { n: 7, title: 'Steel body', desc: 'A tough steel body suited to larger and complex tool designs.', points: [[78.9, 80]], label: [50, 80], align: 'right' },
+      { n: 6, title: 'Wire EDM + lapping and grinding of cutting edges', desc: 'Edges are wire-eroded, then lapped and ground for a sharp finish.', points: [[71.7, 5], [58.2, 33]], label: [50, 12], align: 'right' },
+      { n: 7, title: 'Steel body', desc: 'A tough steel body suited to larger and complex tool designs.', points: [[78.9, 80]], label: [50, 70], align: 'right' },
     ],
   },
 ];
@@ -43,7 +45,13 @@ const ALL = FIGURES.flatMap(f => f.callouts);
 export default function PcdAnatomy() {
   const ref = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
-  const [active, setActive] = useState<number | null>(null);
+  // Hover or focus previews a detail; a click pins it open until it is clicked again. Kept apart so
+  // the hover that precedes every click can't make that click close what it just opened.
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [pinned, setPinned] = useState<number | null>(null);
+  const active = hovered ?? pinned;
+  const toggle = (n: number) => setPinned(p => (p === n ? null : n));
+  const leave = (n: number) => setHovered(h => (h === n ? null : h));
 
   useEffect(() => {
     const el = ref.current;
@@ -54,11 +62,11 @@ export default function PcdAnatomy() {
   }, []);
 
   const bind = (n: number) => ({
-    onMouseEnter: () => setActive(n),
-    onMouseLeave: () => setActive(a => (a === n ? null : a)),
-    onFocus: () => setActive(n),
-    onBlur: () => setActive(a => (a === n ? null : a)),
-    onClick: () => setActive(a => (a === n ? null : n)),
+    onMouseEnter: () => setHovered(n),
+    onMouseLeave: () => leave(n),
+    onFocus: () => setHovered(n),
+    onBlur: () => leave(n),
+    onClick: () => toggle(n),
   });
 
   return (
@@ -66,7 +74,7 @@ export default function PcdAnatomy() {
       <header className={`section-heading ${styles.heading}`}>
         <div className="section-eyebrow">Tool construction</div>
         <h2 id="pcd-anatomy-heading">How an RMTT PCD tool is built</h2>
-        <p>Seven details, from the PCD grade to the tool body, that decide how long a PCD tool cuts accurately.</p>
+        <p>Seven details, from the PCD grade to the tool body, that decide how long a PCD tool cuts accurately.<span className={styles.hint}> Select a number or a label to see each detail.</span></p>
       </header>
       <div className={styles.figures}>
         {FIGURES.map((fig, fi) => (
@@ -89,7 +97,7 @@ export default function PcdAnatomy() {
               pi === 0 ? (
                 <button key={`m${c.n}`} type="button" className={`${styles.marker} ${active === c.n ? styles.active : ''}`}
                   style={{ ['--x' as string]: `${x}%`, ['--y' as string]: `${y}%`, ['--px' as string]: `${((x - fig.photo.left) / fig.photo.width) * 100}%`, ['--py' as string]: `${((y - fig.photo.top) / fig.photo.height) * 100}%`, ['--i' as string]: c.n }}
-                  aria-label={`${c.n}. ${c.title}: ${c.desc}`} aria-pressed={active === c.n} {...bind(c.n)}>
+                  aria-label={`${c.n}. ${c.title}: ${c.desc}`} aria-pressed={pinned === c.n} {...bind(c.n)}>
                   {c.n}
                 </button>
               ) : (
@@ -101,9 +109,10 @@ export default function PcdAnatomy() {
               <div key={`l${c.n}`} aria-hidden="true"
                 className={`${styles.label} ${styles[c.align]} ${active === c.n ? styles.labelActive : ''}`}
                 style={{ left: `${c.label[0]}%`, top: `${c.label[1]}%`, ['--i' as string]: c.n }}
-                onMouseEnter={() => setActive(c.n)} onMouseLeave={() => setActive(a => (a === c.n ? null : a))}
-                onClick={() => setActive(a => (a === c.n ? null : c.n))}>
+                onMouseEnter={() => setHovered(c.n)} onMouseLeave={() => leave(c.n)}
+                onClick={() => toggle(c.n)}>
                 <span className={styles.labelTitle}>{c.title}</span>
+                <span className={styles.labelDesc}>{c.desc}</span>
               </div>
             ))}
           </figure>
@@ -112,7 +121,7 @@ export default function PcdAnatomy() {
       <ol className={styles.list}>
         {ALL.map(c => (
           <li key={c.n} className={active === c.n ? styles.listActive : ''} style={{ ['--i' as string]: c.n }}
-            onMouseEnter={() => setActive(c.n)} onMouseLeave={() => setActive(a => (a === c.n ? null : a))}>
+            onMouseEnter={() => setHovered(c.n)} onMouseLeave={() => leave(c.n)} onClick={() => toggle(c.n)}>
             <span className={styles.listNum} aria-hidden="true">{c.n}</span>
             <span><strong>{c.title}</strong><br />{c.desc}</span>
           </li>
