@@ -604,5 +604,4 @@
 
 /* PCD Technology: the material and manufacturing block follows the anatomy drawing. */
 .afterAnatomy { margin-top: var(--section-spacing); }
-.techBlocks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
-@media (max-width: 900px) { .techBlocks { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+.techBlocks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }

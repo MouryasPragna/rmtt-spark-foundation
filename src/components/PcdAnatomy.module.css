@@ -2,15 +2,15 @@
 .heading { margin-bottom: 32px; }
 .figures { display: grid; grid-template-columns: 1.1fr 0.9fr 1.1fr; gap: 32px; align-items: start; }
 .figure { position: relative; margin: 0; width: 100%; aspect-ratio: var(--ratio); }
-.photo { position: absolute; object-fit: contain; opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; transition-delay: calc(var(--fi) * 150ms); user-select: none; }
+.photo { position: absolute; object-fit: contain; transition: opacity .7s ease, transform .7s ease; transition-delay: calc(var(--fi) * 150ms); user-select: none; }
 .lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.line { stroke: var(--navy); stroke-width: 0.35; fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .6s ease, stroke .2s; transition-delay: calc(500ms + var(--i) * 120ms), 0s; }
+.line { stroke: var(--navy); stroke-width: 0.35; fill: none; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset .6s ease, stroke .2s; transition-delay: calc(500ms + var(--i) * 120ms), 0s; }
 .lineActive { stroke: var(--cta); stroke-width: 0.6; }
-.marker { position: absolute; left: var(--x); top: var(--y); width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid var(--white); background: var(--navy); color: var(--white); font: 600 var(--text-xs)/1 var(--font-body); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 2px 6px rgba(22, 36, 47,.3); opacity: 0; transform: scale(.4); transition: opacity .35s ease, transform .35s ease, background .2s; transition-delay: calc(900ms + var(--i) * 120ms), calc(900ms + var(--i) * 120ms), 0s; }
+.marker { position: absolute; left: var(--x); top: var(--y); width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid var(--white); background: var(--navy); color: var(--white); font: 600 var(--text-xs)/1 var(--font-body); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 2px 6px rgba(22, 36, 47,.3); transition: opacity .35s ease, transform .35s ease, background .2s; transition-delay: calc(900ms + var(--i) * 120ms), calc(900ms + var(--i) * 120ms), 0s; }
 .dot { width: 12px; height: 12px; margin: -6px 0 0 -6px; pointer-events: none; }
 .marker.active, .marker:hover { background: var(--cta); }
 .marker:focus-visible { outline: 3px solid var(--cta); outline-offset: 2px; }
-.label { position: absolute; max-width: 48%; color: var(--navy); cursor: pointer; opacity: 0; transition: opacity .4s ease, transform .4s ease; transition-delay: calc(1000ms + var(--i) * 120ms); }
+.label { position: absolute; max-width: 48%; color: var(--navy); cursor: pointer; transition: opacity .4s ease, transform .4s ease; transition-delay: calc(1000ms + var(--i) * 120ms); }
 .left { transform: translate(6px, -0.65em); max-width: calc(52% - 6px); }
 .right { transform: translate(calc(-100% - 6px), -0.65em); text-align: right; }
 .below { transform: translate(-50%, 0); text-align: center; max-width: 90%; }
@@ -28,10 +28,14 @@
 .listNum { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font: 600 var(--text-xs)/26px var(--font-body); text-align: center; }
 .listActive .listNum { background: var(--btn-bg); }
 
-.inView .photo { opacity: 1; transform: none; }
-.inView .line { stroke-dashoffset: 0; }
-.inView .marker { opacity: 1; transform: none; }
-.inView .label { opacity: 1; }
+/* Entry animation (draw-in): the drawing is hidden only once the component has armed it, which it does
+   only when the drawing starts below the screen. The pre-rendered page, visitors without JavaScript and
+   a drawing already on screen when the page opens are never hidden, so nothing blinks out and back. */
+.armed:not(.inView) .photo { opacity: 0; transform: translateY(12px); }
+.armed:not(.inView) .line { stroke-dashoffset: 1; }
+.armed:not(.inView) .marker { opacity: 0; transform: scale(.4); }
+.armed:not(.inView) .label { opacity: 0; }
+.armed:not(.inView) :is(.photo, .line, .marker, .label) { transition: none; }
 
 /* Narrower desktops: one step smaller label text so each open description still fits its space. */
 @media (min-width: 1024px) and (max-width: 1199px) {

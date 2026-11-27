@@ -53,9 +53,18 @@ export default function PcdAnatomy() {
   const toggle = (n: number) => setPinned(p => (p === n ? null : n));
   const leave = (n: number) => setHovered(h => (h === n ? null : h));
 
+  // Draw-in plays only for a drawing that starts below the screen; one already visible stays as it is.
+  const [armed, setArmed] = useState(false);
+
   useEffect(() => {
     const el = ref.current;
-    if (!el || typeof IntersectionObserver === 'undefined') { setInView(true); return; }
+    const reduced = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const figures = el?.querySelector('figure');
+    if (!el || !figures || reduced || typeof IntersectionObserver === 'undefined' || figures.getBoundingClientRect().top < window.innerHeight) {
+      setInView(true);
+      return;
+    }
+    setArmed(true);
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); io.disconnect(); } }, { threshold: 0.2 });
     io.observe(el);
     return () => io.disconnect();
@@ -70,7 +79,7 @@ export default function PcdAnatomy() {
   });
 
   return (
-    <section ref={ref} className={`${styles.anatomy} ${inView ? styles.inView : ''}`} aria-labelledby="pcd-anatomy-heading">
+    <section ref={ref} className={`${styles.anatomy} ${armed ? styles.armed : ''} ${inView ? styles.inView : ''}`} aria-labelledby="pcd-anatomy-heading">
       <header className={`section-heading ${styles.heading}`}>
         <div className="section-eyebrow">Tool construction</div>
         <h2 id="pcd-anatomy-heading">How an RMTT PCD tool is built</h2>
