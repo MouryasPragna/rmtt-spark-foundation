@@ -601,3 +601,6 @@
   .solutionsList { grid-template-columns: minmax(0, 1fr); }
   .drawingToToolArrow { width: 32px; height: 32px; }
 }
+
+/* PCD Technology: the material and manufacturing block follows the anatomy drawing. */
+.afterAnatomy { margin-top: var(--section-spacing); }

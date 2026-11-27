@@ -1,4 +1,4 @@
-.anatomy { margin-top: 48px; font-family: var(--font-body); }
+.anatomy { margin-top: 0; font-family: var(--font-body); }
 .heading { margin-bottom: 32px; }
 .figures { display: grid; grid-template-columns: 1.1fr 0.9fr 1.1fr; gap: 32px; align-items: start; }
 .figure { position: relative; margin: 0; width: 100%; aspect-ratio: var(--ratio); }

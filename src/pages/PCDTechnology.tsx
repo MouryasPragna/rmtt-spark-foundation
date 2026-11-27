@@ -16,7 +16,7 @@ const TECHNOLOGY = [
   },
 ];
 
-/** PCD Technology page: the material and manufacturing story, then the tool anatomy. */
+/** PCD Technology page: how an RMTT PCD tool is built (anatomy) first, then the material and manufacturing story. */
 export default function PCDTechnology() {
   const { hash } = useLocation();
 
@@ -53,15 +53,16 @@ export default function PCDTechnology() {
 
       <section className={styles.catalogueSection} aria-labelledby="pcd-technology-heading">
         <div className="container">
+          <PcdAnatomy />
           <h2 id="pcd-technology-heading" className="visually-hidden">PCD technology detail</h2>
-          <div className={styles.detailGrid}>
+          <div className={`${styles.detailGrid} ${styles.afterAnatomy}`}>
             <div className={styles.detailImage}>
               <img
                 src={pcdTechnologyImage}
                 alt="RIDDHI PCD tool on an HSK-A63 holder, with brazed PCD cutting edges set in pockets along the steel body"
                 width={589}
                 height={1070}
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 draggable={false}
                 className={`${styles.protectedImg} ${styles.softEdgeImg}`}
@@ -76,7 +77,6 @@ export default function PCDTechnology() {
               ))}
             </div>
           </div>
-          <PcdAnatomy />
         </div>
       </section>
     </div>
