@@ -4,7 +4,6 @@ import solidCarbideReamersGroup from '../assets/sc-reamers-group.webp';
 import solidCarbideDrillsGroup from '../assets/sc-drills-group.webp';
 import pcdToolingTechnology from '../assets/pcd-tooling-technology.jpg.asset.json';
 import pcdToolingRange from '../assets/pcd-tool-range-photo.webp.asset.json';
-import brazedShellCutter from '../assets/brazed-shell-cutter.webp.asset.json';
 import pcdTool1 from '../assets/home-pcd-boring.webp.asset.json';
 import pcdTool2 from '../assets/pcd-tool-2.webp.asset.json';
 import pcdTool4 from '../assets/pcd-tool-4.webp.asset.json';
@@ -13,18 +12,11 @@ import pcdTool6 from '../assets/pcd-tool-6.png.asset.json';
 import pcdTool7 from '../assets/pcd-tool-7.webp.asset.json';
 import pcdTool1Throttle from '../assets/pcd-tool-1.webp.asset.json';
 import pcdTool8 from '../assets/pcd-tool-8.webp.asset.json';
-import brazedTool1 from '../assets/home-brazed-tslot.webp.asset.json';
-import brazedTool2 from '../assets/brazed-tool-2.webp.asset.json';
-import brazedTool3 from '../assets/brazed-tool-3.webp.asset.json';
-import brazedTool4 from '../assets/brazed-tool-4.webp.asset.json';
-import brazedTool5 from '../assets/brazed-tool-5.webp.asset.json';
 import brazedTool6 from '../assets/brazed-tool-6.webp.asset.json';
 import brazedTool7 from '../assets/brazed-tool-7.webp.asset.json';
 import brazedTool8 from '../assets/brazed-tool-8.webp.asset.json';
-import shellDrawing from '../assets/shell-cutter-drawing.webp.asset.json';
 import model00200 from '../assets/final-brazed-7.webp.asset.json';
 import model00220 from '../assets/final-brazed-9.webp.asset.json';
-import model00241 from '../assets/final-brazed-11.webp.asset.json';
 import model00232 from '../assets/final-brazed-13.webp.asset.json';
 import model006302 from '../assets/final-brazed-15.webp.asset.json';
 import model00229 from '../assets/final-brazed-17.webp.asset.json';
@@ -262,81 +254,6 @@ export const products: Product[] = [
               'Surface finish less than Ra 0.2 is possible to achieve',
               'Multi-operations can be combined into a single tool, eliminating the need for multiple tools, lowering production costs and achieving the highest process capability',
             ],
-          },
-{
-    slug: 'brazed-carbide-shell-milling-cutter',
-    category: 'brazed',
-    subcategory: 'bc-milling',
-    materials: [],
-    industries: [],
-            name: 'Brazed Carbide Shell Milling Cutter',
-            description:
-              'Brazed carbide-tipped shell milling cutter built on a tool-steel body for demanding machining and reduced tooling cost.',
-            image: brazedShellCutter.url,
-            images: [{ src: brazedShellCutter.url, alt: 'Brazed carbide shell milling cutter RDH60-00164 — pictured example' }, { src: shellDrawing.url, alt: 'RDH60-00164 example drawing: Ø80 ±0.1, Ø77 −0.2, Ø52, Ø40 H6, Ø58, length 132, shoulder 12 and datum A' }],
-            examples: [{ model: 'RDH60-00164', image: brazedShellCutter.url }],
-            applications: ['Customer-specific milling applications'],
-          },
-{
-    slug: 't-slot-milling-cutter',
-    category: 'brazed',
-    subcategory: 'bc-milling',
-    materials: [],
-    industries: [],
-            name: 'T-Slot Milling Cutter',
-            description:
-              'Brazed carbide T-slot cutter manufactured to the profile and requirements of the component.',
-            image: brazedTool1.url,
-            markings: [{ label: 'Model', value: 'RDH60-00241' }, { label: 'Size marked (mm)', value: 'Ø39 / W 7.15 × 100.0' }],
-            examples: [{ model: 'RDH60-00241', image: model00241.url }],
-            applications: ['T-slot milling'],
-          },
-{
-    slug: 'brazed-carbide-reamer',
-    category: 'brazed',
-    subcategory: 'bc-reamers',
-    materials: [],
-    industries: [],
-            name: 'Brazed Carbide Reamer',
-            description: 'Carbide-tipped reamer with a heat-treated steel body, ground to the required geometry.',
-            image: brazedTool2.url,
-            markings: [{ label: 'Model', value: 'RDH60-00220' }, { label: 'Size marked (mm)', value: 'Ø20.32 × 30 × 130.0' }],
-            applications: ['Customer-specific precision reaming'],
-          },
-{
-    slug: 'lugged-carbide-drill',
-    category: 'brazed',
-    subcategory: 'bc-reamers',
-    materials: [],
-    industries: [],
-            name: 'Lugged Carbide Drill',
-            description: 'Lugged carbide drilling tool manufactured for the workpiece and application.',
-            image: brazedTool3.url,
-            applications: ['Special-purpose drilling'],
-          },
-{
-    slug: 'brazed-carbide-drill',
-    category: 'brazed',
-    subcategory: 'bc-reamers',
-    materials: [],
-    industries: [],
-            name: 'Brazed Carbide Drill',
-            description: 'Carbide-tipped drill with application-specific cutting geometry.',
-            image: brazedTool4.url,
-            markings: [{ label: 'Model', value: 'RDH60-00232' }, { label: 'Size marked (mm)', value: 'Ø8 / Ø14.8 × 110.0' }],
-            applications: ['Industrial drilling applications'],
-          },
-{
-    slug: 'brazed-carbide-reamer-with-coolant',
-    category: 'brazed',
-    subcategory: 'bc-reamers',
-    materials: [],
-    industries: [],
-            name: 'Brazed Carbide Reamer with Coolant',
-            description: 'Special brazed carbide reamer option with internal coolant supply and PVD coating.',
-            image: brazedTool5.url,
-            markings: [{ label: 'Model', value: 'RDH60-00135' }, { label: 'Size marked (mm)', value: 'Ø11.55 / Ø15.60 / 24 × 153.0' }],
-            applications: ['Precision reaming with internal coolant'],
           },
 {
     slug: 'stepped-special-tool',

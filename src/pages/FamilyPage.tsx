@@ -12,6 +12,7 @@ export default function FamilyPage() {
   const cat = categories.find(c => c.id === categoryId);
   const family = cat?.subcategories.find(sub => sub.id === familyId);
   if (cat?.id === 'pcd') return <Navigate to="/products/pcd" replace />;
+  if (cat && !family) return <Navigate to={`/products/${cat.id}`} replace />;
   if (!cat || !family) return <Navigate to="/products" replace />;
 
   return (

@@ -581,3 +581,23 @@
 }
 .detailImage > img.softEdgeImg { width: auto; height: 760px; max-width: 100%; object-fit: contain; }
 @media (max-width: 900px) { .detailImage > img.softEdgeImg { width: min(100%, 340px); height: auto; } }
+
+/* Single-page categories (Brazed Carbide): story, drawing-to-tool pair and solutions. */
+.storyHeading { margin: 0 0 16px; }
+.storySection { padding: var(--section-spacing) 0; background: var(--white); }
+.storyGrid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center; }
+.storyText { color: var(--text-secondary); font-size: var(--text-lg); line-height: 1.65; margin: 0 0 16px; }
+.drawingToTool { margin: 0; }
+.drawingToToolPair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; background: var(--studio-backdrop); border-radius: var(--radius-lg); padding: 16px; }
+.drawingToToolPair img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
+.drawingToToolArrow { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--btn-bg); color: var(--white); }
+.drawingToTool figcaption { margin-top: 12px; font-size: var(--text-sm); color: var(--text-muted); text-align: center; }
+.solutionsList { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+.solutionsList li { display: flex; gap: 12px; align-items: flex-start; background: var(--white); border: 1px solid var(--border-light); border-left: 3px solid var(--btn-bg); border-radius: var(--radius-lg); padding: 16px 18px; font-size: var(--text-md); color: var(--text); line-height: 1.5; }
+.solutionsList li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.solutionsList svg { flex: none; color: var(--btn-bg); margin-top: 2px; }
+@media (max-width: 900px) {
+  .storyGrid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .solutionsList { grid-template-columns: minmax(0, 1fr); }
+  .drawingToToolArrow { width: 32px; height: 32px; }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './JourneyTimeline.module.css';
+import img2013 from '../assets/journey-2013.webp';
 import img2017 from '../assets/journey-2017.jpg.asset.json';
 import img2018 from '../assets/journey-2018.jpg.asset.json';
 import img2020 from '../assets/journey-2020.jpg.asset.json';
@@ -17,7 +18,7 @@ interface Milestone {
 }
 
 const milestones: Milestone[] = [
-  { year: '2013', label: 'Founded', title: 'Started as a trading company', text: 'We began our journey in 2013 as a startup trading company in Bengaluru, laying the foundation for our presence in the precision tooling industry.' },
+  { year: '2013', label: 'Founded', title: 'Started as a trading company', image: img2013, alt: 'Multi-spindle tool holder with a solid carbide drill', text: 'We began our journey in 2013 as a startup trading company in Bengaluru, laying the foundation for our presence in the precision tooling industry.' },
   { year: '2017', label: 'Manufacturing unit', title: 'From trading to production', image: img2017.url, alt: 'Tool being ground on a SAACKE machine', text: 'Established a dedicated manufacturing unit for solid carbide tools, marking the shift from trading to production.' },
   { year: '2018', label: '5-axis grinding', title: 'High-precision CNC grinding', image: img2018.url, alt: 'SAACKE 5-axis grinding machine running', text: 'Strategic investment in a 5-axis CNC tool grinding machine strengthened capabilities in high-precision tool manufacturing.' },
   { year: '2020', label: 'PCD tooling', title: 'Expansion into PCD tools', image: img2020.url, alt: 'Vollmer machine for PCD tools', text: 'Expanded into PCD tool manufacturing with the addition of a Vollmer EDM machine, enabling advanced specialised tooling solutions.' },
