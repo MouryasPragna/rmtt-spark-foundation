@@ -28,9 +28,21 @@
 .listNum { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font: 600 var(--text-xs)/26px var(--font-body); text-align: center; }
 .listActive .listNum { background: var(--btn-bg); }
 
-/* Entry animation (draw-in): the drawing is hidden only once the component has armed it, which it does
-   only when the drawing starts below the screen. The pre-rendered page, visitors without JavaScript and
-   a drawing already on screen when the page opens are never hidden, so nothing blinks out and back. */
+/* Entry animation (draw-in), two ways so a drawing is never hidden and then shown again:
+   1. On screen when the page opens (most desktops): a CSS animation that plays from the first painted
+      frame, with fill-mode backwards so it ends in the normal, visible state. Needs no JavaScript, so
+      the pre-rendered page and no-JavaScript visitors get it too and end up seeing the full drawing.
+   2. Below the screen: the component "arms" the drawing (hidden, no animation) and an
+      IntersectionObserver adds .inView as it scrolls in, which transitions it into view. */
+@keyframes anatPhoto { from { opacity: 0; transform: translateY(12px); } }
+@keyframes anatLine { from { stroke-dashoffset: 1; } }
+@keyframes anatMarker { from { opacity: 0; transform: scale(.4); } }
+@keyframes anatLabel { from { opacity: 0; } }
+.photo { animation: anatPhoto .7s ease calc(var(--fi) * 150ms) backwards; }
+.line { animation: anatLine .6s ease calc(500ms + var(--i) * 120ms) backwards; }
+.marker { animation: anatMarker .35s ease calc(900ms + var(--i) * 120ms) backwards; }
+.label { animation: anatLabel .4s ease calc(1000ms + var(--i) * 120ms) backwards; }
+.armed :is(.photo, .line, .marker, .label) { animation: none; }
 .armed:not(.inView) .photo { opacity: 0; transform: translateY(12px); }
 .armed:not(.inView) .line { stroke-dashoffset: 1; }
 .armed:not(.inView) .marker { opacity: 0; transform: scale(.4); }
@@ -65,5 +77,5 @@
   .figure:nth-child(2) { grid-column: 1 / -1; max-width: 70%; grid-row: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .photo, .line, .marker, .label, .labelDesc, .list li { transition: none !important; }
+  .photo, .line, .marker, .label, .labelDesc, .list li { transition: none !important; animation: none !important; }
 }
