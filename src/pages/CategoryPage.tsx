@@ -136,12 +136,12 @@ export default function CategoryPage() {
       {cat.id === 'pcd' && <section id={cat.id} className={styles.catSection} aria-labelledby="pcd-overview-heading">
         <div className="container">
           <div className={`section-heading ${styles.sectionHeadRow}`}>
-            <h2 id="pcd-overview-heading" className={styles.catTitle}>PCD technology and tools</h2>
+            <h2 id="pcd-overview-heading" className={styles.catTitle}>PCD tools and technology</h2>
           </div>
           <div className={styles.familiesGrid}>
             {[
-              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb, href: '/products/pcd/pcd-technology', action: 'View the technology' },
               { id: 'tools', title: 'PCD Tools', blurb: 'Application-based individual solutions for drilling, milling and precision boring PCD tools — from proposal and tool design to manufacturing.', href: '/products/pcd/pcd-tooling', action: 'View the tools' },
+              { id: 'technology', title: 'PCD Technology', blurb: cat.subcategories.find(sub => sub.id === 'pcd-tools')?.blurb, href: '/products/pcd/pcd-technology', action: 'View the technology' },
             ].map(block => (
               <Link key={block.id} to={block.href} className={styles.familyCard}>
                 <h3 className={styles.familyTitle}>{block.title}</h3>
