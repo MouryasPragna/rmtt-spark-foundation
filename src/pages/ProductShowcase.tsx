@@ -17,6 +17,8 @@ interface Slide {
   tag: string;
   href: string;
   brand?: boolean;      // dark company-intro slide (white/orange text)
+  focus?: string;       // object-position keeping the tool in frame on the photo side
+  ratio?: number;       // photo width / height (default 16:9); lines the blurred copy up with the sharp crop
   titleAccent?: string; // trailing part of the title, shown in orange
   linkText?: string;
 }
@@ -38,6 +40,7 @@ const slides: Slide[] = [
   },
   {
     id: 'solid-carbide-drills',
+    ratio: 1600 / 756,
     image: factoryCollage.url,
     imageAlt: 'Riddhi precision tool manufacturing in the factory',
     category: 'Solid Carbide',
@@ -48,6 +51,7 @@ const slides: Slide[] = [
   },
   {
     id: 'pcd-hsk-reamer',
+    focus: '70% 50%',
     image: `${import.meta.env.BASE_URL}images/hero/pcd-closeup.webp`,
     mobileImage: `${import.meta.env.BASE_URL}images/hero/pcd-closeup-mobile.webp`,
     imageAlt: 'Close-up of RIDDHI PCD tools: a PCD milling cutter, form tools and a boring tool with brazed PCD cutting edges',
@@ -59,6 +63,7 @@ const slides: Slide[] = [
   },
   {
     id: 'brazed-tools',
+    focus: '55% 55%',
     image: `${import.meta.env.BASE_URL}images/hero/brazed-closeup.webp`,
     mobileImage: `${import.meta.env.BASE_URL}images/hero/brazed-closeup-mobile.webp`,
     imageAlt: 'Close-up of RIDDHI brazed carbide-tipped tools, with carbide tips brazed onto heat-treated steel bodies',
@@ -70,6 +75,8 @@ const slides: Slide[] = [
   },
   {
     id: 'tool-reconditioning',
+    ratio: 1600 / 912,
+    focus: '72% 60%',
     image: `${import.meta.env.BASE_URL}images/hero/inspection.webp`,
     mobileImage: `${import.meta.env.BASE_URL}images/hero/inspection-mobile.webp`,
     imageAlt: 'Tool measuring machine with an illuminated cutting tool in its clamping fixture',
@@ -138,20 +145,29 @@ export default function ProductShowcase(): JSX.Element {
               ${animating && i === current ? (direction === 'next' ? styles.bgEnterNext : styles.bgEnterPrev) : ''}
             `}
           >
-            <picture>
-              {s.mobileImage && <source media="(max-width: 768px)" srcSet={s.mobileImage} />}
-            <img
-              src={s.image}
-              alt={s.imageAlt}
-              className={styles.bgImg}
-              width={1600}
-              height={900}
-              fetchPriority={i === 0 ? 'high' : undefined}
-              loading={i === 0 ? 'eager' : 'lazy'}
-            />
-            </picture>
+            {/* Split slides: behind the translucent text panel, the photo continues to the left of the
+                sharp crop (a blurred copy aligned to the same scale and position), over a softer full
+                fill for any area wider than the photo itself. */}
+            {!s.brand && <img src={s.image} alt="" aria-hidden="true" className={styles.bgBlurFill} width={1600} height={900} loading="lazy" decoding="async" />}
+            {!s.brand && <img src={s.image} alt="" aria-hidden="true" className={styles.bgBlur} width={1600} height={900} loading="lazy" decoding="async"
+              style={{ ['--fx' as string]: String(parseFloat(s.focus ?? '50%') / 100), ['--fy' as string]: (s.focus ?? '50% 50%').split(' ')[1] ?? '50%', ['--ar' as string]: String(s.ratio ?? 16 / 9) }} />}
+            <div className={s.brand ? styles.photoFull : styles.photoSide}>
+              <picture>
+                {s.mobileImage && <source media="(max-width: 768px)" srcSet={s.mobileImage} />}
+              <img
+                src={s.image}
+                alt={s.imageAlt}
+                className={styles.bgImg}
+                style={s.focus ? { objectPosition: s.focus } : undefined}
+                width={1600}
+                height={900}
+                fetchPriority={i === 0 ? 'high' : undefined}
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+              </picture>
+            </div>
             {/* Dark vignette — strong at edges, lighter centre so product pops */}
-            <div className={`${styles.vignette} ${slide.brand ? styles.vignetteDark : ''}`} />
+            <div className={`${styles.vignette} ${s.brand ? styles.vignetteDark : styles.vignetteSplit}`} />
           </div>
         ))}
       </div>
@@ -160,7 +176,7 @@ export default function ProductShowcase(): JSX.Element {
       <div className={styles.contentWrap}>
 
         {/* Left — page headline (fixed) above the rotating slide text */}
-        <div className={styles.copyColumn}>
+        <div className={`${styles.copyColumn} ${slide.brand ? '' : styles.copyColumnSplit}`}>
         <h1 className={`${styles.heroHeading} ${slide.brand ? styles.heroHeadingBrand : ''}`}>
           Precision cutting tools: solid carbide, PCD and brazed carbide, made in Bengaluru
         </h1>

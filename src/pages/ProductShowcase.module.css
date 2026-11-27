@@ -496,3 +496,53 @@
 }
 
 /* Brand slide sits on a dark photo: invert the primary button so its edge stays visible. */
+
+/* Split layout for product slides (tablet and desktop): the tool photo sits sharp on the right;
+   the same photo, blurred, continues behind a translucent text panel on the left (60% panel
+   colour). Text on split slides is navy; measured contrast behind the text stays above 4.5:1 on
+   every slide. The brand slide stays full bleed; phones keep the stacked layout. */
+.showcase { --hero-split: clamp(400px, 44%, 640px); }
+.photoFull { position: absolute; inset: 0; }
+.photoSide { position: absolute; inset: 0; }
+.bgBlur, .bgBlurFill { display: none; }
+@media (min-width: 769px) {
+  .photoSide { left: var(--hero-split); }
+  .showcase { container-type: size; }
+  /* Same scale and position as the sharp photo (object-fit: cover by height), so its left part is
+     the true continuation of the crop: W = height x ratio, left = split + (photo width - W) x fx. */
+  .bgBlur {
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: calc(100cqh * var(--ar));
+    max-width: none;
+    left: calc(var(--hero-split) + (100cqw - var(--hero-split) - 100cqh * var(--ar)) * var(--fx));
+    object-fit: cover;
+    object-position: 50% var(--fy);
+    filter: blur(10px);
+  }
+  /* Fallback for the far left when the photo is narrower than the hero: a heavier blur of the whole photo. */
+  .bgBlurFill {
+    display: block;
+    position: absolute;
+    inset: -60px;
+    width: calc(100% + 120px);
+    height: calc(100% + 120px);
+    object-fit: cover;
+    filter: blur(40px) saturate(0.9);
+  }
+  .vignetteSplit {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(var(--hero-split) + 72px);
+    background: linear-gradient(to right, rgba(228, 235, 241, 0.6) 0, rgba(228, 235, 241, 0.6) calc(100% - 72px), rgba(228, 235, 241, 0) 100%);
+  }
+  .copyColumnSplit { max-width: calc(var(--hero-split) - 120px); }
+  :global(#main-content) .copyColumnSplit .title { font-size: clamp(34px, 3.4vw, 52px); line-height: 1.1; }
+  .copyColumnSplit :is(.subtitle, .tag, .heroHeading) { color: var(--text); }
+  .copyColumnSplit .tag { font-weight: 500; }
+}
+@media (max-width: 768px) {
+  .vignetteSplit { display: none; }
+}
