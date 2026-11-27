@@ -44,8 +44,8 @@ export default function PCDTools() {
             RIDDHI adapts its extensive experience and know-how, offering application-based individual solutions for drilling, milling, and precision boring PCD tools.
           </p>
           <div className={styles.jumpLinks}>
-            <Link to="/products/pcd/pcd-technology" className={styles.jumpLink}>PCD Technology</Link>
             <Link to="/products/pcd/pcd-tooling" className={styles.jumpLink} style={{ background: 'rgba(30, 51, 68,0.08)' }} aria-current="page">PCD Tools</Link>
+            <Link to="/products/pcd/pcd-technology" className={styles.jumpLink}>PCD Technology</Link>
           </div>
         </div>
       </section>
@@ -76,7 +76,6 @@ export default function PCDTools() {
               <ul className={styles.applicationList}>
                 {BENEFITS.map(benefit => <li key={benefit}>{benefit}</li>)}
               </ul>
-              <Link to="/products/pcd/pcd-technology" className={styles.detailLink}>PCD Tooling Technology</Link>
             </div>
           </div>
         </div>
