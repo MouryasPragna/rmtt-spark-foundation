@@ -498,9 +498,9 @@
 /* Brand slide sits on a dark photo: invert the primary button so its edge stays visible. */
 
 /* Split layout for product slides (tablet and desktop): the tool photo sits sharp on the right;
-   the same photo, blurred, continues behind a translucent text panel on the left (72% panel
-   colour). Text on split slides is navy, so contrast stays above 6:1 even over a near-black
-   photo. The brand slide stays full bleed; phones keep the stacked layout. */
+   the same photo, blurred, continues behind a translucent text panel on the left (60% panel
+   colour). Text on split slides is navy; measured contrast behind the text stays above 4.5:1 on
+   every slide. The brand slide stays full bleed; phones keep the stacked layout. */
 .showcase { --hero-split: clamp(400px, 44%, 640px); }
 .photoFull { position: absolute; inset: 0; }
 .photoSide { position: absolute; inset: 0; }
@@ -521,7 +521,7 @@
     position: absolute;
     inset: 0 auto 0 0;
     width: calc(var(--hero-split) + 72px);
-    background: linear-gradient(to right, rgba(228, 235, 241, 0.72) 0, rgba(228, 235, 241, 0.72) calc(100% - 72px), rgba(228, 235, 241, 0) 100%);
+    background: linear-gradient(to right, rgba(228, 235, 241, 0.6) 0, rgba(228, 235, 241, 0.6) calc(100% - 72px), rgba(228, 235, 241, 0) 100%);
   }
   .copyColumnSplit { max-width: calc(var(--hero-split) - 120px); }
   :global(#main-content) .copyColumnSplit .title { font-size: clamp(34px, 3.4vw, 52px); line-height: 1.1; }
