@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Products.module.css';
 import PcdAnatomy from '../components/PcdAnatomy';
-import pcdTechnologyImage from '../assets/pcd-technology-hsk-tool.webp';
 
 /** Approved copy only: the PCD Tooling Technology blurb and the Manufacturing technology capability block. */
 const TECHNOLOGY = [
@@ -55,27 +54,13 @@ export default function PCDTechnology() {
         <div className="container">
           <PcdAnatomy />
           <h2 id="pcd-technology-heading" className="visually-hidden">PCD technology detail</h2>
-          <div className={`${styles.detailGrid} ${styles.afterAnatomy}`}>
-            <div className={styles.detailImage}>
-              <img
-                src={pcdTechnologyImage}
-                alt="RIDDHI PCD tool on an HSK-A63 holder, with brazed PCD cutting edges set in pockets along the steel body"
-                width={589}
-                height={1070}
-                loading="lazy"
-                decoding="async"
-                draggable={false}
-                className={`${styles.protectedImg} ${styles.softEdgeImg}`}
-              />
-            </div>
-            <div>
-              {TECHNOLOGY.map(block => (
-                <div key={block.title}>
-                  <h2 className={`section-heading-title ${styles.subCatTitle}`}>{block.title}</h2>
-                  <p className={styles.catIntro}>{block.body}</p>
-                </div>
-              ))}
-            </div>
+          <div className={`${styles.techBlocks} ${styles.afterAnatomy}`}>
+            {TECHNOLOGY.map(block => (
+              <div key={block.title}>
+                <h2 className={`section-heading-title ${styles.subCatTitle}`}>{block.title}</h2>
+                <p className={styles.catIntro}>{block.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
