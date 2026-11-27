@@ -4,6 +4,17 @@
   padding: 0;
 }
 
+/* Arial scaled to Poppins' metrics: text set in the fallback takes the same space as Poppins,
+   so nothing re-wraps or moves when the web font arrives (the cause of the layout shift). */
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo');
+  ascent-override: 92.83%;
+  descent-override: 30.94%;
+  line-gap-override: 8.84%;
+  size-adjust: 113.11%;
+}
+
 :root {
   color-scheme: light only;
   /* Type scale — seven steps, used everywhere (no ad-hoc sizes in modules):
@@ -46,8 +57,8 @@
      a band behind a photo in this gradient lets it run edge to edge without a visible box. */
   --studio-backdrop: linear-gradient(180deg, #C7C7C7 0%, #CBCBCB 10%, #D0D0D0 20%, #D5D5D5 30%, #D8D8D8 40%, #DADADA 50%, #E0E0E0 60%, #EAEAEA 65%, #F7F7F7 69%, #FAFAFA 71%, #F6F6F6 75%, #EDEDED 78%, #E4E4E4 81%, #E6E6E6 85%, #E8E8E8 90%, #EFEFEF 95%, #F6F6F6 100%);
   /* Poppins everywhere (self-hosted via Fontsource). */
-  --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Poppins', 'Poppins Fallback', Arial, sans-serif;
+  --font-body: 'Poppins', 'Poppins Fallback', Arial, sans-serif;
   /* Brand colours — "Riddhi Steel", derived from the RMTT logo.
      Logo colours: slate #707E85 and steel blue #B8CBD9. Both are below 4.5:1 on white, so
      they are used only for rules, fills and large marks (--logo-*); text, buttons and links

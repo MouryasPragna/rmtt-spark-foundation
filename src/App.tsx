@@ -46,7 +46,7 @@ export function AppShell() {
         <Route path="/news" element={<Navigate to="/" replace />} />
         <Route path="/news/:id" element={<Navigate to="/" replace />} />
         <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />
-        <Route path="/terms" element={<LegalPage title="Terms" />} />
+        <Route path="/terms" element={<LegalPage title="Terms of Use" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       </Suspense>
