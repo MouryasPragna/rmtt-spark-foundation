@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Send, ArrowUpRight, Download } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, ArrowUpRight, Download, ArrowRight } from 'lucide-react';
 import factoryPhoto from '../assets/factory-hero-collage.jpg.asset.json';
 import styles from './Contact.module.css';
 import { siteConfig } from '../lib/siteConfig';
@@ -104,6 +104,7 @@ export default function Contact() {
             <li className={styles.nextStep}><h3 className={styles.nextTitle}>Production</h3><p className={styles.nextDesc}>Once the sample is approved, your tools are manufactured on SAACKE grinding or VOLLMER EDM, with edge preparation and coating applied.</p></li>
             <li className={styles.nextStep}><h3 className={styles.nextTitle}>Inspection &amp; dispatch</h3><p className={styles.nextDesc}>Each tool is checked against your drawing on the Walter Helicheck measuring machine before dispatch.</p></li>
           </ol>
+          <Link to="/faq" className={styles.sectionLink}>Frequently asked questions <ArrowRight size={16} aria-hidden="true" /></Link>
         </section>
         <figure className={styles.toolsPreview}><img src={`${import.meta.env.BASE_URL}contact-tool-range.webp`} alt="Riddhi cutting tool range" width={1110} height={198} loading="lazy" className={styles.toolsImg} /></figure>
         <section className={`${styles.sideCard} ${styles.noRule} ${styles.catalogueCard}`} id="product-catalogue">

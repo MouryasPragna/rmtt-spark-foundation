@@ -7,7 +7,7 @@ import { categories } from '../pages/productsData';
  * Hidden sections (Applications, News, retired PCD families) are deliberately absent.
  */
 export function publicRoutes(): string[] {
-  const fixed = ['/', '/about', '/products', '/services', '/contact', '/privacy', '/terms', '/products/pcd/pcd-tooling', '/products/pcd/pcd-technology'];
+  const fixed = ['/', '/about', '/products', '/services', '/contact', '/faq', '/privacy', '/terms', '/products/pcd/pcd-tooling', '/products/pcd/pcd-technology'];
   return [...new Set([
     ...fixed,
     ...categories.flatMap(category => category.id === 'pcd' ? [`/products/${category.id}`] : [

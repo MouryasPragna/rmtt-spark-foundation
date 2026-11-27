@@ -9,7 +9,7 @@ test('sitemap covers all current public category, family, product and published 
   const paths = [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map(match => new URL(match[1]).pathname);
   expect(xml).not.toContain('/#/');
   const expected = [
-    '/', '/about', '/products', '/services', '/contact', '/privacy', '/terms', '/products/pcd/pcd-tooling', '/products/pcd/pcd-technology',
+    '/', '/about', '/products', '/services', '/contact', '/faq', '/privacy', '/terms', '/products/pcd/pcd-tooling', '/products/pcd/pcd-technology',
     ...categories.flatMap(category => category.id === 'pcd' ? [`/products/${category.id}`] : [`/products/${category.id}`, ...category.subcategories.map(family => `/products/${category.id}/${family.id}`)]),
     ...products.filter(product => product.category !== 'pcd').map(product => `/products/${product.slug}`),
   ];
