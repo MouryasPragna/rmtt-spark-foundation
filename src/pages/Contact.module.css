@@ -405,3 +405,10 @@ a.contactValue:hover {
 
 /* Same white background as the contact cards above. */
 .contactOverview + .enquirySection { padding-top: 40px; }
+
+/* Legal pages: readable column, draft notice until the client approves the text. */
+.legalBody { max-width: 860px; }
+.legalBody .legalSection + .legalSection { margin-top: 32px; }
+.legalBody .legalSection p { color: var(--text-secondary); line-height: 1.7; margin-top: 10px; }
+.legalDraft { margin: 0 0 32px; padding: 14px 18px; border: 1px solid var(--border); border-left: 3px solid var(--btn-bg); border-radius: var(--radius-lg); background: var(--white); color: var(--text); font-size: var(--text-sm); }
+.legalHeading { color: var(--section-heading-accent); }

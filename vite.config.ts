@@ -40,6 +40,9 @@ function absoluteAssetUrls(): Plugin {
 export default defineConfig({
   plugins: [absoluteAssetUrls(), react()],
   base,
+  // One stylesheet for the whole site: pre-rendered pages then arrive fully styled. With per-page
+  // CSS chunks each page's styles only loaded with its script, so heroes and grids jumped (CLS 0.3–0.8).
+  build: { cssCodeSplit: false },
   // Dependencies may be symlinked outside the workspace in the preview sandbox.
   server: { fs: { allow: [searchForWorkspaceRoot(process.cwd()), realpathSync('node_modules')] } },
 })

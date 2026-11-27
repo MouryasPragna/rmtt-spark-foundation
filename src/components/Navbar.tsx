@@ -76,7 +76,7 @@ export default function Navbar() {
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
           <Link to="/" className={styles.logo} aria-label="Riddhi Machine Tool Technology home">
-            <img src={`${import.meta.env.BASE_URL}logo.webp`} alt="Riddhi Machine Tool Technology" width={640} height={210} loading="eager" fetchPriority="high" className={styles.logoImg} />
+            <img src={`${import.meta.env.BASE_URL}logo-header.webp`} srcSet={`${import.meta.env.BASE_URL}logo-header.webp 2x, ${import.meta.env.BASE_URL}logo-header@3x.webp 3x`} alt="Riddhi Machine Tool Technology" width={122} height={40} loading="eager" fetchPriority="high" className={styles.logoImg} />
           </Link>
           
           
