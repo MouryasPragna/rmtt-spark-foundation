@@ -18,6 +18,7 @@ interface Slide {
   href: string;
   brand?: boolean;      // dark company-intro slide (white/orange text)
   focus?: string;       // object-position keeping the tool in frame on the photo side
+  ratio?: number;       // photo width / height (default 16:9); lines the blurred copy up with the sharp crop
   titleAccent?: string; // trailing part of the title, shown in orange
   linkText?: string;
 }
@@ -39,6 +40,7 @@ const slides: Slide[] = [
   },
   {
     id: 'solid-carbide-drills',
+    ratio: 1600 / 756,
     image: factoryCollage.url,
     imageAlt: 'Riddhi precision tool manufacturing in the factory',
     category: 'Solid Carbide',
@@ -73,6 +75,7 @@ const slides: Slide[] = [
   },
   {
     id: 'tool-reconditioning',
+    ratio: 1600 / 912,
     focus: '72% 60%',
     image: `${import.meta.env.BASE_URL}images/hero/inspection.webp`,
     mobileImage: `${import.meta.env.BASE_URL}images/hero/inspection-mobile.webp`,
@@ -142,8 +145,12 @@ export default function ProductShowcase(): JSX.Element {
               ${animating && i === current ? (direction === 'next' ? styles.bgEnterNext : styles.bgEnterPrev) : ''}
             `}
           >
-            {/* Split slides: the same photo, blurred, runs behind the translucent text panel */}
-            {!s.brand && <img src={s.image} alt="" aria-hidden="true" className={styles.bgBlur} width={1600} height={900} loading="lazy" decoding="async" />}
+            {/* Split slides: behind the translucent text panel, the photo continues to the left of the
+                sharp crop (a blurred copy aligned to the same scale and position), over a softer full
+                fill for any area wider than the photo itself. */}
+            {!s.brand && <img src={s.image} alt="" aria-hidden="true" className={styles.bgBlurFill} width={1600} height={900} loading="lazy" decoding="async" />}
+            {!s.brand && <img src={s.image} alt="" aria-hidden="true" className={styles.bgBlur} width={1600} height={900} loading="lazy" decoding="async"
+              style={{ ['--fx' as string]: String(parseFloat(s.focus ?? '50%') / 100), ['--fy' as string]: (s.focus ?? '50% 50%').split(' ')[1] ?? '50%', ['--ar' as string]: String(s.ratio ?? 16 / 9) }} />}
             <div className={s.brand ? styles.photoFull : styles.photoSide}>
               <picture>
                 {s.mobileImage && <source media="(max-width: 768px)" srcSet={s.mobileImage} />}

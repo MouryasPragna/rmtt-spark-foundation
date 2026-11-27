@@ -504,18 +504,33 @@
 .showcase { --hero-split: clamp(400px, 44%, 640px); }
 .photoFull { position: absolute; inset: 0; }
 .photoSide { position: absolute; inset: 0; }
-.bgBlur { display: none; }
+.bgBlur, .bgBlurFill { display: none; }
 @media (min-width: 769px) {
   .photoSide { left: var(--hero-split); }
+  .showcase { container-type: size; }
+  /* Same scale and position as the sharp photo (object-fit: cover by height), so its left part is
+     the true continuation of the crop: W = height x ratio, left = split + (photo width - W) x fx. */
   .bgBlur {
     display: block;
     position: absolute;
-    inset: -40px;
-    width: calc(100% + 80px);
-    height: calc(100% + 80px);
+    top: 0;
+    height: 100%;
+    width: calc(100cqh * var(--ar));
+    max-width: none;
+    left: calc(var(--hero-split) + (100cqw - var(--hero-split) - 100cqh * var(--ar)) * var(--fx));
     object-fit: cover;
-    filter: blur(18px) saturate(0.9);
-    transform: scale(1.06);
+    object-position: 50% var(--fy);
+    filter: blur(10px);
+  }
+  /* Fallback for the far left when the photo is narrower than the hero: a heavier blur of the whole photo. */
+  .bgBlurFill {
+    display: block;
+    position: absolute;
+    inset: -60px;
+    width: calc(100% + 120px);
+    height: calc(100% + 120px);
+    object-fit: cover;
+    filter: blur(40px) saturate(0.9);
   }
   .vignetteSplit {
     position: absolute;
