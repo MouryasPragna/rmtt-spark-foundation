@@ -318,13 +318,13 @@
 .locationImgWrap {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 1365 / 768;
+  aspect-ratio: 1600 / 756;
 }
 
 .locationImg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 
