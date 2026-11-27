@@ -5,7 +5,6 @@ import { ArrowRight, CircleCheck as CheckCircle2, MapPin, Factory } from 'lucide
 import styles from './About.module.css';
 import JourneyTimeline from './JourneyTimeline';
 import factoryCollage from '../assets/factory-hero-collage.jpg.asset.json';
-import facilityBrand from '../assets/bengaluru-facility-brand.jpg';
 import missionPhoto from '../assets/about-mission-saacke.webp';
 import visionPhoto from '../assets/about-vision-helicheck.webp';
 import type { CSSProperties } from 'react';
@@ -214,9 +213,9 @@ export default function About() {
             </div>
             <div className={styles.locationImgWrap}>
               {facilityPhotoUnavailable ? <PhotoPlaceholder icon={Factory} /> : <img
-                src={facilityBrand}
-                alt="Riddhi precision machining — Engineering confidence in every cut, Make In India"
-                width={1365} height={768} loading="lazy" className={styles.locationImg}
+                src={factoryCollage.url}
+                alt="SAACKE 5-axis CNC tool grinding at the RMTT Bengaluru facility: an operator at the machine, grinding in progress and a tool under coolant"
+                width={1600} height={756} loading="lazy" className={styles.locationImg}
                 onError={() => setFacilityPhotoUnavailable(true)}
               />}
             </div>
