@@ -53,7 +53,8 @@ export default function PcdAnatomy() {
   const toggle = (n: number) => setPinned(p => (p === n ? null : n));
   const leave = (n: number) => setHovered(h => (h === n ? null : h));
 
-  // Draw-in plays only for a drawing that starts below the screen; one already visible stays as it is.
+  // A drawing on screen at load draws in with a CSS animation (see the module CSS). One below the screen
+  // is armed here and drawn in by the IntersectionObserver as it scrolls into view.
   const [armed, setArmed] = useState(false);
 
   useEffect(() => {
